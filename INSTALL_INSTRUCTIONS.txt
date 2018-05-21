@@ -1,0 +1,42 @@
+
+   -----------------------------------------------------
+   INSTALL INSTRUCTIONS for the WINDOWS 10 (64-Bit)
+   CONTACT MANAGEMENT APPLICATION Version 14.2
+   -----------------------------------------------------
+
+   EASY DIRECTIONS to download and install the new Microsoft WINDOWS 10 OS 
+   Contact Management Application Version 14.2
+
+   https://tinyurl.com/CONTACT-MANAGEMENT-EXPERT
+
+   Here are the STEPS:
+
+1. Click on the LINK https://tinyurl.com/CONTACT-MANAGEMENT-EXPERT 
+   to see the Google Drive Shared Folder with the INSTALLER FILE in there.
+   The INSTALLER FILE is CM-14.2-amd64.msi (the standard Microsoft Installer File).
+
+2. Download the INSTALLER FILE, CM-14.2-amd64.msi, from the Google Drive Shared Folder. 
+   The File only takes about 15 to 20 seconds to download.
+   The Installer File is called CM-14.2-amd64.msi and after you download this
+   CM-14.2-amd64.msi Installer File, it will be located in your Downloads Folder
+   on your Windows 10 PC or Laptop.
+
+3. Go to your DOWNLOAD Folder on your PC and COPY this Installer
+   file, CM-14.2-amd64.msi, that you just downloaded to whatever Folder you want.
+   Create a Folder and PASTE the INSTALLER File in the new Folder.
+   I suggest creating a Windows Folder called .../CM_INSTALLER_VERSION_14.2
+
+4. RIGHT CLICK ON THE INSTALLER FILE, CM-14.2-amd64.msi, and select Install.
+   The Installer will prompt you with a textbox where you have the
+   option to change the Windows Folder where the application 
+   is installed. You can just select OK to continue installing
+   at the default path (the Windows "Program Files" Folder called 
+   CM) or select a folder name you specify).
+
+5. After the Installer File is finished, locate the File: contact_management_python.exe 
+   in the Windows "Program Files" Folder called "CM"
+   or select the folder name that you specified, and double click 
+   on this contact_management_python.exe to see it run OK. 
+   Then go back and RIGHT CLICK on that same file: contact_management_python.exe 
+   and select PIN TO START MENU. (You can also create a shortcut 
+   for contact_management_python.exe and place the shortcut on your desktop).
