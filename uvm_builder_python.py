@@ -1058,10 +1058,10 @@ class App(Frame):    #( object)
                   background="dark slate gray", fg="light seagreen", command = self.decision_SAVE_CONTACT_ENTRY)
             self.mybutton.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
             
-            self.mybutton.grid(row=10, column=1, sticky=E)
+            self.mybutton.grid(row=10, column=2, sticky=E)
 
             self.excel_import_export_button = Button(self.master, text = "UVM SEQ ITEM", \
-                width=12,height=2, background="midnight blue", fg="deep sky blue", command = self.export_CSV_for_Excel_method)
+                width=15,height=2, background="midnight blue", fg="deep sky blue", command = self.export_CSV_for_Excel_method)
 
             self.excel_import_export_button.grid(row=1, column=0, sticky=W)
             self.excel_import_export_button.config(font=('Helvetica', 14 ) )
@@ -1095,7 +1095,7 @@ class App(Frame):    #( object)
             self.mode_select_opt_menu_select.set(str(mode_select_global) )   # initialize OptionMenu for Mode Select
             self.mode_select_optionsmenu_inst = OptionMenu(self.master, self.mode_select_opt_menu_select, \
             *List_of_Program_Modes, command=self.func_set_mode_select_global)
-            self.mode_select_optionsmenu_inst.grid(sticky = E, row=1, column=0)
+            self.mode_select_optionsmenu_inst.grid(sticky = W, row=1, column=1)
             self.mode_select_optionsmenu_inst.config(borderwidth=5, background="light sea green", font=('Helvetica', 14 ) )
 
             menu_mode_select = self.mode_select_optionsmenu_inst.nametowidget(self.mode_select_optionsmenu_inst.menuname) 
@@ -1103,7 +1103,7 @@ class App(Frame):    #( object)
             
 
             self.sort_contact_list_button = Button(self.master, text = "UVM SEQUENCE", \
-                  width=15,height=1, font=('Helvetica', '12'), background="midnight blue", fg="deep sky blue", \
+                  width=15,height=2, font=('Helvetica', '14'), background="midnight blue", fg="deep sky blue", \
                   activebackground="cyan", activeforeground="blue2", command = self.sort_Contact_List)
 
             self.sort_contact_list_button.grid(row=2, column=0, sticky=W)
@@ -1123,12 +1123,12 @@ class App(Frame):    #( object)
             self.config_button.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
 
             
-            self.new_window_button = Button(self.master, text = "SELECT\nContact\nList", \
-                  width = 8, height = 3, font=minilarge_font, background="dark slate gray", \
-                  fg = "light sea green", command = self.new_window_method)
+            #self.new_window_button = Button(self.master, text = "SELECT\nContact\nList", \
+            #      width = 8, height = 3, font=minilarge_font, background="dark slate gray", \
+            #      fg = "light sea green", command = self.new_window_method)
 
-            self.new_window_button.grid(row=10, column=1, sticky=W)
-            self.new_window_button.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
+            #self.new_window_button.grid(row=10, column=1, sticky=W)
+            #self.new_window_button.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
             
 ###########################################################################################
          
@@ -1136,11 +1136,11 @@ class App(Frame):    #( object)
 
             r = 3
             for c in scroll_label:
-                  if r > 2 and r < 9:
+                  if r > 2 and r < 10:
                        if r == 3:
                              bindto = "forward_fast"
                              speedbutton_1 = Button(self.master, text = "UVM SEQUENCER", \
-                             width=12,height=2, font=medium_font, \
+                             width=15,height=2, font=('Helvetica', '14'), \
                              background="midnight blue", fg="deep sky blue", command = self.forward_fast)
                              speedbutton_1.grid(row=r,column=0, sticky=W)
                              speedbutton_1.config(borderwidth=5)
@@ -1150,7 +1150,7 @@ class App(Frame):    #( object)
                        elif r == 4:
                              bindto = "forward_scroll"
                              speedbutton_2 = Button(self.master, text = "UVM DRIVER", \
-                             width=12,height=2, font=medium_font, \
+                             width=15,height=2, font=('Helvetica', '14'), \
                              background="midnight blue", fg="deep sky blue", command = self.forward_scroll)
                              speedbutton_2.grid(row=r,column=0, sticky=W)
                              speedbutton_2.config(borderwidth=5)
@@ -1159,7 +1159,7 @@ class App(Frame):    #( object)
                        elif r == 5:
                              bindto = "forward_tick"
                              speedbutton_3 = Button(self.master, text = "UVM MONITOR", \
-                             width=12,height=2, font=medium_font, \
+                             width=15,height=2, font=('Helvetica', '14'), \
                              background="midnight blue", fg="deep sky blue", command = self.forward_tick)
                              speedbutton_3.grid(row=r,column=0, sticky=W)
                              speedbutton_3.config(borderwidth=5)
@@ -1167,15 +1167,15 @@ class App(Frame):    #( object)
                              #speedbutton_3.bind("<Leave>", self.forward_tick)
                              ############################################################################
                              speedbutton_3_click = Button(self.master, text = "Forward   >>", \
-                             width=14,height=2, font=medium_font, \
+                             width=15,height=2, font=('Helvetica', '14'), \
                              background="cyan4", fg = "cyan", command = self.forward_click)
-                             speedbutton_3_click.grid(row=r,column=0, sticky=E)
+                             speedbutton_3_click.grid(row=r,column=1, sticky=W)
                              speedbutton_3_click.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
                              ############################################################################
                        elif r == 6:
                              bindto = "backward_tick"
                              speedbutton_4 = Button(self.master, text = "UVM AGENT", \
-                             width=12,height=2, font=medium_font, \
+                             width=15,height=2, font=('Helvetica', '14'), \
                              background="midnight blue", fg="deep sky blue", command = self.backward_tick)
                              speedbutton_4.grid(row=r,column=0, sticky=W)
                              speedbutton_4.config(borderwidth=5)
@@ -1183,15 +1183,15 @@ class App(Frame):    #( object)
                              #speedbutton_4.bind("<Leave>", self.backward_tick) 
                              ############################################################################
                              speedbutton_4_click = Button(self.master, text = "<<   Backward", \
-                             width=14,height=2, font=medium_font, \
+                             width=15,height=2, font=('Helvetica', '14'), \
                              background="cyan4", fg = "cyan", command = self.backward_click)
-                             speedbutton_4_click.grid(row=r,column=0, sticky=E)
+                             speedbutton_4_click.grid(row=r,column=1, sticky=W)
                              speedbutton_4_click.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
                              ############################################################################
                        elif r == 7:
                              bindto = "backward_scroll"
                              speedbutton_5 = Button(self.master, text = "UVM ENV", \
-                             width=12,height=2, font=('Verdana', '12', 'bold'), \
+                             width=15,height=2, font=('Helvetica', '14'), \
                              background="midnight blue", fg = "deep sky blue", command = self.user_defined_gui_window_method)
                              speedbutton_5.grid(row=r,column=0, sticky=W)
                              speedbutton_5.config(borderwidth=5, activebackground="blue2", activeforeground="cyan")
@@ -1200,13 +1200,19 @@ class App(Frame):    #( object)
                        elif r == 8:
                              bindto = "backward_fast"
                              speedbutton_6 = Button(self.master, text = "UVM SCBD", \
-                             width=12,height=2, font=medium_font, \
+                             width=15,height=2, font=('Helvetica', '14'), \
                              background="midnight blue", fg="deep sky blue", command = self.insert_Data_Entry)
                              speedbutton_6.grid(row=r,column=0, sticky=W)
                              speedbutton_6.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              #speedbutton_6.bind("<Enter>", self.backward_fast)
                              #speedbutton_6.bind("<Leave>", self.backward_fast)
-
+                       elif r == 9:
+                             bindto = "backward_fast"
+                             speedbutton_7 = Button(self.master, text = "UVM TB PKG", \
+                             width=15,height=2, font=('Helvetica', '14'), \
+                             background="midnight blue", fg="deep sky blue", command = self.insert_Data_Entry)
+                             speedbutton_7.grid(row=r,column=0, sticky=W)
+                             speedbutton_7.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
                   r = r + 1
 
@@ -1218,7 +1224,7 @@ class App(Frame):    #( object)
                                "select_contact_list","system_admin_info","email_gmail_class","config_setting_class", \
                                "CRM STARTUP", "MEDICAL RECORD", "COMMAND CENTER", "E X I T"]
 
-            window_select_global = "WINDOW SELECT"
+            window_select_global = "WINDOW SEL"
 
             self.window_select_opt_menu_select = StringVar()
             self.window_select_opt_menu_select.set(str(window_select_global) )   # initialize OptionMenu for window Select
@@ -1244,18 +1250,18 @@ class App(Frame):    #( object)
             self.app_status_display_select_button = Button(self.master, \
                 text = "STATUS PANEL", width=14, height=1, command = self.select_App_Status_Display_method)
             
-            self.app_status_display_select_button.grid(row=2, column=0, sticky=E)
+            self.app_status_display_select_button.grid(row=2, column=1, sticky=W)
             self.app_status_display_select_button.config(borderwidth=5, \
-                  background="dark slate gray", fg = "light sea green", font=('Helvetica', 14 ) )
+                  background="midnight blue", fg="deep sky blue", font=('Helvetica', 14 ) )
             self.app_status_display_select_button.config(activebackground="cyan", activeforeground="blue2")
 
 ###################################################################################### 
 
             self.app_media_button = Button(self.master, text = "EMAIL STARTUP", \
-                width=14, height=1, background="dark slate gray", fg = "light sea green", \
+                width=14, height=1, background="midnight blue", fg="deep sky blue", \
                 activebackground="cyan", activeforeground="blue2", command = self.cm_app_doc_media_window_method)
             
-            self.app_media_button.grid(row=3, column=0, sticky=E)
+            self.app_media_button.grid(row=3, column=1, sticky=W)
             self.app_media_button.config(borderwidth=5, font=('Helvetica', 14 ) )
             self.app_media_button.config(activebackground="cyan", activeforeground="blue2")
             
@@ -1265,17 +1271,26 @@ class App(Frame):    #( object)
                 width=8, height=3, font=minilarge_font, \
                 background="dark slate gray", fg = "light sea green", command = self.new_list_window_method)
             
-            self.buildlistbutton.grid(row=10, column=0, sticky=E)
+            self.buildlistbutton.grid(row=10, column=1, sticky=W)
             self.buildlistbutton.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
 
 ###################################################################################### 
 
             self.build_dual_list_button = Button(self.master, text = "BUILD List", \
                 width=12, height=1, font=minilarge_font, \
-                background="dark slate gray", fg = "light sea green", command = self.build_list_from_dual_listbox_window_method)
+                background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
             
-            self.build_dual_list_button.grid(row=8, column=0, sticky=E)
+            self.build_dual_list_button.grid(row=8, column=1, sticky=W)
             self.build_dual_list_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+
+###################################################################################### 
+
+            self.build_dual_list_button2 = Button(self.master, text = "BUILD List2", \
+                width=12, height=1, font=minilarge_font, \
+                background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
+            
+            self.build_dual_list_button2.grid(row=9, column=1, sticky=W)
+            self.build_dual_list_button2.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
 ######################################################################################  
 
@@ -1283,7 +1298,7 @@ class App(Frame):    #( object)
                 width=5, height=3, font=minilarge_14_font, \
                 background="dark slate gray", fg = "light sea green", command = self.night_mode_select_method)
             
-            self.night_mode_button.grid(row=10, column=0)
+            self.night_mode_button.grid(row=10, column=2, sticky=W)
             self.night_mode_button.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
 
 ######################################################################################  
@@ -1296,118 +1311,60 @@ class App(Frame):    #( object)
             self.view_mode_button.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
  
 ######################################################################################
-           
-            self.label_first = "First Name:"
-            self.mylabel_1 = Label(self.master, text = self.label_first, font=large_font)
-            self.mylabel_1.config(height = 1, width=15, anchor = E)
-            self.mylabel_1.config(bg='cyan4', fg='gray25')  
-            self.mylabel_1.grid(row=1, column=1)
-
-            self.label_last = "Last Name:"
-            self.mylabel_2 = Label(self.master, text = self.label_last, font=large_font)
-            self.mylabel_2.config(height = 1, width=15, anchor = E)
-            self.mylabel_2.config(bg='cyan4', fg='gray25')  
-            self.mylabel_2.grid(row=2, column=1)
-                       
-            self.label_streetadd = "Street Address:"
-            self.mylabel_3 = Label(self.master, text = self.label_streetadd, font=large_font)
-            self.mylabel_3.config(height = 1, width=15, anchor = E)
-            self.mylabel_3.config(bg='cyan4', fg='gray25')  
-            self.mylabel_3.grid(row=3, column=1)
-
-            self.label_citytown = "Town or City:"
-            self.mylabel_4 = Label(self.master, text = self.label_citytown, font=large_font)
-            self.mylabel_4.config(height = 1, width=15, anchor = E)
-            self.mylabel_4.config(bg='cyan4', fg='gray25')  
-            self.mylabel_4.grid(row=4, column=1)
-
-            self.label_state = "State:"
-            self.mylabel_5 = Label(self.master, text = self.label_state, font=large_font)
-            self.mylabel_5.config(height = 1, width=15, anchor = E)
-            self.mylabel_5.config(bg='cyan4', fg='gray25')  
-            self.mylabel_5.grid(row=5, column=1)
-
-            self.label_zipcode = "Zip Code:"
-            self.mylabel_6 = Label(self.master, text = self.label_zipcode, font=large_font)
-            self.mylabel_6.config(height = 1, width=15, anchor = E)
-            self.mylabel_6.config(bg='cyan4', fg='gray25')  
-            self.mylabel_6.grid(row=6, column=1)
-
-            self.label_phonenum = "Phone Number:"
-            self.mylabel_7 = Label(self.master, text = self.label_phonenum, font=large_font)
-            self.mylabel_7.config(height = 1, width=15, anchor = E)
-            self.mylabel_7.config(bg='cyan4', fg='gray25')  
-            self.mylabel_7.grid(row=7, column=1)
-
-            self.label_email = "EMail:"
-            self.mylabel_8 = Label(self.master, text = self.label_email, font=large_font)
-            self.mylabel_8.config(height = 1, width=15, anchor = E)
-            self.mylabel_8.config(bg='cyan4', fg='gray25')  
-            self.mylabel_8.grid(row=8, column=1)
-
-            self.label_website = "Website:"
-            self.mylabel_9 = Label(self.master, text = self.label_website, font=large_font)
-            self.mylabel_9.config(height = 1, width=15, anchor = E)
-            self.mylabel_9.config(bg='cyan4', fg='gray25')  
-            self.mylabel_9.grid(row=9, column=1)
+ 
 
 
 ###########################################################################################################
             
             self.entry_first = StringVar()
-            self.myentry1 = Entry(self.master, textvariable = self.entry_first, font=large_font, width=35)
+            self.myentry1 = Entry(self.master, textvariable = self.entry_first, font=large_font, width=50)
             self.myentry1.grid(sticky = W, row=1, column=2)
             self.myentry1.config(borderwidth=5, background="light sea green")
 
             self.entry_last = StringVar()
-            self.myentry2 = Entry(self.master, textvariable = self.entry_last, font=large_font, width=35)
+            self.myentry2 = Entry(self.master, textvariable = self.entry_last, font=large_font, width=50)
             self.myentry2.grid(sticky = W, row=2, column=2)
             self.myentry2.config(borderwidth=5, background="light sea green")
 
             self.entry_streetadd = StringVar()
-            self.myentry3 = Entry(self.master, textvariable = self.entry_streetadd, font=large_font, width=35)
+            self.myentry3 = Entry(self.master, textvariable = self.entry_streetadd, font=large_font, width=50)
             self.myentry3.grid(sticky = W, row=3, column=2)
             self.myentry3.config(borderwidth=5, background="light sea green")
 
             self.entry_citytown = StringVar()
-            self.myentry4 = Entry(self.master, textvariable = self.entry_citytown, font=large_font, width=35)
+            self.myentry4 = Entry(self.master, textvariable = self.entry_citytown, font=large_font, width=50)
             self.myentry4.grid(sticky = W, row=4, column=2)
             self.myentry4.config(borderwidth=5, background="light sea green")
 
             self.entry_state = StringVar()
-            self.myentry5 = Entry(self.master, textvariable = self.entry_state, font=large_font, width=35)
+            self.myentry5 = Entry(self.master, textvariable = self.entry_state, font=large_font, width=50)
             self.myentry5.grid(sticky = W, row=5, column=2)
             self.myentry5.config(borderwidth=5, background="light sea green")
 
             self.entry_zipcode = StringVar()
-            self.myentry6 = Entry(self.master, textvariable = self.entry_zipcode, font=large_font, width=35)
+            self.myentry6 = Entry(self.master, textvariable = self.entry_zipcode, font=large_font, width=50)
             self.myentry6.grid(sticky = W, row=6, column=2)
             self.myentry6.config(borderwidth=5, background="light sea green")
 
             self.entry_phonenum = StringVar()
-            self.myentry7 = Entry(self.master, textvariable = self.entry_phonenum, font=large_font, width=35)
+            self.myentry7 = Entry(self.master, textvariable = self.entry_phonenum, font=large_font, width=50)
             self.myentry7.grid(sticky = W, row=7, column=2)
             self.myentry7.config(borderwidth=5, background="light sea green")
 
             self.entry_email = StringVar()
-            self.myentry8 = Entry(self.master, textvariable = self.entry_email, font=large_font, width=35)
+            self.myentry8 = Entry(self.master, textvariable = self.entry_email, font=large_font, width=50)
             self.myentry8.grid(sticky = W, row=8, column=2)
             self.myentry8.config(borderwidth=5, background="light sea green")
 
             self.entry_website = StringVar()
-            self.myentry9 = Entry(self.master, textvariable = self.entry_website, font=large_font, width=35)
+            self.myentry9 = Entry(self.master, textvariable = self.entry_website, font=large_font, width=50)
             self.myentry9.grid(sticky = W, row=9, column=2)
             self.myentry9.config(borderwidth=5, background="light sea green")
   
-            self.contact_dict_count_status = StringVar()
-            self.myentry10 = Entry(self.master, textvariable = self.contact_dict_count_status, font=large_font, width=18)
-            self.myentry10.grid(sticky = W, row=9, column=0)
-            self.myentry10.config(borderwidth=5, background="light sea green")
- 
-            self.entry_buildlist = StringVar()
-            self.myentry11 = Entry(self.master, textvariable = self.entry_buildlist, font=large_font, width=35)
-            self.myentry11.grid(sticky = W, row=10, column=2)
-            self.myentry11.config(borderwidth=5, background="light sea green")
+            #self.entry_buildlist = StringVar()
+            #self.myentry11 = Entry(self.master, textvariable = self.entry_buildlist, font=large_font, width=35)
+            #self.myentry11.grid(sticky = W, row=10, column=1)
+            #self.myentry11.config(borderwidth=5, background="light sea green")
 
             # Initialize Program with the First Contact List
             self.create_first_contact_list_on_startup()
@@ -1527,7 +1484,7 @@ class App(Frame):    #( object)
           self.entry_phonenum.set(str("") )
           self.entry_email.set(str("") )
           self.entry_website.set(str("") )
-          self.contact_dict_count_status.set(str("") )
+          # self.contact_dict_count_status.set(str("") )
 
           cm_textbox_newfile_global = "CONTACT-LIST-ONE"
           master_cm_list_name_global = "CONTACT-LIST-ONE"
