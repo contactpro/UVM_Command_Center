@@ -1108,15 +1108,15 @@ class App(Frame):    #( object)
 
             self.sort_contact_list_button.grid(row=2, column=0, sticky=W)
 
-            self.insert_button = Button(self.master, text = "EMAIL  ( Gmail ) \nContact Notes", \
-                  width=25,height=3, font=('Helvetica', '14'), \
+            self.insert_button = Button(self.master, text = "EMAIL\nNotes", \
+                  width=14,height=3, font=('Helvetica', '14'), \
                   background="cyan4", command = self.email_Gmail_Feature_method)
             
             self.insert_button.grid(row=12, column=2, sticky=W)
             self.insert_button.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
 
-            self.config_button = Button(self.master, text = "Configure Application\nSettings", \
-                  width=25,height=3, font=('Helvetica', '14'), \
+            self.config_button = Button(self.master, text = "Configure App\nSettings", \
+                  width=14,height=3, font=('Helvetica', '14'), \
                   background="cyan4", command = self.config_App_Settings_method)
             
             self.config_button.grid(row=12, column=2, sticky=E)
@@ -1144,6 +1144,8 @@ class App(Frame):    #( object)
                              background="midnight blue", fg="deep sky blue", command = self.forward_fast)
                              speedbutton_1.grid(row=r,column=0, sticky=W)
                              speedbutton_1.config(borderwidth=5)
+                             speedbutton_1.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+
                              #self.speedbutton_1.bind("<Enter>", self.forward_fast)
                              #self.speedbutton_1.bind("<Leave>", self.forward_fast)
                              #self.speedbutton_1.bind("<Button-1>", self.forward_fast)
@@ -1154,6 +1156,7 @@ class App(Frame):    #( object)
                              background="midnight blue", fg="deep sky blue", command = self.forward_scroll)
                              speedbutton_2.grid(row=r,column=0, sticky=W)
                              speedbutton_2.config(borderwidth=5)
+                             speedbutton_2.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              #speedbutton_2.bind("<Enter>", self.forward_scroll)
                              #speedbutton_2.bind("<Leave>", self.forward_scroll)
                        elif r == 5:
@@ -1163,6 +1166,7 @@ class App(Frame):    #( object)
                              background="midnight blue", fg="deep sky blue", command = self.forward_tick)
                              speedbutton_3.grid(row=r,column=0, sticky=W)
                              speedbutton_3.config(borderwidth=5)
+                             speedbutton_3.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              #speedbutton_3.bind("<Enter>", self.forward_tick)
                              #speedbutton_3.bind("<Leave>", self.forward_tick)
                              ############################################################################
@@ -1179,6 +1183,7 @@ class App(Frame):    #( object)
                              background="midnight blue", fg="deep sky blue", command = self.backward_tick)
                              speedbutton_4.grid(row=r,column=0, sticky=W)
                              speedbutton_4.config(borderwidth=5)
+                             speedbutton_4.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              #speedbutton_4.bind("<Enter>", self.backward_tick)
                              #speedbutton_4.bind("<Leave>", self.backward_tick) 
                              ############################################################################
@@ -1194,7 +1199,7 @@ class App(Frame):    #( object)
                              width=15,height=2, font=('Helvetica', '14'), \
                              background="midnight blue", fg = "deep sky blue", command = self.user_defined_gui_window_method)
                              speedbutton_5.grid(row=r,column=0, sticky=W)
-                             speedbutton_5.config(borderwidth=5, activebackground="blue2", activeforeground="cyan")
+                             speedbutton_5.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              #speedbutton_5.bind("<Enter>", self.backward_scroll)
                              #speedbutton_5.bind("<Leave>", self.backward_scroll)
                        elif r == 8:
@@ -1238,8 +1243,8 @@ class App(Frame):    #( object)
 
 ###################################################################################### 
 
-            self.sys_admin_view_button = Button(self.master, text = "System Administration\nand Database Information", \
-                  width=25,height=3, font=('Helvetica', '14'), \
+            self.sys_admin_view_button = Button(self.master, text = "System Admin\nDatabase Info", \
+                  width=14,height=3, font=('Helvetica', '14'), \
                   background="cyan4", command = self.system_administration_View_method)
             
             self.sys_admin_view_button.grid(row=12, column=1, sticky=W)
@@ -1248,7 +1253,7 @@ class App(Frame):    #( object)
 ###################################################################################### 
 
             self.app_status_display_select_button = Button(self.master, \
-                text = "STATUS PANEL", width=14, height=1, command = self.select_App_Status_Display_method)
+                text = "STATUS PANEL", width=14, height=2, command = self.select_App_Status_Display_method)
             
             self.app_status_display_select_button.grid(row=2, column=1, sticky=W)
             self.app_status_display_select_button.config(borderwidth=5, \
@@ -1258,7 +1263,7 @@ class App(Frame):    #( object)
 ###################################################################################### 
 
             self.app_media_button = Button(self.master, text = "EMAIL STARTUP", \
-                width=14, height=1, background="midnight blue", fg="deep sky blue", \
+                width=14, height=2, background="midnight blue", fg="deep sky blue", \
                 activebackground="cyan", activeforeground="blue2", command = self.cm_app_doc_media_window_method)
             
             self.app_media_button.grid(row=3, column=1, sticky=W)
@@ -1277,7 +1282,7 @@ class App(Frame):    #( object)
 ###################################################################################### 
 
             self.build_dual_list_button = Button(self.master, text = "BUILD List", \
-                width=12, height=1, font=minilarge_font, \
+                width=12, height=2, font=minilarge_font, \
                 background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
             
             self.build_dual_list_button.grid(row=8, column=1, sticky=W)
@@ -1286,7 +1291,7 @@ class App(Frame):    #( object)
 ###################################################################################### 
 
             self.build_dual_list_button2 = Button(self.master, text = "BUILD List2", \
-                width=12, height=1, font=minilarge_font, \
+                width=12, height=2, font=minilarge_font, \
                 background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
             
             self.build_dual_list_button2.grid(row=9, column=1, sticky=W)
