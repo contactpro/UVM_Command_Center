@@ -1054,7 +1054,7 @@ class App(Frame):    #( object)
             OBJECT_IN_APP_config_setting_class = self.master
             
             self.excel_import_export_button = Button(self.master, text = "UVM SEQ ITEM", \
-                width=15,height=2, background="midnight blue", fg="deep sky blue", command = self.export_CSV_for_Excel_method)
+                width=15,height=2, background="midnight blue", fg="deep sky blue", command = self.sys_admin_View_UVM_SEQ_ITEM_method)
 
             self.excel_import_export_button.grid(row=2, column=0, sticky=W)
             self.excel_import_export_button.config(font=('Helvetica', 14 ) )
@@ -1087,26 +1087,11 @@ class App(Frame):    #( object)
 
             self.sort_contact_list_button = Button(self.master, text = "UVM SEQUENCE", \
                   width=15,height=2, font=('Helvetica', '14'), background="midnight blue", fg="deep sky blue", \
-                  activebackground="cyan", activeforeground="blue2", command = self.sort_Contact_List)
+                  activebackground="cyan", activeforeground="blue2", command = self.sys_admin_View_UVM_SEQUENCE_method)
 
             self.sort_contact_list_button.grid(row=3, column=0, sticky=W)
+            self.sort_contact_list_button.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
 
-
-            self.config_button = Button(self.master, text = "COLOR THEME", \
-                  width=15,height=1, font=('Helvetica', '14'), \
-                  background="midnight blue", fg="deep sky blue", command = self.config_App_Settings_method)
-            
-            self.config_button.grid(row=1, column=2, sticky=E)
-            self.config_button.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
-
-            
-            #self.new_window_button = Button(self.master, text = "SELECT\nContact\nList", \
-            #      width = 8, height = 3, font=minilarge_font, background="dark slate gray", \
-            #      fg = "light sea green", command = self.new_window_method)
-
-            #self.new_window_button.grid(row=10, column=1, sticky=W)
-            #self.new_window_button.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
-            
 ###########################################################################################
          
             scroll_label = ['','','','','','']
@@ -1123,9 +1108,6 @@ class App(Frame):    #( object)
                              speedbutton_1.config(borderwidth=5)
                              speedbutton_1.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
-                             #self.speedbutton_1.bind("<Enter>", self.forward_fast)
-                             #self.speedbutton_1.bind("<Leave>", self.forward_fast)
-                             #self.speedbutton_1.bind("<Button-1>", self.forward_fast)
                        elif r == 5:
                              bindto = "forward_scroll"
                              speedbutton_2 = Button(self.master, text = "UVM DRIVER", \
@@ -1146,13 +1128,7 @@ class App(Frame):    #( object)
                              speedbutton_3.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              #speedbutton_3.bind("<Enter>", self.forward_tick)
                              #speedbutton_3.bind("<Leave>", self.forward_tick)
-                             ############################################################################
-                             speedbutton_3_click = Button(self.master, text = "Forward   >>", \
-                             width=15,height=2, font=('Helvetica', '14'), \
-                             background="cyan4", fg = "cyan", command = self.forward_click)
-                             speedbutton_3_click.grid(row=r,column=1, sticky=W)
-                             speedbutton_3_click.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
-                             ############################################################################
+                             ###########################################################################
                        elif r == 7:
                              bindto = "backward_tick"
                              speedbutton_4 = Button(self.master, text = "UVM AGENT", \
@@ -1164,17 +1140,11 @@ class App(Frame):    #( object)
                              #speedbutton_4.bind("<Enter>", self.backward_tick)
                              #speedbutton_4.bind("<Leave>", self.backward_tick) 
                              ############################################################################
-                             speedbutton_4_click = Button(self.master, text = "<<   Backward", \
-                             width=15,height=2, font=('Helvetica', '14'), \
-                             background="cyan4", fg = "cyan", command = self.backward_click)
-                             speedbutton_4_click.grid(row=r,column=1, sticky=W)
-                             speedbutton_4_click.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
-                             ############################################################################
                        elif r == 8:
                              bindto = "backward_scroll"
                              speedbutton_5 = Button(self.master, text = "UVM ENV", \
                              width=15,height=2, font=('Helvetica', '14'), \
-                             background="midnight blue", fg="deep sky blue", command = self.user_defined_gui_window_method)
+                             background="midnight blue", fg="deep sky blue", command = self.sys_admin_View_UVM_ENV_method)
                              speedbutton_5.grid(row=r,column=0, sticky=W)
                              speedbutton_5.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              #speedbutton_5.bind("<Enter>", self.backward_scroll)
@@ -1183,7 +1153,7 @@ class App(Frame):    #( object)
                              bindto = "backward_fast"
                              speedbutton_6 = Button(self.master, text = "UVM SCBD", \
                              width=15,height=2, font=('Helvetica', '14'), \
-                             background="midnight blue", fg="deep sky blue", command = self.insert_Data_Entry)
+                             background="midnight blue", fg="deep sky blue", command = self.sys_admin_View_UVM_SCBD_method)
                              speedbutton_6.grid(row=r,column=0, sticky=W)
                              speedbutton_6.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              #speedbutton_6.bind("<Enter>", self.backward_fast)
@@ -1192,7 +1162,7 @@ class App(Frame):    #( object)
                              bindto = "backward_fast"
                              speedbutton_7 = Button(self.master, text = "UVM TB PKG", \
                              width=15,height=2, font=('Helvetica', '14'), \
-                             background="midnight blue", fg="deep sky blue", command = self.insert_Data_Entry)
+                             background="midnight blue", fg="deep sky blue", command = self.sys_admin_View_UVM_TB_PKG_method)
                              speedbutton_7.grid(row=r,column=0, sticky=W)
                              speedbutton_7.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
@@ -1221,10 +1191,10 @@ class App(Frame):    #( object)
 ###################################################################################### 
 
             self.sys_admin_view_button = Button(self.master, text = "SYSTEM ADMIN", \
-                  width=14,height=1, font=('Helvetica', '14'), \
+                  width=15,height=1, font=('Helvetica', '14'), \
                   background="midnight blue", fg="deep sky blue", command = self.system_administration_View_method)
             
-            self.sys_admin_view_button.grid(row=1, column=2)
+            self.sys_admin_view_button.grid(row=1, column=2, sticky=E)
             self.sys_admin_view_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
 ###################################################################################### 
@@ -1232,23 +1202,12 @@ class App(Frame):    #( object)
             self.app_status_display_select_button = Button(self.master, \
                 text = "STATUS PANEL", width=15, height=1, command = self.select_App_Status_Display_method)
             
-            self.app_status_display_select_button.grid(row=1, column=2, sticky=W)
+            self.app_status_display_select_button.grid(row=1, column=1, sticky=W)
             self.app_status_display_select_button.config(borderwidth=5, \
                   background="midnight blue", fg="deep sky blue", font=('Helvetica', 14 ) )
             self.app_status_display_select_button.config(activebackground="cyan", activeforeground="blue2")
 
 ###################################################################################### 
-
-            self.app_media_button = Button(self.master, text = "EMAIL STARTUP", \
-                width=15, height=1, background="midnight blue", fg="deep sky blue", \
-                activebackground="cyan", activeforeground="blue2", command = self.cm_app_doc_media_window_method)
-            
-            self.app_media_button.grid(row=1, column=1, sticky=W)
-            self.app_media_button.config(borderwidth=5, font=('Helvetica', 14 ) )
-            self.app_media_button.config(activebackground="cyan", activeforeground="blue2")
-            
-###################################################################################### 
-
 
             self.build_dual_list_button2 = Button(self.master, text = "UVM SCBD", \
                 width=15, height=2, font=('Helvetica', '14'), \
@@ -1277,55 +1236,6 @@ class App(Frame):    #( object)
 
 ######################################################################################  
 
-            self.entry_first = StringVar()
-            self.myentry1 = Entry(self.master, textvariable = self.entry_first, font=large_font, width=50)
-            self.myentry1.grid(sticky = W, row=10, column=2)
-            self.myentry1.config(borderwidth=5, background="light sea green")
-
-            self.entry_last = StringVar()
-            self.myentry2 = Entry(self.master, textvariable = self.entry_last, font=large_font, width=50)
-            self.myentry2.grid(sticky = W, row=2, column=2)
-            self.myentry2.config(borderwidth=5, background="light sea green")
-
-            self.entry_streetadd = StringVar()
-            self.myentry3 = Entry(self.master, textvariable = self.entry_streetadd, font=large_font, width=50)
-            self.myentry3.grid(sticky = W, row=3, column=2)
-            self.myentry3.config(borderwidth=5, background="light sea green")
-
-            self.entry_citytown = StringVar()
-            self.myentry4 = Entry(self.master, textvariable = self.entry_citytown, font=large_font, width=50)
-            self.myentry4.grid(sticky = W, row=4, column=2)
-            self.myentry4.config(borderwidth=5, background="light sea green")
-
-            self.entry_state = StringVar()
-            self.myentry5 = Entry(self.master, textvariable = self.entry_state, font=large_font, width=50)
-            self.myentry5.grid(sticky = W, row=5, column=2)
-            self.myentry5.config(borderwidth=5, background="light sea green")
-
-            self.entry_zipcode = StringVar()
-            self.myentry6 = Entry(self.master, textvariable = self.entry_zipcode, font=large_font, width=50)
-            self.myentry6.grid(sticky = W, row=6, column=2)
-            self.myentry6.config(borderwidth=5, background="light sea green")
-
-            self.entry_phonenum = StringVar()
-            self.myentry7 = Entry(self.master, textvariable = self.entry_phonenum, font=large_font, width=50)
-            self.myentry7.grid(sticky = W, row=7, column=2)
-            self.myentry7.config(borderwidth=5, background="light sea green")
-
-            self.entry_email = StringVar()
-            self.myentry8 = Entry(self.master, textvariable = self.entry_email, font=large_font, width=50)
-            self.myentry8.grid(sticky = W, row=8, column=2)
-            self.myentry8.config(borderwidth=5, background="light sea green")
-
-            self.entry_website = StringVar()
-            self.myentry9 = Entry(self.master, textvariable = self.entry_website, font=large_font, width=50)
-            self.myentry9.grid(sticky = W, row=9, column=2)
-            self.myentry9.config(borderwidth=5, background="light sea green")
-  
-            #self.entry_buildlist = StringVar()
-            #self.myentry11 = Entry(self.master, textvariable = self.entry_buildlist, font=large_font, width=35)
-            #self.myentry11.grid(sticky = W, row=10, column=1)
-            #self.myentry11.config(borderwidth=5, background="light sea green")
 
             # Initialize Program with the First Contact List
             self.create_first_contact_list_on_startup()
@@ -1376,19 +1286,6 @@ class App(Frame):    #( object)
 
             kick_thread_to_update_main_entry_widgets = True
                    
-            ###########################################################################################
-            #
-            #
-            # self.after(500, lambda: self.COMMAND_CENTER_STARTUP_method() )
-            #
-            # Display Main Startup Screen ..... 
-            self.after(500, lambda: self.COMMAND_CENTER_STARTUP_method() )
-            #
-            #     *****  END OF APP INITIALIZATION  *****
-            #
-            ###########################################################################################
-
-
 
       ######################################################################################
       #
@@ -1435,17 +1332,6 @@ class App(Frame):    #( object)
           #
           ###########################################################################
 
-          self.entry_first.set(str("") )
-          self.entry_first.set(str("") )
-          self.entry_last.set(str("") )
-          self.entry_streetadd.set(str("") )
-          self.entry_citytown.set(str("") )
-          self.entry_state.set(str("") )
-          self.entry_zipcode.set(str("") )
-          self.entry_phonenum.set(str("") )
-          self.entry_email.set(str("") )
-          self.entry_website.set(str("") )
-          # self.contact_dict_count_status.set(str("") )
 
           cm_textbox_newfile_global = "CONTACT-LIST-ONE"
           master_cm_list_name_global = "CONTACT-LIST-ONE"
@@ -1760,254 +1646,6 @@ class App(Frame):    #( object)
           self.crm_startup_screen_show_method()
 
 
-             
-      ######################################################################################
-      #   
-      # COMMAND_CENTER_STARTUP_method to activate ALL or a SET OF SCREENS 
-      # for various Command Center Workstation Screen Views.   
-      #       
-      ######################################################################################
-      #
-      def COMMAND_CENTER_STARTUP_method(self):   
-
-          # print(".... COMMAND CENTER STARTUP method is active ......")
-
-          self.after(5, lambda: self.COMMAND_CENTER_STARTUP_SCREEN_black_blue() )
-
-
-
-      def night_mode_select_method(self):   
-          global night_mode_selection
-          if night_mode_selection == 1:
-              night_mode_selection = 2
-              self.COMMAND_CENTER_STARTUP_SCREEN_black_blue()
-          elif night_mode_selection == 2:
-              night_mode_selection = 3
-              self.COMMAND_CENTER_STARTUP_SCREEN_Dark_Goldenrod1()
-          elif night_mode_selection == 3:
-              night_mode_selection = 4
-              self.COMMAND_CENTER_STARTUP_SCREEN_deep_pink()
-          elif night_mode_selection == 4:
-              night_mode_selection = 5
-              self.COMMAND_CENTER_STARTUP_SCREEN_dodger_blue()
-          elif night_mode_selection == 5:
-              night_mode_selection = 6
-              self.COMMAND_CENTER_STARTUP_SCREEN_red()
-          elif night_mode_selection == 6:
-              night_mode_selection = 7
-              self.COMMAND_CENTER_STARTUP_SCREEN_green()
-          elif night_mode_selection == 7:
-              night_mode_selection = 8
-              self.COMMAND_CENTER_STARTUP_SCREEN_cyan()
-          elif night_mode_selection == 8:
-              night_mode_selection = 9
-              self.COMMAND_CENTER_STARTUP_SCREEN_dark_slate_gray()
-          elif night_mode_selection == 9:
-              night_mode_selection = 1
-              self.COMMAND_CENTER_STARTUP_SCREEN()
-
-
-          
-      def COMMAND_CENTER_STARTUP_SCREEN_black_blue(self): 
-          self.entry_first.set("      UVM TESTBENCH BUILDER")
-          self.myentry1.config(background="midnight blue", fg="deep sky blue")
-          self.entry_last.set("      UVM SEQUENCE ITEM")
-          self.myentry2.config(background="midnight blue", fg="deep sky blue")
-          self.entry_streetadd.set("      UVM SEQUENCE ")
-          self.myentry3.config(background="midnight blue", fg="deep sky blue")
-          self.entry_citytown.set("      UVM SEQUENCER")
-          self.myentry4.config(background="midnight blue", fg="deep sky blue")
-          self.entry_state.set("      UVM DRIVER")
-          self.myentry5.config(background="midnight blue", fg="deep sky blue")
-          self.entry_zipcode.set("      UVM MONITOR")
-          self.myentry6.config(background="midnight blue", fg="deep sky blue")
-          self.entry_phonenum.set("      UVM AGENT ")
-          self.myentry7.config(background="midnight blue", fg="deep sky blue")
-          self.entry_email.set("      UVM ENVIRONMENT") 
-          self.myentry8.config(background="midnight blue", fg="deep sky blue")
-          self.entry_website.set("      UVM SCOREBOARD") 
-          self.myentry9.config(background="midnight blue", fg="deep sky blue")
-          self.master.update()
-
-
-      def COMMAND_CENTER_STARTUP_SCREEN_Dark_Goldenrod1(self): 
-          self.entry_first.set("      UVM TESTBENCH BUILDER")
-          self.myentry1.config(background="black", fg="medium blue")
-          self.entry_last.set("      UVM SEQUENCE ITEM")
-          self.myentry2.config(background="black", fg="medium blue")
-          self.entry_streetadd.set("      UVM SEQUENCE ")
-          self.myentry3.config(background="black", fg="medium blue")
-          self.entry_citytown.set("      UVM SEQUENCER")
-          self.myentry4.config(background="black", fg="medium blue")
-          self.entry_state.set("      UVM DRIVER")
-          self.myentry5.config(background="black", fg="medium blue")
-          self.entry_zipcode.set("      UVM MONITOR")
-          self.myentry6.config(background="black", fg="medium blue")
-          self.entry_phonenum.set("      UVM AGENT ")
-          self.myentry7.config(background="black", fg="medium blue")
-          self.entry_email.set("      UVM ENVIRONMENT") 
-          self.myentry8.config(background="black", fg="medium blue")
-          self.entry_website.set("      UVM SCOREBOARD") 
-          self.myentry9.config(background="black", fg="medium blue")
-          self.master.update()     	
-      	
-
-      def COMMAND_CENTER_STARTUP_SCREEN_deep_pink(self): 
-          self.entry_first.set("      UVM TESTBENCH BUILDER")
-          self.myentry1.config(background="black", fg="medium blue")
-          self.entry_last.set("      UVM SEQUENCE ITEM")
-          self.myentry2.config(background="black", fg="medium blue")
-          self.entry_streetadd.set("      UVM SEQUENCE ")
-          self.myentry3.config(background="black", fg="medium blue")
-          self.entry_citytown.set("      UVM SEQUENCER")
-          self.myentry4.config(background="black", fg="medium blue")
-          self.entry_state.set("      UVM DRIVER")
-          self.myentry5.config(background="black", fg="medium blue")
-          self.entry_zipcode.set("      UVM MONITOR")
-          self.myentry6.config(background="black", fg="medium blue")
-          self.entry_phonenum.set("      UVM AGENT ")
-          self.myentry7.config(background="black", fg="medium blue")
-          self.entry_email.set("      UVM ENVIRONMENT") 
-          self.myentry8.config(background="black", fg="medium blue")
-          self.entry_website.set("      UVM SCOREBOARD") 
-          self.myentry9.config(background="black", fg="medium blue")
-          self.master.update()     	      	
-      	
-
-      def COMMAND_CENTER_STARTUP_SCREEN_cyan(self): 
-          self.entry_first.set("      UVM TESTBENCH BUILDER")
-          self.myentry1.config(background="black", fg="medium blue")
-          self.entry_last.set("      UVM SEQUENCE ITEM")
-          self.myentry2.config(background="black", fg="medium blue")
-          self.entry_streetadd.set("      UVM SEQUENCE ")
-          self.myentry3.config(background="black", fg="medium blue")
-          self.entry_citytown.set("      UVM SEQUENCER")
-          self.myentry4.config(background="black", fg="medium blue")
-          self.entry_state.set("      UVM DRIVER")
-          self.myentry5.config(background="black", fg="medium blue")
-          self.entry_zipcode.set("      UVM MONITOR")
-          self.myentry6.config(background="black", fg="medium blue")
-          self.entry_phonenum.set("      UVM AGENT ")
-          self.myentry7.config(background="black", fg="medium blue")
-          self.entry_email.set("      UVM ENVIRONMENT") 
-          self.myentry8.config(background="black", fg="medium blue")
-          self.entry_website.set("      UVM SCOREBOARD") 
-          self.myentry9.config(background="black", fg="medium blue")
-          self.master.update()     	      	     	
-      	
-
-      def COMMAND_CENTER_STARTUP_SCREEN_red(self): 
-          self.entry_first.set("      UVM TESTBENCH BUILDER")
-          self.myentry1.config(background="black", fg="medium blue")
-          self.entry_last.set("      UVM SEQUENCE ITEM")
-          self.myentry2.config(background="black", fg="medium blue")
-          self.entry_streetadd.set("      UVM SEQUENCE ")
-          self.myentry3.config(background="black", fg="medium blue")
-          self.entry_citytown.set("      UVM SEQUENCER")
-          self.myentry4.config(background="black", fg="medium blue")
-          self.entry_state.set("      UVM DRIVER")
-          self.myentry5.config(background="black", fg="medium blue")
-          self.entry_zipcode.set("      UVM MONITOR")
-          self.myentry6.config(background="black", fg="medium blue")
-          self.entry_phonenum.set("      UVM AGENT ")
-          self.myentry7.config(background="black", fg="medium blue")
-          self.entry_email.set("      UVM ENVIRONMENT") 
-          self.myentry8.config(background="black", fg="medium blue")
-          self.entry_website.set("      UVM SCOREBOARD") 
-          self.myentry9.config(background="black", fg="medium blue")
-          self.master.update()     	      	     	      	
-      	
-
-      def COMMAND_CENTER_STARTUP_SCREEN_green(self): 
-          self.entry_first.set("      UVM TESTBENCH BUILDER")
-          self.myentry1.config(background="black", fg="medium blue")
-          self.entry_last.set("      UVM SEQUENCE ITEM")
-          self.myentry2.config(background="black", fg="medium blue")
-          self.entry_streetadd.set("      UVM SEQUENCE ")
-          self.myentry3.config(background="black", fg="medium blue")
-          self.entry_citytown.set("      UVM SEQUENCER")
-          self.myentry4.config(background="black", fg="medium blue")
-          self.entry_state.set("      UVM DRIVER")
-          self.myentry5.config(background="black", fg="medium blue")
-          self.entry_zipcode.set("      UVM MONITOR")
-          self.myentry6.config(background="black", fg="medium blue")
-          self.entry_phonenum.set("      UVM AGENT ")
-          self.myentry7.config(background="black", fg="medium blue")
-          self.entry_email.set("      UVM ENVIRONMENT") 
-          self.myentry8.config(background="black", fg="medium blue")
-          self.entry_website.set("      UVM SCOREBOARD") 
-          self.myentry9.config(background="black", fg="medium blue")
-          self.master.update()     	      	     	      	     	
-      	
-      
-
-      def COMMAND_CENTER_STARTUP_SCREEN_dark_slate_gray(self):
-          self.entry_first.set("      UVM TESTBENCH BUILDER")
-          self.myentry1.config(background="black", fg="medium blue")
-          self.entry_last.set("      UVM SEQUENCE ITEM")
-          self.myentry2.config(background="black", fg="medium blue")
-          self.entry_streetadd.set("      UVM SEQUENCE ")
-          self.myentry3.config(background="black", fg="medium blue")
-          self.entry_citytown.set("      UVM SEQUENCER")
-          self.myentry4.config(background="black", fg="medium blue")
-          self.entry_state.set("      UVM DRIVER")
-          self.myentry5.config(background="black", fg="medium blue")
-          self.entry_zipcode.set("      UVM MONITOR")
-          self.myentry6.config(background="black", fg="medium blue")
-          self.entry_phonenum.set("      UVM AGENT ")
-          self.myentry7.config(background="black", fg="medium blue")
-          self.entry_email.set("      UVM ENVIRONMENT") 
-          self.myentry8.config(background="black", fg="medium blue")
-          self.entry_website.set("      UVM SCOREBOARD") 
-          self.myentry9.config(background="black", fg="medium blue")
-          self.master.update()     	      	     	      	     	
-      	      	
-      	
-
-      def COMMAND_CENTER_STARTUP_SCREEN_dodger_blue(self): 
-          self.entry_first.set("      UVM TESTBENCH BUILDER")
-          self.myentry1.config(background="black", fg="medium blue")
-          self.entry_last.set("      UVM SEQUENCE ITEM")
-          self.myentry2.config(background="black", fg="medium blue")
-          self.entry_streetadd.set("      UVM SEQUENCE ")
-          self.myentry3.config(background="black", fg="medium blue")
-          self.entry_citytown.set("      UVM SEQUENCER")
-          self.myentry4.config(background="black", fg="medium blue")
-          self.entry_state.set("      UVM DRIVER")
-          self.myentry5.config(background="black", fg="medium blue")
-          self.entry_zipcode.set("      UVM MONITOR")
-          self.myentry6.config(background="black", fg="medium blue")
-          self.entry_phonenum.set("      UVM AGENT ")
-          self.myentry7.config(background="black", fg="medium blue")
-          self.entry_email.set("      UVM ENVIRONMENT") 
-          self.myentry8.config(background="black", fg="medium blue")
-          self.entry_website.set("      UVM SCOREBOARD") 
-          self.myentry9.config(background="black", fg="medium blue")
-          self.master.update()     	      	     	      	         	
-      	          
-
-      def COMMAND_CENTER_STARTUP_SCREEN(self): 
-          self.entry_first.set("      UVM TESTBENCH BUILDER")
-          self.myentry1.config(background="black", fg="medium blue")
-          self.entry_last.set("      UVM SEQUENCE ITEM")
-          self.myentry2.config(background="black", fg="medium blue")
-          self.entry_streetadd.set("      UVM SEQUENCE ")
-          self.myentry3.config(background="black", fg="medium blue")
-          self.entry_citytown.set("      UVM SEQUENCER")
-          self.myentry4.config(background="black", fg="medium blue")
-          self.entry_state.set("      UVM DRIVER")
-          self.myentry5.config(background="black", fg="medium blue")
-          self.entry_zipcode.set("      UVM MONITOR")
-          self.myentry6.config(background="black", fg="medium blue")
-          self.entry_phonenum.set("      UVM AGENT ")
-          self.myentry7.config(background="black", fg="medium blue")
-          self.entry_email.set("      UVM ENVIRONMENT") 
-          self.myentry8.config(background="black", fg="medium blue")
-          self.entry_website.set("      UVM SCOREBOARD") 
-          self.myentry9.config(background="black", fg="medium blue")
-          self.master.update()     	      	     	        	
-      	
-      	
       ######################################################################################
       # 
       # Mode Select Optons Menu StringVar setting ... 
@@ -2428,6 +2066,108 @@ class App(Frame):    #( object)
 
               OBJECT_IN_APP_system_admin_info = self.cm_app_sys_admin
 
+                
+      ##################################################################################### 
+      # 
+      #   UVM SEQ ITEM - TEMPLATE WINDOW
+      #  
+      #####################################################################################
+      # Method to open new window with TEXTBOX to VIEW System Administration Information.
+      def sys_admin_View_UVM_SEQ_ITEM_method(self):
+          global fullpath_fn_cm_sw_app_logfile_global
+          global OBJECT_IN_APP_system_admin_info
+
+          if ( (OBJECT_toplevel_system_admin_info.winfo_exists() ) == True) and ("toplevel" in str(OBJECT_toplevel_system_admin_info) ):
+              OBJECT_toplevel_system_admin_info.lift()
+              # print(".... OBJECT_toplevel_system_admin_info.winfo_exists() ) == True:  lift() " + str(OBJECT_toplevel_system_admin_info))
+          else:
+              self.system_administration_View = tk.Toplevel(self.master)
+              self.cm_app_sys_admin = System_Admin_Info(self.system_administration_View)
+
+              OBJECT_IN_APP_system_admin_info = self.cm_app_sys_admin
+
+                
+      ##################################################################################### 
+      # 
+      #   UVM SEQUENCE - TEMPLATE WINDOW
+      #  
+      #####################################################################################
+      # Method to open new window with TEXTBOX to VIEW System Administration Information.
+      def sys_admin_View_UVM_SEQUENCE_method(self):
+          global fullpath_fn_cm_sw_app_logfile_global
+          global OBJECT_IN_APP_system_admin_info
+
+          if ( (OBJECT_toplevel_system_admin_info.winfo_exists() ) == True) and ("toplevel" in str(OBJECT_toplevel_system_admin_info) ):
+              OBJECT_toplevel_system_admin_info.lift()
+              # print(".... OBJECT_toplevel_system_admin_info.winfo_exists() ) == True:  lift() " + str(OBJECT_toplevel_system_admin_info))
+          else:
+              self.system_administration_View = tk.Toplevel(self.master)
+              self.cm_app_sys_admin = System_Admin_Info(self.system_administration_View)
+
+              OBJECT_IN_APP_system_admin_info = self.cm_app_sys_admin
+
+
+                
+      ##################################################################################### 
+      # 
+      #   UVM ENV - TEMPLATE WINDOW
+      #  
+      #####################################################################################
+      # Method to open new window with TEXTBOX to VIEW System Administration Information.
+      def sys_admin_View_UVM_ENV_method(self):
+          global fullpath_fn_cm_sw_app_logfile_global
+          global OBJECT_IN_APP_system_admin_info
+
+          if ( (OBJECT_toplevel_system_admin_info.winfo_exists() ) == True) and ("toplevel" in str(OBJECT_toplevel_system_admin_info) ):
+              OBJECT_toplevel_system_admin_info.lift()
+              # print(".... OBJECT_toplevel_system_admin_info.winfo_exists() ) == True:  lift() " + str(OBJECT_toplevel_system_admin_info))
+          else:
+              self.system_administration_View = tk.Toplevel(self.master)
+              self.cm_app_sys_admin = System_Admin_Info(self.system_administration_View)
+
+              OBJECT_IN_APP_system_admin_info = self.cm_app_sys_admin
+
+                
+      ##################################################################################### 
+      # 
+      #   UVM SCBD - TEMPLATE WINDOW
+      #  
+      #####################################################################################
+      # Method to open new window with TEXTBOX to VIEW System Administration Information.
+      def sys_admin_View_UVM_SCBD_method(self):
+          global fullpath_fn_cm_sw_app_logfile_global
+          global OBJECT_IN_APP_system_admin_info
+
+          if ( (OBJECT_toplevel_system_admin_info.winfo_exists() ) == True) and ("toplevel" in str(OBJECT_toplevel_system_admin_info) ):
+              OBJECT_toplevel_system_admin_info.lift()
+              # print(".... OBJECT_toplevel_system_admin_info.winfo_exists() ) == True:  lift() " + str(OBJECT_toplevel_system_admin_info))
+          else:
+              self.system_administration_View = tk.Toplevel(self.master)
+              self.cm_app_sys_admin = System_Admin_Info(self.system_administration_View)
+
+              OBJECT_IN_APP_system_admin_info = self.cm_app_sys_admin
+
+               
+      ##################################################################################### 
+      # 
+      #   UVM TB PKG - TEMPLATE WINDOW
+      #  
+      #####################################################################################
+      # Method to open new window with TEXTBOX to VIEW System Administration Information.
+      def sys_admin_View_UVM_TB_PKG_method(self):
+          global fullpath_fn_cm_sw_app_logfile_global
+          global OBJECT_IN_APP_system_admin_info
+
+          if ( (OBJECT_toplevel_system_admin_info.winfo_exists() ) == True) and ("toplevel" in str(OBJECT_toplevel_system_admin_info) ):
+              OBJECT_toplevel_system_admin_info.lift()
+              # print(".... OBJECT_toplevel_system_admin_info.winfo_exists() ) == True:  lift() " + str(OBJECT_toplevel_system_admin_info))
+          else:
+              self.system_administration_View = tk.Toplevel(self.master)
+              self.cm_app_sys_admin = System_Admin_Info(self.system_administration_View)
+
+              OBJECT_IN_APP_system_admin_info = self.cm_app_sys_admin
+
+
 
 
       #####################################################################################
@@ -2484,24 +2224,13 @@ class App(Frame):    #( object)
                 OBJECT_toplevel_list_builder.lift()
                 # print(".... OBJECT_toplevel_list_builder.winfo_exists() ) == True:  lift() " + str(OBJECT_toplevel_list_builder))
             else:
-                self.entry_first.set(str("") )
-                self.entry_first.set(str("") )
-                self.entry_last.set(str("") )
-                self.entry_streetadd.set(str("") )
-                self.entry_citytown.set(str("") )
-                self.entry_state.set(str("") )
-                self.entry_zipcode.set(str("") )
-                self.entry_phonenum.set(str("") )
-                self.entry_email.set(str("") )
-                self.entry_website.set(str("") )
-                self.contact_dict_count_status.set(str("") )
+                # self.contact_dict_count_status.set(str("") )
                 selected_dictionary_record_index_global = 1
                 selected_dictionary_record_index_focus_global = 1
              
-                self.build_list_dual_listbox_window = tk.Toplevel(self.master)
-                self.cm_app_dual_listbox = List_Builder(self.build_list_dual_listbox_window)
-
-                OBJECT_IN_APP_list_builder = self.cm_app_dual_listbox
+                # self.build_list_dual_listbox_window = tk.Toplevel(self.master)
+                # self.cm_app_dual_listbox = List_Builder(self.build_list_dual_listbox_window)
+                # OBJECT_IN_APP_list_builder = self.cm_app_dual_listbox
 
 
       #####################################################################################
@@ -17968,7 +17697,8 @@ def main():
                              
                  # Keep this master_cm_list_name_global data entry widget assertion     
                  # setting Contact List Entry Widget String from LISTBOX FILE GLOBAL - str(cm_listbox_file_global)
-                 cm_app.entry_buildlist.set(str(master_cm_list_name_global) )
+                 # cm_app.entry_buildlist.set(str(master_cm_list_name_global) )
+                 
                  listbox_file_capture_global = False
 
                  # When each New Contact List is created, we will
@@ -17976,7 +17706,7 @@ def main():
                  # and then reset the insert_first_contact_global flag: 
                  if insert_first_contact_global == True:
                      
-                     cm_app.first_Contact_Data_Entry()
+                     # cm_app.first_Contact_Data_Entry()
             
                      # PLACE THESE TWO LINES ABOVE OR WHEREVER WE WANT TO SORT AND RE-WRITE DATA FILES
                      # WHICH SETS THE selected_dictionary_loaded_global GLOBAL.  
