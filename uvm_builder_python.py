@@ -1053,17 +1053,10 @@ class App(Frame):    #( object)
             OBJECT_IN_APP_email_gmail_class = self.master
             OBJECT_IN_APP_config_setting_class = self.master
             
-            self.mybutton = Button(self.master, text = "SAVE\nContact\nEntry", \
-                  width=8,height=3, font=minilarge_font, \
-                  background="dark slate gray", fg="light seagreen", command = self.decision_SAVE_CONTACT_ENTRY)
-            self.mybutton.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
-            
-            self.mybutton.grid(row=10, column=2, sticky=E)
-
             self.excel_import_export_button = Button(self.master, text = "UVM SEQ ITEM", \
                 width=15,height=2, background="midnight blue", fg="deep sky blue", command = self.export_CSV_for_Excel_method)
 
-            self.excel_import_export_button.grid(row=1, column=0, sticky=W)
+            self.excel_import_export_button.grid(row=2, column=0, sticky=W)
             self.excel_import_export_button.config(font=('Helvetica', 14 ) )
             self.excel_import_export_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
@@ -1091,35 +1084,19 @@ class App(Frame):    #( object)
 
             mode_select_global = "Browse Mode"
 
-            self.mode_select_opt_menu_select = StringVar()
-            self.mode_select_opt_menu_select.set(str(mode_select_global) )   # initialize OptionMenu for Mode Select
-            self.mode_select_optionsmenu_inst = OptionMenu(self.master, self.mode_select_opt_menu_select, \
-            *List_of_Program_Modes, command=self.func_set_mode_select_global)
-            self.mode_select_optionsmenu_inst.grid(sticky = W, row=1, column=1)
-            self.mode_select_optionsmenu_inst.config(borderwidth=5, background="light sea green", font=('Helvetica', 14 ) )
-
-            menu_mode_select = self.mode_select_optionsmenu_inst.nametowidget(self.mode_select_optionsmenu_inst.menuname) 
-            menu_mode_select.configure(font=("Helvetica", 18), bg="light sea green")
-            
 
             self.sort_contact_list_button = Button(self.master, text = "UVM SEQUENCE", \
                   width=15,height=2, font=('Helvetica', '14'), background="midnight blue", fg="deep sky blue", \
                   activebackground="cyan", activeforeground="blue2", command = self.sort_Contact_List)
 
-            self.sort_contact_list_button.grid(row=2, column=0, sticky=W)
+            self.sort_contact_list_button.grid(row=3, column=0, sticky=W)
 
-            self.insert_button = Button(self.master, text = "EMAIL\nNotes", \
-                  width=14,height=3, font=('Helvetica', '14'), \
-                  background="cyan4", command = self.email_Gmail_Feature_method)
-            
-            self.insert_button.grid(row=12, column=2, sticky=W)
-            self.insert_button.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
 
-            self.config_button = Button(self.master, text = "Configure App\nSettings", \
-                  width=14,height=3, font=('Helvetica', '14'), \
-                  background="cyan4", command = self.config_App_Settings_method)
+            self.config_button = Button(self.master, text = "COLOR THEME", \
+                  width=15,height=1, font=('Helvetica', '14'), \
+                  background="midnight blue", fg="deep sky blue", command = self.config_App_Settings_method)
             
-            self.config_button.grid(row=12, column=2, sticky=E)
+            self.config_button.grid(row=1, column=2, sticky=E)
             self.config_button.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
 
             
@@ -1136,8 +1113,8 @@ class App(Frame):    #( object)
 
             r = 3
             for c in scroll_label:
-                  if r > 2 and r < 10:
-                       if r == 3:
+                  if r > 3 and r < 11:
+                       if r == 4:
                              bindto = "forward_fast"
                              speedbutton_1 = Button(self.master, text = "UVM SEQUENCER", \
                              width=15,height=2, font=('Helvetica', '14'), \
@@ -1149,7 +1126,7 @@ class App(Frame):    #( object)
                              #self.speedbutton_1.bind("<Enter>", self.forward_fast)
                              #self.speedbutton_1.bind("<Leave>", self.forward_fast)
                              #self.speedbutton_1.bind("<Button-1>", self.forward_fast)
-                       elif r == 4:
+                       elif r == 5:
                              bindto = "forward_scroll"
                              speedbutton_2 = Button(self.master, text = "UVM DRIVER", \
                              width=15,height=2, font=('Helvetica', '14'), \
@@ -1159,7 +1136,7 @@ class App(Frame):    #( object)
                              speedbutton_2.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              #speedbutton_2.bind("<Enter>", self.forward_scroll)
                              #speedbutton_2.bind("<Leave>", self.forward_scroll)
-                       elif r == 5:
+                       elif r == 6:
                              bindto = "forward_tick"
                              speedbutton_3 = Button(self.master, text = "UVM MONITOR", \
                              width=15,height=2, font=('Helvetica', '14'), \
@@ -1176,7 +1153,7 @@ class App(Frame):    #( object)
                              speedbutton_3_click.grid(row=r,column=1, sticky=W)
                              speedbutton_3_click.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
                              ############################################################################
-                       elif r == 6:
+                       elif r == 7:
                              bindto = "backward_tick"
                              speedbutton_4 = Button(self.master, text = "UVM AGENT", \
                              width=15,height=2, font=('Helvetica', '14'), \
@@ -1193,16 +1170,16 @@ class App(Frame):    #( object)
                              speedbutton_4_click.grid(row=r,column=1, sticky=W)
                              speedbutton_4_click.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
                              ############################################################################
-                       elif r == 7:
+                       elif r == 8:
                              bindto = "backward_scroll"
                              speedbutton_5 = Button(self.master, text = "UVM ENV", \
                              width=15,height=2, font=('Helvetica', '14'), \
-                             background="midnight blue", fg = "deep sky blue", command = self.user_defined_gui_window_method)
+                             background="midnight blue", fg="deep sky blue", command = self.user_defined_gui_window_method)
                              speedbutton_5.grid(row=r,column=0, sticky=W)
                              speedbutton_5.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              #speedbutton_5.bind("<Enter>", self.backward_scroll)
                              #speedbutton_5.bind("<Leave>", self.backward_scroll)
-                       elif r == 8:
+                       elif r == 9:
                              bindto = "backward_fast"
                              speedbutton_6 = Button(self.master, text = "UVM SCBD", \
                              width=15,height=2, font=('Helvetica', '14'), \
@@ -1211,7 +1188,7 @@ class App(Frame):    #( object)
                              speedbutton_6.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              #speedbutton_6.bind("<Enter>", self.backward_fast)
                              #speedbutton_6.bind("<Leave>", self.backward_fast)
-                       elif r == 9:
+                       elif r == 10:
                              bindto = "backward_fast"
                              speedbutton_7 = Button(self.master, text = "UVM TB PKG", \
                              width=15,height=2, font=('Helvetica', '14'), \
@@ -1235,7 +1212,7 @@ class App(Frame):    #( object)
             self.window_select_opt_menu_select.set(str(window_select_global) )   # initialize OptionMenu for window Select
             self.window_select_optionsmenu_inst = OptionMenu(self.master, self.window_select_opt_menu_select, \
             *List_of_WINDOWS, command=self.func_set_window_select_global)
-            self.window_select_optionsmenu_inst.grid(row=12, column=0) 
+            self.window_select_optionsmenu_inst.grid(row=1, column=0) 
             self.window_select_optionsmenu_inst.config(borderwidth=5, background="cyan4", fg="black", font=('Helvetica', 14) )
 
             menu_window_select = self.window_select_optionsmenu_inst.nametowidget(self.window_select_optionsmenu_inst.menuname) 
@@ -1243,19 +1220,19 @@ class App(Frame):    #( object)
 
 ###################################################################################### 
 
-            self.sys_admin_view_button = Button(self.master, text = "System Admin\nDatabase Info", \
-                  width=14,height=3, font=('Helvetica', '14'), \
-                  background="cyan4", command = self.system_administration_View_method)
+            self.sys_admin_view_button = Button(self.master, text = "SYSTEM ADMIN", \
+                  width=14,height=1, font=('Helvetica', '14'), \
+                  background="midnight blue", fg="deep sky blue", command = self.system_administration_View_method)
             
-            self.sys_admin_view_button.grid(row=12, column=1, sticky=W)
-            self.sys_admin_view_button.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
+            self.sys_admin_view_button.grid(row=1, column=2)
+            self.sys_admin_view_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
 ###################################################################################### 
 
             self.app_status_display_select_button = Button(self.master, \
-                text = "STATUS PANEL", width=14, height=2, command = self.select_App_Status_Display_method)
+                text = "STATUS PANEL", width=15, height=1, command = self.select_App_Status_Display_method)
             
-            self.app_status_display_select_button.grid(row=2, column=1, sticky=W)
+            self.app_status_display_select_button.grid(row=1, column=2, sticky=W)
             self.app_status_display_select_button.config(borderwidth=5, \
                   background="midnight blue", fg="deep sky blue", font=('Helvetica', 14 ) )
             self.app_status_display_select_button.config(activebackground="cyan", activeforeground="blue2")
@@ -1263,67 +1240,46 @@ class App(Frame):    #( object)
 ###################################################################################### 
 
             self.app_media_button = Button(self.master, text = "EMAIL STARTUP", \
-                width=14, height=2, background="midnight blue", fg="deep sky blue", \
+                width=15, height=1, background="midnight blue", fg="deep sky blue", \
                 activebackground="cyan", activeforeground="blue2", command = self.cm_app_doc_media_window_method)
             
-            self.app_media_button.grid(row=3, column=1, sticky=W)
+            self.app_media_button.grid(row=1, column=1, sticky=W)
             self.app_media_button.config(borderwidth=5, font=('Helvetica', 14 ) )
             self.app_media_button.config(activebackground="cyan", activeforeground="blue2")
             
 ###################################################################################### 
 
-            self.buildlistbutton = Button(self.master, text = "NEW\nContact\nList", \
-                width=8, height=3, font=minilarge_font, \
-                background="dark slate gray", fg = "light sea green", command = self.new_list_window_method)
-            
-            self.buildlistbutton.grid(row=10, column=1, sticky=W)
-            self.buildlistbutton.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
 
-###################################################################################### 
-
-            self.build_dual_list_button = Button(self.master, text = "BUILD List", \
-                width=12, height=2, font=minilarge_font, \
+            self.build_dual_list_button2 = Button(self.master, text = "UVM SCBD", \
+                width=15, height=2, font=('Helvetica', '14'), \
                 background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
             
-            self.build_dual_list_button.grid(row=8, column=1, sticky=W)
-            self.build_dual_list_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-
-###################################################################################### 
-
-            self.build_dual_list_button2 = Button(self.master, text = "BUILD List2", \
-                width=12, height=2, font=minilarge_font, \
-                background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
-            
-            self.build_dual_list_button2.grid(row=9, column=1, sticky=W)
+            self.build_dual_list_button2.grid(row=9, column=0, sticky=W)
             self.build_dual_list_button2.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
+###################################################################################### 
+
+            self.build_dual_list_button = Button(self.master, text = "UVM TB PKG", \
+                width=15, height=2, font=('Helvetica', '14'), \
+                background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
+            
+            self.build_dual_list_button.grid(row=10, column=0, sticky=W)
+            self.build_dual_list_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+
 ######################################################################################  
 
-            self.night_mode_button = Button(self.master, text = "NIGHT\nMode\nSelect", \
-                width=5, height=3, font=minilarge_14_font, \
-                background="dark slate gray", fg = "light sea green", command = self.night_mode_select_method)
+            self.build_dual_list3_button = Button(self.master, text = "UVM TB CFG", \
+                width=15, height=2, font=('Helvetica', '14'), \
+                background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
             
-            self.night_mode_button.grid(row=10, column=2, sticky=W)
-            self.night_mode_button.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
+            self.build_dual_list3_button.grid(row=11, column=0, sticky=W)
+            self.build_dual_list3_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
 ######################################################################################  
 
-            self.view_mode_button = Button(self.master, text = "VIEW\nContact\nList", \
-                width=8, height=3, font=minilarge_font, \
-                background="dark slate gray", fg = "light sea green", command = self.view_mode_method)
-            
-            self.view_mode_button.grid(row=10, column=0, sticky=W)
-            self.view_mode_button.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
- 
-######################################################################################
- 
-
-
-###########################################################################################################
-            
             self.entry_first = StringVar()
             self.myentry1 = Entry(self.master, textvariable = self.entry_first, font=large_font, width=50)
-            self.myentry1.grid(sticky = W, row=1, column=2)
+            self.myentry1.grid(sticky = W, row=10, column=2)
             self.myentry1.config(borderwidth=5, background="light sea green")
 
             self.entry_last = StringVar()
