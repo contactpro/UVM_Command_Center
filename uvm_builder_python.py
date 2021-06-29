@@ -1151,19 +1151,19 @@ class App(Frame):    #( object)
                              #speedbutton_5.bind("<Leave>", self.backward_scroll)
                        elif r == 9:
                              bindto = "backward_fast"
-                             speedbutton_6 = Button(self.master, text = "UVM SCBD", \
+                             speedbutton_6 = Button(self.master, text = "NOT USED", \
                              width=15,height=2, font=('Helvetica', '14'), \
                              background="midnight blue", fg="deep sky blue", command = self.sys_admin_View_UVM_SCBD_method)
-                             speedbutton_6.grid(row=r,column=0, sticky=W)
+                             speedbutton_6.grid(row=2,column=0, sticky=E)
                              speedbutton_6.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              #speedbutton_6.bind("<Enter>", self.backward_fast)
                              #speedbutton_6.bind("<Leave>", self.backward_fast)
                        elif r == 10:
                              bindto = "backward_fast"
-                             speedbutton_7 = Button(self.master, text = "UVM TB PKG", \
+                             speedbutton_7 = Button(self.master, text = "NOT USED", \
                              width=15,height=2, font=('Helvetica', '14'), \
                              background="midnight blue", fg="deep sky blue", command = self.sys_admin_View_UVM_TB_PKG_method)
-                             speedbutton_7.grid(row=r,column=0, sticky=W)
+                             speedbutton_7.grid(row=3,column=0, sticky=E)
                              speedbutton_7.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
                   r = r + 1
@@ -1192,17 +1192,58 @@ class App(Frame):    #( object)
 
             self.sys_admin_view_button = Button(self.master, text = "SYSTEM ADMIN", \
                   width=15,height=1, font=('Helvetica', '14'), \
+                  background="black", fg="deep sky blue", command = self.system_administration_View_method)
+            
+            self.sys_admin_view_button.grid(row=10, column=0, sticky=W)
+            self.sys_admin_view_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+
+###################################################################################### 
+##
+##    Implement BUILD-COMPILE-SIMULATION-ANALYZE using PYTHON and TKINTER GUI
+##    to automate UVM Testbench FPGA/ASICSOC Design Verification.
+##  
+######################################################################################
+
+            self.build_button = Button(self.master, text = "BUILD", \
+                  width=15,height=1, font=('Helvetica', '14'), \
                   background="midnight blue", fg="deep sky blue", command = self.system_administration_View_method)
             
-            self.sys_admin_view_button.grid(row=1, column=2, sticky=E)
-            self.sys_admin_view_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+            self.build_button.grid(row=1, column=1, sticky=W)
+            self.build_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+
+###################################################################################### 
+
+            self.compile_button = Button(self.master, text = "COMPILE", \
+                  width=15,height=1, font=('Helvetica', '14'), \
+                  background="midnight blue", fg="deep sky blue", command = self.system_administration_View_method)
+            
+            self.compile_button.grid(row=1, column=2, sticky=W)
+            self.compile_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+
+###################################################################################### 
+
+            self.simulation_button = Button(self.master, text = "SIMULATION", \
+                  width=15,height=1, font=('Helvetica', '14'), \
+                  background="midnight blue", fg="deep sky blue", command = self.system_administration_View_method)
+            
+            self.simulation_button.grid(row=1, column=3, sticky=W)
+            self.simulation_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+
+###################################################################################### 
+
+            self.analysis_button = Button(self.master, text = "ANALYSIS", \
+                  width=15,height=1, font=('Helvetica', '14'), \
+                  background="midnight blue", fg="deep sky blue", command = self.system_administration_View_method)
+            
+            self.analysis_button.grid(row=1, column=4, sticky=W)
+            self.analysis_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
 ###################################################################################### 
 
             self.app_status_display_select_button = Button(self.master, \
                 text = "STATUS PANEL", width=15, height=1, command = self.select_App_Status_Display_method)
             
-            self.app_status_display_select_button.grid(row=1, column=1, sticky=W)
+            self.app_status_display_select_button.grid(row=9, column=0, sticky=W)
             self.app_status_display_select_button.config(borderwidth=5, \
                   background="midnight blue", fg="deep sky blue", font=('Helvetica', 14 ) )
             self.app_status_display_select_button.config(activebackground="cyan", activeforeground="blue2")
@@ -1213,7 +1254,7 @@ class App(Frame):    #( object)
                 width=15, height=2, font=('Helvetica', '14'), \
                 background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
             
-            self.build_dual_list_button2.grid(row=9, column=0, sticky=W)
+            self.build_dual_list_button2.grid(row=2, column=1, sticky=W)
             self.build_dual_list_button2.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
 ###################################################################################### 
@@ -1222,7 +1263,7 @@ class App(Frame):    #( object)
                 width=15, height=2, font=('Helvetica', '14'), \
                 background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
             
-            self.build_dual_list_button.grid(row=10, column=0, sticky=W)
+            self.build_dual_list_button.grid(row=3, column=1, sticky=W)
             self.build_dual_list_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
 ######################################################################################  
@@ -1231,7 +1272,7 @@ class App(Frame):    #( object)
                 width=15, height=2, font=('Helvetica', '14'), \
                 background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
             
-            self.build_dual_list3_button.grid(row=11, column=0, sticky=W)
+            self.build_dual_list3_button.grid(row=4, column=1, sticky=W)
             self.build_dual_list3_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
 ######################################################################################  
