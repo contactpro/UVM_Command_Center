@@ -1054,20 +1054,20 @@ class App(Frame):    #( object)
             OBJECT_IN_APP_config_setting_class = self.master
             
              
-            self.excel_import_export_button = Button(self.master, text = "SV INTERFACE", \
-                width=15,height=1, background="midnight blue", fg="deep sky blue", command = self.sys_admin_View_UVM_SEQ_ITEM_method)
+            self.sv_interface_button = Button(self.master, text = "SV INTERFACE", \
+                width=15,height=1, background="midnight blue", fg="deep sky blue",command = self.SV_INTERFACE_View_method)
 
-            self.excel_import_export_button.grid(row=2, column=0, sticky=W)
-            self.excel_import_export_button.config(font=('Helvetica', 14 ) )
-            self.excel_import_export_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+            self.sv_interface_button.grid(row=2, column=0, sticky=W)
+            self.sv_interface_button.config(font=('Helvetica', 14 ) )
+            self.sv_interface_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
            
             
-            self.excel_import_export_button = Button(self.master, text = "UVM SEQ ITEM", \
-                width=15,height=1, background="midnight blue", fg="deep sky blue", command = self.sys_admin_View_UVM_SEQ_ITEM_method)
+            self.uvm_seq_item_button = Button(self.master, text = "UVM SEQ ITEM", \
+                width=15,height=1, background="midnight blue", fg="deep sky blue", command = self.UVM_SEQ_ITEM_View_method)
 
-            self.excel_import_export_button.grid(row=3, column=0, sticky=W)
-            self.excel_import_export_button.config(font=('Helvetica', 14 ) )
-            self.excel_import_export_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+            self.uvm_seq_item_button.grid(row=3, column=0, sticky=W)
+            self.uvm_seq_item_button.config(font=('Helvetica', 14 ) )
+            self.uvm_seq_item_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
             #############################################################################
             #
@@ -1096,7 +1096,7 @@ class App(Frame):    #( object)
 
             self.sort_contact_list_button = Button(self.master, text = "UVM SEQUENCE", \
                   width=15,height=1, font=('Helvetica', '14'), background="midnight blue", fg="deep sky blue", \
-                  activebackground="cyan", activeforeground="blue2", command = self.sys_admin_View_UVM_SEQUENCE_method)
+                  activebackground="cyan", activeforeground="blue2", command = self.UVM_SEQUENCE_View_method)
 
             self.sort_contact_list_button.grid(row=4, column=0, sticky=W)
             self.sort_contact_list_button.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
@@ -1112,7 +1112,7 @@ class App(Frame):    #( object)
                              bindto = "forward_fast"
                              speedbutton_1 = Button(self.master, text = "UVM SEQUENCER", \
                              width=15,height=1, font=('Helvetica', '14'), \
-                             background="midnight blue", fg="deep sky blue", command = self.forward_fast)
+                             background="midnight blue", fg="deep sky blue", command = self.UVM_SEQUENCER_View_method)
                              speedbutton_1.grid(row=r,column=0, sticky=W)
                              speedbutton_1.config(borderwidth=5)
                              speedbutton_1.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
@@ -1121,7 +1121,7 @@ class App(Frame):    #( object)
                              bindto = "forward_scroll"
                              speedbutton_2 = Button(self.master, text = "UVM DRIVER", \
                              width=15,height=1, font=('Helvetica', '14'), \
-                             background="midnight blue", fg="deep sky blue", command = self.forward_scroll)
+                             background="midnight blue", fg="deep sky blue", command = self.UVM_DRIVER_View_method)
                              speedbutton_2.grid(row=r,column=0, sticky=W)
                              speedbutton_2.config(borderwidth=5)
                              speedbutton_2.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
@@ -1131,7 +1131,7 @@ class App(Frame):    #( object)
                              bindto = "forward_tick"
                              speedbutton_3 = Button(self.master, text = "UVM MONITOR", \
                              width=15,height=1, font=('Helvetica', '14'), \
-                             background="midnight blue", fg="deep sky blue", command = self.forward_tick)
+                             background="midnight blue", fg="deep sky blue", command = self.UVM_MONITOR_View_method)
                              speedbutton_3.grid(row=r,column=0, sticky=W)
                              speedbutton_3.config(borderwidth=5)
                              speedbutton_3.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
@@ -1142,7 +1142,7 @@ class App(Frame):    #( object)
                              bindto = "backward_tick"
                              speedbutton_4 = Button(self.master, text = "UVM AGENT", \
                              width=15,height=1, font=('Helvetica', '14'), \
-                             background="midnight blue", fg="deep sky blue", command = self.backward_tick)
+                             background="midnight blue", fg="deep sky blue", command = self.UVM_AGENT_View_method)
                              speedbutton_4.grid(row=r,column=0, sticky=W)
                              speedbutton_4.config(borderwidth=5)
                              speedbutton_4.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
@@ -1153,7 +1153,7 @@ class App(Frame):    #( object)
                              bindto = "backward_scroll"
                              speedbutton_5 = Button(self.master, text = "UVM ENV", \
                              width=15,height=1, font=('Helvetica', '14'), \
-                             background="midnight blue", fg="deep sky blue", command = self.sys_admin_View_UVM_ENV_method)
+                             background="midnight blue", fg="deep sky blue", command = self.UVM_ENV_View_method)
                              speedbutton_5.grid(row=r,column=0, sticky=W)
                              speedbutton_5.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              #speedbutton_5.bind("<Enter>", self.backward_scroll)
@@ -1199,7 +1199,7 @@ class App(Frame):    #( object)
 
             self.design_dut_button = Button(self.master, text = "DESIGN (DUT)", \
                   width=15,height=1, font=('Helvetica', '14'), \
-                  background="midnight blue", fg="deep sky blue", command = self.system_administration_View_method)
+                  background="midnight blue", fg="deep sky blue", command = self.DESIGN_DUT_SELECT_Menu_method)
             
             self.design_dut_button.grid(row=1, column=1, sticky=W)
             self.design_dut_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
@@ -1208,7 +1208,7 @@ class App(Frame):    #( object)
 
             self.testbench_button = Button(self.master, text = "TESTBENCH", \
                   width=15,height=1, font=('Helvetica', '14'), \
-                  background="midnight blue", fg="deep sky blue", command = self.system_administration_View_method)
+                  background="midnight blue", fg="deep sky blue", command = self.TESTBENCH_SELECT_Menu_method)
             
             self.testbench_button.grid(row=1, column=2, sticky=W)
             self.testbench_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
@@ -1217,7 +1217,7 @@ class App(Frame):    #( object)
 
             self.compile_button = Button(self.master, text = "COMPILE", \
                   width=15,height=1, font=('Helvetica', '14'), \
-                  background="midnight blue", fg="deep sky blue", command = self.system_administration_View_method)
+                  background="midnight blue", fg="deep sky blue", command = self.COMPILE_SCRIPT_SELECT_Menu_method)
             
             self.compile_button.grid(row=1, column=3, sticky=W)
             self.compile_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
@@ -1226,7 +1226,7 @@ class App(Frame):    #( object)
 
             self.simulation_button = Button(self.master, text = "SIMULATION", \
                   width=15,height=1, font=('Helvetica', '14'), \
-                  background="midnight blue", fg="deep sky blue", command = self.system_administration_View_method)
+                  background="midnight blue", fg="deep sky blue", command = self.SIMULATION_SCRIPT_SELECT_Menu_method)
             
             self.simulation_button.grid(row=1, column=4, sticky=W)
             self.simulation_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
@@ -1235,7 +1235,7 @@ class App(Frame):    #( object)
 
             self.analysis_button = Button(self.master, text = "ANALYSIS", \
                   width=15,height=1, font=('Helvetica', '14'), \
-                  background="midnight blue", fg="deep sky blue", command = self.system_administration_View_method)
+                  background="midnight blue", fg="deep sky blue", command = self.ANALYSIS_SCRIPT_SELECT_Menu_method)
             
             self.analysis_button.grid(row=1, column=5, sticky=W)
             self.analysis_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
@@ -1592,6 +1592,8 @@ class App(Frame):    #( object)
           fullpath_fn_dict_filename_global = os.path.join(str(cm_appdatafiles_path_global), str(dict_filename_global) )
           cnotes_dict_file_global = "cnotes_" + str(master_cm_list_name_global) + ".txt"
           fullpath_cnotes_dict_file_global = os.path.join(str(cm_appdatafiles_path_global), str(cnotes_dict_file_global) )
+
+          fullpath_fn_SV_INTERFACE_CODE_logfile_global = os.path.join(str(cm_appdatafiles_path_global), "sv_interface_code_logfile.txt" )
 
           # PLACE THESE TWO LINES ABOVE OR WHEREVER WE WANT TO SORT AND RE-WRITE DATA FILES
           # WHICH UPDATES and SETS THE selected_dictionary_loaded_global GLOBAL.    
@@ -2109,110 +2111,7 @@ class App(Frame):    #( object)
 
               OBJECT_IN_APP_system_admin_info = self.cm_app_sys_admin
 
-                
-      ##################################################################################### 
-      # 
-      #   UVM SEQ ITEM - TEMPLATE WINDOW
-      #  
-      #####################################################################################
-      # Method to open new window with TEXTBOX to VIEW System Administration Information.
-      def sys_admin_View_UVM_SEQ_ITEM_method(self):
-          global fullpath_fn_cm_sw_app_logfile_global
-          global OBJECT_IN_APP_system_admin_info
-
-          if ( (OBJECT_toplevel_system_admin_info.winfo_exists() ) == True) and ("toplevel" in str(OBJECT_toplevel_system_admin_info) ):
-              OBJECT_toplevel_system_admin_info.lift()
-              # print(".... OBJECT_toplevel_system_admin_info.winfo_exists() ) == True:  lift() " + str(OBJECT_toplevel_system_admin_info))
-          else:
-              self.system_administration_View = tk.Toplevel(self.master)
-              self.cm_app_sys_admin = System_Admin_Info(self.system_administration_View)
-
-              OBJECT_IN_APP_system_admin_info = self.cm_app_sys_admin
-
-                
-      ##################################################################################### 
-      # 
-      #   UVM SEQUENCE - TEMPLATE WINDOW
-      #  
-      #####################################################################################
-      # Method to open new window with TEXTBOX to VIEW System Administration Information.
-      def sys_admin_View_UVM_SEQUENCE_method(self):
-          global fullpath_fn_cm_sw_app_logfile_global
-          global OBJECT_IN_APP_system_admin_info
-
-          if ( (OBJECT_toplevel_system_admin_info.winfo_exists() ) == True) and ("toplevel" in str(OBJECT_toplevel_system_admin_info) ):
-              OBJECT_toplevel_system_admin_info.lift()
-              # print(".... OBJECT_toplevel_system_admin_info.winfo_exists() ) == True:  lift() " + str(OBJECT_toplevel_system_admin_info))
-          else:
-              self.system_administration_View = tk.Toplevel(self.master)
-              self.cm_app_sys_admin = System_Admin_Info(self.system_administration_View)
-
-              OBJECT_IN_APP_system_admin_info = self.cm_app_sys_admin
-
-
-                
-      ##################################################################################### 
-      # 
-      #   UVM ENV - TEMPLATE WINDOW
-      #  
-      #####################################################################################
-      # Method to open new window with TEXTBOX to VIEW System Administration Information.
-      def sys_admin_View_UVM_ENV_method(self):
-          global fullpath_fn_cm_sw_app_logfile_global
-          global OBJECT_IN_APP_system_admin_info
-
-          if ( (OBJECT_toplevel_system_admin_info.winfo_exists() ) == True) and ("toplevel" in str(OBJECT_toplevel_system_admin_info) ):
-              OBJECT_toplevel_system_admin_info.lift()
-              # print(".... OBJECT_toplevel_system_admin_info.winfo_exists() ) == True:  lift() " + str(OBJECT_toplevel_system_admin_info))
-          else:
-              self.system_administration_View = tk.Toplevel(self.master)
-              self.cm_app_sys_admin = System_Admin_Info(self.system_administration_View)
-
-              OBJECT_IN_APP_system_admin_info = self.cm_app_sys_admin
-
-                
-      ##################################################################################### 
-      # 
-      #   UVM SCBD - TEMPLATE WINDOW
-      #  
-      #####################################################################################
-      # Method to open new window with TEXTBOX to VIEW System Administration Information.
-      def sys_admin_View_UVM_SCBD_method(self):
-          global fullpath_fn_cm_sw_app_logfile_global
-          global OBJECT_IN_APP_system_admin_info
-
-          if ( (OBJECT_toplevel_system_admin_info.winfo_exists() ) == True) and ("toplevel" in str(OBJECT_toplevel_system_admin_info) ):
-              OBJECT_toplevel_system_admin_info.lift()
-              # print(".... OBJECT_toplevel_system_admin_info.winfo_exists() ) == True:  lift() " + str(OBJECT_toplevel_system_admin_info))
-          else:
-              self.system_administration_View = tk.Toplevel(self.master)
-              self.cm_app_sys_admin = System_Admin_Info(self.system_administration_View)
-
-              OBJECT_IN_APP_system_admin_info = self.cm_app_sys_admin
-
-               
-      ##################################################################################### 
-      # 
-      #   UVM TB PKG - TEMPLATE WINDOW
-      #  
-      #####################################################################################
-      # Method to open new window with TEXTBOX to VIEW System Administration Information.
-      def sys_admin_View_UVM_TB_PKG_method(self):
-          global fullpath_fn_cm_sw_app_logfile_global
-          global OBJECT_IN_APP_system_admin_info
-
-          if ( (OBJECT_toplevel_system_admin_info.winfo_exists() ) == True) and ("toplevel" in str(OBJECT_toplevel_system_admin_info) ):
-              OBJECT_toplevel_system_admin_info.lift()
-              # print(".... OBJECT_toplevel_system_admin_info.winfo_exists() ) == True:  lift() " + str(OBJECT_toplevel_system_admin_info))
-          else:
-              self.system_administration_View = tk.Toplevel(self.master)
-              self.cm_app_sys_admin = System_Admin_Info(self.system_administration_View)
-
-              OBJECT_IN_APP_system_admin_info = self.cm_app_sys_admin
-
-
-
-
+ 
       #####################################################################################
       # 
       #   Email Feature Class and Methods:  Instantiaing class Email_Gmail_Class
@@ -2503,9 +2402,442 @@ class App(Frame):    #( object)
                 OBJECT_IN_APP_excel_import_export = self.cm_app_excel_import_export
 
 
+      ###################################################
+      #
+      # SV INTERFACE VIEW METHOD 
+      #
+      ###################################################
+      #      
+      def SV_INTERFACE_View_method(self):
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global
+            global fullpath_fn_cm_listbox_file_global
+            global fullpath_fn_dict_filename_global
+            global cm_listbox_file_global
+            global dict_filename_global
+            global master_cm_list_name_global
+            global import_excel_csv_userprofile_global
+            global import_excel_csv_cm_appdata_global
+            global export_csv_excel_userprofile_global
+            global export_csv_excel_cm_appdata_global
+            global export_to_excel_listbox_select_fn_global
+            global new_excel_file_created_global
+            global OBJECT_IN_APP_excel_import_export      
+
+            large_font = ('Verdana',20)
+            minilarge_font = ('Verdana',16)
+            medium_font = ('Verdana',12,'bold')
+            small_font = ('Verdana',10)
+            menubar_font = ('Helvetica', '12')
+
+            # self.textFile = open(fullpath_fn_SV_INTERFACE_CODE_logfile_global, 'r')
+
+            # with open(str(fullpath_fn_SV_INTERFACE_CODE_logfile_global) ) as fin:
+               # for line in fin:
+                  # self.view_text_box.insert(END, line)
+        
+            return
 
       ###################################################
       #
+      # UVM_SEQ_ITEM VIEW METHOD 
+      #
+      ###################################################
+      #      
+      def UVM_SEQ_ITEM_View_method(self):
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global
+            global fullpath_fn_cm_listbox_file_global
+            global fullpath_fn_dict_filename_global
+            global cm_listbox_file_global
+            global dict_filename_global
+            global master_cm_list_name_global
+            global import_excel_csv_userprofile_global
+            global import_excel_csv_cm_appdata_global
+            global export_csv_excel_userprofile_global
+            global export_csv_excel_cm_appdata_global
+            global export_to_excel_listbox_select_fn_global
+            global new_excel_file_created_global
+            global OBJECT_IN_APP_excel_import_export            
+
+            large_font = ('Verdana',20)
+            minilarge_font = ('Verdana',16)
+            medium_font = ('Verdana',12,'bold')
+            small_font = ('Verdana',10)
+            menubar_font = ('Helvetica', '12')
+      
+            return
+            
+      ###################################################
+      #
+      # UVM_SEQUENCE VIEW METHOD 
+      #
+      ###################################################
+      #      
+      def UVM_SEQUENCE_View_method(self):
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global
+            global fullpath_fn_cm_listbox_file_global
+            global fullpath_fn_dict_filename_global
+            global cm_listbox_file_global
+            global dict_filename_global
+            global master_cm_list_name_global
+            global import_excel_csv_userprofile_global
+            global import_excel_csv_cm_appdata_global
+            global export_csv_excel_userprofile_global
+            global export_csv_excel_cm_appdata_global
+            global export_to_excel_listbox_select_fn_global
+            global new_excel_file_created_global
+            global OBJECT_IN_APP_excel_import_export            
+            
+            return
+ 
+      ###################################################
+      #
+      # UVM_SEQUENCER VIEW METHOD 
+      #
+      ###################################################
+      #      
+      def UVM_SEQUENCER_View_method(self):
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global
+            global fullpath_fn_cm_listbox_file_global
+            global fullpath_fn_dict_filename_global
+            global cm_listbox_file_global
+            global dict_filename_global
+            global master_cm_list_name_global
+            global import_excel_csv_userprofile_global
+            global import_excel_csv_cm_appdata_global
+            global export_csv_excel_userprofile_global
+            global export_csv_excel_cm_appdata_global
+            global export_to_excel_listbox_select_fn_global
+            global new_excel_file_created_global
+            global OBJECT_IN_APP_excel_import_export                  
+            
+            return
+            
+      ###################################################
+      #
+      # UVM_DRIVER VIEW METHOD 
+      #
+      ###################################################
+      #      
+      def UVM_DRIVER_View_method(self):
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global
+            global fullpath_fn_cm_listbox_file_global
+            global fullpath_fn_dict_filename_global
+            global cm_listbox_file_global
+            global dict_filename_global
+            global master_cm_list_name_global
+            global import_excel_csv_userprofile_global
+            global import_excel_csv_cm_appdata_global
+            global export_csv_excel_userprofile_global
+            global export_csv_excel_cm_appdata_global
+            global export_to_excel_listbox_select_fn_global
+            global new_excel_file_created_global
+            global OBJECT_IN_APP_excel_import_export    
+            
+            return
+            
+      ###################################################
+      #
+      # UVM MONITOR VIEW METHOD 
+      #
+      ###################################################
+      #      
+      def UVM_MONITOR_View_method(self):
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global
+            global fullpath_fn_cm_listbox_file_global
+            global fullpath_fn_dict_filename_global
+            global cm_listbox_file_global
+            global dict_filename_global
+            global master_cm_list_name_global
+            global import_excel_csv_userprofile_global
+            global import_excel_csv_cm_appdata_global
+            global export_csv_excel_userprofile_global
+            global export_csv_excel_cm_appdata_global
+            global export_to_excel_listbox_select_fn_global
+            global new_excel_file_created_global
+            global OBJECT_IN_APP_excel_import_export                   
+            
+            return
+            
+      ###################################################
+      #
+      # UVM_AGENT VIEW METHOD 
+      #
+      ###################################################
+      #      
+      def UVM_AGENT_View_method(self):
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global
+            global fullpath_fn_cm_listbox_file_global
+            global fullpath_fn_dict_filename_global
+            global cm_listbox_file_global
+            global dict_filename_global
+            global master_cm_list_name_global
+            global import_excel_csv_userprofile_global
+            global import_excel_csv_cm_appdata_global
+            global export_csv_excel_userprofile_global
+            global export_csv_excel_cm_appdata_global
+            global export_to_excel_listbox_select_fn_global
+            global new_excel_file_created_global
+            global OBJECT_IN_APP_excel_import_export                    
+           
+            return
+           
+      ###################################################
+      #
+      # UVM_ENV VIEW METHOD 
+      #
+      ###################################################
+      #      
+      def UVM_ENV_View_method(self):
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global
+            global fullpath_fn_cm_listbox_file_global
+            global fullpath_fn_dict_filename_global
+            global cm_listbox_file_global
+            global dict_filename_global
+            global master_cm_list_name_global
+            global import_excel_csv_userprofile_global
+            global import_excel_csv_cm_appdata_global
+            global export_csv_excel_userprofile_global
+            global export_csv_excel_cm_appdata_global
+            global export_to_excel_listbox_select_fn_global
+            global new_excel_file_created_global
+            global OBJECT_IN_APP_excel_import_export                   
+                 
+            return     
+                 
+      ###################################################
+      #
+      # UVM_SCBD VIEW METHOD 
+      #
+      ###################################################
+      #      
+      def UVM_SCBD_View_method(self):
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global
+            global fullpath_fn_cm_listbox_file_global
+            global fullpath_fn_dict_filename_global
+            global cm_listbox_file_global
+            global dict_filename_global
+            global master_cm_list_name_global
+            global import_excel_csv_userprofile_global
+            global import_excel_csv_cm_appdata_global
+            global export_csv_excel_userprofile_global
+            global export_csv_excel_cm_appdata_global
+            global export_to_excel_listbox_select_fn_global
+            global new_excel_file_created_global
+            global OBJECT_IN_APP_excel_import_export                        
+           
+            return
+                 
+      ###################################################
+      #
+      # UVM_TB_PKG VIEW METHOD 
+      #
+      ###################################################
+      #      
+      def UVM_TB_PKG_View_method(self):
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global
+            global fullpath_fn_cm_listbox_file_global
+            global fullpath_fn_dict_filename_global
+            global cm_listbox_file_global
+            global dict_filename_global
+            global master_cm_list_name_global
+            global import_excel_csv_userprofile_global
+            global import_excel_csv_cm_appdata_global
+            global export_csv_excel_userprofile_global
+            global export_csv_excel_cm_appdata_global
+            global export_to_excel_listbox_select_fn_global
+            global new_excel_file_created_global
+            global OBJECT_IN_APP_excel_import_export                        
+                       
+            return           
+                           
+      ###################################################
+      #
+      # UVM_TB_CFG VIEW METHOD 
+      #
+      ###################################################
+      #      
+      def UVM_TB_CFG_View_method(self):
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global
+            global fullpath_fn_cm_listbox_file_global
+            global fullpath_fn_dict_filename_global
+            global cm_listbox_file_global
+            global dict_filename_global
+            global master_cm_list_name_global
+            global import_excel_csv_userprofile_global
+            global import_excel_csv_cm_appdata_global
+            global export_csv_excel_userprofile_global
+            global export_csv_excel_cm_appdata_global
+            global export_to_excel_listbox_select_fn_global
+            global new_excel_file_created_global
+            global OBJECT_IN_APP_excel_import_export                                  
+                    
+            return        
+                           
+      ###################################################
+      #
+      # DESIGN_DUT SELECT MENU METHOD 
+      #
+      ###################################################
+      #      
+      def DESIGN_DUT_SELECT_Menu_method(self):
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global
+            global fullpath_fn_cm_listbox_file_global
+            global fullpath_fn_dict_filename_global
+            global cm_listbox_file_global
+            global dict_filename_global
+            global master_cm_list_name_global
+            global import_excel_csv_userprofile_global
+            global import_excel_csv_cm_appdata_global
+            global export_csv_excel_userprofile_global
+            global export_csv_excel_cm_appdata_global
+            global export_to_excel_listbox_select_fn_global
+            global new_excel_file_created_global
+            global OBJECT_IN_APP_excel_import_export                                 
+                         
+            return             
+                           
+      ###################################################
+      #
+      # TESTBENCH SELECT MENU METHOD 
+      #
+      ###################################################
+      #      
+      def TESTBENCH_SELECT_Menu_method(self):
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global
+            global fullpath_fn_cm_listbox_file_global
+            global fullpath_fn_dict_filename_global
+            global cm_listbox_file_global
+            global dict_filename_global
+            global master_cm_list_name_global
+            global import_excel_csv_userprofile_global
+            global import_excel_csv_cm_appdata_global
+            global export_csv_excel_userprofile_global
+            global export_csv_excel_cm_appdata_global
+            global export_to_excel_listbox_select_fn_global
+            global new_excel_file_created_global
+            global OBJECT_IN_APP_excel_import_export      
+            
+            return
+            
+      ###################################################
+      #
+      # COMPILE SCRIPT SELECT MENU METHOD 
+      #
+      ###################################################
+      #      
+      def COMPILE_SCRIPT_SELECT_Menu_method(self):
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global
+            global fullpath_fn_cm_listbox_file_global
+            global fullpath_fn_dict_filename_global
+            global cm_listbox_file_global
+            global dict_filename_global
+            global master_cm_list_name_global
+            global import_excel_csv_userprofile_global
+            global import_excel_csv_cm_appdata_global
+            global export_csv_excel_userprofile_global
+            global export_csv_excel_cm_appdata_global
+            global export_to_excel_listbox_select_fn_global
+            global new_excel_file_created_global
+            global OBJECT_IN_APP_excel_import_export        
+      
+            return
+            
+      ###################################################
+      #
+      # SIMULATION SCRIPT SELECT MENU METHOD 
+      #
+      ###################################################
+      #      
+      def SIMULATION_SCRIPT_SELECT_Menu_method(self):
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global
+            global fullpath_fn_cm_listbox_file_global
+            global fullpath_fn_dict_filename_global
+            global cm_listbox_file_global
+            global dict_filename_global
+            global master_cm_list_name_global
+            global import_excel_csv_userprofile_global
+            global import_excel_csv_cm_appdata_global
+            global export_csv_excel_userprofile_global
+            global export_csv_excel_cm_appdata_global
+            global export_to_excel_listbox_select_fn_global
+            global new_excel_file_created_global
+            global OBJECT_IN_APP_excel_import_export             
+      
+            return
+            
+      ###################################################
+      #
+      # ANALYSIS SCRIPT SELECT MENU METHOD 
+      #
+      ###################################################
+      #      
+      def ANALYSIS_SCRIPT_SELECT_Menu_method(self):
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global
+            global fullpath_fn_cm_listbox_file_global
+            global fullpath_fn_dict_filename_global
+            global cm_listbox_file_global
+            global dict_filename_global
+            global master_cm_list_name_global
+            global import_excel_csv_userprofile_global
+            global import_excel_csv_cm_appdata_global
+            global export_csv_excel_userprofile_global
+            global export_csv_excel_cm_appdata_global
+            global export_to_excel_listbox_select_fn_global
+            global new_excel_file_created_global
+            global OBJECT_IN_APP_excel_import_export   
+            
+            return           
+            
+      ###################################################
+      # 
       # SORT AND RE-WRITE DATA FILES 
       #
       ###################################################
@@ -17201,6 +17533,8 @@ def main():
           os.makedirs(cm_appdatafiles_path_global)
 
       fullpath_fn_cm_sw_app_logfile_global = os.path.join(str(cm_appdatafiles_path_global), "cm_sw_app_logfile.txt" )
+
+      fullpath_fn_SV_INTERFACE_CODE_logfile_global = os.path.join(str(cm_appdatafiles_path_global), "sv_interface_code_logfile.txt" )
 
       fullpath_exception_logfile_global = os.path.join(str(cm_appdatafiles_path_global), "cm_app_exception_logfile.txt" )
 
