@@ -1053,10 +1053,19 @@ class App(Frame):    #( object)
             OBJECT_IN_APP_email_gmail_class = self.master
             OBJECT_IN_APP_config_setting_class = self.master
             
-            self.excel_import_export_button = Button(self.master, text = "UVM SEQ ITEM", \
-                width=15,height=2, background="midnight blue", fg="deep sky blue", command = self.sys_admin_View_UVM_SEQ_ITEM_method)
+             
+            self.excel_import_export_button = Button(self.master, text = "SV INTERFACE", \
+                width=15,height=1, background="midnight blue", fg="deep sky blue", command = self.sys_admin_View_UVM_SEQ_ITEM_method)
 
             self.excel_import_export_button.grid(row=2, column=0, sticky=W)
+            self.excel_import_export_button.config(font=('Helvetica', 14 ) )
+            self.excel_import_export_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+           
+            
+            self.excel_import_export_button = Button(self.master, text = "UVM SEQ ITEM", \
+                width=15,height=1, background="midnight blue", fg="deep sky blue", command = self.sys_admin_View_UVM_SEQ_ITEM_method)
+
+            self.excel_import_export_button.grid(row=3, column=0, sticky=W)
             self.excel_import_export_button.config(font=('Helvetica', 14 ) )
             self.excel_import_export_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
@@ -1086,42 +1095,42 @@ class App(Frame):    #( object)
 
 
             self.sort_contact_list_button = Button(self.master, text = "UVM SEQUENCE", \
-                  width=15,height=2, font=('Helvetica', '14'), background="midnight blue", fg="deep sky blue", \
+                  width=15,height=1, font=('Helvetica', '14'), background="midnight blue", fg="deep sky blue", \
                   activebackground="cyan", activeforeground="blue2", command = self.sys_admin_View_UVM_SEQUENCE_method)
 
-            self.sort_contact_list_button.grid(row=3, column=0, sticky=W)
+            self.sort_contact_list_button.grid(row=4, column=0, sticky=W)
             self.sort_contact_list_button.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
 
 ###########################################################################################
          
             scroll_label = ['','','','','','']
 
-            r = 3
+            r = 5
             for c in scroll_label:
-                  if r > 3 and r < 11:
-                       if r == 4:
+                  if r > 4 and r < 10:
+                       if r == 5:
                              bindto = "forward_fast"
                              speedbutton_1 = Button(self.master, text = "UVM SEQUENCER", \
-                             width=15,height=2, font=('Helvetica', '14'), \
+                             width=15,height=1, font=('Helvetica', '14'), \
                              background="midnight blue", fg="deep sky blue", command = self.forward_fast)
                              speedbutton_1.grid(row=r,column=0, sticky=W)
                              speedbutton_1.config(borderwidth=5)
                              speedbutton_1.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
-                       elif r == 5:
+                       elif r == 6:
                              bindto = "forward_scroll"
                              speedbutton_2 = Button(self.master, text = "UVM DRIVER", \
-                             width=15,height=2, font=('Helvetica', '14'), \
+                             width=15,height=1, font=('Helvetica', '14'), \
                              background="midnight blue", fg="deep sky blue", command = self.forward_scroll)
                              speedbutton_2.grid(row=r,column=0, sticky=W)
                              speedbutton_2.config(borderwidth=5)
                              speedbutton_2.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              #speedbutton_2.bind("<Enter>", self.forward_scroll)
                              #speedbutton_2.bind("<Leave>", self.forward_scroll)
-                       elif r == 6:
+                       elif r == 7:
                              bindto = "forward_tick"
                              speedbutton_3 = Button(self.master, text = "UVM MONITOR", \
-                             width=15,height=2, font=('Helvetica', '14'), \
+                             width=15,height=1, font=('Helvetica', '14'), \
                              background="midnight blue", fg="deep sky blue", command = self.forward_tick)
                              speedbutton_3.grid(row=r,column=0, sticky=W)
                              speedbutton_3.config(borderwidth=5)
@@ -1129,10 +1138,10 @@ class App(Frame):    #( object)
                              #speedbutton_3.bind("<Enter>", self.forward_tick)
                              #speedbutton_3.bind("<Leave>", self.forward_tick)
                              ###########################################################################
-                       elif r == 7:
+                       elif r == 8:
                              bindto = "backward_tick"
                              speedbutton_4 = Button(self.master, text = "UVM AGENT", \
-                             width=15,height=2, font=('Helvetica', '14'), \
+                             width=15,height=1, font=('Helvetica', '14'), \
                              background="midnight blue", fg="deep sky blue", command = self.backward_tick)
                              speedbutton_4.grid(row=r,column=0, sticky=W)
                              speedbutton_4.config(borderwidth=5)
@@ -1140,32 +1149,16 @@ class App(Frame):    #( object)
                              #speedbutton_4.bind("<Enter>", self.backward_tick)
                              #speedbutton_4.bind("<Leave>", self.backward_tick) 
                              ############################################################################
-                       elif r == 8:
+                       elif r == 9:
                              bindto = "backward_scroll"
                              speedbutton_5 = Button(self.master, text = "UVM ENV", \
-                             width=15,height=2, font=('Helvetica', '14'), \
+                             width=15,height=1, font=('Helvetica', '14'), \
                              background="midnight blue", fg="deep sky blue", command = self.sys_admin_View_UVM_ENV_method)
                              speedbutton_5.grid(row=r,column=0, sticky=W)
                              speedbutton_5.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              #speedbutton_5.bind("<Enter>", self.backward_scroll)
                              #speedbutton_5.bind("<Leave>", self.backward_scroll)
-                       elif r == 9:
-                             bindto = "backward_fast"
-                             speedbutton_6 = Button(self.master, text = "NOT USED", \
-                             width=15,height=2, font=('Helvetica', '14'), \
-                             background="midnight blue", fg="deep sky blue", command = self.sys_admin_View_UVM_SCBD_method)
-                             speedbutton_6.grid(row=2,column=0, sticky=E)
-                             speedbutton_6.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-                             #speedbutton_6.bind("<Enter>", self.backward_fast)
-                             #speedbutton_6.bind("<Leave>", self.backward_fast)
-                       elif r == 10:
-                             bindto = "backward_fast"
-                             speedbutton_7 = Button(self.master, text = "NOT USED", \
-                             width=15,height=2, font=('Helvetica', '14'), \
-                             background="midnight blue", fg="deep sky blue", command = self.sys_admin_View_UVM_TB_PKG_method)
-                             speedbutton_7.grid(row=3,column=0, sticky=E)
-                             speedbutton_7.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-
+ 
                   r = r + 1
 
 
@@ -1194,7 +1187,7 @@ class App(Frame):    #( object)
                   width=15,height=1, font=('Helvetica', '14'), \
                   background="black", fg="deep sky blue", command = self.system_administration_View_method)
             
-            self.sys_admin_view_button.grid(row=10, column=0, sticky=W)
+            self.sys_admin_view_button.grid(row=14, column=0, sticky=W)
             self.sys_admin_view_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
 ###################################################################################### 
@@ -1204,12 +1197,21 @@ class App(Frame):    #( object)
 ##  
 ######################################################################################
 
-            self.build_button = Button(self.master, text = "BUILD", \
+            self.design_dut_button = Button(self.master, text = "DESIGN (DUT)", \
                   width=15,height=1, font=('Helvetica', '14'), \
                   background="midnight blue", fg="deep sky blue", command = self.system_administration_View_method)
             
-            self.build_button.grid(row=1, column=1, sticky=W)
-            self.build_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+            self.design_dut_button.grid(row=1, column=1, sticky=W)
+            self.design_dut_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+
+######################################################################################
+
+            self.testbench_button = Button(self.master, text = "TESTBENCH", \
+                  width=15,height=1, font=('Helvetica', '14'), \
+                  background="midnight blue", fg="deep sky blue", command = self.system_administration_View_method)
+            
+            self.testbench_button.grid(row=1, column=2, sticky=W)
+            self.testbench_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
 ###################################################################################### 
 
@@ -1217,7 +1219,7 @@ class App(Frame):    #( object)
                   width=15,height=1, font=('Helvetica', '14'), \
                   background="midnight blue", fg="deep sky blue", command = self.system_administration_View_method)
             
-            self.compile_button.grid(row=1, column=2, sticky=W)
+            self.compile_button.grid(row=1, column=3, sticky=W)
             self.compile_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
 ###################################################################################### 
@@ -1226,7 +1228,7 @@ class App(Frame):    #( object)
                   width=15,height=1, font=('Helvetica', '14'), \
                   background="midnight blue", fg="deep sky blue", command = self.system_administration_View_method)
             
-            self.simulation_button.grid(row=1, column=3, sticky=W)
+            self.simulation_button.grid(row=1, column=4, sticky=W)
             self.simulation_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
 ###################################################################################### 
@@ -1235,7 +1237,7 @@ class App(Frame):    #( object)
                   width=15,height=1, font=('Helvetica', '14'), \
                   background="midnight blue", fg="deep sky blue", command = self.system_administration_View_method)
             
-            self.analysis_button.grid(row=1, column=4, sticky=W)
+            self.analysis_button.grid(row=1, column=5, sticky=W)
             self.analysis_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
 ###################################################################################### 
@@ -1243,7 +1245,7 @@ class App(Frame):    #( object)
             self.app_status_display_select_button = Button(self.master, \
                 text = "STATUS PANEL", width=15, height=1, command = self.select_App_Status_Display_method)
             
-            self.app_status_display_select_button.grid(row=9, column=0, sticky=W)
+            self.app_status_display_select_button.grid(row=13, column=0, sticky=W)
             self.app_status_display_select_button.config(borderwidth=5, \
                   background="midnight blue", fg="deep sky blue", font=('Helvetica', 14 ) )
             self.app_status_display_select_button.config(activebackground="cyan", activeforeground="blue2")
@@ -1251,28 +1253,28 @@ class App(Frame):    #( object)
 ###################################################################################### 
 
             self.build_dual_list_button2 = Button(self.master, text = "UVM SCBD", \
-                width=15, height=2, font=('Helvetica', '14'), \
+                width=15, height=1, font=('Helvetica', '14'), \
                 background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
             
-            self.build_dual_list_button2.grid(row=2, column=1, sticky=W)
+            self.build_dual_list_button2.grid(row=10, column=0, sticky=W)
             self.build_dual_list_button2.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
 ###################################################################################### 
 
             self.build_dual_list_button = Button(self.master, text = "UVM TB PKG", \
-                width=15, height=2, font=('Helvetica', '14'), \
+                width=15, height=1, font=('Helvetica', '14'), \
                 background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
             
-            self.build_dual_list_button.grid(row=3, column=1, sticky=W)
+            self.build_dual_list_button.grid(row=11, column=0, sticky=W)
             self.build_dual_list_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
 ######################################################################################  
 
             self.build_dual_list3_button = Button(self.master, text = "UVM TB CFG", \
-                width=15, height=2, font=('Helvetica', '14'), \
+                width=15, height=1, font=('Helvetica', '14'), \
                 background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
             
-            self.build_dual_list3_button.grid(row=4, column=1, sticky=W)
+            self.build_dual_list3_button.grid(row=12, column=0, sticky=W)
             self.build_dual_list3_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
 ######################################################################################  
