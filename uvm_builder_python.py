@@ -1053,14 +1053,26 @@ class App(Frame):    #( object)
             OBJECT_IN_APP_email_gmail_class = self.master
             OBJECT_IN_APP_config_setting_class = self.master
             
-             
+            def on_enter_bg(e): e.widget['background'] = 'blue2'
+                 
+            def on_leave_bg(e): e.widget['background'] = 'midnight blue'
+            	
+            def on_leave_black_bg(e): e.widget['background'] = 'black'
+            
+            def on_enter_fg(e): e.widget['foreground'] = 'deep sky blue'
+                 
+            def on_leave_fg(e): e.widget['foreground'] = 'deep sky blue'
+            	                     
             self.sv_interface_button = Button(self.master, text = "SV INTERFACE", \
                 width=15,height=1, background="midnight blue", fg="deep sky blue",command = self.SV_INTERFACE_View_method)
 
             self.sv_interface_button.grid(row=2, column=0, sticky=W)
             self.sv_interface_button.config(font=('Helvetica', 14 ) )
             self.sv_interface_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-           
+   
+            self.sv_interface_button.bind("<Enter>", on_enter_bg)
+            self.sv_interface_button.bind("<Leave>", on_leave_bg)   
+ 
             
             self.uvm_seq_item_button = Button(self.master, text = "UVM SEQ ITEM", \
                 width=15,height=1, background="midnight blue", fg="deep sky blue", command = self.UVM_SEQ_ITEM_View_method)
@@ -1068,6 +1080,9 @@ class App(Frame):    #( object)
             self.uvm_seq_item_button.grid(row=3, column=0, sticky=W)
             self.uvm_seq_item_button.config(font=('Helvetica', 14 ) )
             self.uvm_seq_item_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+                                
+            self.uvm_seq_item_button.bind("<Enter>", on_enter_bg)
+            self.uvm_seq_item_button.bind("<Leave>", on_leave_bg)   
 
             #############################################################################
             #
@@ -1100,7 +1115,10 @@ class App(Frame):    #( object)
 
             self.sort_contact_list_button.grid(row=4, column=0, sticky=W)
             self.sort_contact_list_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-
+            
+            self.sort_contact_list_button.bind("<Enter>", on_enter_bg)
+            self.sort_contact_list_button.bind("<Leave>", on_leave_bg)   
+            
 ###########################################################################################
          
             scroll_label = ['','','','','','']
@@ -1110,54 +1128,58 @@ class App(Frame):    #( object)
                   if r > 4 and r < 10:
                        if r == 5:
                              bindto = "forward_fast"
-                             speedbutton_1 = Button(self.master, text = "UVM SEQUENCER", \
+                             self.speedbutton_1 = Button(self.master, text = "UVM SEQUENCER", \
                              width=15,height=1, font=('Helvetica', '14'), \
                              background="midnight blue", fg="deep sky blue", command = self.UVM_SEQUENCER_View_method)
-                             speedbutton_1.grid(row=r,column=0, sticky=W)
-                             speedbutton_1.config(borderwidth=5)
-                             speedbutton_1.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+                             self.speedbutton_1.grid(row=r,column=0, sticky=W)
+                             self.speedbutton_1.config(borderwidth=5)
+                             self.speedbutton_1.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+                             self.speedbutton_1.bind("<Enter>", on_enter_bg)
+                             self.speedbutton_1.bind("<Leave>", on_leave_bg)   
 
                        elif r == 6:
                              bindto = "forward_scroll"
-                             speedbutton_2 = Button(self.master, text = "UVM DRIVER", \
+                             self.speedbutton_2 = Button(self.master, text = "UVM DRIVER", \
                              width=15,height=1, font=('Helvetica', '14'), \
                              background="midnight blue", fg="deep sky blue", command = self.UVM_DRIVER_View_method)
-                             speedbutton_2.grid(row=r,column=0, sticky=W)
-                             speedbutton_2.config(borderwidth=5)
-                             speedbutton_2.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-                             #speedbutton_2.bind("<Enter>", self.forward_scroll)
-                             #speedbutton_2.bind("<Leave>", self.forward_scroll)
+                             self.speedbutton_2.grid(row=r,column=0, sticky=W)
+                             self.speedbutton_2.config(borderwidth=5)
+                             self.speedbutton_2.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+                             self.speedbutton_2.bind("<Enter>", on_enter_bg)
+                             self.speedbutton_2.bind("<Leave>", on_leave_bg)  
+
                        elif r == 7:
                              bindto = "forward_tick"
-                             speedbutton_3 = Button(self.master, text = "UVM MONITOR", \
+                             self.speedbutton_3 = Button(self.master, text = "UVM MONITOR", \
                              width=15,height=1, font=('Helvetica', '14'), \
                              background="midnight blue", fg="deep sky blue", command = self.UVM_MONITOR_View_method)
-                             speedbutton_3.grid(row=r,column=0, sticky=W)
-                             speedbutton_3.config(borderwidth=5)
-                             speedbutton_3.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-                             #speedbutton_3.bind("<Enter>", self.forward_tick)
-                             #speedbutton_3.bind("<Leave>", self.forward_tick)
+                             self.speedbutton_3.grid(row=r,column=0, sticky=W)
+                             self.speedbutton_3.config(borderwidth=5)
+                             self.speedbutton_3.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+                             self.speedbutton_3.bind("<Enter>", on_enter_bg)
+                             self.speedbutton_3.bind("<Leave>", on_leave_bg)  
+
                              ###########################################################################
                        elif r == 8:
                              bindto = "backward_tick"
-                             speedbutton_4 = Button(self.master, text = "UVM AGENT", \
+                             self.speedbutton_4 = Button(self.master, text = "UVM AGENT", \
                              width=15,height=1, font=('Helvetica', '14'), \
                              background="midnight blue", fg="deep sky blue", command = self.UVM_AGENT_View_method)
-                             speedbutton_4.grid(row=r,column=0, sticky=W)
-                             speedbutton_4.config(borderwidth=5)
-                             speedbutton_4.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-                             #speedbutton_4.bind("<Enter>", self.backward_tick)
-                             #speedbutton_4.bind("<Leave>", self.backward_tick) 
+                             self.speedbutton_4.grid(row=r,column=0, sticky=W)
+                             self.speedbutton_4.config(borderwidth=5)
+                             self.speedbutton_4.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+                             self.speedbutton_4.bind("<Enter>", on_enter_bg)
+                             self.speedbutton_4.bind("<Leave>", on_leave_bg)  
                              ############################################################################
                        elif r == 9:
                              bindto = "backward_scroll"
-                             speedbutton_5 = Button(self.master, text = "UVM ENV", \
+                             self.speedbutton_5 = Button(self.master, text = "UVM ENV", \
                              width=15,height=1, font=('Helvetica', '14'), \
                              background="midnight blue", fg="deep sky blue", command = self.UVM_ENV_View_method)
-                             speedbutton_5.grid(row=r,column=0, sticky=W)
-                             speedbutton_5.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-                             #speedbutton_5.bind("<Enter>", self.backward_scroll)
-                             #speedbutton_5.bind("<Leave>", self.backward_scroll)
+                             self.speedbutton_5.grid(row=r,column=0, sticky=W)
+                             self.speedbutton_5.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+                             self.speedbutton_5.bind("<Enter>", on_enter_bg)
+                             self.speedbutton_5.bind("<Leave>", on_leave_bg)  
  
                   r = r + 1
 
@@ -1190,7 +1212,8 @@ class App(Frame):    #( object)
             
             self.sys_admin_view_button.grid(row=14, column=0, sticky=W)
             self.sys_admin_view_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-
+            self.sys_admin_view_button.bind("<Enter>", on_enter_bg)
+            self.sys_admin_view_button.bind("<Leave>", on_leave_black_bg) 
 ###################################################################################### 
 ##
 ##    Implement BUILD-COMPILE-SIMULATION-ANALYZE using PYTHON and TKINTER GUI
@@ -1198,7 +1221,7 @@ class App(Frame):    #( object)
 ##  
 ######################################################################################
 
-            self.testbench_button = Button(self.master, text = "TESTBENCH", \
+            self.testbench_button = Button(self.master, text = "TESTBENCH TOP", \
                   width=15,height=1, font=('Helvetica', '14'), \
                   fg="blue2", bg="cyan", command = self.TESTBENCH_SELECT_Menu_method)
             
@@ -1241,7 +1264,8 @@ class App(Frame):    #( object)
             self.app_status_display_select_button.config(borderwidth=5, \
                   background="midnight blue", fg="deep sky blue", font=('Helvetica', 14 ) )
             self.app_status_display_select_button.config(activebackground="cyan", activeforeground="blue2")
-
+            self.app_status_display_select_button.bind("<Enter>", on_enter_bg)
+            self.app_status_display_select_button.bind("<Leave>", on_leave_bg)  
 ###################################################################################### 
 
             self.build_dual_list_button2 = Button(self.master, text = "UVM SCBD", \
@@ -1250,7 +1274,8 @@ class App(Frame):    #( object)
             
             self.build_dual_list_button2.grid(row=10, column=0, sticky=W)
             self.build_dual_list_button2.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-
+            self.build_dual_list_button2.bind("<Enter>", on_enter_bg)
+            self.build_dual_list_button2.bind("<Leave>", on_leave_bg)  
 ###################################################################################### 
 
             self.build_dual_list_button = Button(self.master, text = "UVM TB PKG", \
@@ -1259,7 +1284,8 @@ class App(Frame):    #( object)
             
             self.build_dual_list_button.grid(row=11, column=0, sticky=W)
             self.build_dual_list_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-
+            self.build_dual_list_button.bind("<Enter>", on_enter_bg)
+            self.build_dual_list_button.bind("<Leave>", on_leave_bg)  
 ######################################################################################  
 
             self.build_dual_list3_button = Button(self.master, text = "UVM TB CFG", \
@@ -1268,7 +1294,9 @@ class App(Frame):    #( object)
             
             self.build_dual_list3_button.grid(row=12, column=0, sticky=W)
             self.build_dual_list3_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-
+            
+            self.build_dual_list3_button.bind("<Enter>", on_enter_bg)
+            self.build_dual_list3_button.bind("<Leave>", on_leave_bg)  
 ######################################################################################  
 
 
@@ -1332,6 +1360,17 @@ class App(Frame):    #( object)
       # Method:  create_first_contact_list_on_startup()
       #     
       ######################################################################################
+
+      # function to change properties of button on hover
+      def changeOnHover(button, colorOnHover, colorOnLeave):
+          # adjusting backgroung of the widget
+          # background on entering widget
+          button.bind("<Enter>", func=lambda e: button.config(background=colorOnHover))
+  
+          # background color on leving widget
+          button.bind("<Leave>", func=lambda e: button.config(background=colorOnLeave))
+
+          return
 
       def create_first_contact_list_on_startup(self):
           global cm_listbox_file_global
@@ -1549,8 +1588,7 @@ class App(Frame):    #( object)
              else:
                    pass
 
-
-             
+          
       ######################################################################################
       #    
       # crm_startup_screen_show_method to cycle through a SET OF SCREENS to quickly activate 
@@ -1898,8 +1936,7 @@ class App(Frame):    #( object)
               # or decrememtn pointer index by kicking this Thread in main():
               kick_thread_to_update_main_entry_widgets = True
 
-
-
+          
       #####################################################################################
       # 
       #   Calls - Contact Manager Application Documentation Media Class - CM_App_Doc_Media
