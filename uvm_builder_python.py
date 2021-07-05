@@ -1099,7 +1099,7 @@ class App(Frame):    #( object)
                   activebackground="cyan", activeforeground="blue2", command = self.UVM_SEQUENCE_View_method)
 
             self.sort_contact_list_button.grid(row=4, column=0, sticky=W)
-            self.sort_contact_list_button.config(borderwidth=5, activebackground="cyan4", activeforeground="cyan")
+            self.sort_contact_list_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
 
 ###########################################################################################
          
@@ -1164,22 +1164,23 @@ class App(Frame):    #( object)
 
 ######################################################################################
 
-            List_of_WINDOWS = ["WINDOW SELECT", "cm_app_doc_media", "excel_import_export", "app_status_panel", \
+            List_of_WINDOWS = ["PROJECT SEL", "cm_app_doc_media", "excel_import_export", "app_status_panel", \
                                "list_builder", "view_contact_list", "new_contact_list", \
                                "select_contact_list","system_admin_info","email_gmail_class","config_setting_class", \
                                "CRM STARTUP", "MEDICAL RECORD", "COMMAND CENTER", "E X I T"]
 
-            window_select_global = "WINDOW SEL"
+            window_select_global = "PROJECT SEL"
 
             self.window_select_opt_menu_select = StringVar()
             self.window_select_opt_menu_select.set(str(window_select_global) )   # initialize OptionMenu for window Select
             self.window_select_optionsmenu_inst = OptionMenu(self.master, self.window_select_opt_menu_select, \
             *List_of_WINDOWS, command=self.func_set_window_select_global)
             self.window_select_optionsmenu_inst.grid(row=1, column=0) 
-            self.window_select_optionsmenu_inst.config(borderwidth=5, background="cyan4", fg="black", font=('Helvetica', 14) )
-
+            self.window_select_optionsmenu_inst.config(borderwidth=5, background="cyan", fg="blue2", font=('Helvetica', 14) )
+            self.window_select_optionsmenu_inst.config(activebackground="cyan", activeforeground="blue2")
+            
             menu_window_select = self.window_select_optionsmenu_inst.nametowidget(self.window_select_optionsmenu_inst.menuname) 
-            menu_window_select.configure(font=("Helvetica", 14), bg="light sea green") 
+            menu_window_select.configure(font=("Helvetica", 14), fg="blue2", bg="cyan") 
 
 ###################################################################################### 
 
@@ -1197,48 +1198,39 @@ class App(Frame):    #( object)
 ##  
 ######################################################################################
 
-            self.design_dut_button = Button(self.master, text = "DESIGN (DUT)", \
-                  width=15,height=1, font=('Helvetica', '14'), \
-                  background="midnight blue", fg="deep sky blue", command = self.DESIGN_DUT_SELECT_Menu_method)
-            
-            self.design_dut_button.grid(row=1, column=1, sticky=W)
-            self.design_dut_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-
-######################################################################################
-
             self.testbench_button = Button(self.master, text = "TESTBENCH", \
                   width=15,height=1, font=('Helvetica', '14'), \
-                  background="midnight blue", fg="deep sky blue", command = self.TESTBENCH_SELECT_Menu_method)
+                  fg="blue2", bg="cyan", command = self.TESTBENCH_SELECT_Menu_method)
             
-            self.testbench_button.grid(row=1, column=2, sticky=W)
-            self.testbench_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+            self.testbench_button.grid(row=1, column=1, sticky=W)
+            self.testbench_button.config(borderwidth=5, activebackground="yellow", activeforeground="blue2")
 
 ###################################################################################### 
 
             self.compile_button = Button(self.master, text = "COMPILE", \
                   width=15,height=1, font=('Helvetica', '14'), \
-                  background="midnight blue", fg="deep sky blue", command = self.COMPILE_SCRIPT_SELECT_Menu_method)
+                  fg="blue2", bg="cyan", command = self.COMPILE_SCRIPT_SELECT_Menu_method)
             
-            self.compile_button.grid(row=1, column=3, sticky=W)
-            self.compile_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+            self.compile_button.grid(row=1, column=2, sticky=W)
+            self.compile_button.config(borderwidth=5, activebackground="yellow", activeforeground="blue2")
 
 ###################################################################################### 
 
             self.simulation_button = Button(self.master, text = "SIMULATION", \
                   width=15,height=1, font=('Helvetica', '14'), \
-                  background="midnight blue", fg="deep sky blue", command = self.SIMULATION_SCRIPT_SELECT_Menu_method)
+                  fg="blue2", bg="cyan", command = self.SIMULATION_SCRIPT_SELECT_Menu_method)
             
-            self.simulation_button.grid(row=1, column=4, sticky=W)
-            self.simulation_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+            self.simulation_button.grid(row=1, column=3, sticky=W)
+            self.simulation_button.config(borderwidth=5, activebackground="yellow", activeforeground="blue2")
 
 ###################################################################################### 
 
             self.analysis_button = Button(self.master, text = "ANALYSIS", \
                   width=15,height=1, font=('Helvetica', '14'), \
-                  background="midnight blue", fg="deep sky blue", command = self.ANALYSIS_SCRIPT_SELECT_Menu_method)
+                  fg="blue2", bg="cyan", command = self.ANALYSIS_SCRIPT_SELECT_Menu_method)
             
-            self.analysis_button.grid(row=1, column=5, sticky=W)
-            self.analysis_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+            self.analysis_button.grid(row=1, column=4, sticky=W)
+            self.analysis_button.config(borderwidth=5, activebackground="yellow", activeforeground="blue2")
 
 ###################################################################################### 
 
@@ -1254,7 +1246,7 @@ class App(Frame):    #( object)
 
             self.build_dual_list_button2 = Button(self.master, text = "UVM SCBD", \
                 width=15, height=1, font=('Helvetica', '14'), \
-                background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
+                background="midnight blue", fg="deep sky blue", command = self.UVM_SCBD_View_method)
             
             self.build_dual_list_button2.grid(row=10, column=0, sticky=W)
             self.build_dual_list_button2.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
@@ -2431,6 +2423,8 @@ class App(Frame):    #( object)
             medium_font = ('Verdana',12,'bold')
             small_font = ('Verdana',10)
             menubar_font = ('Helvetica', '12')
+            
+            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/mem_interface.sv"')
 
             # self.textFile = open(fullpath_fn_SV_INTERFACE_CODE_logfile_global, 'r')
 
@@ -2469,7 +2463,9 @@ class App(Frame):    #( object)
             medium_font = ('Verdana',12,'bold')
             small_font = ('Verdana',10)
             menubar_font = ('Helvetica', '12')
-      
+                  
+            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/mem_seq_item.sv"')
+
             return
             
       ###################################################
@@ -2495,7 +2491,9 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export            
-            
+                  
+            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/mem_sequence.sv"')
+ 
             return
  
       ###################################################
@@ -2521,7 +2519,9 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export                  
-            
+                             
+            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/mem_sequencer.sv"')
+ 
             return
             
       ###################################################
@@ -2547,7 +2547,9 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export    
-            
+                                         
+            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/mem_driver.sv"')
+   
             return
             
       ###################################################
@@ -2573,7 +2575,9 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export                   
-            
+                                                      
+            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/mem_monitor.sv"')
+
             return
             
       ###################################################
@@ -2599,7 +2603,9 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export                    
-           
+                                                                   
+            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/mem_agent.sv"')
+
             return
            
       ###################################################
@@ -2625,7 +2631,9 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export                   
-                 
+                                                                                 
+            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/mem_env.sv"')
+
             return     
                  
       ###################################################
@@ -2651,7 +2659,9 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export                        
-           
+                                                                                                 
+            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/mem_scoreboard.sv"')
+ 
             return
                  
       ###################################################
@@ -2677,7 +2687,7 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export                        
-                       
+           
             return           
                            
       ###################################################
@@ -2755,7 +2765,9 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export      
-            
+                                                                                                             
+            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/testbench_top.sv"')
+ 
             return
             
       ###################################################
