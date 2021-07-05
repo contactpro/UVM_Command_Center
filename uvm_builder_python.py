@@ -756,6 +756,7 @@ class App(Frame):    #( object)
             global fullpath_fn_dict_filename_global
             global fullpath_cnotes_dict_file_global
             global fullpath_fn_cm_sw_app_logfile_global
+            global appdata_projects_then_user_dir_global
             global import_excel_csv_userprofile_global
             global import_excel_csv_cm_appdata_global
             global export_csv_excel_userprofile_global
@@ -971,6 +972,8 @@ class App(Frame):    #( object)
             self.session_review_index = 1
 
             contactList = []
+            
+            uvm_testbench_file_List = []
 
             # self.this_person = []
 
@@ -1186,10 +1189,9 @@ class App(Frame):    #( object)
 
 ######################################################################################
 
-            List_of_WINDOWS = ["PROJECT SEL", "cm_app_doc_media", "excel_import_export", "app_status_panel", \
-                               "list_builder", "view_contact_list", "new_contact_list", \
-                               "select_contact_list","system_admin_info","email_gmail_class","config_setting_class", \
-                               "CRM STARTUP", "MEDICAL RECORD", "COMMAND CENTER", "E X I T"]
+            List_of_WINDOWS = ["PROJECT SEL", "CREATE PROJECT", "project_eda_5r89", "cm_app_doc_media", "app_status_panel", \
+                               "system_admin_info","config_setting_class", \
+                               "UVM APP STARTUP", "E X I T"]
 
             window_select_global = "PROJECT SEL"
 
@@ -1262,10 +1264,10 @@ class App(Frame):    #( object)
             
             self.app_status_display_select_button.grid(row=13, column=0, sticky=W)
             self.app_status_display_select_button.config(borderwidth=5, \
-                  background="midnight blue", fg="deep sky blue", font=('Helvetica', 14 ) )
+                 bg="black", fg="deep sky blue", font=('Helvetica', 14 ) )
             self.app_status_display_select_button.config(activebackground="cyan", activeforeground="blue2")
             self.app_status_display_select_button.bind("<Enter>", on_enter_bg)
-            self.app_status_display_select_button.bind("<Leave>", on_leave_bg)  
+            self.app_status_display_select_button.bind("<Leave>", on_leave_black_bg)  
 ###################################################################################### 
 
             self.build_dual_list_button2 = Button(self.master, text = "UVM SCBD", \
@@ -1483,7 +1485,7 @@ class App(Frame):    #( object)
              # Set the GLOBAL for the newly selected window_select_global 
              window_select_global = str(window_select_opt_menu_select)
 
-             if window_select_global == "WINDOW SELECT":
+             if window_select_global == "PROJECT SEL":
 
                  return
              
@@ -1491,96 +1493,54 @@ class App(Frame):    #( object)
 
                    # print(".... select window:  cm_app_doc_media ")
                    self.cm_app_doc_media_window_method()
-                   window_select_global = "WINDOW SELECT"
-                   self.window_select_opt_menu_select.set(str(window_select_global) )
-
-             elif (window_select_global == "excel_import_export"):
-
-                   # print(".... select window:  excel_import_export ")
-                   self.export_CSV_for_Excel_method()
-                   window_select_global = "WINDOW SELECT"
+                   window_select_global = "cm_app_doc_media"
                    self.window_select_opt_menu_select.set(str(window_select_global) )
 
              elif (window_select_global == "app_status_panel"):
 
                    # print(".... select window:  app_status_panel ")
                    self.select_App_Status_Display_method()
-                   window_select_global = "WINDOW SELECT"
+                   window_select_global = "app_status_panel"
                    self.window_select_opt_menu_select.set(str(window_select_global) )
 
-             elif (window_select_global == "list_builder"):
-
-                   # print(".... select window:  list_builder ")
-                   self.build_list_from_dual_listbox_window_method()
-                   window_select_global = "WINDOW SELECT"
-                   self.window_select_opt_menu_select.set(str(window_select_global) )
-
-             elif (window_select_global == "view_contact_list"):
-
-                   # print(".... select window:  view_contact_list ")
-                   self.view_mode_method()
-                   window_select_global = "WINDOW SELECT"
-                   self.window_select_opt_menu_select.set(str(window_select_global) )
-
-             elif (window_select_global == "new_contact_list"):
-
-                   # print(".... select window:  new_contact_list ")
-                   self.new_list_window_method()
-                   window_select_global = "WINDOW SELECT"
-                   self.window_select_opt_menu_select.set(str(window_select_global) )
-
-             elif (window_select_global == "select_contact_list"):
-
-                   # print(".... select window:  select_contact_list ")
-                   self.new_window_method()
-                   window_select_global = "WINDOW SELECT"
-                   self.window_select_opt_menu_select.set(str(window_select_global) )
- 
              elif (window_select_global == "system_admin_info"): 
 
                  # print(".... select window:  system_admin_info ")
                  self.system_administration_View_method()
-                 window_select_global = "WINDOW SELECT"
+                 window_select_global = "system_admin_info"
                  self.window_select_opt_menu_select.set(str(window_select_global) )
 
-             elif (window_select_global == "email_gmail_class"):
+             elif (window_select_global == "CREATE PROJECT"): 
 
-                   # print(".... select window:  email_gmail_class ")
-                   self.email_Gmail_Feature_method()
-                   window_select_global = "WINDOW SELECT"
-                   self.window_select_opt_menu_select.set(str(window_select_global) )
+                 # print(".... select window:  system_admin_info ")
+                 self.system_administration_View_method()
+                 window_select_global = "CREATE PROJECT"
+                 self.window_select_opt_menu_select.set(str(window_select_global) )
+
+             elif (window_select_global == "project_eda_5r89"): 
+
+                 # print(".... select window:  system_admin_info ")
+                 self.system_administration_View_method()
+                 window_select_global = "project_eda_5r89"
+                 self.window_select_opt_menu_select.set(str(window_select_global) )
 
              elif (window_select_global == "config_setting_class"):
 
                    # print(".... select window:  config_setting_class ")
                    self.config_App_Settings_method()
-                   window_select_global = "WINDOW SELECT"
+                   window_select_global = "config_setting_class"
                    self.window_select_opt_menu_select.set(str(window_select_global) )
 
-             elif (window_select_global == "CRM STARTUP"):
+             elif (window_select_global == "UVM APP STARTUP"):
 
                    # print(".... select window:   CRM STARTUP")
                    self.crm_startup_method()
-                   window_select_global = "WINDOW SELECT"
-                   self.window_select_opt_menu_select.set(str(window_select_global) )
-
-             elif (window_select_global == "MEDICAL RECORD"):
-
-                   # print(".... select window:  MEDICAL RECORD ")
-                   self.user_defined_gui_window_method()
-                   window_select_global = "WINDOW SELECT"
-                   self.window_select_opt_menu_select.set(str(window_select_global) )
-
-             elif (window_select_global == "COMMAND CENTER"):
-
-                   # print(".... select window:  COMMAND CENTER STARTUP ")
-                   self.COMMAND_CENTER_STARTUP_method()
-                   window_select_global = "WINDOW SELECT"
+                   window_select_global = "UVM APP STARTUP"
                    self.window_select_opt_menu_select.set(str(window_select_global) )
 
              elif (window_select_global == "E X I T"):
 
-                   window_select_global = "WINDOW SELECT"
+                   window_select_global = "E X I T"
                    self.window_select_opt_menu_select.set(str(window_select_global) )
                    # print(".... E X I T .... self.exit_Handler")
                    self.exit_Handler()
@@ -3271,15 +3231,15 @@ class App(Frame):    #( object)
 
             # Now delete the ENTRY Text Fields to prepare for next ENTRY
 
-            self.entry_first.set('')
-            self.entry_last.set('')
-            self.entry_streetadd.set('')
-            self.entry_citytown.set('') 
-            self.entry_state.set('')
-            self.entry_zipcode.set('') 
-            self.entry_phonenum.set('')
-            self.entry_email.set('')
-            self.entry_website.set('')
+            # self.entry_first.set('')
+            # self.entry_last.set('')
+            # self.entry_streetadd.set('')
+            # self.entry_citytown.set('') 
+            # self.entry_state.set('')
+            # self.entry_zipcode.set('') 
+            # self.entry_phonenum.set('')
+            # self.entry_email.set('')
+            # self.entry_website.set('')
 
                   
             
@@ -17256,7 +17216,7 @@ class Write_Exception_Logfile(object):
                   exception_logfile.write("....   P Y T H O N    E X C E P T I O N S    L O G F I L E   ....")
                   exception_logfile.write("\n")
                   exception_logfile.write("\n_____________________________________________________________________________\n")
-                  exception_logfile.write("\n" + ".... Contact  Management  Workstation  Enterprise  Cloud  Software  Application: *** Version 14.2 ***")
+                  exception_logfile.write("\n" + ".... UVM TESTBENCH BUILDER  Enterprise  Cloud  Software  Application: *** Version 14.2 ***")
                   exception_logfile.write("\n" + ".... Date : Time :  " + str(datetime.datetime.now() ) )
                   exception_logfile.write("\n_____________________________________________________________________________\n")
                   exception_logfile.write("\n") 
@@ -17298,25 +17258,28 @@ class Write_Main_Logfile(object):
                   cmlogfile.write("\n" + ".... (Windows) platform.node = " + str(platform.node() ) )
                   cmlogfile.write("\n" + ".... (Windows) IPv4 Address = " + str(ipv4_address_global) )
                   cmlogfile.write("\n_____________________________________________________________________________\n")
-                  cmlogfile.write("\n" + ".... Contact  Management  Workstation  Enterprise  Cloud  Software  Application: *** Version 14.2 ***")
+                  cmlogfile.write("\n" + ".... UVM TESTBENCH BUILDER  Enterprise  Cloud  Software  Application: *** Demo Version  ***")
                   cmlogfile.write("\n" + ".... Date : Time :  " + str(datetime.datetime.now() ) )
                   cmlogfile.write("\n_____________________________________________________________________________\n")
                   cmlogfile.write("\n.... USERNAME = " + str(username_global) )
                   cmlogfile.write("\n.... USER HOME PATH = " + str(userprofile_global) )
                   cmlogfile.write("\n.... APPDATA PATH = " + str(appdata_path_global) )
+                  
+                  appdata_cm_then_user_dir = (str(cm_appdatafiles_path_global) )     
+                  if not os.path.isdir(appdata_cm_then_user_dir):
+                     os.makedirs(appdata_cm_then_user_dir)
+                 
+                  appdata_projects_then_user_dir = (str(cm_appdatafiles_path_global) + "\projects")
+                  appdata_projects_then_user_dir_global = (str(cm_appdatafiles_path_global) + "\projects")
+                  if not os.path.isdir(appdata_projects_then_user_dir):
+                     os.makedirs(appdata_projects_then_user_dir)     
+                  
                   cmlogfile.write("\n.... **********************   D_A_T_A_B_A_S_E___F_I_L_E_S    ********************")
+                  cmlogfile.write("\n.... THIS LOGFILE PATH = " + str(fullpath_fn_cm_sw_app_logfile_global) )
+                  cmlogfile.write("\n.... PROJECTS DIR PATH = " + str(appdata_projects_then_user_dir_global) )
                   cmlogfile.write("\n.... APP CONFIG INI FILE PATH = " + str(fullpath_app_config_ini_global) )
-                  cmlogfile.write("\n.... MEDICAL RECORD FILE PATH = " + str(fullpath_med_config_ini_global) )
                   cmlogfile.write("\n.... EXCEPTION LOGFILE PATH = " + str(fullpath_exception_logfile_global) )
                   cmlogfile.write("\n.... CONTACT MANAGEMENT DATA PATH = " + str(cm_appdatafiles_path_global) )
-                  cmlogfile.write("\n.... CSV FILENAME = " + str(fullpath_fn_cm_listbox_file_global) )
-                  cmlogfile.write("\n.... DICTIONARY FILENAME = " + str(fullpath_fn_dict_filename_global) )
-                  cmlogfile.write("\n.... NOTES DICT FILENAME = " + str(fullpath_cnotes_dict_file_global) )
-                  cmlogfile.write("\n.... GMAIL OAUTH2 CREDENTIALS = " + str(credential_home_path_global) )
-                  cmlogfile.write("\n.... GMAIL OAUTH2 CLIENT SECRET = " + str(client_secret_path_global) )
-                  cmlogfile.write("\n.... THIS LOGFILE PATH = " + str(fullpath_fn_cm_sw_app_logfile_global) )
-                  cmlogfile.write("\n.... EXCEL OUTPUT PATH (AppData) = " + str(export_csv_excel_cm_appdata_global) )
-                  cmlogfile.write("\n.... EXCEL OUTPUT PATH (UserProfile) = " + str(export_csv_excel_userprofile_global) )
                   cmlogfile.write("\n_____________________________________________________________________________\n")
                   cmlogfile.write("\n.... mainscreen background color = " + str(mainscreen_bg_color_val_global) + \
                                   "     .... viewcreen background color = " + str(viewscreen_bg_color_val_global) )
@@ -17552,7 +17515,7 @@ def main():
 
       print("..... appdata_path_global:  " + str(appdata_path_global) )
 
-      cm_appdatafiles_path_global = os.path.join(str(appdata_path_global), "CONTACT_MANAGEMENT", str(username_global) )
+      cm_appdatafiles_path_global = os.path.join(str(appdata_path_global), "UVM_BUILDER_APP_DATA", str(username_global) )
 
       print("..... cm_appdatafiles_path_global:  " + str(cm_appdatafiles_path_global) )
 
@@ -17920,9 +17883,16 @@ def main():
             config_fg_color_val_global = str(config_fg_color_val)
             
 ################################################################################################# 
+            
       appdata_cm_then_user_dir = (str(cm_appdatafiles_path_global) )     
       if not os.path.isdir(appdata_cm_then_user_dir):
-          os.makedirs(appdata_cm_then_user_dir)
+         os.makedirs(appdata_cm_then_user_dir)
+                 
+      appdata_projects_then_user_dir = (str(cm_appdatafiles_path_global) + "\projects")
+      appdata_projects_then_user_dir_global = (str(cm_appdatafiles_path_global) + "\projects")
+      if not os.path.isdir(appdata_projects_then_user_dir):
+         os.makedirs(appdata_projects_then_user_dir)     
+                          
 #################################################################################################
 
       # Create Directory Paths for Exporting Contact Management App Contact List to Excel.
