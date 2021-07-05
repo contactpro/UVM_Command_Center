@@ -1125,7 +1125,7 @@ class App(Frame):    #( object)
 
             r = 5
             for c in scroll_label:
-                  if r > 4 and r < 10:
+                  if r > 4 and r < 11:
                        if r == 5:
                              bindto = "forward_fast"
                              self.speedbutton_1 = Button(self.master, text = "UVM SEQUENCER", \
@@ -1171,7 +1171,7 @@ class App(Frame):    #( object)
                              self.speedbutton_4.bind("<Enter>", on_enter_bg)
                              self.speedbutton_4.bind("<Leave>", on_leave_bg)  
                              ############################################################################
-                       elif r == 9:
+                       elif r == 10:
                              bindto = "backward_scroll"
                              self.speedbutton_5 = Button(self.master, text = "UVM ENV", \
                              width=15,height=1, font=('Helvetica', '14'), \
@@ -1272,13 +1272,13 @@ class App(Frame):    #( object)
                 width=15, height=1, font=('Helvetica', '14'), \
                 background="midnight blue", fg="deep sky blue", command = self.UVM_SCBD_View_method)
             
-            self.build_dual_list_button2.grid(row=10, column=0, sticky=W)
+            self.build_dual_list_button2.grid(row=9, column=0, sticky=W)
             self.build_dual_list_button2.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
             self.build_dual_list_button2.bind("<Enter>", on_enter_bg)
             self.build_dual_list_button2.bind("<Leave>", on_leave_bg)  
 ###################################################################################### 
 
-            self.build_dual_list_button = Button(self.master, text = "UVM TB PKG", \
+            self.build_dual_list_button = Button(self.master, text = "UVM TEST", \
                 width=15, height=1, font=('Helvetica', '14'), \
                 background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
             
@@ -1288,7 +1288,7 @@ class App(Frame):    #( object)
             self.build_dual_list_button.bind("<Leave>", on_leave_bg)  
 ######################################################################################  
 
-            self.build_dual_list3_button = Button(self.master, text = "UVM TB CFG", \
+            self.build_dual_list3_button = Button(self.master, text = "UVM TB PKG", \
                 width=15, height=1, font=('Helvetica', '14'), \
                 background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
             
