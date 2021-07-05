@@ -2423,8 +2423,6 @@ class App(Frame):    #( object)
             medium_font = ('Verdana',12,'bold')
             small_font = ('Verdana',10)
             menubar_font = ('Helvetica', '12')
-            
-            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/mem_interface.sv"')
 
             # self.textFile = open(fullpath_fn_SV_INTERFACE_CODE_logfile_global, 'r')
 
@@ -2463,8 +2461,6 @@ class App(Frame):    #( object)
             medium_font = ('Verdana',12,'bold')
             small_font = ('Verdana',10)
             menubar_font = ('Helvetica', '12')
-                  
-            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/mem_seq_item.sv"')
 
             return
             
@@ -2491,9 +2487,7 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export            
-                  
-            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/mem_sequence.sv"')
- 
+
             return
  
       ###################################################
@@ -2519,9 +2513,7 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export                  
-                             
-            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/mem_sequencer.sv"')
- 
+
             return
             
       ###################################################
@@ -2547,9 +2539,7 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export    
-                                         
-            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/mem_driver.sv"')
-   
+
             return
             
       ###################################################
@@ -2575,8 +2565,6 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export                   
-                                                      
-            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/mem_monitor.sv"')
 
             return
             
@@ -2603,8 +2591,6 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export                    
-                                                                   
-            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/mem_agent.sv"')
 
             return
            
@@ -2631,9 +2617,7 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export                   
-                                                                                 
-            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/mem_env.sv"')
-
+ 
             return     
                  
       ###################################################
@@ -2659,9 +2643,7 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export                        
-                                                                                                 
-            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/mem_scoreboard.sv"')
- 
+
             return
                  
       ###################################################
@@ -2765,9 +2747,7 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export      
-                                                                                                             
-            os.system('cmd /c "uedit64 C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89/testbench_top.sv"')
- 
+
             return
             
       ###################################################
