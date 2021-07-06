@@ -202,6 +202,10 @@ fullpath_fn_cm_listbox_file_global = "FULLPATH_FN_CM_LISTBOX_FILE Not Set"
 fullpath_fn_dict_filename_global = "FULLPATH_FN_DICT_FILENAME Not Set"
 fullpath_cnotes_dict_file_global = "FULLPATH_CNOTES_DICT_FILE Not Set"
 fullpath_fn_cm_sw_app_logfile_global = "FULLPATH_FN_CM_SW_APP_LOGFILE Not Set"
+directory_full_path_project_name_global = "DIRECTORY_FULL_PATH_PROJECT_NAME Not Set"
+directory_project_name_global = "DIRECTORY_NAME_PROJECT_SELECTED Not Set"
+uvm_tb_builder_project_dir_list_global = "UVM_TB_BUILDER_PROJECT_FILE_LIST Not Set"
+uvm_tb_builder_project_selected_global = "UVM_TB_BUILDER_PROJECT_SELECTED Not Set"
 import_excel_csv_userprofile_global = "IMPORT EXCEL CSV USERPROFILE DIR Not Set"
 import_excel_csv_cm_appdata_global = "IMPORT EXCEL CSV APPDATA DIR Not Set"
 export_csv_excel_userprofile_global = "EXPORT CSV TO EXCEL USERPROFILE DIR Not Set"
@@ -733,6 +737,9 @@ class App(Frame):    #( object)
             global cnotes_dict_file_global
             global master_cm_list_name_global
             global cm_appdatafiles_path_global
+            global directory_project_name_global
+            global uvm_tb_builder_project_dir_list_global
+            global uvm_tb_builder_project_selected_global
             global listbox_color_value_global
             global listbox_color_moment_global
             global fullpath_app_config_ini_global
@@ -757,6 +764,7 @@ class App(Frame):    #( object)
             global fullpath_cnotes_dict_file_global
             global fullpath_fn_cm_sw_app_logfile_global
             global appdata_projects_then_user_dir_global
+            global uvm_tb_file_list_global
             global import_excel_csv_userprofile_global
             global import_excel_csv_cm_appdata_global
             global export_csv_excel_userprofile_global
@@ -1189,11 +1197,11 @@ class App(Frame):    #( object)
 
 ######################################################################################
 
-            List_of_WINDOWS = ["PROJECT SEL", "CREATE PROJECT", "project_eda_5r89", "cm_app_doc_media", "app_status_panel", \
+            List_of_WINDOWS = ["SELECT PROJECT", "VIEW PROJECTS", "CREATE PROJECT", "project_eda_5r89", "cm_app_doc_media", "app_status_panel", \
                                "system_admin_info","config_setting_class", \
                                "UVM APP STARTUP", "E X I T"]
 
-            window_select_global = "PROJECT SEL"
+            window_select_global = "SELECT PROJECT"
 
             self.window_select_opt_menu_select = StringVar()
             self.window_select_opt_menu_select.set(str(window_select_global) )   # initialize OptionMenu for window Select
@@ -1216,8 +1224,44 @@ class App(Frame):    #( object)
             self.sys_admin_view_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
             self.sys_admin_view_button.bind("<Enter>", on_enter_bg)
             self.sys_admin_view_button.bind("<Leave>", on_leave_black_bg) 
+            
+            # INSERT LABEL FOR SELECTED PROJECT NAME .... 
+            self.label_project_status = "PROJECT: "
+            self.mylabel_project_status = Label(self.master, text = self.label_project_status, font=minilarge_font)
+            self.mylabel_project_status.config(height=1, width=9, anchor = W) 
+            self.mylabel_project_status.config(background="black", fg="deep sky blue",)
+            self.mylabel_project_status.grid(row=13, column=1, sticky = W)
+                                             
+            # INSERT ENTRY BOX FOR SELECTED PROJECT NAME ....  
+          
+            self.entry_project_status = Entry(self.master, font=small_font)
+            self.entry_project_status.config(width=13) 
+            self.entry_project_status.config(background="black", fg="deep sky blue")
+            self.entry_project_status.grid(row=13, column=2, sticky = W)
+                                      
+            project_id = "mem_eda_5r89"
+            self.entry_project_status.insert(END, project_id)
+                           
+           
+            # INSERT LABEL FOR SELECTED PROJECT NAME .... 
+            self.label2_project_status = "PATH: "
+            self.mylabel2_project_status = Label(self.master, text = self.label2_project_status, font=minilarge_font)
+            self.mylabel2_project_status.config(height=1, width=9, anchor = W) 
+            self.mylabel2_project_status.config(background="black", fg="deep sky blue",)
+            self.mylabel2_project_status.grid(row=14, column=1, sticky = W)
+                                             
+            # INSERT ENTRY BOX FOR SELECTED PROJECT NAME ....  
+          
+            self.entry2_project_status = Entry(self.master, font=small_font)
+            self.entry2_project_status.config(width=30) 
+            self.entry2_project_status.config(background="black", fg="deep sky blue")
+            self.entry2_project_status.grid(row=14, column=2, sticky = W)
+                                      
+            project_id_fullpath = "C:/project_fullpath/mem_eda_5r89"
+            self.entry2_project_status.insert(END, project_id_fullpath)                           
+                                                                                         
 ###################################################################################### 
-##
+## 
 ##    Implement BUILD-COMPILE-SIMULATION-ANALYZE using PYTHON and TKINTER GUI
 ##    to automate UVM Testbench FPGA/ASICSOC Design Verification.
 ##  
@@ -1485,10 +1529,20 @@ class App(Frame):    #( object)
              # Set the GLOBAL for the newly selected window_select_global 
              window_select_global = str(window_select_opt_menu_select)
 
-             if window_select_global == "PROJECT SEL":
+             if (window_select_global == "SELECT PROJECT"):
 
-                 return
-             
+                   # print(".... select window:  cm_app_doc_media ")
+                   self.cm_app_doc_media_window_method()
+                   window_select_global = "SELECT PROJECT"
+                   self.window_select_opt_menu_select.set(str(window_select_global) )
+
+             if (window_select_global == "VIEW PROJECTS"):
+
+                   # print(".... select window:  cm_app_doc_media ")
+                   self.cm_app_doc_media_window_method()
+                   window_select_global = "VIEW PROJECTS"
+                   self.window_select_opt_menu_select.set(str(window_select_global) )
+                                                    
              elif (window_select_global == "cm_app_doc_media"):
 
                    # print(".... select window:  cm_app_doc_media ")
@@ -15736,6 +15790,7 @@ class CM_App_Doc_Media(Frame):  #(object):
         global credential_home_path_global
         global OBJECT_toplevel_cm_app_doc_media
         global instance_object_LIST
+        global uvm_tb_file_list_global
         Frame.__init__(self, master)
         self.grid()
         
@@ -15762,7 +15817,9 @@ class CM_App_Doc_Media(Frame):  #(object):
         
         self.master.configure(background="dark slate gray")
 
-        self.master.title("Contact Management COMMAND CENTER WORKSTATION Application Software - EMAIL STARTUP Procedure.")
+        self.master.title("   UVM TESTBENCH BUILDER Application Software.")
+
+        project_dir_project_list = []
 
         # Button Widget for ROW ZERO to Reserve ROW ZERO for Expanded TOOLBAR Type Button Functions.
         self.reserve_row_zero_button = Button(self.master, text = "", \
@@ -15773,12 +15830,11 @@ class CM_App_Doc_Media(Frame):  #(object):
         ## self.reserve_row_zero_button.bind("<Button-1>",self.some_method_here)
 
         # Button Widget for EXPORT METHOD.
-        self.howto_activate_gmail_smtp_mode_button = Button(self.master, text = "QUICK One-Minute Option\n\nActivate Gmail (SMTP Mode)", \
+        self.howto_activate_gmail_smtp_mode_button = Button(self.master, text = "VIEW OF PROJECT DIRECTORY", \
             width=34,height=4, font=('Helvetica', '12'), background="dark slate gray", fg="cyan", \
             activebackground="dark slate gray", activeforeground="cyan")
         
         self.howto_activate_gmail_smtp_mode_button.grid(row=1, column=0, sticky = NW)
-        self.howto_activate_gmail_smtp_mode_button.bind("<Button-1>",self.howto_activate_gmail_smtp_mode)
         
         # TEXTBOX to insert TITLE at top of window   
 
@@ -15787,55 +15843,103 @@ class CM_App_Doc_Media(Frame):  #(object):
         self.title_1_text_box.grid(row=1, column=1, sticky = W)
         self.title_1_text_box.config(borderwidth=10, font=('Helvetica', '12'), background="dark slate gray", fg="cyan")
 
+        text_1_TITLE = "\n**** PROJECT NAME AND SV FILES LIST ****\n\n"
 
-      
-        text_1_TITLE = "\n*********** EMAIL STARTUP Procedure *********** QUICK One-Minute Option (SMTP Mode) **********\n\nWelcome to the Contact Management EMAIL STARTUP Procedure.\n\nThis Contact Management Application is currently designed to SEND EMail using your GMAIL Email.\n\nThis EMAIL STARTUP Procedure Guides you through the steps to allow this Contact Management Application\nto SEND GMAIL using your GMAIL EMAIL.\n\nSTEP #1 is to configure your GMAIL EMAIL to give this Contact Management Application permission\nto SEND GMAIL using your GMAIL EMAIL. This requires you to login to your GMAIL EMAIL, and then,\n open another Window and Go To The Link:\n\n.............................  "
-
-        text_1EEE_TITLE = "\n\nWhile at the Link above, scroll down to the bottom right side of the GOOGLE SECURITY WEBPAGE\nand locate a SLIDING SWITCH called:  ALLOW LESS SECURE APPS   \n\nTurn ON the  ALLOW LESS SECURE APPS  switch by SLIDING the switch to the right to set the\nswitch to the ON position.\n\nCongratulations !!  You are now ready to SEND your first GMAIL using this Contact Management Application.\n\n Note #1: Please select SMTP GMAIL MODE at the TOP RIGHT of the EMAIL SCREEN to send\nGMAIL  with this  ALLOW LESS SECURE APPS  switch  ON. In this SMTP GMAIL MODE,\nyour Gmail Username and Password must be entered when you SEND EMAIL.\n\nNote #2: Eventually, it is recommeded to configure the GMAIL EMAIL capabilities of this Contact Management \nApplication with the ADVANCED SECURITY OAUTH2 GMAIL MODE where this Application runs with\nSecurity Credentials and your GMAIL Username and Password are not required.\n"
-
-
-        # Using Class: HyperlinkManager 
-        GOOGLE_SECURITY_ALLOW_LESS_SECURE_APPS_LINK = lambda : webbrowser.open("https://myaccount.google.com/security")
-        # text = tk.Text(...)
-        hyperman = HyperlinkManager(self.title_1_text_box)
-
-        important_client_secret_file_string = "IMPORTANT FILE #1:  " + str(client_secret_path_global) + "\n\n"
-
-        important_credentials_file_string = "IMPORTANT FILE #2:  " + str(credential_home_path_global) + "\n\n"
+        text_1_LINE_SPACE = "\n  "
 
         # Clear Textbox and then INSERT Text for howto_activate_gmail_smtp_mode method.
         self.title_1_text_box.delete(1.0, END)  # Clear the TEXT WIDGET of Data  
         self.title_1_text_box.insert(END, text_1_TITLE)
-        self.title_1_text_box.insert(INSERT, "https://myaccount.google.com/security", hyperman.add(GOOGLE_SECURITY_ALLOW_LESS_SECURE_APPS_LINK))
-        self.title_1_text_box.insert(END, text_1EEE_TITLE)
-        self.title_1_text_box.config(state=DISABLED)  # NORMAL
-
-
-        # Button Widget for METHOD: howto_activate_gmail_oauth2_mode_part_one
-        # ADVANCED SECURITY Option (Part 1) - Activate Gmail (OAUTH2 Mode)  
-        # Note that activebackground="dark slate gray", activeforeground="cyan")
-        # were required to maintain this button's background and forground colors
-        # because something makes the button "active" after the method executes.
-        self.howto_activate_oauth2_part_one_button = Button(self.master, text = "ADVANCED SECURITY Option (Part 1)\n\nActivate Gmail (OAUTH2 Mode)", \
-            width=34,height=4, font=('Helvetica', '12'), background="dark slate gray", fg="cyan", \
-            activebackground="dark slate gray", activeforeground="cyan")
-        self.howto_activate_oauth2_part_one_button.grid(row=1, column=0, sticky = W)
-        self.howto_activate_oauth2_part_one_button.bind("<Button-1>",self.howto_activate_gmail_oauth2_mode_part_one)
-        self.howto_activate_oauth2_part_one_button.configure(state = "normal", relief="raised", background="dark slate gray", fg="cyan")
-
-
-        # Button Widget for METHOD: howto_activate_gmail_oauth2_mode_part_two
-        # ADVANCED SECURITY Option (Part 2) - Verify Gmail (OAUTH2 Mode)
-        # Note that activebackground="dark slate gray", activeforeground="cyan")
-        # were required to maintain this button's background and forground colors
-        # because something makes the button "active" after the method executes.
-        self.howto_activate_oauth2_part_two_button = Button(self.master, text = "ADVANCED SECURITY Option (Part 2)\n\nVERIFY client_secret.json on the\n\nSTATUS PANEL (OAUTH2 Mode)", \
-            width=34,height=6, font=('Helvetica', '12'), background="dark slate gray", fg="cyan", \
-            activebackground="dark slate gray", activeforeground="cyan")
-        self.howto_activate_oauth2_part_two_button.grid(row=1, column=0, sticky = SW)
-        self.howto_activate_oauth2_part_two_button.bind("<Button-1>",self.howto_activate_gmail_oauth2_mode_part_two)
-        self.howto_activate_oauth2_part_two_button.configure(state = "normal", relief="raised", background="dark slate gray", fg="cyan")
+        self.title_1_text_box.insert(END, text_1_LINE_SPACE)
         
+        self.title_1_text_box.config(state=NORMAL)  # DISABLED
+
+        #####################################################################
+        #
+        # Open DIALOG to SELECT CSV File in Windows Folder
+        # Use the Full File Path acquired from the DIALOG SELECTION
+        # to copy the selected CSV File to the two 
+        # IMPORT CSV File Directories (USER and APPDATA). 
+        # Then, use the CSV parser Class to import the
+        # CSV into a Dictionary, and then add that
+        # imported Dictionary to our Contact List Database Files:
+        # dict_ and cm_list_
+        #
+        #####################################################################
+
+        # Use dialog to get CSV file to import.
+
+        ###########   Select a Directory:
+
+        root = tk.Tk()
+        root.withdraw()
+        home_dir = userprofile_global
+        
+        dirname = filedialog.askdirectory(parent=root,initialdir=home_dir,title='Please SELECT a Directory')
+        
+        directory_project_name_global = os.path.basename(dirname)
+        
+        uvm_tb_builder_project_selected_global = os.path.basename(dirname)
+
+        directory_full_path_project_name_global = dirname
+
+        print("\n")
+        print(".... PROJECT DIRECTORY NAME: " + str(directory_project_name_global) )
+
+        print("\n")
+        print(".... PROJECT DIRECTORY (FULL PATH): " + str(directory_full_path_project_name_global) )
+        
+        self.title_1_text_box.insert(END, directory_project_name_global)
+        self.title_1_text_box.insert(END, text_1_LINE_SPACE)
+        self.title_1_text_box.insert(END, text_1_LINE_SPACE)
+        
+        self.title_1_text_box.insert(END, directory_full_path_project_name_global)
+        self.title_1_text_box.insert(END, text_1_LINE_SPACE)
+        self.title_1_text_box.insert(END, text_1_LINE_SPACE)
+        
+        ############   Select a Files to import.  
+
+        # askopenfile - opens the file and returns the opened object (or Null if cancelled).
+
+        # askopenfilename - just gets and returns the full path to the file (or empty string if cancelled).
+
+        ftypes = [
+            ('All Files', '*.*'),
+            ("SystemVerilog Files","*.sv"),
+            ("Microsoft Excel csv Files","*.csv")]
+
+        root = tk.Tk()
+        root.withdraw()
+
+        uvm_tb_file_list = []
+
+        for n in range(13):
+
+            csv_file_path = ""
+
+            csv_file_path = filedialog.askopenfilename(parent=root,title='Choose a file',filetypes = ftypes)
+
+            print(".... Selected CSV File Path = " + str(csv_file_path) + "\n")
+
+            csv_base_filename = os.path.basename(csv_file_path)
+
+            print(".... csv_base_filename = " + str(csv_base_filename) )
+
+            uvm_tb_file_list.append(str(csv_base_filename))
+            
+            self.title_1_text_box.insert(END, csv_base_filename)
+            self.title_1_text_box.insert(END, text_1_LINE_SPACE)
+            
+        uvm_tb_file_list_global = uvm_tb_file_list
+        
+        uvm_tb_builder_project_dir_list_global = uvm_tb_file_list
+                
+        self.title_1_text_box.config(state=DISABLED)  #NORMAL
+        
+        for i in range(len(uvm_tb_file_list_global)):
+            print (str(uvm_tb_file_list_global[i]))
+          
+               
         #
         # LOWER WINDOW BUTTON.   
         # 
@@ -15877,20 +15981,9 @@ class CM_App_Doc_Media(Frame):  #(object):
 #1234
     def howto_activate_gmail_smtp_mode(self, event):
       
-        text_1_TITLE = "\n*********** EMAIL STARTUP Procedure *********** QUICK One-Minute Option (SMTP Mode) **********\n\nWelcome to the Contact Management EMAIL STARTUP Procedure.\n\nThis Contact Management Application is currently designed to SEND EMail using your GMAIL Email.\n\nThis EMAIL STARTUP Procedure Guides you through the steps to allow this Contact Management Application\nto SEND GMAIL using your GMAIL EMAIL.\n\nSTEP #1 is to configure your GMAIL EMAIL to give this Contact Management Application permission\nto SEND GMAIL using your GMAIL EMAIL. This requires you to login to your GMAIL EMAIL, and then,\n open another Window and Go To The Link:\n\n.............................  "
+        text_1_TITLE = "\n*********** PROJECT LIST **********\n\n"
 
-        text_1EEE_TITLE = "\n\nWhile at the Link above, scroll down to the bottom right side of the GOOGLE SECURITY WEBPAGE\nand locate a SLIDING SWITCH called:  ALLOW LESS SECURE APPS   \n\nTurn ON the  ALLOW LESS SECURE APPS  switch by SLIDING the switch to the right to set the\nswitch to the ON position.\n\nCongratulations !!  You are now ready to SEND your first GMAIL using this Contact Management Application.\n\n Note #1: Please select SMTP GMAIL MODE at the TOP RIGHT of the EMAIL SCREEN to send\nGMAIL  with this  ALLOW LESS SECURE APPS  switch  ON. In this SMTP GMAIL MODE,\nyour Gmail Username and Password must be entered when you SEND EMAIL.\n\nNote #2: Eventually, it is recommeded to configure the GMAIL EMAIL capabilities of this Contact Management \nApplication with the ADVANCED SECURITY OAUTH2 GMAIL MODE where this Application runs with\nSecurity Credentials and your GMAIL Username and Password are not required.\n"
-
-
-        # Using Class: HyperlinkManager 
-        GOOGLE_SECURITY_ALLOW_LESS_SECURE_APPS_LINK = lambda : webbrowser.open("https://myaccount.google.com/security")
-        # text = tk.Text(...)
-        hyperman = HyperlinkManager(self.title_1_text_box)
-
-        important_client_secret_file_string = "IMPORTANT FILE #1:  " + str(client_secret_path_global) + "\n\n"
-
-        important_credentials_file_string = "IMPORTANT FILE #2:  " + str(credential_home_path_global) + "\n\n"
-
+        text_1EEE_TITLE = "\n\n  "      
         
         # Clear Textbox and then INSERT Text for howto_activate_gmail_smtp_mode method.
         self.title_1_text_box.config(state=NORMAL)  # DISABLED
@@ -17264,6 +17357,7 @@ class Write_Main_Logfile(object):
                   cmlogfile.write("\n.... USERNAME = " + str(username_global) )
                   cmlogfile.write("\n.... USER HOME PATH = " + str(userprofile_global) )
                   cmlogfile.write("\n.... APPDATA PATH = " + str(appdata_path_global) )
+                  cmlogfile.write("\n.... ")
                   
                   appdata_cm_then_user_dir = (str(cm_appdatafiles_path_global) )     
                   if not os.path.isdir(appdata_cm_then_user_dir):
@@ -17275,11 +17369,13 @@ class Write_Main_Logfile(object):
                      os.makedirs(appdata_projects_then_user_dir)     
                   
                   cmlogfile.write("\n.... **********************   D_A_T_A_B_A_S_E___F_I_L_E_S    ********************")
+                  cmlogfile.write("\n.... ")
+                  cmlogfile.write("\n.... UVM TESTBENCH BUILDER APPDATA PATH = " + str(cm_appdatafiles_path_global) )
                   cmlogfile.write("\n.... THIS LOGFILE PATH = " + str(fullpath_fn_cm_sw_app_logfile_global) )
                   cmlogfile.write("\n.... PROJECTS DIR PATH = " + str(appdata_projects_then_user_dir_global) )
                   cmlogfile.write("\n.... APP CONFIG INI FILE PATH = " + str(fullpath_app_config_ini_global) )
                   cmlogfile.write("\n.... EXCEPTION LOGFILE PATH = " + str(fullpath_exception_logfile_global) )
-                  cmlogfile.write("\n.... CONTACT MANAGEMENT DATA PATH = " + str(cm_appdatafiles_path_global) )
+
                   cmlogfile.write("\n_____________________________________________________________________________\n")
                   cmlogfile.write("\n.... mainscreen background color = " + str(mainscreen_bg_color_val_global) + \
                                   "     .... viewcreen background color = " + str(viewscreen_bg_color_val_global) )
@@ -17515,7 +17611,7 @@ def main():
 
       print("..... appdata_path_global:  " + str(appdata_path_global) )
 
-      cm_appdatafiles_path_global = os.path.join(str(appdata_path_global), "UVM_BUILDER_APP_DATA", str(username_global) )
+      cm_appdatafiles_path_global = os.path.join(str(appdata_path_global), "UVM_BUILDER_APP_DATA" )
 
       print("..... cm_appdatafiles_path_global:  " + str(cm_appdatafiles_path_global) )
 
