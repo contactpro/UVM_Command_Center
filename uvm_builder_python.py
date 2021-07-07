@@ -156,6 +156,10 @@ cm_dict_file_startup_test_global = None
 cm_csv_file_startup_test_global = None
 cm_notes_file_startup_test_global = None
 insert_first_contact_global = False
+project_sv_files_list_global = []
+project_name_only_global = "PROJECT NAME ONLY - NOT YET SET"
+project_name_fulpath_global = "PROJECT NAME FULLPATH - NOT YET SET"
+event_project_select_update_flag_global = 0
 gmail_mode_global = "gmail_mode_global NOT SET"
 fullpath_gmail_oauth2_credentials_global = "PATH NOT SET for client_secret.json"
 fullpath_exception_logfile_global = "EXCEPTION LOGFILE PATH NOT SET"
@@ -740,6 +744,12 @@ class App(Frame):    #( object)
             global directory_project_name_global
             global uvm_tb_builder_project_dir_list_global
             global uvm_tb_builder_project_selected_global
+            global project_sv_files_list_global
+            global project_name_only_global
+            global project_name_fullpath_global
+            global directory_project_name_global
+            global directory_full_path_project_name_global
+            global event_project_select_update_flag_global
             global listbox_color_value_global
             global listbox_color_moment_global
             global fullpath_app_config_ini_global
@@ -1078,7 +1088,7 @@ class App(Frame):    #( object)
                 width=15,height=1, background="midnight blue", fg="deep sky blue",command = self.SV_INTERFACE_View_method)
 
             self.sv_interface_button.grid(row=2, column=0, sticky=W)
-            self.sv_interface_button.config(font=('Helvetica', 14 ) )
+            self.sv_interface_button.config(font=('Helvetica', 12 ) )
             self.sv_interface_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
    
             self.sv_interface_button.bind("<Enter>", on_enter_bg)
@@ -1089,7 +1099,7 @@ class App(Frame):    #( object)
                 width=15,height=1, background="midnight blue", fg="deep sky blue", command = self.UVM_SEQ_ITEM_View_method)
 
             self.uvm_seq_item_button.grid(row=3, column=0, sticky=W)
-            self.uvm_seq_item_button.config(font=('Helvetica', 14 ) )
+            self.uvm_seq_item_button.config(font=('Helvetica', 12 ) )
             self.uvm_seq_item_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                                 
             self.uvm_seq_item_button.bind("<Enter>", on_enter_bg)
@@ -1121,7 +1131,7 @@ class App(Frame):    #( object)
 
 
             self.sort_contact_list_button = Button(self.master, text = "UVM SEQUENCE", \
-                  width=15,height=1, font=('Helvetica', '14'), background="midnight blue", fg="deep sky blue", \
+                  width=15,height=1, font=('Helvetica', '12'), background="midnight blue", fg="deep sky blue", \
                   activebackground="cyan", activeforeground="blue2", command = self.UVM_SEQUENCE_View_method)
 
             self.sort_contact_list_button.grid(row=4, column=0, sticky=W)
@@ -1140,7 +1150,7 @@ class App(Frame):    #( object)
                        if r == 5:
                              bindto = "forward_fast"
                              self.speedbutton_1 = Button(self.master, text = "UVM SEQUENCER", \
-                             width=15,height=1, font=('Helvetica', '14'), \
+                             width=15,height=1, font=('Helvetica', '12'), \
                              background="midnight blue", fg="deep sky blue", command = self.UVM_SEQUENCER_View_method)
                              self.speedbutton_1.grid(row=r,column=0, sticky=W)
                              self.speedbutton_1.config(borderwidth=5)
@@ -1151,7 +1161,7 @@ class App(Frame):    #( object)
                        elif r == 6:
                              bindto = "forward_scroll"
                              self.speedbutton_2 = Button(self.master, text = "UVM DRIVER", \
-                             width=15,height=1, font=('Helvetica', '14'), \
+                             width=15,height=1, font=('Helvetica', '12'), \
                              background="midnight blue", fg="deep sky blue", command = self.UVM_DRIVER_View_method)
                              self.speedbutton_2.grid(row=r,column=0, sticky=W)
                              self.speedbutton_2.config(borderwidth=5)
@@ -1162,7 +1172,7 @@ class App(Frame):    #( object)
                        elif r == 7:
                              bindto = "forward_tick"
                              self.speedbutton_3 = Button(self.master, text = "UVM MONITOR", \
-                             width=15,height=1, font=('Helvetica', '14'), \
+                             width=15,height=1, font=('Helvetica', '12'), \
                              background="midnight blue", fg="deep sky blue", command = self.UVM_MONITOR_View_method)
                              self.speedbutton_3.grid(row=r,column=0, sticky=W)
                              self.speedbutton_3.config(borderwidth=5)
@@ -1174,7 +1184,7 @@ class App(Frame):    #( object)
                        elif r == 8:
                              bindto = "backward_tick"
                              self.speedbutton_4 = Button(self.master, text = "UVM AGENT", \
-                             width=15,height=1, font=('Helvetica', '14'), \
+                             width=15,height=1, font=('Helvetica', '12'), \
                              background="midnight blue", fg="deep sky blue", command = self.UVM_AGENT_View_method)
                              self.speedbutton_4.grid(row=r,column=0, sticky=W)
                              self.speedbutton_4.config(borderwidth=5)
@@ -1185,7 +1195,7 @@ class App(Frame):    #( object)
                        elif r == 10:
                              bindto = "backward_scroll"
                              self.speedbutton_5 = Button(self.master, text = "UVM ENV", \
-                             width=15,height=1, font=('Helvetica', '14'), \
+                             width=15,height=1, font=('Helvetica', '12'), \
                              background="midnight blue", fg="deep sky blue", command = self.UVM_ENV_View_method)
                              self.speedbutton_5.grid(row=r,column=0, sticky=W)
                              self.speedbutton_5.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
@@ -1195,32 +1205,31 @@ class App(Frame):    #( object)
                   r = r + 1
 
 
-######################################################################################
+#####################################################################################
 
-            List_of_WINDOWS = ["SELECT PROJECT", "VIEW PROJECTS", "CREATE PROJECT", "project_eda_5r89", "cm_app_doc_media", "app_status_panel", \
-                               "system_admin_info","config_setting_class", \
-                               "UVM APP STARTUP", "E X I T"]
+            List_of_WINDOWS = ["PLEASE SELECT", "SELECT PROJECT", "VIEW PROJECTS", "CREATE PROJECT", \
+                               "config_setting_class", "UVM APP STARTUP", "E X I T"]
 
-            window_select_global = "SELECT PROJECT"
+            window_select_global = "PLEASE SELECT"
 
             self.window_select_opt_menu_select = StringVar()
             self.window_select_opt_menu_select.set(str(window_select_global) )   # initialize OptionMenu for window Select
             self.window_select_optionsmenu_inst = OptionMenu(self.master, self.window_select_opt_menu_select, \
             *List_of_WINDOWS, command=self.func_set_window_select_global)
-            self.window_select_optionsmenu_inst.grid(row=1, column=0) 
-            self.window_select_optionsmenu_inst.config(borderwidth=5, background="cyan", fg="blue2", font=('Helvetica', 14) )
+            self.window_select_optionsmenu_inst.grid(row=1, column=0, sticky=NW) 
+            self.window_select_optionsmenu_inst.config(borderwidth=5, background="cyan", fg="blue2", font=('Helvetica', 12) )
             self.window_select_optionsmenu_inst.config(activebackground="cyan", activeforeground="blue2")
             
             menu_window_select = self.window_select_optionsmenu_inst.nametowidget(self.window_select_optionsmenu_inst.menuname) 
-            menu_window_select.configure(font=("Helvetica", 14), fg="blue2", bg="cyan") 
+            menu_window_select.configure(font=("Helvetica", 12), fg="blue2", bg="cyan") 
 
-###################################################################################### 
+##################################################################################### 
 
             self.sys_admin_view_button = Button(self.master, text = "SYSTEM ADMIN", \
-                  width=15,height=1, font=('Helvetica', '14'), \
+                  width=15,height=1, font=('Helvetica', '12'), \
                   background="black", fg="deep sky blue", command = self.system_administration_View_method)
             
-            self.sys_admin_view_button.grid(row=14, column=0, sticky=W)
+            self.sys_admin_view_button.grid(row=15, column=0, sticky=W)
             self.sys_admin_view_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
             self.sys_admin_view_button.bind("<Enter>", on_enter_bg)
             self.sys_admin_view_button.bind("<Leave>", on_leave_black_bg) 
@@ -1228,38 +1237,35 @@ class App(Frame):    #( object)
             # INSERT LABEL FOR SELECTED PROJECT NAME .... 
             self.label_project_status = "PROJECT: "
             self.mylabel_project_status = Label(self.master, text = self.label_project_status, font=minilarge_font)
-            self.mylabel_project_status.config(height=1, width=9, anchor = W) 
+            self.mylabel_project_status.config(height=1, width=11, anchor = W) 
             self.mylabel_project_status.config(background="black", fg="deep sky blue",)
-            self.mylabel_project_status.grid(row=13, column=1, sticky = W)
+            self.mylabel_project_status.grid(row=16, column=0, sticky = W)
+                                             
+            # Please Note these global variables for PROJECT.
+            # global project_name_only_global
+            # global project_name_fullpath_global                  
                                              
             # INSERT ENTRY BOX FOR SELECTED PROJECT NAME ....  
           
-            self.entry_project_status = Entry(self.master, font=small_font)
-            self.entry_project_status.config(width=13) 
+            self.entry_project_status = Entry(self.master, font=('Helvetica', '12'))
+            self.entry_project_status.config(width=25) 
             self.entry_project_status.config(background="black", fg="deep sky blue")
-            self.entry_project_status.grid(row=13, column=2, sticky = W)
-                                      
-            project_id = "mem_eda_5r89"
-            self.entry_project_status.insert(END, project_id)
-                           
-           
+            self.entry_project_status.grid(row=16, column=1, sticky = W)
+                                                                 
             # INSERT LABEL FOR SELECTED PROJECT NAME .... 
             self.label2_project_status = "PATH: "
             self.mylabel2_project_status = Label(self.master, text = self.label2_project_status, font=minilarge_font)
-            self.mylabel2_project_status.config(height=1, width=9, anchor = W) 
+            self.mylabel2_project_status.config(height=1, width=11, anchor = W) 
             self.mylabel2_project_status.config(background="black", fg="deep sky blue",)
-            self.mylabel2_project_status.grid(row=14, column=1, sticky = W)
+            self.mylabel2_project_status.grid(row=17, column=0, sticky = W)
                                              
-            # INSERT ENTRY BOX FOR SELECTED PROJECT NAME ....  
+            # INSERT ENTRY BOX FOR SELECTED PROJECT NAME ....   
           
-            self.entry2_project_status = Entry(self.master, font=small_font)
-            self.entry2_project_status.config(width=30) 
+            self.entry2_project_status = Entry(self.master, font=('Helvetica', '12'))
+            self.entry2_project_status.config(width=50) 
             self.entry2_project_status.config(background="black", fg="deep sky blue")
-            self.entry2_project_status.grid(row=14, column=2, sticky = W)
-                                      
-            project_id_fullpath = "C:/project_fullpath/mem_eda_5r89"
-            self.entry2_project_status.insert(END, project_id_fullpath)                           
-                                                                                         
+            self.entry2_project_status.grid(row=17, column=1, sticky = W)
+                                                                                                                 
 ###################################################################################### 
 ## 
 ##    Implement BUILD-COMPILE-SIMULATION-ANALYZE using PYTHON and TKINTER GUI
@@ -1267,38 +1273,29 @@ class App(Frame):    #( object)
 ##  
 ######################################################################################
 
-            self.testbench_button = Button(self.master, text = "TESTBENCH TOP", \
-                  width=15,height=1, font=('Helvetica', '14'), \
-                  fg="blue2", bg="cyan", command = self.TESTBENCH_SELECT_Menu_method)
-            
-            self.testbench_button.grid(row=1, column=1, sticky=W)
-            self.testbench_button.config(borderwidth=5, activebackground="yellow", activeforeground="blue2")
-
-###################################################################################### 
-
             self.compile_button = Button(self.master, text = "COMPILE", \
-                  width=15,height=1, font=('Helvetica', '14'), \
+                  width=15,height=1, font=('Helvetica', '12'), \
                   fg="blue2", bg="cyan", command = self.COMPILE_SCRIPT_SELECT_Menu_method)
             
-            self.compile_button.grid(row=1, column=2, sticky=W)
+            self.compile_button.grid(row=1, column=1, sticky=NW)
             self.compile_button.config(borderwidth=5, activebackground="yellow", activeforeground="blue2")
 
 ###################################################################################### 
 
             self.simulation_button = Button(self.master, text = "SIMULATION", \
-                  width=15,height=1, font=('Helvetica', '14'), \
+                  width=15,height=1, font=('Helvetica', '12'), \
                   fg="blue2", bg="cyan", command = self.SIMULATION_SCRIPT_SELECT_Menu_method)
             
-            self.simulation_button.grid(row=1, column=3, sticky=W)
+            self.simulation_button.grid(row=1, column=2, sticky=NW)
             self.simulation_button.config(borderwidth=5, activebackground="yellow", activeforeground="blue2")
 
 ###################################################################################### 
 
             self.analysis_button = Button(self.master, text = "ANALYSIS", \
-                  width=15,height=1, font=('Helvetica', '14'), \
+                  width=15,height=1, font=('Helvetica', '12'), \
                   fg="blue2", bg="cyan", command = self.ANALYSIS_SCRIPT_SELECT_Menu_method)
             
-            self.analysis_button.grid(row=1, column=4, sticky=W)
+            self.analysis_button.grid(row=1, column=3, sticky=NW)
             self.analysis_button.config(borderwidth=5, activebackground="yellow", activeforeground="blue2")
 
 ###################################################################################### 
@@ -1306,16 +1303,16 @@ class App(Frame):    #( object)
             self.app_status_display_select_button = Button(self.master, \
                 text = "STATUS PANEL", width=15, height=1, command = self.select_App_Status_Display_method)
             
-            self.app_status_display_select_button.grid(row=13, column=0, sticky=W)
+            self.app_status_display_select_button.grid(row=14, column=0, sticky=W)
             self.app_status_display_select_button.config(borderwidth=5, \
-                 bg="black", fg="deep sky blue", font=('Helvetica', 14 ) )
+                 bg="black", fg="deep sky blue", font=('Helvetica', 12 ) )
             self.app_status_display_select_button.config(activebackground="cyan", activeforeground="blue2")
             self.app_status_display_select_button.bind("<Enter>", on_enter_bg)
             self.app_status_display_select_button.bind("<Leave>", on_leave_black_bg)  
 ###################################################################################### 
 
             self.build_dual_list_button2 = Button(self.master, text = "UVM SCBD", \
-                width=15, height=1, font=('Helvetica', '14'), \
+                width=15, height=1, font=('Helvetica', '12'), \
                 background="midnight blue", fg="deep sky blue", command = self.UVM_SCBD_View_method)
             
             self.build_dual_list_button2.grid(row=9, column=0, sticky=W)
@@ -1325,7 +1322,7 @@ class App(Frame):    #( object)
 ###################################################################################### 
 
             self.build_dual_list_button = Button(self.master, text = "UVM TEST", \
-                width=15, height=1, font=('Helvetica', '14'), \
+                width=15, height=1, font=('Helvetica', '12'), \
                 background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
             
             self.build_dual_list_button.grid(row=11, column=0, sticky=W)
@@ -1335,7 +1332,7 @@ class App(Frame):    #( object)
 ######################################################################################  
 
             self.build_dual_list3_button = Button(self.master, text = "UVM TB PKG", \
-                width=15, height=1, font=('Helvetica', '14'), \
+                width=15, height=1, font=('Helvetica', '12'), \
                 background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
             
             self.build_dual_list3_button.grid(row=12, column=0, sticky=W)
@@ -1343,8 +1340,20 @@ class App(Frame):    #( object)
             
             self.build_dual_list3_button.bind("<Enter>", on_enter_bg)
             self.build_dual_list3_button.bind("<Leave>", on_leave_bg)  
+            
 ######################################################################################  
 
+            self.build_dual_list4_button = Button(self.master, text = "TESTBENCH TOP", \
+                width=15, height=1, font=('Helvetica', '12'), \
+                background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
+            
+            self.build_dual_list4_button.grid(row=13, column=0, sticky=W)
+            self.build_dual_list4_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
+            
+            self.build_dual_list4_button.bind("<Enter>", on_enter_bg)
+            self.build_dual_list4_button.bind("<Leave>", on_leave_bg)  
+            
+######################################################################################  
 
             # Initialize Program with the First Contact List
             self.create_first_contact_list_on_startup()
@@ -1528,10 +1537,17 @@ class App(Frame):    #( object)
 
              # Set the GLOBAL for the newly selected window_select_global 
              window_select_global = str(window_select_opt_menu_select)
+             
+             if (window_select_global == "PLEASE SELECT"):
+             	
+                   return
 
              if (window_select_global == "SELECT PROJECT"):
 
                    # print(".... select window:  cm_app_doc_media ")
+                   # Reminder these are the applicable GLOBALS:
+                   # project_name_only_global
+                   # project_name_fullpath_global
                    self.cm_app_doc_media_window_method()
                    window_select_global = "SELECT PROJECT"
                    self.window_select_opt_menu_select.set(str(window_select_global) )
@@ -1569,13 +1585,6 @@ class App(Frame):    #( object)
                  # print(".... select window:  system_admin_info ")
                  self.system_administration_View_method()
                  window_select_global = "CREATE PROJECT"
-                 self.window_select_opt_menu_select.set(str(window_select_global) )
-
-             elif (window_select_global == "project_eda_5r89"): 
-
-                 # print(".... select window:  system_admin_info ")
-                 self.system_administration_View_method()
-                 window_select_global = "project_eda_5r89"
                  self.window_select_opt_menu_select.set(str(window_select_global) )
 
              elif (window_select_global == "config_setting_class"):
@@ -1659,58 +1668,61 @@ class App(Frame):    #( object)
 
           kick_thread_to_update_main_entry_widgets = True
 
-          self.system_administration_View_method()
+          self.FLASH_NIGHT_MODE_SELECT_BUTTON_yellow()
 
-          self.after(2000, lambda: self.new_list_window_method() )
+          self.after(2000, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_pink() )
 
-          self.after(3000, lambda: self.new_window_method() )
+          self.after(3000, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_blue() )
 
-          self.after(4000, lambda: self.view_mode_method() )
+          self.after(4000, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_red() )
 
-          self.after(5000, lambda: self.export_CSV_for_Excel_method() )
+          self.after(5000, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_cyan() )
 
-          self.after(6000, lambda: self.build_list_from_dual_listbox_window_method() )
+          self.after(6000, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_green() )
 
-          self.after(7000, lambda: self.cm_app_doc_media_window_method() )
+          self.after(7000, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_normal() )
 
-          self.after(8000, lambda: self.email_Gmail_Feature_method() )
+          self.after(8000, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_pink() )
 
-          self.after(8050, lambda: self.kick_thread_email_entry_widgets() )
+          self.after(8050, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_blue() )
 
-          self.after(9000, lambda: self.select_App_Status_Display_method() )
+          self.after(9000, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_red() )
 
-          self.after(10000, lambda: self.config_App_Settings_method() )
+          self.after(10000, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_cyan() )
 
           self.after(11000, lambda: OBJECT_main.lift() )
 
           self.after(11050, lambda: self.kick_thread_main_entry_widgets() )
 
-          self.after(11100, lambda: self.COMMAND_CENTER_STARTUP_method() )
-
-
 
       def FLASH_NIGHT_MODE_SELECT_BUTTON_yellow(self):
-          self.night_mode_button.config(background="DarkGoldenrod1", foreground="black")
+          self.entry_project_status.config(background="DarkGoldenrod1", foreground="black")
+          self.entry2_project_status.config(background="DarkGoldenrod1", foreground="black")
 
       def FLASH_NIGHT_MODE_SELECT_BUTTON_pink(self):
-          self.night_mode_button.config(background="deep pink", foreground="black")
-
+          self.entry_project_status.config(background="deep pink", foreground="black")
+          self.entry2_project_status.config(background="deep pink", foreground="black")
+          
       def FLASH_NIGHT_MODE_SELECT_BUTTON_blue(self):
-          self.night_mode_button.config(background="dodger blue", foreground="black")
-
+          self.entry_project_status.config(background="dodger blue", foreground="black")
+          self.entry2_project_status.config(background="dodger blue", foreground="black")
+          
       def FLASH_NIGHT_MODE_SELECT_BUTTON_red(self):
-          self.night_mode_button.config(background="red", foreground="black")
-
+          self.entry_project_status.config(background="red", foreground="black")
+          self.entry2_project_status.config(background="red", foreground="black")
+          
       def FLASH_NIGHT_MODE_SELECT_BUTTON_cyan(self):
-          self.night_mode_button.config(background="cyan", foreground="black")
-
+          self.entry_project_status.config(background="cyan", foreground="black")
+          self.entry2_project_status.config(background="cyan", foreground="black")
+          
       def FLASH_NIGHT_MODE_SELECT_BUTTON_green(self):
-          self.night_mode_button.config(background="light sea green", foreground="black")
-
+          self.entry_project_status.config(background="light sea green", foreground="black")
+          self.entry2_project_status.config(background="light sea green", foreground="black")
+          
       def FLASH_NIGHT_MODE_SELECT_BUTTON_normal(self):
-          self.night_mode_button.config(background="dark slate gray", foreground = "light sea green")
-
-
+          self.entry_project_status.config(background="dark slate gray", foreground = "light sea green")
+          self.entry2_project_status.config(background="dark slate gray", foreground = "light sea green")
+          
       def kick_thread_email_entry_widgets(self):
           global kick_thread_to_update_email_contact_entry_widgets
           kick_thread_to_update_email_contact_entry_widgets = True
@@ -15756,14 +15768,12 @@ class HyperlinkManager(object):
           
 ##############################################################################
 #
-#   Contact Management Application Documentation Media Class 
+#   UVM TESTBENCH BUILDER Application Documentation Media Class 
 #    
-#   Multi-Media Guide to this Contact Management Application.
-#
 #   This CM_App_Doc_Media Class is currently being utilized
-#   to give the Application Users an EMAIL STARTUP Procedure
-#   for both SMTP Mode and OAUTH2 Mode Gmail Email features
-#   used by this Contact Management Application. 
+#   to execute the directory and file list operations
+#   assoicated with SELECT PROJECT and OBSERVE PROJECT FILE LIST, 
+#   VIEW PROJECTS, and CREATE PROJECTS menu selections.
 #
 ##############################################################################
 class CM_App_Doc_Media(Frame):  #(object):
@@ -15791,15 +15801,12 @@ class CM_App_Doc_Media(Frame):  #(object):
         global OBJECT_toplevel_cm_app_doc_media
         global instance_object_LIST
         global uvm_tb_file_list_global
+        global project_sv_files_list_global
+        global directory_project_name_global
+        global directory_full_path_project_name_global
         Frame.__init__(self, master)
         self.grid()
         
-        # self.master = master
-        # self.frame = tk.Frame(self.master)
-
-        # self.master = master
-        # self.frame = tk.Frame(self.master)
-
         large_font = ('Verdana',20)
         minilarge_font = ('Verdana',16)
         medium_font = ('Verdana',12,'bold')
@@ -15843,7 +15850,9 @@ class CM_App_Doc_Media(Frame):  #(object):
         self.title_1_text_box.grid(row=1, column=1, sticky = W)
         self.title_1_text_box.config(borderwidth=10, font=('Helvetica', '12'), background="dark slate gray", fg="cyan")
 
-        text_1_TITLE = "\n**** PROJECT NAME AND SV FILES LIST ****\n\n"
+        self.title_1_text_box.config(state=NORMAL)  # DISABLED
+
+        text_1_TITLE = "\n**** PROJECT NAME AND PROJECT FILES LIST ****\n\n"
 
         text_1_LINE_SPACE = "\n  "
 
@@ -15855,24 +15864,22 @@ class CM_App_Doc_Media(Frame):  #(object):
         self.title_1_text_box.config(state=NORMAL)  # DISABLED
 
         #####################################################################
-        #
-        # Open DIALOG to SELECT CSV File in Windows Folder
-        # Use the Full File Path acquired from the DIALOG SELECTION
-        # to copy the selected CSV File to the two 
-        # IMPORT CSV File Directories (USER and APPDATA). 
-        # Then, use the CSV parser Class to import the
-        # CSV into a Dictionary, and then add that
-        # imported Dictionary to our Contact List Database Files:
-        # dict_ and cm_list_
-        #
-        #####################################################################
+ 
+        # Use dialog SELECT PROJECT files to automatically 
+        # import SYSTEMVERILOG files to PROJECT.
 
-        # Use dialog to get CSV file to import.
-
-        ###########   Select a Directory:
+        #### Select a PROJECT Directory:
 
         root = tk.Tk()
         root.withdraw()
+        
+        self.title_1_text_box.config(state=NORMAL)  # DISABLED
+        
+        uvm_tb_file_list = []       
+        uvm_tb_file_list_global = []        
+        uvm_tb_builder_project_dir_list_global = []        
+        project_sv_files_list_global = []       
+        
         home_dir = userprofile_global
         
         dirname = filedialog.askdirectory(parent=root,initialdir=home_dir,title='Please SELECT a Directory')
@@ -15882,13 +15889,9 @@ class CM_App_Doc_Media(Frame):  #(object):
         uvm_tb_builder_project_selected_global = os.path.basename(dirname)
 
         directory_full_path_project_name_global = dirname
-
-        print("\n")
-        print(".... PROJECT DIRECTORY NAME: " + str(directory_project_name_global) )
-
-        print("\n")
-        print(".... PROJECT DIRECTORY (FULL PATH): " + str(directory_full_path_project_name_global) )
         
+        text_1_LINE_SPACE = "\n  "
+
         self.title_1_text_box.insert(END, directory_project_name_global)
         self.title_1_text_box.insert(END, text_1_LINE_SPACE)
         self.title_1_text_box.insert(END, text_1_LINE_SPACE)
@@ -15896,50 +15899,39 @@ class CM_App_Doc_Media(Frame):  #(object):
         self.title_1_text_box.insert(END, directory_full_path_project_name_global)
         self.title_1_text_box.insert(END, text_1_LINE_SPACE)
         self.title_1_text_box.insert(END, text_1_LINE_SPACE)
-        
-        ############   Select a Files to import.  
 
-        # askopenfile - opens the file and returns the opened object (or Null if cancelled).
+        # use os dir command to create list of Files to import.  
+        # The Python os.listdir() method returns a list of every file and folder in a directory.
+             
+        uvm_tb_file_list = os.listdir(directory_full_path_project_name_global)
 
-        # askopenfilename - just gets and returns the full path to the file (or empty string if cancelled).
-
-        ftypes = [
-            ('All Files', '*.*'),
-            ("SystemVerilog Files","*.sv"),
-            ("Microsoft Excel csv Files","*.csv")]
-
-        root = tk.Tk()
-        root.withdraw()
-
-        uvm_tb_file_list = []
-
-        for n in range(13):
-
-            csv_file_path = ""
-
-            csv_file_path = filedialog.askopenfilename(parent=root,title='Choose a file',filetypes = ftypes)
-
-            print(".... Selected CSV File Path = " + str(csv_file_path) + "\n")
-
-            csv_base_filename = os.path.basename(csv_file_path)
-
-            print(".... csv_base_filename = " + str(csv_base_filename) )
-
-            uvm_tb_file_list.append(str(csv_base_filename))
-            
-            self.title_1_text_box.insert(END, csv_base_filename)
-            self.title_1_text_box.insert(END, text_1_LINE_SPACE)
-            
         uvm_tb_file_list_global = uvm_tb_file_list
-        
         uvm_tb_builder_project_dir_list_global = uvm_tb_file_list
-                
-        self.title_1_text_box.config(state=DISABLED)  #NORMAL
+
+        text_FILE_LIST_TITLE = "**** PROJECT COMPLETE FILE LIST: "
         
+        self.title_1_text_box.insert(END, text_1_LINE_SPACE)
+        self.title_1_text_box.insert(END, text_FILE_LIST_TITLE)
+        self.title_1_text_box.insert(END, text_1_LINE_SPACE)
+
         for i in range(len(uvm_tb_file_list_global)):
-            print (str(uvm_tb_file_list_global[i]))
-          
-               
+            self.title_1_text_box.insert(END, str(uvm_tb_file_list_global[i]))
+            self.title_1_text_box.insert(END, text_1_LINE_SPACE)
+           
+        text_SV_FILE_LIST_TITLE = "**** PROJECT SYSTEMVERILOG FILE LIST: "
+        
+        self.title_1_text_box.insert(END, text_1_LINE_SPACE)
+        self.title_1_text_box.insert(END, text_SV_FILE_LIST_TITLE)
+        self.title_1_text_box.insert(END, text_1_LINE_SPACE)           
+                 
+        for i in os.listdir(directory_full_path_project_name_global):
+            if i.endswith(".sv"):
+            	 project_sv_files_list_global.append(i)                 
+                 
+        for i in range(len(project_sv_files_list_global)):
+            self.title_1_text_box.insert(END, str(project_sv_files_list_global[i]))
+            self.title_1_text_box.insert(END, text_1_LINE_SPACE)                 
+                              
         #
         # LOWER WINDOW BUTTON.   
         # 
@@ -15958,7 +15950,21 @@ class CM_App_Doc_Media(Frame):  #(object):
 
         self.quitButton.grid(row=7, column=0, sticky = W)
 
+        # SET SYSTEMVERILOG GLOBAL EVENT FLAG 
+        # to trigger PROJECT SELECT update EVENT
+        # to write to the PROJECT NAME and PROJECT PATH Textbox
+        # using the global EVENT, PROJECT NAME, and PROJECT PATH
+        # variables in this CLASS and METHODS.
+        event_project_select_update_flag_global = 1
+        if (event_project_select_update_flag_global == 1):
+            print("..... PROJECT UPDATE - event_project_select_update_flag_global")
+            
+        # OPIONALLY:       
+        # DISABLE the TEXTBOX after completing write of 
+        # PROJECT NAME and PROJECT FILES to TEXTBOX.    
+        # self.title_1_text_box.config(state=DISABLED)  #NORMAL                
 
+        return
 
 
     def lower_email_WINDOW(self):
@@ -15966,7 +15972,6 @@ class CM_App_Doc_Media(Frame):  #(object):
           # return to the main screen by lifting the main window.
           OBJECT_main.lift()
         
-
 
     def exit_Handler(self):
         self.master.destroy()
@@ -17601,19 +17606,11 @@ def main():
 
       username_global = str(os.environ['USERNAME'])
 
-      print("..... username_global:  " + str(username_global) )
-
       userprofile_global = str(os.environ['USERPROFILE'])
-
-      print("..... userprofile_global:  " + str(userprofile_global) )
 
       appdata_path_global = str(os.environ['APPDATA'])
 
-      print("..... appdata_path_global:  " + str(appdata_path_global) )
-
       cm_appdatafiles_path_global = os.path.join(str(appdata_path_global), "UVM_BUILDER_APP_DATA" )
-
-      print("..... cm_appdatafiles_path_global:  " + str(cm_appdatafiles_path_global) )
 
       # add mkdirs here ... for cm_appdatafiles_path_global ... NOTE: this is a Version 14.2 update
 
@@ -17625,8 +17622,6 @@ def main():
       fullpath_fn_SV_INTERFACE_CODE_logfile_global = os.path.join(str(cm_appdatafiles_path_global), "sv_interface_code_logfile.txt" )
 
       fullpath_exception_logfile_global = os.path.join(str(cm_appdatafiles_path_global), "cm_app_exception_logfile.txt" )
-
-      print("..... fullpath_exception_logfile_global:  " + str(fullpath_exception_logfile_global) )
 
       # start a new logfile for exceptions logging - this writes over file from previous session.
       with open(str(fullpath_exception_logfile_global), 'w') as exception_logfile_startup_new_file:
@@ -18048,16 +18043,23 @@ def main():
            global request_mainscreen_config_update_global
            global mainscreen_bg_color_val_global
            global insert_first_contact_global
+           global event_project_select_update_flag_global
            while 1:
                  
                  # Update the Main Screen Background Color per the latest GLOBAL setting
                  # so when User changes it, the new color appears instantly.
                  if request_mainscreen_config_update_global == True:
-                     cm_app.master.config(background = str(mainscreen_bg_color_val_global) )
+                     cm_app.master.config(bg = str(mainscreen_bg_color_val_global) )
                      request_mainscreen_config_update_global = False
-
-                 # #print("...... W H A T   I S   kick_thread_to_update_main_entry_widgets = " + str(kick_thread_to_update_main_entry_widgets) )
-
+                             
+                 # UPDATE THE PROJECT ENTRY WIDGETS WITH NEW PROJECT SELECTION.
+                 # VERIFY THAT THESE PROJECT ENTRY TEXTBOX WIDGETS GET PROJECT NAME UPDATES.
+                 if event_project_select_update_flag_global == 1:
+                     cm_app.entry_project_status.set(str(directory_project_name_global))    
+                     cm_app.entry2_project_status.set(str(directory_full_path_project_name_global))          
+                     event_project_select_update_flag_global = 0
+                     time.sleep(.15)
+                                       
                  if (mode_select_global == "Browse Mode") and (str(dict_filename_global) != "No Contact Dictionary") and (kick_thread_to_update_main_entry_widgets == True):
 #123456789012345678901
                      try:
