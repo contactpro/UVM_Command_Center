@@ -1169,12 +1169,12 @@ class App(Frame):    #( object)
                              self.speedbutton_2.bind("<Enter>", on_enter_bg)
                              self.speedbutton_2.bind("<Leave>", on_leave_bg)  
 
-                       elif r == 7:
+                       elif r == 7: 
                              bindto = "forward_tick"
                              self.speedbutton_3 = Button(self.master, text = "UVM MONITOR", \
                              width=15,height=1, font=('Helvetica', '12'), \
                              background="midnight blue", fg="deep sky blue", command = self.UVM_MONITOR_View_method)
-                             self.speedbutton_3.grid(row=r,column=0, sticky=W)
+                             self.speedbutton_3.grid(row=7,column=0, sticky=W)
                              self.speedbutton_3.config(borderwidth=5)
                              self.speedbutton_3.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              self.speedbutton_3.bind("<Enter>", on_enter_bg)
@@ -1186,18 +1186,18 @@ class App(Frame):    #( object)
                              self.speedbutton_4 = Button(self.master, text = "UVM AGENT", \
                              width=15,height=1, font=('Helvetica', '12'), \
                              background="midnight blue", fg="deep sky blue", command = self.UVM_AGENT_View_method)
-                             self.speedbutton_4.grid(row=r,column=0, sticky=W)
+                             self.speedbutton_4.grid(row=2,column=3, sticky=W)
                              self.speedbutton_4.config(borderwidth=5)
                              self.speedbutton_4.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              self.speedbutton_4.bind("<Enter>", on_enter_bg)
                              self.speedbutton_4.bind("<Leave>", on_leave_bg)  
                              ############################################################################
-                       elif r == 10:
+                       elif r == 10: 
                              bindto = "backward_scroll"
                              self.speedbutton_5 = Button(self.master, text = "UVM ENV", \
                              width=15,height=1, font=('Helvetica', '12'), \
                              background="midnight blue", fg="deep sky blue", command = self.UVM_ENV_View_method)
-                             self.speedbutton_5.grid(row=r,column=0, sticky=W)
+                             self.speedbutton_5.grid(row=4,column=3, sticky=W)
                              self.speedbutton_5.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              self.speedbutton_5.bind("<Enter>", on_enter_bg)
                              self.speedbutton_5.bind("<Leave>", on_leave_bg)  
@@ -1205,7 +1205,7 @@ class App(Frame):    #( object)
                   r = r + 1
 
 
-#####################################################################################
+##################################################################################### 
 
             List_of_WINDOWS = ["PLEASE SELECT", "SELECT PROJECT", "VIEW PROJECTS", "CREATE PROJECT", \
                                "config_setting_class", "UVM APP STARTUP", "E X I T"]
@@ -1229,7 +1229,7 @@ class App(Frame):    #( object)
                   width=15,height=1, font=('Helvetica', '12'), \
                   background="black", fg="deep sky blue", command = self.system_administration_View_method)
             
-            self.sys_admin_view_button.grid(row=15, column=0, sticky=W)
+            self.sys_admin_view_button.grid(row=9, column=3, sticky=W)
             self.sys_admin_view_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
             self.sys_admin_view_button.bind("<Enter>", on_enter_bg)
             self.sys_admin_view_button.bind("<Leave>", on_leave_black_bg) 
@@ -1239,33 +1239,173 @@ class App(Frame):    #( object)
             self.mylabel_project_status = Label(self.master, text = self.label_project_status, font=minilarge_font)
             self.mylabel_project_status.config(height=1, width=11, anchor = W) 
             self.mylabel_project_status.config(background="black", fg="deep sky blue",)
-            self.mylabel_project_status.grid(row=16, column=0, sticky = W)
+            self.mylabel_project_status.grid(row=8, column=0, sticky = W)
                                              
             # Please Note these global variables for PROJECT.
             # global project_name_only_global
             # global project_name_fullpath_global                  
                                              
-            # INSERT ENTRY BOX FOR SELECTED PROJECT NAME ....  
-          
-            self.entry_project_status = Entry(self.master, font=('Helvetica', '12'))
-            self.entry_project_status.config(width=25) 
-            self.entry_project_status.config(background="black", fg="deep sky blue")
-            self.entry_project_status.grid(row=16, column=1, sticky = W)
-                                                                 
+            # INSERT ENTRY WIDGET FOR SELECTED PROJECT NAME 
+            self.entry_LOADED_PROJECT_NAME = StringVar()
+            self.entry_project_status = Entry(self.master, \
+            textvariable = self.entry_LOADED_PROJECT_NAME, font=('Helvetica', '12'), width = 35)
+            self.entry_project_status.grid(sticky = W, row=8, column=1)
+            self.entry_project_status.config(borderwidth=5, background="black", fg="deep sky blue")
+            self.entry_project_status.bind("<Button-1>",lambda event: self.project_name_widget_function(event, "self.loaded_project_name_entry") )
+                            
+                                                                                                                                                                 
             # INSERT LABEL FOR SELECTED PROJECT NAME .... 
             self.label2_project_status = "PATH: "
             self.mylabel2_project_status = Label(self.master, text = self.label2_project_status, font=minilarge_font)
             self.mylabel2_project_status.config(height=1, width=11, anchor = W) 
             self.mylabel2_project_status.config(background="black", fg="deep sky blue",)
-            self.mylabel2_project_status.grid(row=17, column=0, sticky = W)
-                                             
-            # INSERT ENTRY BOX FOR SELECTED PROJECT NAME ....   
-          
-            self.entry2_project_status = Entry(self.master, font=('Helvetica', '12'))
-            self.entry2_project_status.config(width=50) 
-            self.entry2_project_status.config(background="black", fg="deep sky blue")
-            self.entry2_project_status.grid(row=17, column=1, sticky = W)
-                                                                                                                 
+            self.mylabel2_project_status.grid(row=9, column=0, sticky = W)
+                                                                                                                                        
+            # INSERT ENTRY WIDGET FOR PROJECT NAME FULL PATH. 
+            self.entry_LOADED_FULLPATH_PROJECT_NAME = StringVar()
+            self.entry2_project_status = Entry(self.master, \
+            textvariable = self.entry_LOADED_FULLPATH_PROJECT_NAME, font=('Helvetica', '12'), width = 64)
+            self.entry2_project_status.grid(sticky = W, row=9, column=1)
+            self.entry2_project_status.config(borderwidth=5, background="black", fg="deep sky blue")
+            self.entry2_project_status.bind("<Button-1>",lambda event: self.project_name_fullpath_widget_function(event, "self.loaded_fullpath_project_name_entry") )
+                                                                 
+            # Frame7 border to give usrowspan and columnspan control. 
+            self.Frame7 = tk.Frame(self.master, bg=str(config_bg_color_val_global), borderwidth = 0, highlightthickness = 5, highlightbackground="black", highlightcolor="black")
+            self.Frame7.grid(row = 2, column = 1, rowspan = 6, columnspan = 2, padx=5, pady=5, sticky = W+E+N+S)
+                       
+            # LARGE TEXTBOX on the MAIN PAGE 
+
+            # Editing this line - self.view_text_box = Text(self.master, width=90,
+            self.view_text_box = Text(self.Frame7, width=80, height = 26)
+            self.view_text_box.grid(row=2, column=1, sticky = W)
+            self.view_text_box.config(borderwidth=10, font=('Helvetica', '12'), \
+                 fg = "snow", \
+                 background="midnight blue" )
+            #   Changed the MAIN TEXTBOX to BACKGROUND of
+            #   midnight blue and a FOREGROUND snow .
+            #   fg = str(usermanual_fg_color_val_global), \
+            #   background=str(usermanual_bg_color_val_global) )
+            self.view_text_box.config(state=NORMAL)  # Enable TEXT WIDGET for Insert
+            self.view_text_box.delete(1.0, END)      # Clear the TEXT WIDGET of Data
+
+            # create a Scrollbar and associate it with self.view_text_box 
+            self.scrollb = Scrollbar(self.Frame7, command=self.view_text_box.yview)
+            self.scrollb.grid(row=2, column=1, sticky='NSE')
+            self.view_text_box['yscrollcommand'] = self.scrollb.set
+
+            # INSERT FILE DATA LINES into TEXTBOX to VIEW the TEXTBOX
+            # after loading a FILE using the full path name:
+            # fullpath_project_dir_seq_item_file_global
+            
+            text_1_TITLE = "\n**** PROJECT NAME AND PROJECT FILES LIST ****\n\n"
+
+            text_1_LINE_SPACE = "\n  "
+
+            # Clear Textbox and then INSERT TITLE.
+            self.view_text_box.delete(1.0, END)  # Clear the TEXT WIDGET of Data  
+            self.view_text_box.insert(END, text_1_TITLE)
+            self.view_text_box.insert(END, text_1_LINE_SPACE)
+        
+            self.view_text_box.config(state=NORMAL)  # DISABLED
+
+            #####################################################################
+  
+            # Use dialog SELECT PROJECT files to automatically 
+            # build a file listlist and import files to PROJECT.
+
+            #### Select a PROJECT Directory:
+
+            root = tk.Tk()
+            root.withdraw()
+        
+            self.view_text_box.config(state=NORMAL)  # DISABLED
+        
+            uvm_tb_file_list = []       
+            uvm_tb_file_list_global = []        
+            uvm_tb_builder_project_dir_list_global = []        
+            project_sv_files_list_global = []       
+        
+            home_dir = userprofile_global
+        
+            dirname = filedialog.askdirectory(parent=root,initialdir=home_dir,title='Please SELECT a Directory')
+        
+            directory_project_name_global = os.path.basename(dirname)
+        
+            uvm_tb_builder_project_selected_global = os.path.basename(dirname)
+            
+            project_name_only_global = os.path.basename(dirname)
+            
+            directory_full_path_project_name_global = dirname
+                                           
+            project_name_fullpath_global = dirname
+            
+            # PROJECT ENTRY WIDGET SETS
+            # SET the ENTRY WIDGET to the   
+            # PROJECT NAME and PROJECT DIRECTORY FULL PATH, respectively.
+            # self.entry_project_status = Entry(self.master           
+            # self.entry2_project_status = Entry(self.master
+            # 
+            # AttributeError: 'Entry' object has no attribute 'set'
+            
+            # SET THE TEXTVARIABLES for the two
+            # project name ENTRY WIDGETS.
+            
+            self.entry_LOADED_PROJECT_NAME.set("")
+            self.entry_LOADED_FULLPATH_PROJECT_NAME.set("")
+            
+            self.entry_LOADED_PROJECT_NAME.set(str(directory_project_name_global))
+            self.entry_project_status.config(background="black", fg="cyan")
+            
+            self.entry_LOADED_FULLPATH_PROJECT_NAME.set(str(directory_full_path_project_name_global))
+            self.entry2_project_status.config(background="black", fg="cyan") 
+            
+            self.master.update()
+            
+            text_1_LINE_SPACE = "\n  "
+
+            self.view_text_box.insert(END, directory_project_name_global)
+            self.view_text_box.insert(END, text_1_LINE_SPACE)
+            self.view_text_box.insert(END, text_1_LINE_SPACE)
+        
+            self.view_text_box.insert(END, directory_full_path_project_name_global)
+            self.view_text_box.insert(END, text_1_LINE_SPACE)
+            self.view_text_box.insert(END, text_1_LINE_SPACE)
+
+            # use os dir command to create list of Files to import.  
+            # The Python os.listdir() method returns a list of every file and folder in a directory.
+             
+            uvm_tb_file_list = os.listdir(directory_full_path_project_name_global)
+
+            uvm_tb_file_list_global = uvm_tb_file_list
+            uvm_tb_builder_project_dir_list_global = uvm_tb_file_list
+
+            text_FILE_LIST_TITLE = "**** PROJECT COMPLETE FILE LIST: "
+        
+            self.view_text_box.insert(END, text_1_LINE_SPACE)
+            self.view_text_box.insert(END, text_FILE_LIST_TITLE)
+            self.view_text_box.insert(END, text_1_LINE_SPACE)
+
+            for i in range(len(uvm_tb_file_list_global)):
+                self.view_text_box.insert(END, str(uvm_tb_file_list_global[i]))
+                self.view_text_box.insert(END, text_1_LINE_SPACE)
+           
+            text_SV_FILE_LIST_TITLE = "**** PROJECT SYSTEMVERILOG FILE LIST: "
+        
+            self.view_text_box.insert(END, text_1_LINE_SPACE)
+            self.view_text_box.insert(END, text_SV_FILE_LIST_TITLE)
+            self.view_text_box.insert(END, text_1_LINE_SPACE)           
+                 
+            for i in os.listdir(directory_full_path_project_name_global):
+                if i.endswith(".sv"):
+            	     project_sv_files_list_global.append(i)                 
+                 
+            for i in range(len(project_sv_files_list_global)):
+                self.view_text_box.insert(END, str(project_sv_files_list_global[i]))
+                self.view_text_box.insert(END, text_1_LINE_SPACE)                 
+        
+            # Disable TEXT WIDGET for Insert 
+            self.view_text_box.config(state=DISABLED)  
+                                                                                                                       
 ###################################################################################### 
 ## 
 ##    Implement BUILD-COMPILE-SIMULATION-ANALYZE using PYTHON and TKINTER GUI
@@ -1303,7 +1443,7 @@ class App(Frame):    #( object)
             self.app_status_display_select_button = Button(self.master, \
                 text = "STATUS PANEL", width=15, height=1, command = self.select_App_Status_Display_method)
             
-            self.app_status_display_select_button.grid(row=14, column=0, sticky=W)
+            self.app_status_display_select_button.grid(row=8, column=3, sticky=W)
             self.app_status_display_select_button.config(borderwidth=5, \
                  bg="black", fg="deep sky blue", font=('Helvetica', 12 ) )
             self.app_status_display_select_button.config(activebackground="cyan", activeforeground="blue2")
@@ -1315,7 +1455,7 @@ class App(Frame):    #( object)
                 width=15, height=1, font=('Helvetica', '12'), \
                 background="midnight blue", fg="deep sky blue", command = self.UVM_SCBD_View_method)
             
-            self.build_dual_list_button2.grid(row=9, column=0, sticky=W)
+            self.build_dual_list_button2.grid(row=3, column=3, sticky=W)
             self.build_dual_list_button2.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
             self.build_dual_list_button2.bind("<Enter>", on_enter_bg)
             self.build_dual_list_button2.bind("<Leave>", on_leave_bg)  
@@ -1325,17 +1465,17 @@ class App(Frame):    #( object)
                 width=15, height=1, font=('Helvetica', '12'), \
                 background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
             
-            self.build_dual_list_button.grid(row=11, column=0, sticky=W)
+            self.build_dual_list_button.grid(row=5, column=3, sticky=W)
             self.build_dual_list_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
             self.build_dual_list_button.bind("<Enter>", on_enter_bg)
             self.build_dual_list_button.bind("<Leave>", on_leave_bg)  
-######################################################################################  
+#####################################################################################  
 
             self.build_dual_list3_button = Button(self.master, text = "UVM TB PKG", \
                 width=15, height=1, font=('Helvetica', '12'), \
                 background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
             
-            self.build_dual_list3_button.grid(row=12, column=0, sticky=W)
+            self.build_dual_list3_button.grid(row=6, column=3, sticky=W)
             self.build_dual_list3_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
             
             self.build_dual_list3_button.bind("<Enter>", on_enter_bg)
@@ -1347,7 +1487,7 @@ class App(Frame):    #( object)
                 width=15, height=1, font=('Helvetica', '12'), \
                 background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
             
-            self.build_dual_list4_button.grid(row=13, column=0, sticky=W)
+            self.build_dual_list4_button.grid(row=7, column=3, sticky=W)
             self.build_dual_list4_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
             
             self.build_dual_list4_button.bind("<Enter>", on_enter_bg)
@@ -1404,6 +1544,17 @@ class App(Frame):    #( object)
 
             kick_thread_to_update_main_entry_widgets = True
                    
+
+
+      def project_name_widget_function(self, event, project_widget_name):
+            self.last_widget_name_clicked = project_widget_name
+            #print("\n")
+            #print("self.last_widget_name_clicked = " + str(self.last_widget_name_clicked) )
+
+      def project_name_fullpath_widget_function(self, event, project_fullpath_widget_name):
+            self.last_widget_name_clicked = project_fullpath_widget_name
+            #print("\n")
+            #print("self.last_widget_name_clicked = " + str(self.last_widget_name_clicked) )
 
       ######################################################################################
       #
