@@ -1297,7 +1297,7 @@ class App(Frame):    #( object)
             # after loading a FILE using the full path name:
             # fullpath_project_dir_seq_item_file_global
             
-            text_1_TITLE = "\n**** PROJECT NAME AND PROJECT FILES LIST ****\n\n"
+            text_1_TITLE = "\n\n  PROJECT NAME AND PROJECT FILES LIST: \n"
 
             text_1_LINE_SPACE = "\n  "
 
@@ -1318,14 +1318,15 @@ class App(Frame):    #( object)
             root = tk.Tk()
             root.withdraw()
         
-            self.view_text_box.config(state=NORMAL)  # DISABLED
-        
             uvm_tb_file_list = []       
             uvm_tb_file_list_global = []        
             uvm_tb_builder_project_dir_list_global = []        
             project_sv_files_list_global = []       
         
             home_dir = userprofile_global
+            
+            # Get the USER to SELECT a PROJECT DIRECTORY
+            # using filedialog.askdirectory 
         
             dirname = filedialog.askdirectory(parent=root,initialdir=home_dir,title='Please SELECT a Directory')
         
@@ -1379,7 +1380,7 @@ class App(Frame):    #( object)
             uvm_tb_file_list_global = uvm_tb_file_list
             uvm_tb_builder_project_dir_list_global = uvm_tb_file_list
 
-            text_FILE_LIST_TITLE = "**** PROJECT COMPLETE FILE LIST: "
+            text_FILE_LIST_TITLE = "  PROJECT COMPLETE FILE LIST: "
         
             self.view_text_box.insert(END, text_1_LINE_SPACE)
             self.view_text_box.insert(END, text_FILE_LIST_TITLE)
@@ -1389,7 +1390,7 @@ class App(Frame):    #( object)
                 self.view_text_box.insert(END, str(uvm_tb_file_list_global[i]))
                 self.view_text_box.insert(END, text_1_LINE_SPACE)
            
-            text_SV_FILE_LIST_TITLE = "**** PROJECT SYSTEMVERILOG FILE LIST: "
+            text_SV_FILE_LIST_TITLE = "  PROJECT SYSTEMVERILOG FILE LIST: "
         
             self.view_text_box.insert(END, text_1_LINE_SPACE)
             self.view_text_box.insert(END, text_SV_FILE_LIST_TITLE)
@@ -1402,9 +1403,18 @@ class App(Frame):    #( object)
             for i in range(len(project_sv_files_list_global)):
                 self.view_text_box.insert(END, str(project_sv_files_list_global[i]))
                 self.view_text_box.insert(END, text_1_LINE_SPACE)                 
-        
-            # Disable TEXT WIDGET for Insert 
-            self.view_text_box.config(state=DISABLED)  
+                        
+            #
+            #  NOTE:
+            # 
+            #  We now have globals loaded with
+            #  the PROJECT NAME and PROJECT FULL PATH
+            #
+            #  1. directory_project_name_global
+            #  2. directory_full_path_project_name_global
+            #  3. uvm_tb_file_list_global
+            #  4. project_sv_files_list_global
+            #
                                                                                                                        
 ###################################################################################### 
 ## 
@@ -2630,20 +2640,55 @@ class App(Frame):    #( object)
             global export_csv_excel_cm_appdata_global
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
-            global OBJECT_IN_APP_excel_import_export      
-
-            large_font = ('Verdana',20)
-            minilarge_font = ('Verdana',16)
-            medium_font = ('Verdana',12,'bold')
-            small_font = ('Verdana',10)
-            menubar_font = ('Helvetica', '12')
-
-            # self.textFile = open(fullpath_fn_SV_INTERFACE_CODE_logfile_global, 'r')
-
-            # with open(str(fullpath_fn_SV_INTERFACE_CODE_logfile_global) ) as fin:
-               # for line in fin:
-                  # self.view_text_box.insert(END, line)
+            global OBJECT_IN_APP_excel_import_export 
+            global directory_project_name_global     
+            global directory_full_path_project_name_global
+            global uvm_tb_file_list_global
+            global project_sv_files_list_global
+                                                
+            #
+            #  NOTE:
+            # 
+            #  We now have globals loaded with
+            #  the PROJECT NAME and PROJECT FULL PATH
+            #
+            #  1. directory_project_name_global
+            #  2. directory_full_path_project_name_global
+            #  3. uvm_tb_file_list_global
+            #  4. project_sv_files_list_global
+            #
+            #  We have the TEXTBOX commands that
+            #  can write things like file lists 
+            #  to the main TEXTBOX.            
+            # 
+            #  Next, use the os command to
+            #  search which filename in PROJECT DIR
+            #  has the phrase interface in both
+            #  the FILENAME and FILE CONTENTS.
+            # 
+            #  Example ANSWER:   mem_interface.sv
+            #
+            #  Use PATH os join command to get
+            #  complete FULL PATH for mem_interface.sv
+            # 
+            #  COMPUTE interface_filename by searching
+            #  SYSTEMVERILOG File List for the
+            #  interface keyword in the filename
+            #  and the file contents. 
+                        
+            self.view_text_box.delete(1.0, END)
+            
+            interface_filename = "mem_interface.sv"
+            
+            fullpath_SV_INTERFACE_CODE_global = os.path.join(directory_full_path_project_name_global, interface_filename)
+                        
+            with open(str(fullpath_SV_INTERFACE_CODE_global) ) as fin:
+               for line in fin:
+                  self.view_text_box.insert(END, line)
         
+            interface_file_content = ""
+            interface_file_content = self.view_text_box.get(1.0, END)
+            
             return
 
       ###################################################
@@ -2669,14 +2714,56 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export            
+            global directory_project_name_global     
+            global directory_full_path_project_name_global
+            global uvm_tb_file_list_global
+            global project_sv_files_list_global
 
-            large_font = ('Verdana',20)
-            minilarge_font = ('Verdana',16)
-            medium_font = ('Verdana',12,'bold')
-            small_font = ('Verdana',10)
-            menubar_font = ('Helvetica', '12')
-
+            #
+            #  NOTE:
+            # 
+            #  We now have globals loaded with
+            #  the PROJECT NAME and PROJECT FULL PATH
+            #
+            #  1. directory_project_name_global
+            #  2. directory_full_path_project_name_global
+            #  3. uvm_tb_file_list_global
+            #  4. project_sv_files_list_global
+            #
+            #  We have the TEXTBOX commands that
+            #  can write things like file lists 
+            #  to the main TEXTBOX.            
+            # 
+            #  Next, use the os command to
+            #  search which filename in PROJECT DIR
+            #  has the phrase interface in both
+            #  the FILENAME and FILE CONTENTS.
+            # 
+            #  Example ANSWER:   mem_interface.sv
+            #
+            #  Use PATH os join command to get
+            #  complete FULL PATH for mem_interface.sv
+            # 
+            #  COMPUTE interface_filename by searching
+            #  SYSTEMVERILOG File List for the
+            #  interface keyword in the filename
+            #  and the file contents.  
+                        
+            self.view_text_box.delete(1.0, END)
+            
+            uvm_seq_item_filename = "mem_seq_item.sv"
+            
+            fullpath_UVM_SEQ_ITEM_CODE_global = os.path.join(directory_full_path_project_name_global, uvm_seq_item_filename)
+                       
+            with open(str(fullpath_UVM_SEQ_ITEM_CODE_global) ) as fin:
+               for line in fin:
+                  self.view_text_box.insert(END, line)
+        
+            uvm_seq_item_file_content = ""
+            uvm_seq_item_file_content = self.view_text_box.get(1.0, END)       
+            
             return
+
             
       ###################################################
       #
@@ -2701,7 +2788,54 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export            
-
+            global directory_project_name_global     
+            global directory_full_path_project_name_global
+            global uvm_tb_file_list_global
+            global project_sv_files_list_global
+             
+            #
+            #  NOTE:
+            # 
+            #  We now have globals loaded with
+            #  the PROJECT NAME and PROJECT FULL PATH
+            #
+            #  1. directory_project_name_global
+            #  2. directory_full_path_project_name_global
+            #  3. uvm_tb_file_list_global
+            #  4. project_sv_files_list_global
+            #
+            #  We have the TEXTBOX commands that
+            #  can write things like file lists 
+            #  to the main TEXTBOX.            
+            # 
+            #  Next, use the os command to
+            #  search which filename in PROJECT DIR
+            #  has the phrase interface in both
+            #  the FILENAME and FILE CONTENTS.
+            # 
+            #  Example ANSWER:   mem_interface.sv
+            #
+            #  Use PATH os join command to get
+            #  complete FULL PATH for mem_interface.sv
+            # 
+            #  COMPUTE interface_filename by searching
+            #  SYSTEMVERILOG File List for the
+            #  interface keyword in the filename
+            #  and the file contents.  
+                        
+            self.view_text_box.delete(1.0, END)
+            
+            uvm_sequence_filename = "mem_sequence.sv"
+            
+            fullpath_UVM_SEQUENCE_CODE_global = os.path.join(directory_full_path_project_name_global, uvm_sequence_filename)
+                       
+            with open(str(fullpath_UVM_SEQUENCE_CODE_global) ) as fin:
+               for line in fin:
+                  self.view_text_box.insert(END, line)
+        
+            uvm_sequence_file_content = ""
+            uvm_sequence_file_content = self.view_text_box.get(1.0, END)       
+                                                          
             return
  
       ###################################################
@@ -2727,7 +2861,54 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export                  
+            global directory_project_name_global     
+            global directory_full_path_project_name_global
+            global uvm_tb_file_list_global
+            global project_sv_files_list_global
+            
+            #
+            #  NOTE:
+            # 
+            #  We now have globals loaded with
+            #  the PROJECT NAME and PROJECT FULL PATH
+            #
+            #  1. directory_project_name_global
+            #  2. directory_full_path_project_name_global
+            #  3. uvm_tb_file_list_global
+            #  4. project_sv_files_list_global
+            #
+            #  We have the TEXTBOX commands that
+            #  can write things like file lists 
+            #  to the main TEXTBOX.            
+            # 
+            #  Next, use the os command to
+            #  search which filename in PROJECT DIR
+            #  has the phrase interface in both
+            #  the FILENAME and FILE CONTENTS.
+            # 
+            #  Example ANSWER:   mem_interface.sv
+            #
+            #  Use PATH os join command to get
+            #  complete FULL PATH for mem_interface.sv
+            # 
+            #  COMPUTE interface_filename by searching
+            #  SYSTEMVERILOG File List for the
+            #  interface keyword in the filename
+            #  and the file contents.  
+                        
+            self.view_text_box.delete(1.0, END)
+            
+            uvm_sequencer_filename = "mem_sequencer.sv"
+            
+            fullpath_UVM_SEQUENCER_CODE_global = os.path.join(directory_full_path_project_name_global, uvm_sequencer_filename)
 
+            with open(str(fullpath_UVM_SEQUENCER_CODE_global) ) as fin:
+               for line in fin:
+                  self.view_text_box.insert(END, line)
+        
+            uvm_sequencer_file_content = ""
+            uvm_sequencer_file_content = self.view_text_box.get(1.0, END)       
+                                                                                            
             return
             
       ###################################################
@@ -2753,7 +2934,54 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export    
-
+            global directory_project_name_global     
+            global directory_full_path_project_name_global
+            global uvm_tb_file_list_global
+            global project_sv_files_list_global
+            
+            #
+            #  NOTE:
+            # 
+            #  We now have globals loaded with
+            #  the PROJECT NAME and PROJECT FULL PATH
+            #
+            #  1. directory_project_name_global
+            #  2. directory_full_path_project_name_global
+            #  3. uvm_tb_file_list_global
+            #  4. project_sv_files_list_global
+            #
+            #  We have the TEXTBOX commands that
+            #  can write things like file lists 
+            #  to the main TEXTBOX.            
+            # 
+            #  Next, use the os command to
+            #  search which filename in PROJECT DIR
+            #  has the phrase interface in both
+            #  the FILENAME and FILE CONTENTS.
+            # 
+            #  Example ANSWER:   mem_interface.sv
+            #
+            #  Use PATH os join command to get
+            #  complete FULL PATH for mem_interface.sv
+            # 
+            #  COMPUTE interface_filename by searching
+            #  SYSTEMVERILOG File List for the
+            #  interface keyword in the filename
+            #  and the file contents.  
+                        
+            self.view_text_box.delete(1.0, END)
+            
+            uvm_driver_filename = "mem_driver.sv"
+            
+            fullpath_UVM_DRIVER_CODE_global = os.path.join(directory_full_path_project_name_global, uvm_driver_filename)
+                       
+            with open(str(fullpath_UVM_DRIVER_CODE_global) ) as fin:
+               for line in fin:
+                  self.view_text_box.insert(END, line)
+        
+            uvm_driver_file_content = ""
+            uvm_driver_file_content = self.view_text_box.get(1.0, END)       
+                                                             
             return
             
       ###################################################
@@ -2779,7 +3007,54 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export                   
+            global directory_project_name_global     
+            global directory_full_path_project_name_global
+            global uvm_tb_file_list_global
+            global project_sv_files_list_global
+                        
+            #
+            #  NOTE:
+            # 
+            #  We now have globals loaded with
+            #  the PROJECT NAME and PROJECT FULL PATH
+            #
+            #  1. directory_project_name_global
+            #  2. directory_full_path_project_name_global
+            #  3. uvm_tb_file_list_global
+            #  4. project_sv_files_list_global
+            #
+            #  We have the TEXTBOX commands that
+            #  can write things like file lists 
+            #  to the main TEXTBOX.            
+            # 
+            #  Next, use the os command to
+            #  search which filename in PROJECT DIR
+            #  has the phrase interface in both
+            #  the FILENAME and FILE CONTENTS.
+            # 
+            #  Example ANSWER:   mem_interface.sv
+            #
+            #  Use PATH os join command to get
+            #  complete FULL PATH for mem_interface.sv
+            # 
+            #  COMPUTE interface_filename by searching
+            #  SYSTEMVERILOG File List for the
+            #  interface keyword in the filename
+            #  and the file contents.  
+                        
+            self.view_text_box.delete(1.0, END)
+            
+            uvm_monitor_filename = "mem_monitor.sv"
+            
+            fullpath_UVM_MONITOR_CODE_global = os.path.join(directory_full_path_project_name_global, uvm_monitor_filename)
 
+            with open(str(fullpath_UVM_MONITOR_CODE_global) ) as fin:
+               for line in fin:
+                  self.view_text_box.insert(END, line)
+        
+            uvm_monitor_file_content = ""
+            uvm_monitor_file_content = self.view_text_box.get(1.0, END)       
+                                                                
             return
             
       ###################################################
