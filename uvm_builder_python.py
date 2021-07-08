@@ -1293,129 +1293,39 @@ class App(Frame):    #( object)
             self.scrollb.grid(row=2, column=1, sticky='NSE')
             self.view_text_box['yscrollcommand'] = self.scrollb.set
 
-            # INSERT FILE DATA LINES into TEXTBOX to VIEW the TEXTBOX
-            # after loading a FILE using the full path name:
-            # fullpath_project_dir_seq_item_file_global
+            # SET THE TEXTVARIABLES for the two
+            # project name ENTRY WIDGETS.
             
-            text_1_TITLE = "\n\n  PROJECT NAME AND PROJECT FILES LIST: \n"
+            self.entry_LOADED_PROJECT_NAME.set("ERROR - NO PROJECT SELECTED.")
+            self.entry_LOADED_FULLPATH_PROJECT_NAME.set("ERROR - NO PROJECT SELECTED.") 
+              
+            self.entry_project_status.config(background="black", fg="cyan")
+            self.entry2_project_status.config(background="black", fg="cyan") 
+            
+
+            #########################################
+            # 
+            #    WRITE TO MAIN SCREEN TEXTBOX.    
+            # 
+            #    INSERT DATA LINES into TEXTBOX.
+            #
+            #########################################
+            
+            text_TEXTBOX_TITLE1_STRING = "\n\nPLEASE SELECT PROJECT DIRECTORY - ANY DIRECTORY WITH SV FILES.\n"
+            
+            text_TEXTBOX_TITLE2_STRING = "\nCHOOSE SELECT PROJECT IN THE MENU SEEN IN THE TOP LEFT CORNER OF THIS SCREEN.\n"
 
             text_1_LINE_SPACE = "\n  "
 
             # Clear Textbox and then INSERT TITLE.
             self.view_text_box.delete(1.0, END)  # Clear the TEXT WIDGET of Data  
-            self.view_text_box.insert(END, text_1_TITLE)
+            self.view_text_box.insert(END, text_TEXTBOX_TITLE1_STRING)
+            self.view_text_box.insert(END, text_TEXTBOX_TITLE2_STRING)            
             self.view_text_box.insert(END, text_1_LINE_SPACE)
         
             self.view_text_box.config(state=NORMAL)  # DISABLED
 
-            #####################################################################
-  
-            # Use dialog SELECT PROJECT files to automatically 
-            # build a file listlist and import files to PROJECT.
-
-            #### Select a PROJECT Directory:
-
-            root = tk.Tk()
-            root.withdraw()
-        
-            uvm_tb_file_list = []       
-            uvm_tb_file_list_global = []        
-            uvm_tb_builder_project_dir_list_global = []        
-            project_sv_files_list_global = []       
-        
-            home_dir = userprofile_global
-            
-            # Get the USER to SELECT a PROJECT DIRECTORY
-            # using filedialog.askdirectory 
-        
-            dirname = filedialog.askdirectory(parent=root,initialdir=home_dir,title='Please SELECT a Directory')
-        
-            directory_project_name_global = os.path.basename(dirname)
-        
-            uvm_tb_builder_project_selected_global = os.path.basename(dirname)
-            
-            project_name_only_global = os.path.basename(dirname)
-            
-            directory_full_path_project_name_global = dirname
-                                           
-            project_name_fullpath_global = dirname
-            
-            # PROJECT ENTRY WIDGET SETS
-            # SET the ENTRY WIDGET to the   
-            # PROJECT NAME and PROJECT DIRECTORY FULL PATH, respectively.
-            # self.entry_project_status = Entry(self.master           
-            # self.entry2_project_status = Entry(self.master
-            # 
-            # AttributeError: 'Entry' object has no attribute 'set'
-            
-            # SET THE TEXTVARIABLES for the two
-            # project name ENTRY WIDGETS.
-            
-            self.entry_LOADED_PROJECT_NAME.set("")
-            self.entry_LOADED_FULLPATH_PROJECT_NAME.set("")
-            
-            self.entry_LOADED_PROJECT_NAME.set(str(directory_project_name_global))
-            self.entry_project_status.config(background="black", fg="cyan")
-            
-            self.entry_LOADED_FULLPATH_PROJECT_NAME.set(str(directory_full_path_project_name_global))
-            self.entry2_project_status.config(background="black", fg="cyan") 
-            
-            self.master.update()
-            
-            text_1_LINE_SPACE = "\n  "
-
-            self.view_text_box.insert(END, directory_project_name_global)
-            self.view_text_box.insert(END, text_1_LINE_SPACE)
-            self.view_text_box.insert(END, text_1_LINE_SPACE)
-        
-            self.view_text_box.insert(END, directory_full_path_project_name_global)
-            self.view_text_box.insert(END, text_1_LINE_SPACE)
-            self.view_text_box.insert(END, text_1_LINE_SPACE)
-
-            # use os dir command to create list of Files to import.  
-            # The Python os.listdir() method returns a list of every file and folder in a directory.
-             
-            uvm_tb_file_list = os.listdir(directory_full_path_project_name_global)
-
-            uvm_tb_file_list_global = uvm_tb_file_list
-            uvm_tb_builder_project_dir_list_global = uvm_tb_file_list
-
-            text_FILE_LIST_TITLE = "  PROJECT COMPLETE FILE LIST: "
-        
-            self.view_text_box.insert(END, text_1_LINE_SPACE)
-            self.view_text_box.insert(END, text_FILE_LIST_TITLE)
-            self.view_text_box.insert(END, text_1_LINE_SPACE)
-
-            for i in range(len(uvm_tb_file_list_global)):
-                self.view_text_box.insert(END, str(uvm_tb_file_list_global[i]))
-                self.view_text_box.insert(END, text_1_LINE_SPACE)
-           
-            text_SV_FILE_LIST_TITLE = "  PROJECT SYSTEMVERILOG FILE LIST: "
-        
-            self.view_text_box.insert(END, text_1_LINE_SPACE)
-            self.view_text_box.insert(END, text_SV_FILE_LIST_TITLE)
-            self.view_text_box.insert(END, text_1_LINE_SPACE)           
-                 
-            for i in os.listdir(directory_full_path_project_name_global):
-                if i.endswith(".sv"):
-            	     project_sv_files_list_global.append(i)                 
-                 
-            for i in range(len(project_sv_files_list_global)):
-                self.view_text_box.insert(END, str(project_sv_files_list_global[i]))
-                self.view_text_box.insert(END, text_1_LINE_SPACE)                 
-                        
-            #
-            #  NOTE:
-            # 
-            #  We now have globals loaded with
-            #  the PROJECT NAME and PROJECT FULL PATH
-            #
-            #  1. directory_project_name_global
-            #  2. directory_full_path_project_name_global
-            #  3. uvm_tb_file_list_global
-            #  4. project_sv_files_list_global
-            #
-                                                                                                                       
+                                                                                                                                
 ###################################################################################### 
 ## 
 ##    Implement BUILD-COMPILE-SIMULATION-ANALYZE using PYTHON and TKINTER GUI
@@ -1505,6 +1415,23 @@ class App(Frame):    #( object)
             
 ######################################################################################  
 
+            # POP-UP MESSAGE TO ASK USER: PLEASE SELECT PROJECT FROM MENU.
+            #
+            # INSERT POP-UP MESSAGE with OK python code HERE . . .
+            # INSERT POP-UP MESSAGE with OK python code HERE . . .
+            # 
+            # INSERT POP-UP MESSAGE python code HERE
+                  
+            root = tk.Tk()           
+            
+            messagebox.showinfo("PLEASE SELECT PROJECT IN MENU","PLEASE SELECT PROJECT DIRECTORY - ANY DIRECTORY WITH SV FILES - CHOOSE SELECT PROJECT IN THE MENU SEEN IN THE TOP LEFT CORNER OF THIS SCREEN.")
+
+            #  User answers "OK" to acknowledge TKINTER POP-UP MESSAGE 
+           
+            root.mainloop()
+           
+######################################################################################  
+
             # Initialize Program with the First Contact List
             self.create_first_contact_list_on_startup()
 
@@ -1558,13 +1485,13 @@ class App(Frame):    #( object)
 
       def project_name_widget_function(self, event, project_widget_name):
             self.last_widget_name_clicked = project_widget_name
-            #print("\n")
-            #print("self.last_widget_name_clicked = " + str(self.last_widget_name_clicked) )
+            print("\n  " + "EVENT - project_name_widget_function")
+            print("self.last_widget_name_clicked = " + str(self.last_widget_name_clicked) )
 
       def project_name_fullpath_widget_function(self, event, project_fullpath_widget_name):
             self.last_widget_name_clicked = project_fullpath_widget_name
-            #print("\n")
-            #print("self.last_widget_name_clicked = " + str(self.last_widget_name_clicked) )
+            print("\n  " + "EVENT - project_name_fullpath_widget_function")
+            print("self.last_widget_name_clicked = " + str(self.last_widget_name_clicked) )
 
       ######################################################################################
       #
@@ -16202,7 +16129,7 @@ class HyperlinkManager(object):
 #   VIEW PROJECTS, and CREATE PROJECTS menu selections.
 #
 ##############################################################################
-class CM_App_Doc_Media(Frame):  #(object):
+class CM_App_Doc_Media():  #(object):
     def __init__(self, master):
         global cm_listbox_file_global
         global dict_filename_global
@@ -16230,101 +16157,88 @@ class CM_App_Doc_Media(Frame):  #(object):
         global project_sv_files_list_global
         global directory_project_name_global
         global directory_full_path_project_name_global
-        Frame.__init__(self, master)
-        self.grid()
-        
-        large_font = ('Verdana',20)
-        minilarge_font = ('Verdana',16)
-        medium_font = ('Verdana',12,'bold')
-        small_font = ('Verdana',10)
-        menubar_font = ('Helvetica', '12')
 
-        # Max Screen Size with the Title Bar - BEST Choice   
-        self.master.wm_state('zoomed')
-
-        # Another way to set screen size (other than BEST Choice above
-        # self.master.geometry("900x550")
-
-        OBJECT_toplevel_cm_app_doc_media = self.master
-        instance_object_LIST.append(self.master)
-        
-        self.master.configure(background="dark slate gray")
-
-        self.master.title("   UVM TESTBENCH BUILDER Application Software.")
-
-        project_dir_project_list = []
-
-        # Button Widget for ROW ZERO to Reserve ROW ZERO for Expanded TOOLBAR Type Button Functions.
-        self.reserve_row_zero_button = Button(self.master, text = "", \
-            width=34,height=1, font=('Helvetica', '12'), background="dark slate gray")
-        
-        self.reserve_row_zero_button.grid(row=0, column=0, sticky = W)
-        ## Future ROW ZERO Buttons use this line format.
-        ## self.reserve_row_zero_button.bind("<Button-1>",self.some_method_here)
-
-        # Button Widget for EXPORT METHOD.
-        self.howto_activate_gmail_smtp_mode_button = Button(self.master, text = "VIEW OF PROJECT DIRECTORY", \
-            width=34,height=4, font=('Helvetica', '12'), background="dark slate gray", fg="cyan", \
-            activebackground="dark slate gray", activeforeground="cyan")
-        
-        self.howto_activate_gmail_smtp_mode_button.grid(row=1, column=0, sticky = NW)
-        
-        # TEXTBOX to insert TITLE at top of window   
-
-        self.title_1_text_box = Text(self.master, width=90, height = 29)
-        self.title_1_text_box.config(state=NORMAL)  # DISABLED
-        self.title_1_text_box.grid(row=1, column=1, sticky = W)
-        self.title_1_text_box.config(borderwidth=10, font=('Helvetica', '12'), background="dark slate gray", fg="cyan")
-
-        self.title_1_text_box.config(state=NORMAL)  # DISABLED
-
-        text_1_TITLE = "\n**** PROJECT NAME AND PROJECT FILES LIST ****\n\n"
-
-        text_1_LINE_SPACE = "\n  "
-
-        # Clear Textbox and then INSERT Text for howto_activate_gmail_smtp_mode method.
-        self.title_1_text_box.delete(1.0, END)  # Clear the TEXT WIDGET of Data  
-        self.title_1_text_box.insert(END, text_1_TITLE)
-        self.title_1_text_box.insert(END, text_1_LINE_SPACE)
-        
-        self.title_1_text_box.config(state=NORMAL)  # DISABLED
-
-        #####################################################################
+        print("\n\nCM_App_Doc_Media - PROJECT SELECT UPDATE in progress . . .")
+                  
+        #################################################################
+        #
+        #   moved here to INSIDE class CM_App_Doc_Media(Frame) CLASS 
+        # 
+        #################################################################
  
         # Use dialog SELECT PROJECT files to automatically 
-        # import SYSTEMVERILOG files to PROJECT.
-
-        #### Select a PROJECT Directory:
-
-        root = tk.Tk()
-        root.withdraw()
+        # build a file listlist and import files to PROJECT.
         
-        self.title_1_text_box.config(state=NORMAL)  # DISABLED
-        
+        project_dir_project_list = []                                                   
         uvm_tb_file_list = []       
         uvm_tb_file_list_global = []        
         uvm_tb_builder_project_dir_list_global = []        
         project_sv_files_list_global = []       
         
         home_dir = userprofile_global
+            
+        # Get the USER to SELECT a PROJECT DIRECTORY
+        # using filedialog.askdirectory 
+        
+        #### Select a PROJECT Directory:
+                    
+        root = tk.Tk()
+        root.withdraw()           
         
         dirname = filedialog.askdirectory(parent=root,initialdir=home_dir,title='Please SELECT a Directory')
         
         directory_project_name_global = os.path.basename(dirname)
         
         uvm_tb_builder_project_selected_global = os.path.basename(dirname)
-
+            
+        project_name_only_global = os.path.basename(dirname)
+            
         directory_full_path_project_name_global = dirname
+                                           
+        project_name_fullpath_global = dirname
+            
+        print("\n\nCM_App_Doc_Media - PROJECT NAME SELECTED: " + (str(directory_project_name_global)))
+                                   
+        print("\n\nCM_App_Doc_Media - PROJECT DIRECTORY SELECTED: " + (str(project_name_fullpath_global)))
         
+        print("\n\n  ")                     
+                                 
+        # update_main_screen_textbox_project_info()
+        
+        # update_stringvars_project_entry_widgets()
+        
+        OBJECT_main.lift()
+                    
+        #
+        #  NOTE:
+        # 
+        #  We now have globals loaded with
+        #  the PROJECT NAME and PROJECT FULL PATH
+        #
+        #  1. directory_project_name_global
+        #  2. directory_full_path_project_name_global
+        #  3. uvm_tb_file_list_global
+        #  4. project_sv_files_list_global
+        #
+
+        # OPIONALLY:       
+        # DISABLE the TEXTBOX after completing write of 
+        # PROJECT NAME and PROJECT FILES to TEXTBOX.    
+        # self.title_1_text_box.config(state=DISABLED)  #NORMAL                
+       
+    def update_main_screen_textbox_project_info(self):
+    	
+        print("\n\nCM_App_Doc_Media - MAIN SCREEN TEXTBOX PROJECT FILES UPDATE \n\n")
+                                                                 
         text_1_LINE_SPACE = "\n  "
 
-        self.title_1_text_box.insert(END, directory_project_name_global)
-        self.title_1_text_box.insert(END, text_1_LINE_SPACE)
-        self.title_1_text_box.insert(END, text_1_LINE_SPACE)
+        view_text_box.insert(END, directory_project_name_global)
+        view_text_box.insert(END, text_1_LINE_SPACE)
+        view_text_box.insert(END, text_1_LINE_SPACE)
         
-        self.title_1_text_box.insert(END, directory_full_path_project_name_global)
-        self.title_1_text_box.insert(END, text_1_LINE_SPACE)
-        self.title_1_text_box.insert(END, text_1_LINE_SPACE)
+        view_text_box.insert(END, directory_full_path_project_name_global)
+        view_text_box.insert(END, text_1_LINE_SPACE)
+        view_text_box.insert(END, text_1_LINE_SPACE)
 
         # use os dir command to create list of Files to import.  
         # The Python os.listdir() method returns a list of every file and folder in a directory.
@@ -16333,211 +16247,65 @@ class CM_App_Doc_Media(Frame):  #(object):
 
         uvm_tb_file_list_global = uvm_tb_file_list
         uvm_tb_builder_project_dir_list_global = uvm_tb_file_list
-
-        text_FILE_LIST_TITLE = "**** PROJECT COMPLETE FILE LIST: "
+            
+        text_FILE_LIST_TITLE = "  PROJECT COMPLETE FILE LIST: "
         
-        self.title_1_text_box.insert(END, text_1_LINE_SPACE)
-        self.title_1_text_box.insert(END, text_FILE_LIST_TITLE)
-        self.title_1_text_box.insert(END, text_1_LINE_SPACE)
+        self.view_text_box.insert(END, text_1_LINE_SPACE)
+        self.view_text_box.insert(END, text_FILE_LIST_TITLE)
+        self.view_text_box.insert(END, text_1_LINE_SPACE)
 
         for i in range(len(uvm_tb_file_list_global)):
-            self.title_1_text_box.insert(END, str(uvm_tb_file_list_global[i]))
-            self.title_1_text_box.insert(END, text_1_LINE_SPACE)
+            self.view_text_box.insert(END, str(uvm_tb_file_list_global[i]))
+            self.view_text_box.insert(END, text_1_LINE_SPACE)
            
-        text_SV_FILE_LIST_TITLE = "**** PROJECT SYSTEMVERILOG FILE LIST: "
+        text_SV_FILE_LIST_TITLE = "  PROJECT SYSTEMVERILOG FILE LIST: "
         
-        self.title_1_text_box.insert(END, text_1_LINE_SPACE)
-        self.title_1_text_box.insert(END, text_SV_FILE_LIST_TITLE)
-        self.title_1_text_box.insert(END, text_1_LINE_SPACE)           
+        self.view_text_box.insert(END, text_1_LINE_SPACE)
+        self.view_text_box.insert(END, text_SV_FILE_LIST_TITLE)
+        self.view_text_box.insert(END, text_1_LINE_SPACE)           
                  
         for i in os.listdir(directory_full_path_project_name_global):
             if i.endswith(".sv"):
             	 project_sv_files_list_global.append(i)                 
                  
         for i in range(len(project_sv_files_list_global)):
-            self.title_1_text_box.insert(END, str(project_sv_files_list_global[i]))
-            self.title_1_text_box.insert(END, text_1_LINE_SPACE)                 
-                              
-        #
-        # LOWER WINDOW BUTTON.   
-        # 
-        self.lower_window_Button = Button(self.master, text = "MAIN SCREEN", width = 15, height = 1, \
-            font=('Helvetica', '16'), background="cyan4", fg="black", borderwidth=5,\
-            activebackground="cyan",activeforeground="blue2", command = self.lower_email_WINDOW)
-
-        self.lower_window_Button.grid(row=7, column=0, sticky = E)
-
-        #
-        # EXIT BUTTON.  
-        # 
-        self.quitButton = Button(self.master, text = "EXIT", width = 7, height = 1, \
-            font=('Helvetica', '16'), background="cyan4", fg="black", borderwidth=5,\
-            activebackground="cyan",activeforeground="blue2", command = self.exit_Handler)
-
-        self.quitButton.grid(row=7, column=0, sticky = W)
-
-        # SET SYSTEMVERILOG GLOBAL EVENT FLAG 
-        # to trigger PROJECT SELECT update EVENT
-        # to write to the PROJECT NAME and PROJECT PATH Textbox
-        # using the global EVENT, PROJECT NAME, and PROJECT PATH
-        # variables in this CLASS and METHODS.
-        event_project_select_update_flag_global = 1
-        if (event_project_select_update_flag_global == 1):
-            print("..... PROJECT UPDATE - event_project_select_update_flag_global")
-            
-        # OPIONALLY:       
-        # DISABLE the TEXTBOX after completing write of 
-        # PROJECT NAME and PROJECT FILES to TEXTBOX.    
-        # self.title_1_text_box.config(state=DISABLED)  #NORMAL                
-
+            self.view_text_box.insert(END, str(project_sv_files_list_global[i]))
+            self.view_text_box.insert(END, text_1_LINE_SPACE)                 
+                                      	     	  
         return
+ 
+ 
+#1234 
+    def update_stringvars_project_entry_widgets(self):
+    	  print("\n\nCM_App_Doc_Media - PROJECT UPDATE - update_stringvars_in_project_entry_widgets \n\n")
 
 
-    def lower_email_WINDOW(self):
-          # These CYCLE Buttons have been changed to 
-          # return to the main screen by lifting the main window.
-          OBJECT_main.lift()
+        # PROJECT ENTRY WIDGET SETS 
+        #
+        # SET the ENTRY WIDGET to the   
+        # PROJECT NAME and PROJECT DIRECTORY FULL PATH, respectively.
+        #
+        # self.entry_project_status = Entry(self.master           
+        # self.entry2_project_status = Entry(self.master
+               
+        # ADJUST THE CODE BELOW TO UPDATE THE STRINGVAR IN THE MAIN APP          
+        # SET THE TEXTVARIABLES for the two
+        # project name ENTRY WIDGETS.  
+            
+        # EXAMPLE PATH: cm_app.cm_app_email.entry_LOADED_CONTACT_NAME.set(str(first_and_last_name) )                      
+                                
+        # SOME_PATH.entry_project_status.entry_LOADED_PROJECT_NAME.set("")
+        # SOME_PATH.entry2_project_status.entry_LOADED_FULLPATH_PROJECT_NAME.set("")                         
+                       
+        # SOME_PATH.entry_project_status.entry_LOADED_PROJECT_NAME.set(str(directory_project_name_global))
+        # SOME_PATH.entry_project_status.config(background="black", fg="cyan")
+            
+        # SOME_PATH.entry2_project_status.entry2_LOADED_FULLPATH_PROJECT_NAME.set(str(directory_full_path_project_name_global))
+        # SOME_PATH.entry2_project_status.config(background="black", fg="cyan") 
+            
+        # self.master.update()
         
-
-    def exit_Handler(self):
-        self.master.destroy()
-
-
-
-    #####################################################################
-    #   
-    #  Method to display howto_activate_gmail_smtp_mode instructions.
-    #
-    #####################################################################
-#1234
-    def howto_activate_gmail_smtp_mode(self, event):
-      
-        text_1_TITLE = "\n*********** PROJECT LIST **********\n\n"
-
-        text_1EEE_TITLE = "\n\n  "      
-        
-        # Clear Textbox and then INSERT Text for howto_activate_gmail_smtp_mode method.
-        self.title_1_text_box.config(state=NORMAL)  # DISABLED
-        self.title_1_text_box.delete(1.0, END)  # Clear the TEXT WIDGET of Data  
-        self.title_1_text_box.insert(END, text_1_TITLE)
-        self.title_1_text_box.insert(INSERT, "https://myaccount.google.com/security", hyperman.add(GOOGLE_SECURITY_ALLOW_LESS_SECURE_APPS_LINK))
-        self.title_1_text_box.insert(END, text_1EEE_TITLE)
-        self.title_1_text_box.config(state=DISABLED)  # NORMAL
-       
-
-
-    ###############################################################################
-    #   
-    # Programming Note:     ( Reference to the code above )   
-    #
-    # Note that the generic sequence of TEXT WIDGET Commands to use to
-    # make the TEXT WIDGET be READ ONLY is as follows:
-    #
-    # text.config(state=NORMAL)  # DISABLED
-    # text.delete(1.0, END)
-    # text.insert(END, text)
-    # text.config(state=DISABLED)
-    #
-    ###############################################################################
-    #
-    # Specifically, Our Big Text Widget will experience these commands:
-    #
-    # self.view_text_box.config(state=NORMAL)  # Enable TEXT WIDGET for Insert
-    # self.view_text_box.delete(1.0, END)      # Clear the TEXT WIDGET of Data
-    # self.view_text_box.insert(END, key_indexed_string)  # Insert Text Data 
-    # self.view_text_box.config(state=DISABLED)  # Disable TEXT WIDGET for Insert 
-    #
-    ###############################################################################
-
-    ################################################################################
-    #     
-    #  Method to display howto_activate_gmail_oauth2_mode_part_one instructions.
-    #    
-    ################################################################################
-#1234
-    def howto_activate_gmail_oauth2_mode_part_one(self, event):
-        global client_secret_dir_global
-        global credential_home_dir_global
-        global client_secret_path_global
-        global credential_home_path_global
-
-        text_1_TITLE = "\n*********** EMAIL STARTUP Procedure *********** ADVANCED SECURITY - OAUTH2 Mode (Part 1) **********\n\nWelcome to the Contact Management EMAIL STARTUP Procedure for\nthe ADVANCED SECURITY - OAUTH2 Mode (Part 1).\n\nThis is Part 1 of the ADVANCED SECURITY OAUTH2 Mode EMAIL STARTUP Procedure.\nTypically this procedure would be executed by a trained System Administrator (a trained IT Specialist), however, \nthe Guidelines for this procedure are summarized here to allow moderately skilled computer users to execute \nthis procedure to configure their GMAIL EMAIL for ADVANCED SECURITY OAUTH2 Mode.\n\nThis Contact Management Application is currently designed to SEND EMail using your GMAIL Email.\nThis EMAIL STARTUP Procedure Guides you through the steps to allow this Contact Management Application\nto SEND GMAIL using your GMAIL EMAIL.\n\nThe process to configure your GMAIL EMAIL to give this Contact Management Application permission\nto SEND GMAIL using your GMAIL EMAIL requires you to, FIRST, LOGIN to your GMAIL EMAIL,\nand THEN, CLICK this Link:\n\n.............................  "
-
-
-        text_1AAA_TITLE = "\n\nWhile viewing the LINK above, execute STEP #1 of the PYTHON QUICKSTART technical procedure\ncalled  *** TURN ON THE GMAIL API *** which eventually instructs you how to DOWNLOAD your DOT JSON file.\nAfter Downloading this DOT JSON file, rename the DOT JSON file to client_secret.json  (client_secret DOT json)\nand then copy this client_secret.json file to the following DOT CREDENTIALS DIRECTORY on your Computer:\n\n .............................  "
-
-        text_1AAA_TWO_TITLE = "\n\nThus, the complete WINDOWS FOLDER or DIRECTORY PATH to your client_secret.json file is: \n\n.............................  "
-
-
-        text_1BBB_TITLE = "\n\nNote that the SYSTEM ADMINISTRATION SCREEN of this Application also shows the exact DIRECTORY\n(or Windows Folder) where this DOT JSON file should be placed.\n\nNext, exit from this Contact Manager Application and restart the Contact Manager Application\nand press the APP STATUS button on the MAIN SCREEN of this Contact Manager Application.\nLocate the STATUS INDICATOR called GMAIL OAUTH2 JSON FILE STATUS in the top left hand corner \nof the STATUS PANEL. Verify that the GMAIL OAUTH2 JSON FILE STATUS indicator is GREEN, \nwhich means the FORMAT of your client_secret.json file is good. This GREEN status on the STATUS PANEL\nindicator for GMAIL OAUTH2 JSON FILE STATUS is required to verify that you have placed your\nclient_secret.json file in the correct DIRECTORY, and the client_secret.json file has the correct FORMAT.\n\nNext, go to the EMAIL SCREEN of this Contact Manager Application, select OAUTH2 Mode in the\ntop right hand corner EMAIL MODE SELECTOR, and carefully send a GMAIL EMAIL to yourself to activate\nyour GMAIL CREDENTIALS. You will get a pop-up window the first time to ask you for permission\nto allow this Contact Manager to use your GMAIL EMAIL. Then after sending an EMAIL, verify that\nthe following two files are present in your DOT CREDENTIALS DIRECTORY (Windows Folder):\n\n"
-
-
-        text_1CCC_TITLE = "Note #1: You can always VERIFY that your client_secret.json file exists by following the next step \nand selecting the button at the left of this screen for ADVANCED SECURITY - OAUTH2 Mode (Part 2).\nADVANCED SECURITY - OAUTH2 Mode (Part 2) simply reminds you to always check the STATUS PANEL\nfor the GREEN GMAIL OAUTH2 JSON FILE STATUS indicator when executing ADVANCED SECURITY\nOAUTH2 Email. If the GMAIL OAUTH2 JSON FILE STATUS indicator on the STATUS PANEL is RED,\nyou will likely want to Download a new DOT JSON CLIENT SECRET as described above in this\nADVANCED SECURITY OAUTH2 Email Procedure.\n\nNote #2: The SYSTEMS ADMINISTRATION SCREEN on this Application also shows the \nDIRECTORY paths for the GMAIL OAUTH2 CREDENTIALS FILE (gmail-python-quickstart.json) \nand the GMAIL OAUTH2 CLIENT SECRET FILE (client_secret.json).\n\nNote #3: Please select OAUTH2 MODE at the TOP RIGHT of the EMAIL SCREEN when sending EMail \nwith this Contact Management Application.\n\nNote #4: In this ADVANCED SECURITY OAUTH2 GMAIL MODE, where this Application runs\nwith Security Credentials, your GMAIL Username and Password are not required.\n\nCongratulations !!  You are now ready to SEND GMAIL in ADVANCED SECURITY OAUTH2 Mode \nusing this Contact Management Application.\n"
-
-        
-        # Using Class: HyperlinkManager 
-        PYTHON_QUICK_START_LINK = lambda : webbrowser.open("https://developers.google.com/gmail/api/quickstart/python/")
-        # text = tk.Text(...)
-        hyperman = HyperlinkManager(self.title_1_text_box)
-
-        important_client_secret_file_string = "IMPORTANT FILE #1:  " + str(client_secret_path_global) + "\n\n"
-
-        important_credentials_file_string = "IMPORTANT FILE #2:  " + str(credential_home_path_global) + "\n\n"
-
-        # Clear Textbox and then INSERT Text for howto_activate_gmail_smtp_mode method.
-        self.title_1_text_box.config(state=NORMAL)  # DISABLED
-        self.title_1_text_box.delete(1.0, END)  # Clear the TEXT WIDGET of Data  
-        self.title_1_text_box.insert(END, text_1_TITLE)
-        self.title_1_text_box.insert(INSERT, "https://developers.google.com/gmail/api/quickstart/python/", hyperman.add(PYTHON_QUICK_START_LINK))
-        self.title_1_text_box.insert(END, text_1AAA_TITLE)
-        self.title_1_text_box.insert(END, str(client_secret_dir_global))
-        self.title_1_text_box.insert(END, text_1AAA_TWO_TITLE)
-        self.title_1_text_box.insert(END, str(client_secret_path_global))
-        self.title_1_text_box.insert(END, text_1BBB_TITLE)
-        self.title_1_text_box.insert(END, str(important_client_secret_file_string))
-        self.title_1_text_box.insert(END, str(important_credentials_file_string))
-        self.title_1_text_box.insert(END, text_1CCC_TITLE)
-        self.title_1_text_box.config(state=DISABLED)  # NORMAL
-
-
-
-        
-    ################################################################################ 
-    #       
-    #  Method to display howto_activate_gmail_oauth2_mode_part_two instructions.
-    # 
-    ################################################################################
-#1234
-    def howto_activate_gmail_oauth2_mode_part_two(self, event):
-        global client_secret_dir_global
-        global credential_home_dir_global
-        global client_secret_path_global
-        global credential_home_path_global
-
-        text_1_TITLE = "\n*********** EMAIL STARTUP Procedure *********** ADVANCED SECURITY - OAUTH2 Mode (Part 2) **********\n\nWelcome to the Contact Management EMAIL STARTUP Procedure for\nthe ADVANCED SECURITY - OAUTH2 Mode (Part 2).\n\nThis is Part 2 of the ADVANCED SECURITY OAUTH2 Mode EMAIL STARTUP Procedure explains the steps \nto VERIFY the FORMAT of your  client_secret.json  file that should be located in the DOT CREDENTIALS\nDIRECTORY on your computer (along with your gmail-python-quickstart.json CREDENTIALS JSON file) as follows:  \n\n"
-
-        
-        text_1DDD_TITLE = "On the Main Screen (top left hand corner) of this Application, select the APP STATUS button\nto display the STATUS PANEL. Locate the STATUS INDICATOR called GMAIL OAUTH2 JSON FILE STATUS\nin the top left hand corner of the STAUS PANEL. Verify that the GMAIL OAUTH2 JSON FILE STATUS indicator\nis GREEN, which means the FORMAT of your client_secret.json file is good. This GREEN status on the\nSTATUS PANEL GMAIL OAUTH2 JSON FILE STATUS indicator is required to verify that you have placed\nyour client_secret.json file in the correct DIRECTORY, and the client_secret.json file has the correct FORMAT.\n\nYou can always VERIFY that your client_secret.json file exists by checking the STATUS PANEL\nfor the GREEN GMAIL OAUTH2 JSON FILE STATUS indicator when executing ADVANCED SECURITY\nOAUTH2 Email. If the GMAIL OAUTH2 JSON FILE STATUS indicator on the STATUS PANEL is RED,\nyou will likely want to Download a new DOT JSON CLIENT SECRET as described above in Part 1 of this\nADVANCED SECURITY OAUTH2 Email Procedure.\n\nNote #1: Please select OAUTH2 MODE at the TOP RIGHT of the EMAIL SCREEN when sending EMail \nwith this Contact Management Application.\n\nNote #2: In this ADVANCED SECURITY OAUTH2 GMAIL MODE, where this Application runs\nwith Security Credentials, your GMAIL Username and Password are not required.\n\nCongratulations !!  You are now ready to SEND GMAIL in ADVANCED SECURITY OAUTH2 Mode \nusing this Contact Management Application.\n"
-
-        
-        important_client_secret_file_string = "IMPORTANT FILE #1:  " + str(client_secret_path_global) + "\n\n"
-
-        important_credentials_file_string = "IMPORTANT FILE #2:  " + str(credential_home_path_global) + "\n\n"
-
-        
-        # Clear Textbox and then INSERT Text for howto_activate_gmail_smtp_mode method.
-        self.title_1_text_box.config(state=NORMAL)  # DISABLED
-        self.title_1_text_box.delete(1.0, END)  # Clear the TEXT WIDGET of Data  
-        self.title_1_text_box.insert(END, text_1_TITLE)
-        self.title_1_text_box.insert(END, str(important_client_secret_file_string))
-        self.title_1_text_box.insert(END, str(important_credentials_file_string))
-        self.title_1_text_box.insert(END, text_1DDD_TITLE)
-        self.title_1_text_box.config(state=DISABLED)  # NORMAL
-
-
-
-        
-
+         
 ##############################################################################
 #
 #   E X P O R T  (Contact List CSV to Excel)  
@@ -18484,6 +18252,7 @@ def main():
                      cm_app.entry_project_status.set(str(directory_project_name_global))    
                      cm_app.entry2_project_status.set(str(directory_full_path_project_name_global))          
                      event_project_select_update_flag_global = 0
+                     print("\n\n . . . . . event_project_select_update_flag_global MAIN LOOP EVENT TRIGGER.")
                      time.sleep(.15)
                                        
                  if (mode_select_global == "Browse Mode") and (str(dict_filename_global) != "No Contact Dictionary") and (kick_thread_to_update_main_entry_widgets == True):
