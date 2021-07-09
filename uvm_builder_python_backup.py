@@ -1297,11 +1297,13 @@ class App(Frame):    #( object)
             # project name ENTRY WIDGETS.
             
             self.entry_LOADED_PROJECT_NAME.set("ERROR - NO PROJECT SELECTED.")
-            self.entry_LOADED_FULLPATH_PROJECT_NAME.set("ERROR - NO PROJECT SELECTED.") 
+            self.entry_LOADED_FULLPATH_PROJECT_NAME.set("PLEASE CHOOSE - SELECT PROJECT - IN MENU AT TOP LEFT.") 
               
-            self.entry_project_status.config(background="black", fg="cyan")
-            self.entry2_project_status.config(background="black", fg="cyan") 
-            
+            self.entry_project_status.config(background="black", fg="yellow")
+            self.entry2_project_status.config(background="black", fg="yellow") 
+
+            self.entry_project_status.update()         
+            self.entry2_project_status.update()             
 
             #########################################
             # 
@@ -1428,8 +1430,20 @@ class App(Frame):    #( object)
 
             #  User answers "OK" to acknowledge TKINTER POP-UP MESSAGE 
            
+            # SET THE TEXTVARIABLES for the two
+            # project name ENTRY WIDGETS.
+            
+            self.entry_LOADED_PROJECT_NAME.set("REMINDER - PLEASE SELECT PROJECT.")
+            self.entry_LOADED_FULLPATH_PROJECT_NAME.set("REMINDER - PLEASE CHOOSE SELECT PROJECT IN TOP LEFT MENU.") 
+              
+            self.entry_project_status.config(background="black", fg="snow")
+            self.entry2_project_status.config(background="black", fg="snow") 
+             
+            self.entry_project_status.update()         
+            self.entry2_project_status.update() 
+                                              
             root.mainloop()
-           
+
 ######################################################################################  
 
             # Initialize Program with the First Contact List
@@ -3007,11 +3021,58 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export                    
+            global directory_project_name_global     
+            global directory_full_path_project_name_global
+            global uvm_tb_file_list_global
+            global project_sv_files_list_global
+                        
+            #
+            #  NOTE:
+            # 
+            #  We now have globals loaded with
+            #  the PROJECT NAME and PROJECT FULL PATH
+            #
+            #  1. directory_project_name_global
+            #  2. directory_full_path_project_name_global
+            #  3. uvm_tb_file_list_global
+            #  4. project_sv_files_list_global
+            #
+            #  We have the TEXTBOX commands that
+            #  can write things like file lists 
+            #  to the main TEXTBOX.            
+            # 
+            #  Next, use the os command to
+            #  search which filename in PROJECT DIR
+            #  has the phrase interface in both
+            #  the FILENAME and FILE CONTENTS.
+            # 
+            #  Example ANSWER:   mem_agent.sv
+            #
+            #  Use PATH os join command to get
+            #  complete FULL PATH for mem_interface.sv
+            # 
+            #  COMPUTE interface_filename by searching
+            #  SYSTEMVERILOG File List for the
+            #  interface keyword in the filename
+            #  and the file contents.  
+                        
+            self.view_text_box.delete(1.0, END)
+            
+            uvm_agent_filename = "mem_agent.sv"
+            
+            fullpath_UVM_AGENT_CODE_global = os.path.join(directory_full_path_project_name_global, uvm_agent_filename)
 
+            with open(str(fullpath_UVM_AGENT_CODE_global) ) as fin:
+               for line in fin:
+                  self.view_text_box.insert(END, line)
+        
+            uvm_agent_file_content = ""
+            uvm_agent_file_content = self.view_text_box.get(1.0, END)       
+                                                                             
             return
            
       ###################################################
-      #
+      # 
       # UVM_ENV VIEW METHOD 
       #
       ###################################################
@@ -16157,6 +16218,7 @@ class CM_App_Doc_Media():  #(object):
         global project_sv_files_list_global
         global directory_project_name_global
         global directory_full_path_project_name_global
+        global event_project_select_update_flag_global
 
         print("\n\nCM_App_Doc_Media - PROJECT SELECT UPDATE in progress . . .")
                   
@@ -16186,7 +16248,9 @@ class CM_App_Doc_Media():  #(object):
         root.withdraw()           
         
         dirname = filedialog.askdirectory(parent=root,initialdir=home_dir,title='Please SELECT a Directory')
-        
+                
+        OBJECT_main.lift()  
+              
         directory_project_name_global = os.path.basename(dirname)
         
         uvm_tb_builder_project_selected_global = os.path.basename(dirname)
@@ -16201,7 +16265,11 @@ class CM_App_Doc_Media():  #(object):
                                    
         print("\n\nCM_App_Doc_Media - PROJECT DIRECTORY SELECTED: " + (str(project_name_fullpath_global)))
         
-        print("\n\n  ")                     
+        print("\n\n  ")      
+               
+        event_project_select_update_flag_global = 1
+        
+        print("\n\nCM_App_Doc_Media - TRIGGERED - event_project_select_update_flag_global.\n\n")
                                  
         # update_main_screen_textbox_project_info()
         
@@ -17760,9 +17828,12 @@ def main():
       global ipv4_address_global
       global contact_lists_dict_count
       global contact_lists_csv_count
-      
+      global event_project_select_update_flag_global
+      global directory_project_name_global  
+      global directory_full_path_project_name_global
+            
 ######################################################################
-
+ 
 ######################################################################
 #
 # get ip address ... similar to windows command line: ipconfig
@@ -18219,6 +18290,16 @@ def main():
       cm_app = App(root)
 
       this_person = []
+      
+      cm_app.entry_project_status.set(str(directory_project_name_global))    
+      cm_app.entry2_project_status.set(str(directory_full_path_project_name_global))          
+
+      cm_app.entry_project_status.update()
+      cm_app.entry2_project_status.update()
+      
+      print("\n\nWRITE PROJECT DATA DEFAULT STRINGS TO MAIN TEXTBOX - EVEN BEFORE IT IS SELECTED.")
+      print("\n\n ")
+      time.sleep(.15)
 
       # This is the cm_filename_worker_THREAD to maintain the Contact List Entry Widget filename String 
       # that we selected from LISTBOX to create CONTACT LIST FILENAME GLOBAL - str(cm_listbox_file_global)
@@ -18238,23 +18319,31 @@ def main():
            global mainscreen_bg_color_val_global
            global insert_first_contact_global
            global event_project_select_update_flag_global
+           global directory_project_name_global  
+           global directory_full_path_project_name_global
+           
            while 1:
                  
                  # Update the Main Screen Background Color per the latest GLOBAL setting
-                 # so when User changes it, the new color appears instantly.
+                 # so when User changes it, the new color appears instantly. 
                  if request_mainscreen_config_update_global == True:
                      cm_app.master.config(bg = str(mainscreen_bg_color_val_global) )
                      request_mainscreen_config_update_global = False
                              
-                 # UPDATE THE PROJECT ENTRY WIDGETS WITH NEW PROJECT SELECTION.
-                 # VERIFY THAT THESE PROJECT ENTRY TEXTBOX WIDGETS GET PROJECT NAME UPDATES.
+                 # UPDATE THE PROJECT ENTRY WIDGETS WITH NEW PROJECT SELECTION. 
+                 # VERIFY THAT THESE PROJECT ENTRY TEXTBOX WIDGETS 
+                 # GET PROJECT NAME UPDATES. 
                  if event_project_select_update_flag_global == 1:
-                     cm_app.entry_project_status.set(str(directory_project_name_global))    
-                     cm_app.entry2_project_status.set(str(directory_full_path_project_name_global))          
-                     event_project_select_update_flag_global = 0
-                     print("\n\n . . . . . event_project_select_update_flag_global MAIN LOOP EVENT TRIGGER.")
+                     print("\n\nMAIN LOOP EVENT TRIGGER HAS BEEN DETECTED inside cm_filename_worker.\n\n")
+                     cm_app.master.entry_project_status.set(str(directory_project_name_global))
+                     cm_app.master.entry2_project_status.set(str(directory_full_path_project_name_global))
+                     cm_app.master.entry_project_status.update()
+                     cm_app.master.entry2_project_status.update()
                      time.sleep(.15)
-                                       
+                     event_project_select_update_flag_global = 0
+                     time.sleep(.15)
+
+   
                  if (mode_select_global == "Browse Mode") and (str(dict_filename_global) != "No Contact Dictionary") and (kick_thread_to_update_main_entry_widgets == True):
 #123456789012345678901
                      try:
