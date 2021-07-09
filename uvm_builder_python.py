@@ -1196,7 +1196,7 @@ class App(Frame):    #( object)
                              bindto = "backward_scroll"
                              self.speedbutton_5 = Button(self.master, text = "UVM ENV", \
                              width=15,height=1, font=('Helvetica', '12'), \
-                             background="midnight blue", fg="deep sky blue", command = self.UVM_ENV_View_method)
+                             background="midnight blue", fg="deep sky blue", command = self.UVM_ENV_View_method) 
                              self.speedbutton_5.grid(row=4,column=3, sticky=W)
                              self.speedbutton_5.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                              self.speedbutton_5.bind("<Enter>", on_enter_bg)
@@ -1375,7 +1375,7 @@ class App(Frame):    #( object)
 
             self.build_dual_list_button2 = Button(self.master, text = "UVM SCBD", \
                 width=15, height=1, font=('Helvetica', '12'), \
-                background="midnight blue", fg="deep sky blue", command = self.UVM_SCBD_View_method)
+                background="midnight blue", fg="deep sky blue", command = self.UVM_SCBD_View_method) 
             
             self.build_dual_list_button2.grid(row=3, column=3, sticky=W)
             self.build_dual_list_button2.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
@@ -1385,17 +1385,17 @@ class App(Frame):    #( object)
 
             self.build_dual_list_button = Button(self.master, text = "UVM TEST", \
                 width=15, height=1, font=('Helvetica', '12'), \
-                background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
+                background="midnight blue", fg="deep sky blue", command = self.UVM_TEST_View_method)
             
             self.build_dual_list_button.grid(row=5, column=3, sticky=W)
             self.build_dual_list_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
             self.build_dual_list_button.bind("<Enter>", on_enter_bg)
             self.build_dual_list_button.bind("<Leave>", on_leave_bg)  
 #####################################################################################  
-
-            self.build_dual_list3_button = Button(self.master, text = "UVM TB PKG", \
+ 
+            self.build_dual_list3_button = Button(self.master, text = "PROJECT DIR", \
                 width=15, height=1, font=('Helvetica', '12'), \
-                background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
+                background="midnight blue", fg="deep sky blue", command = self.UVM_PROJECT_DIRECTORY_View_method)
             
             self.build_dual_list3_button.grid(row=6, column=3, sticky=W)
             self.build_dual_list3_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
@@ -1403,11 +1403,11 @@ class App(Frame):    #( object)
             self.build_dual_list3_button.bind("<Enter>", on_enter_bg)
             self.build_dual_list3_button.bind("<Leave>", on_leave_bg)  
             
-######################################################################################  
+###################################################################################### 
 
             self.build_dual_list4_button = Button(self.master, text = "TESTBENCH TOP", \
                 width=15, height=1, font=('Helvetica', '12'), \
-                background="midnight blue", fg="deep sky blue", command = self.build_list_from_dual_listbox_window_method)
+                background="midnight blue", fg="deep sky blue", command = self.UVM_TESTBENCH_TOP_View_method)
             
             self.build_dual_list4_button.grid(row=7, column=3, sticky=W)
             self.build_dual_list4_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
@@ -3070,7 +3070,80 @@ class App(Frame):    #( object)
             uvm_agent_file_content = self.view_text_box.get(1.0, END)       
                                                                              
             return
-           
+ 
+      ###################################################
+      # 
+      # UVM_SCBD VIEW METHOD 
+      #
+      ###################################################
+      #      
+      def UVM_SCBD_View_method(self):
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global
+            global fullpath_fn_cm_listbox_file_global
+            global fullpath_fn_dict_filename_global
+            global cm_listbox_file_global
+            global dict_filename_global
+            global master_cm_list_name_global
+            global import_excel_csv_userprofile_global
+            global import_excel_csv_cm_appdata_global
+            global export_csv_excel_userprofile_global
+            global export_csv_excel_cm_appdata_global
+            global export_to_excel_listbox_select_fn_global
+            global new_excel_file_created_global
+            global OBJECT_IN_APP_excel_import_export                        
+            global directory_project_name_global     
+            global directory_full_path_project_name_global
+            global uvm_tb_file_list_global
+            global project_sv_files_list_global
+                        
+            #
+            #  NOTE:
+            # 
+            #  We now have globals loaded with
+            #  the PROJECT NAME and PROJECT FULL PATH
+            #
+            #  1. directory_project_name_global
+            #  2. directory_full_path_project_name_global
+            #  3. uvm_tb_file_list_global
+            #  4. project_sv_files_list_global
+            #
+            #  We have the TEXTBOX commands that
+            #  can write things like file lists 
+            #  to the main TEXTBOX.            
+            # 
+            #  Next, use the os command to
+            #  search which filename in PROJECT DIR
+            #  has the phrase interface in both
+            #  the FILENAME and FILE CONTENTS.
+            # 
+            #  Example ANSWER:   mem_scbd.sv
+            #
+            #  Use PATH os join command to get
+            #  complete FULL PATH for mem_interface.sv
+            # 
+            #  COMPUTE interface_filename by searching
+            #  SYSTEMVERILOG File List for the
+            #  interface keyword in the filename
+            #  and the file contents.  
+                        
+            self.view_text_box.delete(1.0, END)
+            
+            uvm_scbd_filename = "mem_scoreboard.sv"
+            
+            fullpath_UVM_SCBD_CODE_global = os.path.join(directory_full_path_project_name_global, uvm_scbd_filename)
+
+            with open(str(fullpath_UVM_SCBD_CODE_global) ) as fin:
+               for line in fin:
+                  self.view_text_box.insert(END, line)
+        
+            uvm_scbd_file_content = ""
+            uvm_scbd_file_content = self.view_text_box.get(1.0, END)       
+                                          
+            return
+                       
       ###################################################
       # 
       # UVM_ENV VIEW METHOD 
@@ -3094,42 +3167,137 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export                   
- 
-            return     
-                 
-      ###################################################
-      #
-      # UVM_SCBD VIEW METHOD 
-      #
-      ###################################################
-      #      
-      def UVM_SCBD_View_method(self):
-            global username_global
-            global userprofile_global
-            global appdata_path_global
-            global cm_appdatafiles_path_global
-            global fullpath_fn_cm_listbox_file_global
-            global fullpath_fn_dict_filename_global
-            global cm_listbox_file_global
-            global dict_filename_global
-            global master_cm_list_name_global
-            global import_excel_csv_userprofile_global
-            global import_excel_csv_cm_appdata_global
-            global export_csv_excel_userprofile_global
-            global export_csv_excel_cm_appdata_global
-            global export_to_excel_listbox_select_fn_global
-            global new_excel_file_created_global
-            global OBJECT_IN_APP_excel_import_export                        
+            global directory_project_name_global     
+            global directory_full_path_project_name_global
+            global uvm_tb_file_list_global
+            global project_sv_files_list_global
+                        
+            #
+            #  NOTE:
+            # 
+            #  We now have globals loaded with
+            #  the PROJECT NAME and PROJECT FULL PATH
+            #
+            #  1. directory_project_name_global
+            #  2. directory_full_path_project_name_global
+            #  3. uvm_tb_file_list_global
+            #  4. project_sv_files_list_global
+            #
+            #  We have the TEXTBOX commands that
+            #  can write things like file lists 
+            #  to the main TEXTBOX.            
+            # 
+            #  Next, use the os command to
+            #  search which filename in PROJECT DIR
+            #  has the phrase interface in both
+            #  the FILENAME and FILE CONTENTS.
+            # 
+            #  Example ANSWER:   mem_agent.sv
+            #
+            #  Use PATH os join command to get
+            #  complete FULL PATH for mem_interface.sv
+            # 
+            #  COMPUTE interface_filename by searching
+            #  SYSTEMVERILOG File List for the
+            #  interface keyword in the filename
+            #  and the file contents.  
+                        
+            self.view_text_box.delete(1.0, END)
+            
+            uvm_env_filename = "mem_env.sv"
+            
+            fullpath_UVM_ENV_CODE_global = os.path.join(directory_full_path_project_name_global, uvm_env_filename)
 
-            return
+            with open(str(fullpath_UVM_ENV_CODE_global) ) as fin:
+               for line in fin:
+                  self.view_text_box.insert(END, line)
+        
+            uvm_env_file_content = ""
+            uvm_env_file_content = self.view_text_box.get(1.0, END)       
+                                                                              
+            return     
+                            
                  
       ###################################################
       #
-      # UVM_TB_PKG VIEW METHOD 
+      #    UVM TEST VIEW METHOD 
+      #
+      ###################################################
+      #     
+      def UVM_TEST_View_method(self):
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global
+            global fullpath_fn_cm_listbox_file_global
+            global fullpath_fn_dict_filename_global
+            global cm_listbox_file_global
+            global dict_filename_global
+            global master_cm_list_name_global
+            global import_excel_csv_userprofile_global
+            global import_excel_csv_cm_appdata_global
+            global export_csv_excel_userprofile_global
+            global export_csv_excel_cm_appdata_global
+            global export_to_excel_listbox_select_fn_global
+            global new_excel_file_created_global
+            global OBJECT_IN_APP_excel_import_export      
+            global directory_project_name_global     
+            global directory_full_path_project_name_global
+            global uvm_tb_file_list_global
+            global project_sv_files_list_global
+                        
+            #
+            #  NOTE:
+            # 
+            #  We now have globals loaded with
+            #  the PROJECT NAME and PROJECT FULL PATH
+            #
+            #  1. directory_project_name_global
+            #  2. directory_full_path_project_name_global
+            #  3. uvm_tb_file_list_global
+            #  4. project_sv_files_list_global
+            #
+            #  We have the TEXTBOX commands that
+            #  can write things like file lists 
+            #  to the main TEXTBOX.            
+            # 
+            #  Next, use the os command to
+            #  search which filename in PROJECT DIR
+            #  has the phrase interface in both
+            #  the FILENAME and FILE CONTENTS.
+            # 
+            #  Example ANSWER:   mem_base_test.sv
+            #
+            #  Use PATH os join command to get
+            #  complete FULL PATH for mem_interface.sv
+            # 
+            #  COMPUTE interface_filename by searching
+            #  SYSTEMVERILOG File List for the
+            #  interface keyword in the filename
+            #  and the file contents.   
+                        
+            self.view_text_box.delete(1.0, END)
+            
+            uvm_test_filename = "mem_base_test.sv"
+            
+            fullpath_UVM_TEST_CODE_global = os.path.join(directory_full_path_project_name_global, uvm_test_filename)
+
+            with open(str(fullpath_UVM_TEST_CODE_global) ) as fin:
+               for line in fin:
+                  self.view_text_box.insert(END, line)
+        
+            uvm_test_file_content = ""
+            uvm_test_file_content = self.view_text_box.get(1.0, END)       
+                                          
+            return                
+        
+      ###################################################
+      # 
+      #     UVM_PROJECT_DIRECTORY VIEW METHOD 
       #
       ###################################################
       #      
-      def UVM_TB_PKG_View_method(self):
+      def UVM_PROJECT_DIRECTORY_View_method(self):
             global username_global
             global userprofile_global
             global appdata_path_global
@@ -3146,16 +3314,66 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export                        
-           
-            return           
-                           
+            global directory_project_name_global     
+            global directory_full_path_project_name_global
+            global uvm_tb_file_list_global
+            global project_sv_files_list_global
+                        
+            #
+            #  NOTE:
+            # 
+            #  We now have globals loaded with
+            #  the PROJECT NAME and PROJECT FULL PATH
+            #
+            #  1. directory_project_name_global
+            #  2. directory_full_path_project_name_global
+            #  3. uvm_tb_file_list_global
+            #  4. project_sv_files_list_global
+            #
+            #  We have the TEXTBOX commands that
+            #  can write things like file lists 
+            #  to the main TEXTBOX.            
+            # 
+            #  Next, use the os command to
+            #  search which filename in PROJECT DIR
+            #  has the phrase interface in both
+            #  the FILENAME and FILE CONTENTS.
+            # 
+            #  Example ANSWER:   mem_tb_pkg.sv
+            #
+            #  Use PATH os join command to get
+            #  complete FULL PATH for mem_interface.sv
+            # 
+            #  COMPUTE interface_filename by searching
+            #  SYSTEMVERILOG File List for the
+            #  interface keyword in the filename
+            #  and the file contents.   
+            
+            project_directory_list = os.listdir(directory_full_path_project_name_global)
+                         
+            self.view_text_box.delete(1.0, END)
+            
+            TITLE_project_dir = "\n\n  Project Files and Directories:\n\n"
+            
+            self.view_text_box.insert(END, TITLE_project_dir)
+            
+            for i in project_directory_list:
+                item_plus_return = str(i) + "\n"           	  
+                self.view_text_box.insert(END, item_plus_return)
+            
+            # Now we can read the textbox contents.
+            project_dir_text_box_content = []
+            project_dir_text_box_content = self.view_text_box.get(1.0, END)       
+                  
+
+
       ###################################################
       #
-      # UVM_TB_CFG VIEW METHOD 
+      # UVM_TESTBENCH_TOP VIEW METHOD 
       #
       ###################################################
       #      
-      def UVM_TB_CFG_View_method(self):
+      def UVM_TESTBENCH_TOP_View_method(self):
             global username_global
             global userprofile_global
             global appdata_path_global
@@ -3172,7 +3390,54 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export                                  
-                    
+            global directory_project_name_global     
+            global directory_full_path_project_name_global
+            global uvm_tb_file_list_global
+            global project_sv_files_list_global
+                        
+            #
+            #  NOTE:
+            # 
+            #  We now have globals loaded with
+            #  the PROJECT NAME and PROJECT FULL PATH
+            #
+            #  1. directory_project_name_global
+            #  2. directory_full_path_project_name_global
+            #  3. uvm_tb_file_list_global
+            #  4. project_sv_files_list_global
+            #
+            #  We have the TEXTBOX commands that
+            #  can write things like file lists 
+            #  to the main TEXTBOX.            
+            # 
+            #  Next, use the os command to
+            #  search which filename in PROJECT DIR
+            #  has the phrase interface in both
+            #  the FILENAME and FILE CONTENTS.
+            # 
+            #  Example ANSWER:   testbench_top.sv
+            #
+            #  Use PATH os join command to get
+            #  complete FULL PATH for mem_interface.sv
+            #  
+            #  COMPUTE interface_filename by searching
+            #  SYSTEMVERILOG File List for the
+            #  interface keyword in the filename
+            #  and the file contents.    
+                        
+            self.view_text_box.delete(1.0, END)
+            
+            testbench_top_filename = "testbench_top.sv"
+            
+            fullpath_UVM_TESTBENCH_TOP_CODE_global = os.path.join(directory_full_path_project_name_global, testbench_top_filename)
+
+            with open(str(fullpath_UVM_TESTBENCH_TOP_CODE_global) ) as fin:
+               for line in fin:
+                  self.view_text_box.insert(END, line)
+        
+            uvm_testbench_top_file_content = ""
+            uvm_testbench_top_file_content = self.view_text_box.get(1.0, END)       
+                                                             
             return        
                            
       ###################################################
@@ -3200,33 +3465,7 @@ class App(Frame):    #( object)
             global OBJECT_IN_APP_excel_import_export                                 
                          
             return             
-                           
-      ###################################################
-      #
-      # TESTBENCH SELECT MENU METHOD 
-      #
-      ###################################################
-      #      
-      def TESTBENCH_SELECT_Menu_method(self):
-            global username_global
-            global userprofile_global
-            global appdata_path_global
-            global cm_appdatafiles_path_global
-            global fullpath_fn_cm_listbox_file_global
-            global fullpath_fn_dict_filename_global
-            global cm_listbox_file_global
-            global dict_filename_global
-            global master_cm_list_name_global
-            global import_excel_csv_userprofile_global
-            global import_excel_csv_cm_appdata_global
-            global export_csv_excel_userprofile_global
-            global export_csv_excel_cm_appdata_global
-            global export_to_excel_listbox_select_fn_global
-            global new_excel_file_created_global
-            global OBJECT_IN_APP_excel_import_export      
-
-            return
-            
+                                      
       ###################################################
       #
       # COMPILE SCRIPT SELECT MENU METHOD 
