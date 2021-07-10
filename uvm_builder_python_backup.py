@@ -665,6 +665,7 @@ cm_textbox_newfile_global = "No New Contact List Created"
 first_insert_data_entry = 0
 window_select_global = "window_select_global NOT YET SET"
 night_mode_selection = 1
+uvm_tb_file_type_dict = {}
 
 
 ####################################################################################
@@ -971,6 +972,7 @@ class App(Frame):    #( object)
             global OBJECT_main
             global window_select_global
             global night_mode_selection
+            global uvm_tb_file_type_dict
             Frame.__init__(self, master)
             self.grid()
 
@@ -1436,8 +1438,8 @@ class App(Frame):    #( object)
             self.entry_LOADED_PROJECT_NAME.set("REMINDER - PLEASE SELECT PROJECT.")
             self.entry_LOADED_FULLPATH_PROJECT_NAME.set("REMINDER - PLEASE CHOOSE SELECT PROJECT IN TOP LEFT MENU.") 
               
-            self.entry_project_status.config(background="black", fg="snow")
-            self.entry2_project_status.config(background="black", fg="snow") 
+            self.entry_project_status.config(background="black", fg="cyan")
+            self.entry2_project_status.config(background="black", fg="cyan") 
              
             self.entry_project_status.update()         
             self.entry2_project_status.update() 
@@ -2071,22 +2073,187 @@ class App(Frame):    #( object)
       #
       #####################################################################################
       #
-      # Method to open new window for Application Documentation Media. 
+      # Method to activate the CM_App_Doc_Media CLASS, 
+      # which does the following.
+      #  
       # 
-      def cm_app_doc_media_window_method(self):
+      def cm_app_doc_media_window_method(self):                	
           global OBJECT_IN_APP_cm_app_doc_media
+          global cm_listbox_file_global
+          global dict_filename_global
+          global fullpath_fn_cm_listbox_file_global
+          global fullpath_fn_dict_filename_global
+          global listbox_file_capture_global
+          global master_cm_list_name_global
+          global username_global
+          global userprofile_global
+          global appdata_path_global
+          global cm_appdatafiles_path_global
+          global import_excel_csv_userprofile_global
+          global import_excel_csv_cm_appdata_global
+          global export_csv_excel_userprofile_global
+          global export_csv_excel_cm_appdata_global
+          global export_to_excel_listbox_select_fn_global
+          global new_excel_file_created_global
+          global client_secret_dir_global
+          global credential_home_dir_global
+          global client_secret_path_global
+          global credential_home_path_global
+          global OBJECT_toplevel_cm_app_doc_media
+          global instance_object_LIST
+          global uvm_tb_file_list_global
+          global project_sv_files_list_global
+          global directory_project_name_global
+          global directory_full_path_project_name_global
+          global event_project_select_update_flag_global
 
-          if ( (OBJECT_toplevel_cm_app_doc_media.winfo_exists() ) == True) and ("toplevel" in str(OBJECT_toplevel_cm_app_doc_media) ):
-              OBJECT_toplevel_cm_app_doc_media.lift()
-              # print(".... OBJECT_toplevel_cm_app_doc_media.winfo_exists() ) == True:  lift() " + str(OBJECT_toplevel_cm_app_doc_media))
-          else:
-              self.cm_app_doc_media_WINDOW = tk.Toplevel(self.master)
-              self.cm_app_doc_media = CM_App_Doc_Media(self.cm_app_doc_media_WINDOW)
+          # print("\n\ncm_app_doc_media_window_method - PROJECT SELECT in progress . . .")
+              
+          ############################################
+          #
+          #   PROJECT SELECT DIALOG moved here to  
+          #   cm_app_doc_media_window_method 
+          #   to enable easier path for the 
+          #   command updating STRINGVARS
+          #   for PROJECT NAME ENTRY WIDGETS.
+          # 
+          ############################################
+ 
+          # Use dialog SELECT PROJECT files to automatically 
+          # build a file listlist and import files to PROJECT.
+        
+          project_dir_project_list = []                                                   
+          uvm_tb_file_list = []       
+          uvm_tb_file_list_global = []        
+          uvm_tb_builder_project_dir_list_global = []        
+          project_sv_files_list_global = []       
+        
+          home_dir = userprofile_global
+            
+          # Get the USER to SELECT PROJECT DIRECTORY
+          # as they have selected SELECT PROJECT on the Menu.
+          # Implement ELECT PROJECT DIRECTORY using filedialog.askdirectory 
+        
+          #### Select a PROJECT Directory:
+                    
+          root = tk.Tk()
+          root.withdraw()           
+        
+          dirname = filedialog.askdirectory(parent=root,initialdir=home_dir,title='Please SELECT a Directory')
+                
+          OBJECT_main.lift()  
+              
+          directory_project_name_global = os.path.basename(dirname)
+        
+          uvm_tb_builder_project_selected_global = os.path.basename(dirname)
+            
+          project_name_only_global = os.path.basename(dirname)
+            
+          directory_full_path_project_name_global = dirname
+                                           
+          project_name_fullpath_global = dirname
+            
+          # print("\n\nPROJECT NAME SELECTED: " + (str(directory_project_name_global)))
+                                   
+          # print("\n\nPROJECT DIRECTORY SELECTED: " + (str(project_name_fullpath_global)))
+        
+          # print("\n\n  ")      
+               
+          event_project_select_update_flag_global = 1
+        
+          # print("\n\nCM_App_Doc_Media - TRIGGERED - event_project_select_update_flag_global.\n\n")
+                        
+          # UPDATE THE PROJECT ENTRY WIDGETS WITH NEW PROJECT SELECTION. 
+          # VERIFY THAT THESE PROJECT ENTRY TEXTBOX WIDGETS 
+          # GET PROJECT NAME UPDATES. 
+          if event_project_select_update_flag_global == 1:
+              # print("\n\nPROJECT SELECT FLAG HAS BEEN DETECTED AFTER MENU SELECTION.\n\n")
+              self.entry_LOADED_PROJECT_NAME.set(str(directory_project_name_global))
+              self.entry_LOADED_FULLPATH_PROJECT_NAME.set(str(directory_full_path_project_name_global))
+              self.entry_project_status.update()
+              self.entry2_project_status.update()
+              time.sleep(.15)
+              event_project_select_update_flag_global = 0
+              time.sleep(.15)                        
+        
+          OBJECT_main.lift()
+                    
+          #
+          #  NOTE:
+          # 
+          #  We now have globals loaded with
+          #  the PROJECT NAME and PROJECT FULL PATH
+          #
+          #  1. directory_project_name_global
+          #  2. directory_full_path_project_name_global
+          #  3. uvm_tb_file_list_global
+          #  4. project_sv_files_list_global
+          #
+    	
+          # print("\n\nWRITE PROJECT NAME AND PROJECT FILES LIST TO MAIN SCREEN TEXTBOX. \n\n")
+                          
+          # Clear the TEXTBOX of the PROJECT SELECT message
+          # as the PROJECT SELECT action has been performed.                 
+          self.view_text_box.delete(1.0, END)
+                                                                 
+          text_1_LINE_SPACE = "\n  "          
+          self.view_text_box.insert(END, text_1_LINE_SPACE)
+          text_TOP_TEXTBOX_PROJECT_NAME = "PROJECT NAME:   "          
+          self.view_text_box.insert(END, text_TOP_TEXTBOX_PROJECT_NAME)
+          self.view_text_box.insert(END, directory_project_name_global)
+          self.view_text_box.insert(END, text_1_LINE_SPACE)
+          self.view_text_box.insert(END, text_1_LINE_SPACE)
+        
+          self.view_text_box.insert(END, text_1_LINE_SPACE)
+          text_TOP_TEXTBOX_PROJECT_DIR = "PROJECT DIRECTORY PATH:  \n"          
+          self.view_text_box.insert(END, text_TOP_TEXTBOX_PROJECT_DIR)        
+          self.view_text_box.insert(END, directory_full_path_project_name_global)
+          self.view_text_box.insert(END, text_1_LINE_SPACE)
+          self.view_text_box.insert(END, text_1_LINE_SPACE)
 
-              OBJECT_IN_APP_cm_app_doc_media = self.cm_app_doc_media
+          # use os dir command to create list of Files to import.  
+          # The Python os.listdir() method returns a 
+          # list of every file and folder in a directory.
+             
+          uvm_tb_file_list = os.listdir(directory_full_path_project_name_global)
 
+          uvm_tb_file_list_global = uvm_tb_file_list
+          uvm_tb_builder_project_dir_list_global = uvm_tb_file_list
+            
+          text_FILE_LIST_TITLE = "PROJECT COMPLETE FILE LIST: \n"
+        
+          self.view_text_box.insert(END, text_1_LINE_SPACE)
+          self.view_text_box.insert(END, text_FILE_LIST_TITLE)
+          self.view_text_box.insert(END, text_1_LINE_SPACE)
 
-          
+          for i in range(len(uvm_tb_file_list_global)):
+              self.view_text_box.insert(END, str(uvm_tb_file_list_global[i]))
+              self.view_text_box.insert(END, text_1_LINE_SPACE)
+           
+          text_SV_FILE_LIST_TITLE = "PROJECT SYSTEMVERILOG FILE LIST: \n"
+        
+          self.view_text_box.insert(END, text_1_LINE_SPACE)
+          self.view_text_box.insert(END, text_SV_FILE_LIST_TITLE)
+          self.view_text_box.insert(END, text_1_LINE_SPACE)           
+                 
+          for i in os.listdir(directory_full_path_project_name_global):
+              if i.endswith(".sv"):
+            	   project_sv_files_list_global.append(i)                 
+                 
+          for i in range(len(project_sv_files_list_global)):
+              self.view_text_box.insert(END, str(project_sv_files_list_global[i]))
+              self.view_text_box.insert(END, text_1_LINE_SPACE)                 
+
+          # DISABLE Main Screen TEXTBOX
+          # as the last step in TEXTBOX Write of Project Info.
+          # Be sure to enable TEXTBOX with NORMAL setting
+          # when using this TEXBOX in the future.
+          self.view_text_box.config(state=DISABLED)  # DISABLED or NORMAL
+                                            	     	  
+          return
+ 
+
+              
       #####################################################################################
       # 
       #   Calls - User GUI Configuration Class - USER_GUI_Config_Class  
@@ -2616,7 +2783,10 @@ class App(Frame):    #( object)
             #  SYSTEMVERILOG File List for the
             #  interface keyword in the filename
             #  and the file contents. 
-                        
+                                     
+            # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
+            self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
+            
             self.view_text_box.delete(1.0, END)
             
             interface_filename = "mem_interface.sv"
@@ -2689,7 +2859,10 @@ class App(Frame):    #( object)
             #  SYSTEMVERILOG File List for the
             #  interface keyword in the filename
             #  and the file contents.  
-                        
+            
+             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
+            self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL 
+                                  
             self.view_text_box.delete(1.0, END)
             
             uvm_seq_item_filename = "mem_seq_item.sv"
@@ -2763,6 +2936,9 @@ class App(Frame):    #( object)
             #  SYSTEMVERILOG File List for the
             #  interface keyword in the filename
             #  and the file contents.  
+            
+            # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
+            self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
                         
             self.view_text_box.delete(1.0, END)
             
@@ -2836,6 +3012,9 @@ class App(Frame):    #( object)
             #  SYSTEMVERILOG File List for the
             #  interface keyword in the filename
             #  and the file contents.  
+            
+            # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
+            self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
                         
             self.view_text_box.delete(1.0, END)
             
@@ -2909,6 +3088,9 @@ class App(Frame):    #( object)
             #  SYSTEMVERILOG File List for the
             #  interface keyword in the filename
             #  and the file contents.  
+            
+            # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
+            self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
                         
             self.view_text_box.delete(1.0, END)
             
@@ -2982,7 +3164,10 @@ class App(Frame):    #( object)
             #  SYSTEMVERILOG File List for the
             #  interface keyword in the filename
             #  and the file contents.  
-                        
+            
+            # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
+            self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL  
+                                  
             self.view_text_box.delete(1.0, END)
             
             uvm_monitor_filename = "mem_monitor.sv"
@@ -3054,7 +3239,10 @@ class App(Frame):    #( object)
             #  COMPUTE interface_filename by searching
             #  SYSTEMVERILOG File List for the
             #  interface keyword in the filename
-            #  and the file contents.  
+            #  and the file contents.
+            
+            # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
+            self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL              
                         
             self.view_text_box.delete(1.0, END)
             
@@ -3128,6 +3316,9 @@ class App(Frame):    #( object)
             #  SYSTEMVERILOG File List for the
             #  interface keyword in the filename
             #  and the file contents.  
+            
+            # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
+            self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL                        
                         
             self.view_text_box.delete(1.0, END)
             
@@ -3200,7 +3391,10 @@ class App(Frame):    #( object)
             #  COMPUTE interface_filename by searching
             #  SYSTEMVERILOG File List for the
             #  interface keyword in the filename
-            #  and the file contents.  
+            #  and the file contents.
+              
+            # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
+            self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
                         
             self.view_text_box.delete(1.0, END)
             
@@ -3274,7 +3468,10 @@ class App(Frame):    #( object)
             #  COMPUTE interface_filename by searching
             #  SYSTEMVERILOG File List for the
             #  interface keyword in the filename
-            #  and the file contents.   
+            #  and the file contents. 
+              
+            # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
+            self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL            
                         
             self.view_text_box.delete(1.0, END)
             
@@ -3347,13 +3544,16 @@ class App(Frame):    #( object)
             #  COMPUTE interface_filename by searching
             #  SYSTEMVERILOG File List for the
             #  interface keyword in the filename
-            #  and the file contents.   
+            #  and the file contents. 
+            
+            # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
+            self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL              
             
             project_directory_list = os.listdir(directory_full_path_project_name_global)
                          
             self.view_text_box.delete(1.0, END)
             
-            TITLE_project_dir = "\n\n  Project Files and Directories:\n\n"
+            TITLE_project_dir = "\n\n  Project Files and Directories for PROJECT NAME:  " + str(directory_project_name_global) + "\n\n"
             
             self.view_text_box.insert(END, TITLE_project_dir)
             
@@ -3424,6 +3624,9 @@ class App(Frame):    #( object)
             #  SYSTEMVERILOG File List for the
             #  interface keyword in the filename
             #  and the file contents.    
+            
+            # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
+            self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
                         
             self.view_text_box.delete(1.0, END)
             
@@ -16478,8 +16681,9 @@ class CM_App_Doc_Media():  #(object):
         
         home_dir = userprofile_global
             
-        # Get the USER to SELECT a PROJECT DIRECTORY
-        # using filedialog.askdirectory 
+        # Get the USER to SELECT PROJECT DIRECTORY
+        # as they have selected SELECT PROJECT on the Menu.
+        # Implement ELECT PROJECT DIRECTORY using filedialog.askdirectory 
         
         #### Select a PROJECT Directory:
                     
@@ -16509,9 +16713,21 @@ class CM_App_Doc_Media():  #(object):
         event_project_select_update_flag_global = 1
         
         print("\n\nCM_App_Doc_Media - TRIGGERED - event_project_select_update_flag_global.\n\n")
-                                 
-        # update_main_screen_textbox_project_info()
-        
+                        
+        # UPDATE THE PROJECT ENTRY WIDGETS WITH NEW PROJECT SELECTION. 
+        # VERIFY THAT THESE PROJECT ENTRY TEXTBOX WIDGETS 
+        # GET PROJECT NAME UPDATES. 
+        if event_project_select_update_flag_global == 1:
+            print("\n\nEVENT PROJECT SELECT FLAG HAS BEEN DETECTED AFTER MENU SELECTION.\n\n")
+            self.entry_project_status.set(str(directory_project_name_global))
+            self.entry2_project_status.set(str(directory_full_path_project_name_global))
+            self.entry_project_status.update()
+            self.entry2_project_status.update()
+            time.sleep(.15)
+            event_project_select_update_flag_global = 0
+            time.sleep(.15)                        
+                                                                                
+        # update_main_screen_textbox_project_info()        
         # update_stringvars_project_entry_widgets()
         
         OBJECT_main.lift()
