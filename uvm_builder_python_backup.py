@@ -665,7 +665,18 @@ cm_textbox_newfile_global = "No New Contact List Created"
 first_insert_data_entry = 0
 window_select_global = "window_select_global NOT YET SET"
 night_mode_selection = 1
-uvm_tb_file_type_dict = {}
+uvm_tb_file_type_dict = {'project_dir_fullpath_key': 'PROJECT_NOT_SET',
+	                       'sv_interface_key':'FILENAME_NOT_SET',
+	                       'seq_item_key':'FILENAME_NOT_SET',
+	                       'sequence_key':'FILENAME_NOT_SET',	                     	                       
+	                     	 'sequencer_key':'FILENAME_NOT_SET',
+	                       'driver_key':'FILENAME_NOT_SET',
+	                       'monitor_key':'FILENAME_NOT_SET',	 
+     	                   'agent_key':'FILENAME_NOT_SET',
+	                       'scoreboard_key':'FILENAME_NOT_SET',	                     	                       
+	                     	 'environment_key':'FILENAME_NOT_SET',
+	                       'test_key':'FILENAME_NOT_SET',
+	                       'testbench_top_key':'FILENAME_NOT_SET'}
 
 
 ####################################################################################
@@ -996,6 +1007,20 @@ class App(Frame):    #( object)
             uvm_testbench_file_List = []
 
             # self.this_person = []
+            
+            uvm_tb_file_type_dict = {'project_dir_fullpath_key': 'PROJECT_NOT_SET',
+	                       'sv_interface_key':'FILENAME_NOT_SET',
+	                       'seq_item_key':'FILENAME_NOT_SET',
+	                       'sequence_key':'FILENAME_NOT_SET',	                     	                       
+	                     	 'sequencer_key':'FILENAME_NOT_SET',
+	                       'driver_key':'FILENAME_NOT_SET',
+	                       'monitor_key':'FILENAME_NOT_SET',	 
+     	                   'agent_key':'FILENAME_NOT_SET',
+	                       'scoreboard_key':'FILENAME_NOT_SET',                     	                       
+	                     	 'environment_key':'FILENAME_NOT_SET',
+	                       'test_key':'FILENAME_NOT_SET',
+	                       'testbench_top_key':'FILENAME_NOT_SET'}
+            
 
             gfn = ''
             gln = ''
@@ -2106,7 +2131,7 @@ class App(Frame):    #( object)
           global directory_project_name_global
           global directory_full_path_project_name_global
           global event_project_select_update_flag_global
-
+     
           # print("\n\ncm_app_doc_media_window_method - PROJECT SELECT in progress . . .")
               
           ############################################
@@ -2152,7 +2177,7 @@ class App(Frame):    #( object)
           directory_full_path_project_name_global = dirname
                                            
           project_name_fullpath_global = dirname
-            
+
           # print("\n\nPROJECT NAME SELECTED: " + (str(directory_project_name_global)))
                                    
           # print("\n\nPROJECT DIRECTORY SELECTED: " + (str(project_name_fullpath_global)))
@@ -2243,16 +2268,167 @@ class App(Frame):    #( object)
           for i in range(len(project_sv_files_list_global)):
               self.view_text_box.insert(END, str(project_sv_files_list_global[i]))
               self.view_text_box.insert(END, text_1_LINE_SPACE)                 
+               
+          # use pattern matching to associate the
+          # uvm file type KEY with FILENAME VALUE
+          uvm_tb_file_type_dict = \
+              {'project_dir_fullpath_key': 'str(project_name_fullpath_global)',
+	            'sv_interface_key':'sv_interface_val',
+	            'seq_item_key':'seq_item_val',
+	            'sequence_key':'sequence_val',	                     	                       
+	            'sequencer_key':'sequencer_val',
+	            'driver_key':'driver_val',
+	            'monitor_key':'monitor_val',	 
+     	        'agent_key':'agent_val',
+	            'scoreboard_key':'scoreboard_val',                     	                       
+	            'environment_key':'environment_val',
+	            'test_key':'test_val',
+	            'testbench_top_key':'testbench_top_val'}             
+            
+          text_FILE_TYPE_KEY_TITLE = "PROJECT DICTIONARY FILE NAME VALUE LIST: \n"
+        
+          self.view_text_box.insert(END, text_1_LINE_SPACE)
+          self.view_text_box.insert(END, text_FILE_TYPE_KEY_TITLE)
+          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+          
+          pattern_string = "interface"
+          for i in os.listdir(directory_full_path_project_name_global):
+              if i.endswith(".sv"):
+                  if pattern_string in i:
+                      sv_interface_value_string = i
+                      uvm_tb_file_type_dict.update({'sv_interface_key': sv_interface_value_string})
+            	                                            
+          sv_interface_value_string = uvm_tb_file_type_dict.get('sv_interface_key')                                               
+          self.view_text_box.insert(END, str(sv_interface_value_string))
+          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                 
+          pattern_string = "seq_item"
+          for i in os.listdir(directory_full_path_project_name_global):
+              if i.endswith(".sv"):
+                  if pattern_string in i:
+                      seq_item_value_string = i
+                      uvm_tb_file_type_dict.update({'seq_item_key': seq_item_value_string})
+            	                                                                             
+          seq_item_value_string = uvm_tb_file_type_dict.get('seq_item_key')         
+          self.view_text_box.insert(END, str(seq_item_value_string))
+          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                    
+          pattern_string = "sequence"
+          for i in os.listdir(directory_full_path_project_name_global):
+              if i.endswith(".sv"):
+                  if pattern_string in i:
+                      sequence_value_string = i
+                      uvm_tb_file_type_dict.update({'sequence_key': sequence_value_string})
+            	                                         
+          sequence_value_string = uvm_tb_file_type_dict.get('sequence_key') 
+          self.view_text_box.insert(END, str(sequence_value_string))
+          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                    
+          pattern_string = "sequencer"
+          for i in os.listdir(directory_full_path_project_name_global):
+              if i.endswith(".sv"):
+                  if pattern_string in i:
+                      sequencer_value_string = i
+                      uvm_tb_file_type_dict.update({'sequencer_key': sequencer_value_string})
+            	                                                   
+          sequencer_value_string = uvm_tb_file_type_dict.get('sequencer_key') 
+          self.view_text_box.insert(END, str(sequencer_value_string))
+          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+          
+          pattern_string = "driver"
+          for i in os.listdir(directory_full_path_project_name_global):
+              if i.endswith(".sv"):
+                  if pattern_string in i:
+                      driver_value_string = i
+                      uvm_tb_file_type_dict.update({'driver_key': driver_value_string})
+            	                                         
+          driver_value_string = uvm_tb_file_type_dict.get('driver_key') 
+          self.view_text_box.insert(END, str(driver_value_string))
+          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+          
+          pattern_string = "monitor"
+          for i in os.listdir(directory_full_path_project_name_global):
+              if i.endswith(".sv"):
+                  if pattern_string in i:
+                      monitor_value_string = i
+                      uvm_tb_file_type_dict.update({'monitor_key': monitor_value_string})
+            	                                                   	                                                  
+          monitor_value_string = uvm_tb_file_type_dict.get('monitor_key') 
+          self.view_text_box.insert(END, str(monitor_value_string))
+          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+          
+          pattern_string = "agent"
+          for i in os.listdir(directory_full_path_project_name_global):
+              if i.endswith(".sv"):
+                  if pattern_string in i:
+                      agent_value_string = i
+                      uvm_tb_file_type_dict.update({'agent_key': agent_value_string})
+            	                                                           
+          agent_value_string = uvm_tb_file_type_dict.get('agent_key') 
+          self.view_text_box.insert(END, str(agent_value_string))
+          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+          
+          pattern_string1 = "scoreboard"
+          pattern_string2 = "scbd"
+          for i in os.listdir(directory_full_path_project_name_global):
+              if i.endswith(".sv"):
+                  if (pattern_string1 in i):
+                      scoreboard_value_string = i
+                      uvm_tb_file_type_dict.update({'scoreboard_key': scoreboard_value_string})
+                  if (pattern_string2 in i):
+                      scoreboard_value_string = i
+                      uvm_tb_file_type_dict.update({'scoreboard_key': scoreboard_value_string})
+            	                            	                                                                             
+          scoreboard_value_string = uvm_tb_file_type_dict.get('scoreboard_key') 
+          self.view_text_box.insert(END, str(scoreboard_value_string))
+          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+          
+          pattern_string1 = "environment"
+          pattern_string2 = "env"
+          for i in os.listdir(directory_full_path_project_name_global):
+              if i.endswith(".sv"):
+                  if (pattern_string1 in i):
+                      environment_value_string = i
+                      uvm_tb_file_type_dict.update({'environment_key': environment_value_string})
+                  if (pattern_string2 in i):
+                      environment_value_string = i
+                      uvm_tb_file_type_dict.update({'environment_key': environment_value_string})
+            	                            	                     
+          environment_value_string = uvm_tb_file_type_dict.get('environment_key') 
+          self.view_text_box.insert(END, str(environment_value_string))
+          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                    
+          pattern_string = "_test.sv"
+          for i in os.listdir(directory_full_path_project_name_global):
+              if i.endswith(".sv"):
+                  if pattern_string in i:
+                      test_value_string = i
+                      uvm_tb_file_type_dict.update({'test_key': test_value_string})
+            	                                                           
+          test_value_string = uvm_tb_file_type_dict.get('test_key') 
+          self.view_text_box.insert(END, str(test_value_string))
+          self.view_text_box.insert(END, text_1_LINE_SPACE)           
+                             
+          pattern_string = "testbench_top"
+          for i in os.listdir(directory_full_path_project_name_global):
+              if i.endswith(".sv"):
+                  if pattern_string in i:
+                      testbench_top_value_string = i
+                      uvm_tb_file_type_dict.update({'testbench_top_key': testbench_top_value_string})                    
+                    
+          testbench_top_value_string = uvm_tb_file_type_dict.get('testbench_top_key') 
+          self.view_text_box.insert(END, str(testbench_top_value_string))
+          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                    
+          self.view_text_box.insert(END, text_1_LINE_SPACE)             
 
-          # DISABLE Main Screen TEXTBOX
+          # DISABLE Main Screen TEXTBOX.
           # as the last step in TEXTBOX Write of Project Info.
           # Be sure to enable TEXTBOX with NORMAL setting
           # when using this TEXBOX in the future.
           self.view_text_box.config(state=DISABLED)  # DISABLED or NORMAL
                                             	     	  
           return
- 
-
               
       #####################################################################################
       # 
