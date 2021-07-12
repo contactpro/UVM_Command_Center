@@ -665,24 +665,21 @@ cm_textbox_newfile_global = "No New Contact List Created"
 first_insert_data_entry = 0
 window_select_global = "window_select_global NOT YET SET"
 night_mode_selection = 1
-uvm_tb_file_type_dict = {'project_dir_fullpath_key': 'PROJECT_NOT_SET',
-	                       'sv_interface_key':'FILENAME_NOT_SET',
-	                       'seq_item_key':'FILENAME_NOT_SET',
-	                       'sequence_key':'FILENAME_NOT_SET',	                     	                       
-	                     	 'sequencer_key':'FILENAME_NOT_SET',
-	                       'driver_key':'FILENAME_NOT_SET',
-	                       'monitor_key':'FILENAME_NOT_SET',	 
-     	                   'agent_key':'FILENAME_NOT_SET',
-	                       'scoreboard_key':'FILENAME_NOT_SET',	                     	                       
-	                     	 'environment_key':'FILENAME_NOT_SET',
-	                       'test_key':'FILENAME_NOT_SET',
-	                       'testbench_top_key':'FILENAME_NOT_SET'}
-
+sv_interface_value_string_global = ""
+seq_item_value_string_global = ""
+sequence_value_string_global = ""
+sequencer_value_string_global = ""
+driver_value_string_global = ""
+monitor_value_string_global = ""
+agent_value_string_global = ""
+scoreboard_value_string_global = ""
+environment_value_string_global = ""
+test_value_string_global = ""
+testbench_top_value_string_global = ""
+uvm_tb_file_type_dict = {}
 
 ####################################################################################
-""" Description: Contact Management Software Program. 
-    This Contact Management Software Program is implemented
-    with very large FONT (Letter Sizes) to improve productivity. """ 
+""" Description: UVM Testbench Builder - Demo Version. """ 
 ####################################################################################
 # .... each_object = .!toplevel.!excel_import_export
 # .... each_object = .!toplevel2.!app_status_panel
@@ -711,6 +708,17 @@ class App(Frame):    #( object)
 
       """       
       def __init__(self, master):
+            global sv_interface_value_string_global
+            global seq_item_value_string_global
+            global sequence_value_string_global
+            global sequencer_value_string_global
+            global driver_value_string_global
+            global monitor_value_string_global
+            global agent_value_string_global
+            global scoreboard_value_string_global
+            global environment_value_string_global
+            global test_value_string_global
+            global testbench_top_value_string_global
             global selected_email_address_LIST_GLOBAL
             global DEST_or_CC_email_address_FLAG_GLOBAL
             global hostname_via_socket
@@ -1008,18 +1016,19 @@ class App(Frame):    #( object)
 
             # self.this_person = []
             
-            uvm_tb_file_type_dict = {'project_dir_fullpath_key': 'PROJECT_NOT_SET',
-	                       'sv_interface_key':'FILENAME_NOT_SET',
-	                       'seq_item_key':'FILENAME_NOT_SET',
-	                       'sequence_key':'FILENAME_NOT_SET',	                     	                       
-	                     	 'sequencer_key':'FILENAME_NOT_SET',
-	                       'driver_key':'FILENAME_NOT_SET',
-	                       'monitor_key':'FILENAME_NOT_SET',	 
-     	                   'agent_key':'FILENAME_NOT_SET',
-	                       'scoreboard_key':'FILENAME_NOT_SET',                     	                       
-	                     	 'environment_key':'FILENAME_NOT_SET',
-	                       'test_key':'FILENAME_NOT_SET',
-	                       'testbench_top_key':'FILENAME_NOT_SET'}
+            uvm_tb_file_type_dict = {}
+            
+            uvm_tb_file_type_dict = {'sv_interface_key':'FILENAME_NOT_SET',
+	          'seq_item_key':'FILENAME_NOT_SET',
+	          'sequence_key':'FILENAME_NOT_SET',                    	                       
+	          'sequencer_key':'FILENAME_NOT_SET',
+	          'driver_key':'FILENAME_NOT_SET',
+	          'monitor_key':'FILENAME_NOT_SET', 
+     	      'agent_key':'FILENAME_NOT_SET',
+	          'scoreboard_key':'FILENAME_NOT_SET',                    	                       
+	          'environment_key':'FILENAME_NOT_SET',
+	          'test_key':'FILENAME_NOT_SET',
+	          'testbench_top_key':'FILENAME_NOT_SET'}
             
 
             gfn = ''
@@ -2099,8 +2108,9 @@ class App(Frame):    #( object)
       #####################################################################################
       #
       # Method to activate the CM_App_Doc_Media CLASS, 
-      # which does the following.
+      # which does the following:
       #  
+      #    EXECUTES [SELECT PROJECT] FROM MENU
       # 
       def cm_app_doc_media_window_method(self):                	
           global OBJECT_IN_APP_cm_app_doc_media
@@ -2131,7 +2141,17 @@ class App(Frame):    #( object)
           global directory_project_name_global
           global directory_full_path_project_name_global
           global event_project_select_update_flag_global
-     
+          global sv_interface_value_string_global
+          global seq_item_value_string_global
+          global sequence_value_string_global
+          global sequencer_value_string_global
+          global driver_value_string_global
+          global monitor_value_string_global
+          global scoreboard_value_string_global
+          global agent_value_string_global 
+          global environment_value_string_global
+          global test_value_string_global
+          global testbench_top_value_string_global
           # print("\n\ncm_app_doc_media_window_method - PROJECT SELECT in progress . . .")
               
           ############################################
@@ -2229,13 +2249,6 @@ class App(Frame):    #( object)
           self.view_text_box.insert(END, text_1_LINE_SPACE)
           self.view_text_box.insert(END, text_1_LINE_SPACE)
         
-          self.view_text_box.insert(END, text_1_LINE_SPACE)
-          text_TOP_TEXTBOX_PROJECT_DIR = "PROJECT DIRECTORY PATH:  \n"          
-          self.view_text_box.insert(END, text_TOP_TEXTBOX_PROJECT_DIR)        
-          self.view_text_box.insert(END, directory_full_path_project_name_global)
-          self.view_text_box.insert(END, text_1_LINE_SPACE)
-          self.view_text_box.insert(END, text_1_LINE_SPACE)
-
           # use os dir command to create list of Files to import.  
           # The Python os.listdir() method returns a 
           # list of every file and folder in a directory.
@@ -2272,8 +2285,7 @@ class App(Frame):    #( object)
           # use pattern matching to associate the
           # uvm file type KEY with FILENAME VALUE
           uvm_tb_file_type_dict = \
-              {'project_dir_fullpath_key': 'str(project_name_fullpath_global)',
-	            'sv_interface_key':'sv_interface_val',
+              {'sv_interface_key':'sv_interface_val',
 	            'seq_item_key':'seq_item_val',
 	            'sequence_key':'sequence_val',	                     	                       
 	            'sequencer_key':'sequencer_val',
@@ -2286,140 +2298,153 @@ class App(Frame):    #( object)
 	            'testbench_top_key':'testbench_top_val'}             
             
           text_FILE_TYPE_KEY_TITLE = "PROJECT DICTIONARY FILE NAME VALUE LIST: \n"
-        
+          text_FILE_TYPE_KEY_TITLE2 = "ADJUST FILENAME TO MATCH any _val files if any exist below. \n"  
+               
           self.view_text_box.insert(END, text_1_LINE_SPACE)
           self.view_text_box.insert(END, text_FILE_TYPE_KEY_TITLE)
           self.view_text_box.insert(END, text_1_LINE_SPACE) 
           
+          self.view_text_box.insert(END, text_FILE_TYPE_KEY_TITLE2)
+          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                    
           pattern_string = "interface"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
                   if pattern_string in i:
-                      sv_interface_value_string = i
-                      uvm_tb_file_type_dict.update({'sv_interface_key': sv_interface_value_string})
-            	                                            
-          sv_interface_value_string = uvm_tb_file_type_dict.get('sv_interface_key')                                               
-          self.view_text_box.insert(END, str(sv_interface_value_string))
-          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                      sv_interface_value_string_global = i
+                      print("PATTERN MATCH sv_interface_value_string_global = " + str(i))
+                      uvm_tb_file_type_dict.update({'sv_interface_key': sv_interface_value_string_global})        	                                                                                       
+                      self.view_text_box.insert(END, str(sv_interface_value_string_global))
+                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
                  
-          pattern_string = "seq_item"
+          pattern_string1 = "seq_item"
+          pattern_string2 = "_item"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
-                  if pattern_string in i:
-                      seq_item_value_string = i
-                      uvm_tb_file_type_dict.update({'seq_item_key': seq_item_value_string})
-            	                                                                             
-          seq_item_value_string = uvm_tb_file_type_dict.get('seq_item_key')         
-          self.view_text_box.insert(END, str(seq_item_value_string))
-          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                  if pattern_string1 in i:
+                      seq_item_value_string_global = i
+                      print("PATTERN 1 MATCH seq_item_value_string_global = " + str(i))
+                      uvm_tb_file_type_dict.update({'seq_item_key': seq_item_value_string_global})
+                      self.view_text_box.insert(END, str(seq_item_value_string_global))
+                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                  if pattern_string2 in i:
+                      seq_item_value_string_global = i
+                      print("PATTERN 2 MATCH seq_item_value_string_global = " + str(i))
+                      uvm_tb_file_type_dict.update({'seq_item_key': seq_item_value_string_global})
+                      self.view_text_box.insert(END, str(seq_item_value_string_global))
+                      self.view_text_box.insert(END, text_1_LINE_SPACE)                 	                                                                             
                     
-          pattern_string = "sequence"
+          pattern_string = "sequence.sv"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
                   if pattern_string in i:
-                      sequence_value_string = i
-                      uvm_tb_file_type_dict.update({'sequence_key': sequence_value_string})
-            	                                         
-          sequence_value_string = uvm_tb_file_type_dict.get('sequence_key') 
-          self.view_text_box.insert(END, str(sequence_value_string))
-          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                      sequence_value_string_global = i
+                      print("PATTERN MATCH sequence_value_string_global = " + str(i))
+                      uvm_tb_file_type_dict.update({'sequence_key': sequence_value_string_global})            	                                         
+                      self.view_text_box.insert(END, str(sequence_value_string_global))
+                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
                     
-          pattern_string = "sequencer"
+          pattern_string = "sequencer.sv"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
                   if pattern_string in i:
-                      sequencer_value_string = i
-                      uvm_tb_file_type_dict.update({'sequencer_key': sequencer_value_string})
-            	                                                   
-          sequencer_value_string = uvm_tb_file_type_dict.get('sequencer_key') 
-          self.view_text_box.insert(END, str(sequencer_value_string))
-          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                      sequencer_value_string_global = i
+                      print("PATTERN MATCH sequencer_value_string_global = " + str(i))
+                      uvm_tb_file_type_dict.update({'sequencer_key': sequencer_value_string_global})            	                                                  
+                      self.view_text_box.insert(END, str(sequencer_value_string_global))
+                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
           
           pattern_string = "driver"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
                   if pattern_string in i:
-                      driver_value_string = i
-                      uvm_tb_file_type_dict.update({'driver_key': driver_value_string})
-            	                                         
-          driver_value_string = uvm_tb_file_type_dict.get('driver_key') 
-          self.view_text_box.insert(END, str(driver_value_string))
-          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                      driver_value_string_global = i
+                      print("PATTERN MATCH driver_value_string_global = " + str(i))
+                      uvm_tb_file_type_dict.update({'driver_key': driver_value_string_global})            	                                         
+                      self.view_text_box.insert(END, str(driver_value_string_global))
+                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
           
           pattern_string = "monitor"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
                   if pattern_string in i:
-                      monitor_value_string = i
-                      uvm_tb_file_type_dict.update({'monitor_key': monitor_value_string})
-            	                                                   	                                                  
-          monitor_value_string = uvm_tb_file_type_dict.get('monitor_key') 
-          self.view_text_box.insert(END, str(monitor_value_string))
-          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                      monitor_value_string_global = i
+                      print("PATTERN MATCH monitor_value_string_global = " + str(i))
+                      uvm_tb_file_type_dict.update({'monitor_key': monitor_value_string_global})          
+                      self.view_text_box.insert(END, str(monitor_value_string_global))
+                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
           
           pattern_string = "agent"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
-                  if pattern_string in i:
-                      agent_value_string = i
-                      uvm_tb_file_type_dict.update({'agent_key': agent_value_string})
-            	                                                           
-          agent_value_string = uvm_tb_file_type_dict.get('agent_key') 
-          self.view_text_box.insert(END, str(agent_value_string))
-          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                  if pattern_string in i:                 	
+                      agent_value_string_global = i
+                      print("PATTERN MATCH agent_value_string_global = " + str(i))
+                      uvm_tb_file_type_dict.update({'agent_key': agent_value_string_global})            	                                                           
+                      self.view_text_box.insert(END, str(agent_value_string_global))
+                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
           
-          pattern_string1 = "scoreboard"
-          pattern_string2 = "scbd"
+          pattern_string1 = "_scoreboard"
+          pattern_string2 = "_scbd"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
                   if (pattern_string1 in i):
-                      scoreboard_value_string = i
-                      uvm_tb_file_type_dict.update({'scoreboard_key': scoreboard_value_string})
+                      scoreboard_value_string_global = i
+                      print("PATTERN 1 MATCH scoreboard_value_string_global = " + str(i))
+                      uvm_tb_file_type_dict.update({'scoreboard_key': scoreboard_value_string_global})
+                      self.view_text_box.insert(END, str(scoreboard_value_string_global))
+                      self.view_text_box.insert(END, text_1_LINE_SPACE)                  
                   if (pattern_string2 in i):
-                      scoreboard_value_string = i
-                      uvm_tb_file_type_dict.update({'scoreboard_key': scoreboard_value_string})
-            	                            	                                                                             
-          scoreboard_value_string = uvm_tb_file_type_dict.get('scoreboard_key') 
-          self.view_text_box.insert(END, str(scoreboard_value_string))
-          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                      scoreboard_value_string_global = i
+                      print("PATTERN 2 MATCH scoreboard_value_string_global = " + str(i))
+                      uvm_tb_file_type_dict.update({'scoreboard_key': scoreboard_value_string_global})
+                      self.view_text_box.insert(END, str(scoreboard_value_string_global))
+                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
           
-          pattern_string1 = "environment"
-          pattern_string2 = "env"
+          pattern_string1 = "_environment.sv"
+          pattern_string2 = "_env.sv"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
                   if (pattern_string1 in i):
-                      environment_value_string = i
-                      uvm_tb_file_type_dict.update({'environment_key': environment_value_string})
+                      environment_value_string_global = i
+                      print("PATTERN 1 MATCH environment_value_string_global = " + str(i))
+                      uvm_tb_file_type_dict.update({'environment_key': environment_value_string_global})
+                      self.view_text_box.insert(END, str(environment_value_string_global))
+                      self.view_text_box.insert(END, text_1_LINE_SPACE)                   
                   if (pattern_string2 in i):
-                      environment_value_string = i
-                      uvm_tb_file_type_dict.update({'environment_key': environment_value_string})
-            	                            	                     
-          environment_value_string = uvm_tb_file_type_dict.get('environment_key') 
-          self.view_text_box.insert(END, str(environment_value_string))
-          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                      environment_value_string_global = i
+                      print("PATTERN 2 MATCH environment_value_string_global = " + str(i))
+                      uvm_tb_file_type_dict.update({'environment_key': environment_value_string_global})            	                            	                     
+                      self.view_text_box.insert(END, str(environment_value_string_global))
+                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
                     
           pattern_string = "_test.sv"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
                   if pattern_string in i:
-                      test_value_string = i
-                      uvm_tb_file_type_dict.update({'test_key': test_value_string})
-            	                                                           
-          test_value_string = uvm_tb_file_type_dict.get('test_key') 
-          self.view_text_box.insert(END, str(test_value_string))
-          self.view_text_box.insert(END, text_1_LINE_SPACE)           
+                      test_value_string_global = i
+                      print("PATTERN MATCH test_value_string_global = " + str(i))
+                      uvm_tb_file_type_dict.update({'test_key': test_value_string_global})            	                                                           
+                      self.view_text_box.insert(END, str(test_value_string_global))
+                      self.view_text_box.insert(END, text_1_LINE_SPACE)           
                              
-          pattern_string = "testbench_top"
+          pattern_string1 = "testbench_top"
+          pattern_string2 = "top.sv"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
-                  if pattern_string in i:
-                      testbench_top_value_string = i
-                      uvm_tb_file_type_dict.update({'testbench_top_key': testbench_top_value_string})                    
-                    
-          testbench_top_value_string = uvm_tb_file_type_dict.get('testbench_top_key') 
-          self.view_text_box.insert(END, str(testbench_top_value_string))
-          self.view_text_box.insert(END, text_1_LINE_SPACE) 
-                    
+                  if pattern_string2 in i:
+                      testbench_top_value_string_global = i
+                      print("PATTERN 1 MATCH testbench_top_value_string_global = " + str(i))
+                      uvm_tb_file_type_dict.update({'testbench_top_key': testbench_top_value_string_global})                    
+                      self.view_text_box.insert(END, str(testbench_top_value_string_global))
+                      self.view_text_box.insert(END, text_1_LINE_SPACE)                  
+                  if pattern_string1 in i:
+                      testbench_top_value_string_global = i
+                      print("PATTERN 2 MATCH testbench_top_value_string_global = " + str(i))
+                      uvm_tb_file_type_dict.update({'testbench_top_key': testbench_top_value_string_global})                                        
+                      self.view_text_box.insert(END, str(testbench_top_value_string_global))
+                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                             
           self.view_text_box.insert(END, text_1_LINE_SPACE)             
 
           # DISABLE Main Screen TEXTBOX.
@@ -2431,7 +2456,7 @@ class App(Frame):    #( object)
           return
               
       #####################################################################################
-      # 
+      #  
       #   Calls - User GUI Configuration Class - USER_GUI_Config_Class  
       #
       #####################################################################################
@@ -2929,6 +2954,8 @@ class App(Frame):    #( object)
             global directory_full_path_project_name_global
             global uvm_tb_file_list_global
             global project_sv_files_list_global
+            global uvm_tb_file_type_dict
+            global sv_interface_value_string_global
                                                 
             #
             #  NOTE:
@@ -2958,16 +2985,20 @@ class App(Frame):    #( object)
             #  COMPUTE interface_filename by searching
             #  SYSTEMVERILOG File List for the
             #  interface keyword in the filename
-            #  and the file contents. 
+            #  and the file contents.  
                                      
             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
             
             self.view_text_box.delete(1.0, END)
-            
-            interface_filename = "mem_interface.sv"
-            
-            fullpath_SV_INTERFACE_CODE_global = os.path.join(directory_full_path_project_name_global, interface_filename)
+                       
+            # sv_interface_value_string_global computed upon SELECT PROJECT action.
+                  
+            # print("\n sv_interface_value_string_global = " + str(sv_interface_value_string_global))
+                       
+            fullpath_SV_INTERFACE_CODE_global = os.path.join(str(directory_full_path_project_name_global), str(sv_interface_value_string_global))
+                   
+            # print("\n fullpath_SV_INTERFACE_CODE_global = " + str(fullpath_SV_INTERFACE_CODE_global))
                         
             with open(str(fullpath_SV_INTERFACE_CODE_global) ) as fin:
                for line in fin:
@@ -3005,9 +3036,10 @@ class App(Frame):    #( object)
             global directory_full_path_project_name_global
             global uvm_tb_file_list_global
             global project_sv_files_list_global
-
+            global uvm_tb_file_type_dict
+            global seq_item_value_string_global
             #
-            #  NOTE:
+            #  NOTE: 
             # 
             #  We now have globals loaded with
             #  the PROJECT NAME and PROJECT FULL PATH
@@ -3034,24 +3066,25 @@ class App(Frame):    #( object)
             #  COMPUTE interface_filename by searching
             #  SYSTEMVERILOG File List for the
             #  interface keyword in the filename
-            #  and the file contents.  
+            #  and the file contents.            
             
              # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL 
                                   
             self.view_text_box.delete(1.0, END)
-            
-            uvm_seq_item_filename = "mem_seq_item.sv"
-            
-            fullpath_UVM_SEQ_ITEM_CODE_global = os.path.join(directory_full_path_project_name_global, uvm_seq_item_filename)
                        
+            # seq_item_value_string_global computed upon SELECT PROJECT action.
+                  
+            # print("\n seq_item_value_string_global = " + str(seq_item_value_string_global))
+                             
+            fullpath_UVM_SEQ_ITEM_CODE_global = os.path.join(str(directory_full_path_project_name_global), str(seq_item_value_string_global))
+             
+            # print("\n fullpath_UVM_SEQ_ITEM_CODE_global = " + str(fullpath_UVM_SEQ_ITEM_CODE_global))
+                                         
             with open(str(fullpath_UVM_SEQ_ITEM_CODE_global) ) as fin:
                for line in fin:
                   self.view_text_box.insert(END, line)
-        
-            uvm_seq_item_file_content = ""
-            uvm_seq_item_file_content = self.view_text_box.get(1.0, END)       
-            
+                    
             return
 
             
@@ -3082,7 +3115,8 @@ class App(Frame):    #( object)
             global directory_full_path_project_name_global
             global uvm_tb_file_list_global
             global project_sv_files_list_global
-             
+            global uvm_tb_file_type_dict
+            global sequence_value_string_global
             #
             #  NOTE:
             # 
@@ -3117,11 +3151,15 @@ class App(Frame):    #( object)
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
                         
             self.view_text_box.delete(1.0, END)
-            
-            uvm_sequence_filename = "mem_sequence.sv"
-            
-            fullpath_UVM_SEQUENCE_CODE_global = os.path.join(directory_full_path_project_name_global, uvm_sequence_filename)
-                       
+                                                          
+            # sequence_value_string_global computed upon SELECT PROJECT action.
+                  
+            # print("\n sequence_value_string_global = " + str(sequence_value_string_global))
+                                        
+            fullpath_UVM_SEQUENCE_CODE_global = os.path.join(str(directory_full_path_project_name_global), str(sequence_value_string_global))
+                    
+            # print("\n fullpath_UVM_SEQUENCE_CODE_global = " + str(fullpath_UVM_SEQUENCE_CODE_global))
+                                    
             with open(str(fullpath_UVM_SEQUENCE_CODE_global) ) as fin:
                for line in fin:
                   self.view_text_box.insert(END, line)
@@ -3158,7 +3196,8 @@ class App(Frame):    #( object)
             global directory_full_path_project_name_global
             global uvm_tb_file_list_global
             global project_sv_files_list_global
-            
+            global uvm_tb_file_type_dict
+            global sequencer_value_string_global
             #
             #  NOTE:
             # 
@@ -3190,21 +3229,22 @@ class App(Frame):    #( object)
             #  and the file contents.  
             
             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
-            self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
+            self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL 
                         
             self.view_text_box.delete(1.0, END)
-            
-            uvm_sequencer_filename = "mem_sequencer.sv"
-            
-            fullpath_UVM_SEQUENCER_CODE_global = os.path.join(directory_full_path_project_name_global, uvm_sequencer_filename)
-
+                                                                        
+            # sequencer_value_string_global computed upon SELECT PROJECT action.
+                  
+            # print("\n sequencer_value_string_global = " + str(sequencer_value_string_global))
+                                        
+            fullpath_UVM_SEQUENCER_CODE_global = os.path.join(str(directory_full_path_project_name_global), str(sequencer_value_string_global))
+                    
+            # print("\n fullpath_UVM_SEQUENCER_CODE_global = " + str(fullpath_UVM_SEQUENCER_CODE_global))
+   
             with open(str(fullpath_UVM_SEQUENCER_CODE_global) ) as fin:
                for line in fin:
                   self.view_text_box.insert(END, line)
-        
-            uvm_sequencer_file_content = ""
-            uvm_sequencer_file_content = self.view_text_box.get(1.0, END)       
-                                                                                            
+                                                                                                    
             return
             
       ###################################################
@@ -3234,7 +3274,9 @@ class App(Frame):    #( object)
             global directory_full_path_project_name_global
             global uvm_tb_file_list_global
             global project_sv_files_list_global
-            
+            global uvm_tb_file_type_dict
+            global driver_value_string_global
+                        
             #
             #  NOTE:
             # 
@@ -3270,10 +3312,14 @@ class App(Frame):    #( object)
                         
             self.view_text_box.delete(1.0, END)
             
-            uvm_driver_filename = "mem_driver.sv"
-            
-            fullpath_UVM_DRIVER_CODE_global = os.path.join(directory_full_path_project_name_global, uvm_driver_filename)
-                       
+            # driver_value_string_global computed upon SELECT PROJECT action.
+                  
+            # print("\n driver_value_string_global = " + str(driver_value_string_global))
+                             
+            fullpath_UVM_DRIVER_CODE_global = os.path.join(directory_full_path_project_name_global, str(driver_value_string_global))
+  
+            # print("\n fullpath_UVM_DRIVER_CODE_global = " + str(fullpath_UVM_DRIVER_CODE_global))
+                               
             with open(str(fullpath_UVM_DRIVER_CODE_global) ) as fin:
                for line in fin:
                   self.view_text_box.insert(END, line)
@@ -3310,7 +3356,9 @@ class App(Frame):    #( object)
             global directory_full_path_project_name_global
             global uvm_tb_file_list_global
             global project_sv_files_list_global
-                        
+            global uvm_tb_file_type_dict
+            global monitor_value_string_global  
+                                 
             #
             #  NOTE:
             # 
@@ -3345,11 +3393,15 @@ class App(Frame):    #( object)
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL  
                                   
             self.view_text_box.delete(1.0, END)
-            
-            uvm_monitor_filename = "mem_monitor.sv"
-            
-            fullpath_UVM_MONITOR_CODE_global = os.path.join(directory_full_path_project_name_global, uvm_monitor_filename)
-
+                            
+            # monitor_value_string_global computed upon SELECT PROJECT action.
+                  
+            # print("\n monitor_value_string_global = " + str(monitor_value_string_global))
+                             
+            fullpath_UVM_MONITOR_CODE_global = os.path.join(directory_full_path_project_name_global, str(monitor_value_string_global))
+  
+            # print("\n fullpath_UVM_MONITOR_CODE_global = " + str(fullpath_UVM_MONITOR_CODE_global))
+                                                      
             with open(str(fullpath_UVM_MONITOR_CODE_global) ) as fin:
                for line in fin:
                   self.view_text_box.insert(END, line)
@@ -3360,7 +3412,7 @@ class App(Frame):    #( object)
             return
             
       ###################################################
-      #
+      # 
       # UVM_AGENT VIEW METHOD 
       #
       ###################################################
@@ -3386,6 +3438,8 @@ class App(Frame):    #( object)
             global directory_full_path_project_name_global
             global uvm_tb_file_list_global
             global project_sv_files_list_global
+            global uvm_tb_file_type_dict
+            global agent_value_string_global
                         
             #
             #  NOTE:
@@ -3421,18 +3475,19 @@ class App(Frame):    #( object)
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL              
                         
             self.view_text_box.delete(1.0, END)
-            
-            uvm_agent_filename = "mem_agent.sv"
-            
-            fullpath_UVM_AGENT_CODE_global = os.path.join(directory_full_path_project_name_global, uvm_agent_filename)
-
+             
+            # agent_value_string_global computed upon SELECT PROJECT action.
+                  
+            # print("\n agent_value_string_global = " + str(agent_value_string_global))
+                             
+            fullpath_UVM_AGENT_CODE_global = os.path.join(directory_full_path_project_name_global, str(agent_value_string_global))
+  
+            # print("\n fullpath_UVM_AGENT_CODE_global = " + str(fullpath_UVM_AGENT_CODE_global))
+        
             with open(str(fullpath_UVM_AGENT_CODE_global) ) as fin:
                for line in fin:
                   self.view_text_box.insert(END, line)
-        
-            uvm_agent_file_content = ""
-            uvm_agent_file_content = self.view_text_box.get(1.0, END)       
-                                                                             
+                                                                                     
             return
  
       ###################################################
@@ -3462,7 +3517,9 @@ class App(Frame):    #( object)
             global directory_full_path_project_name_global
             global uvm_tb_file_list_global
             global project_sv_files_list_global
-                        
+            global uvm_tb_file_type_dict
+            global scoreboard_value_string_global
+                                    
             #
             #  NOTE:
             # 
@@ -3498,17 +3555,18 @@ class App(Frame):    #( object)
                         
             self.view_text_box.delete(1.0, END)
             
-            uvm_scbd_filename = "mem_scoreboard.sv"
-            
-            fullpath_UVM_SCBD_CODE_global = os.path.join(directory_full_path_project_name_global, uvm_scbd_filename)
-
+            # scoreboard_value_string_global computed upon SELECT PROJECT action.
+                  
+            # print("\n scoreboard_value_string_global = " + str(scoreboard_value_string_global))
+                             
+            fullpath_UVM_SCBD_CODE_global = os.path.join(directory_full_path_project_name_global, str(scoreboard_value_string_global))
+  
+            # print("\n fullpath_UVM_SCBD_CODE_global = " + str(fullpath_UVM_SCBD_CODE_global))
+ 
             with open(str(fullpath_UVM_SCBD_CODE_global) ) as fin:
                for line in fin:
                   self.view_text_box.insert(END, line)
-        
-            uvm_scbd_file_content = ""
-            uvm_scbd_file_content = self.view_text_box.get(1.0, END)       
-                                          
+                                                     
             return
                        
       ###################################################
@@ -3538,7 +3596,9 @@ class App(Frame):    #( object)
             global directory_full_path_project_name_global
             global uvm_tb_file_list_global
             global project_sv_files_list_global
-                        
+            global uvm_tb_file_type_dict
+            global environment_value_string_global
+                                    
             #
             #  NOTE:
             # 
@@ -3573,18 +3633,19 @@ class App(Frame):    #( object)
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
                         
             self.view_text_box.delete(1.0, END)
-            
-            uvm_env_filename = "mem_env.sv"
-            
-            fullpath_UVM_ENV_CODE_global = os.path.join(directory_full_path_project_name_global, uvm_env_filename)
-
+                  
+            # environment_value_string_global computed upon SELECT PROJECT action.
+                  
+            # print("\n environment_value_string_global = " + str(environment_value_string_global))
+                             
+            fullpath_UVM_ENV_CODE_global = os.path.join(directory_full_path_project_name_global, str(environment_value_string_global))
+  
+            # print("\n fullpath_UVM_ENV_CODE_global = " + str(fullpath_UVM_ENV_CODE_global))
+             
             with open(str(fullpath_UVM_ENV_CODE_global) ) as fin:
                for line in fin:
                   self.view_text_box.insert(END, line)
-        
-            uvm_env_file_content = ""
-            uvm_env_file_content = self.view_text_box.get(1.0, END)       
-                                                                              
+                                                                           
             return     
                             
                  
@@ -3615,7 +3676,8 @@ class App(Frame):    #( object)
             global directory_full_path_project_name_global
             global uvm_tb_file_list_global
             global project_sv_files_list_global
-                        
+            global uvm_tb_file_type_dict
+                                    
             #
             #  NOTE:
             # 
@@ -3650,18 +3712,19 @@ class App(Frame):    #( object)
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL            
                         
             self.view_text_box.delete(1.0, END)
-            
-            uvm_test_filename = "mem_base_test.sv"
-            
-            fullpath_UVM_TEST_CODE_global = os.path.join(directory_full_path_project_name_global, uvm_test_filename)
-
+                              
+            # test_value_string_global computed upon SELECT PROJECT action.
+                  
+            # print("\n test_value_string_global = " + str(test_value_string_global))
+                             
+            fullpath_UVM_TEST_CODE_global = os.path.join(directory_full_path_project_name_global, str(test_value_string_global))
+  
+            # print("\n fullpath_UVM_TEST_CODE_global = " + str(fullpath_UVM_TEST_CODE_global))
+                         
             with open(str(fullpath_UVM_TEST_CODE_global) ) as fin:
                for line in fin:
                   self.view_text_box.insert(END, line)
-        
-            uvm_test_file_content = ""
-            uvm_test_file_content = self.view_text_box.get(1.0, END)       
-                                          
+                                                  
             return                
         
       ###################################################
@@ -3691,7 +3754,8 @@ class App(Frame):    #( object)
             global directory_full_path_project_name_global
             global uvm_tb_file_list_global
             global project_sv_files_list_global
-                        
+            global uvm_tb_file_type_dict
+                                    
             #
             #  NOTE:
             # 
@@ -3770,7 +3834,9 @@ class App(Frame):    #( object)
             global directory_full_path_project_name_global
             global uvm_tb_file_list_global
             global project_sv_files_list_global
-                        
+            global uvm_tb_file_type_dict 
+            global testbench_top_value_string_global 
+                                 
             #
             #  NOTE:
             # 
@@ -3805,18 +3871,19 @@ class App(Frame):    #( object)
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
                         
             self.view_text_box.delete(1.0, END)
-            
-            testbench_top_filename = "testbench_top.sv"
-            
-            fullpath_UVM_TESTBENCH_TOP_CODE_global = os.path.join(directory_full_path_project_name_global, testbench_top_filename)
+                                         
+            # testbench_top_value_string_global computed upon SELECT PROJECT action.
+                  
+            # print("\n testbench_top_value_string_global = " + str(testbench_top_value_string_global))
+                             
+            fullpath_UVM_TESTBENCH_TOP_CODE_global = os.path.join(directory_full_path_project_name_global, str(testbench_top_value_string_global))
+  
+            # print("\n fullpath_UVM_TESTBENCH_TOP_CODE_global = " + str(fullpath_UVM_TESTBENCH_TOP_CODE_global))
 
             with open(str(fullpath_UVM_TESTBENCH_TOP_CODE_global) ) as fin:
                for line in fin:
                   self.view_text_box.insert(END, line)
-        
-            uvm_testbench_top_file_content = ""
-            uvm_testbench_top_file_content = self.view_text_box.get(1.0, END)       
-                                                             
+                                                                       
             return        
                            
       ###################################################
@@ -3842,7 +3909,8 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export                                 
-                         
+            global uvm_tb_file_type_dict
+                                     
             return             
                                       
       ###################################################
@@ -3858,7 +3926,7 @@ class App(Frame):    #( object)
             global cm_appdatafiles_path_global
             global fullpath_fn_cm_listbox_file_global
             global fullpath_fn_dict_filename_global
-            global cm_listbox_file_global
+            global cm_listbox_file_global            
             global dict_filename_global
             global master_cm_list_name_global
             global import_excel_csv_userprofile_global
@@ -3868,7 +3936,8 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export        
-      
+            global uvm_tb_file_type_dict      
+            
             return
             
       ###################################################
@@ -3894,7 +3963,8 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export             
-      
+            global uvm_tb_file_type_dict
+                  
             return
             
       ###################################################
@@ -3920,6 +3990,7 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export   
+            global uvm_tb_file_type_dict
             
             return           
             
