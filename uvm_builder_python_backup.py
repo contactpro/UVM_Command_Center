@@ -677,6 +677,7 @@ environment_value_string_global = ""
 test_value_string_global = ""
 testbench_top_value_string_global = ""
 uvm_tb_file_type_dict = {}
+project_dir_text_box_content_global = ""
 
 ####################################################################################
 """ Description: UVM Testbench Builder - Demo Version. """ 
@@ -992,6 +993,7 @@ class App(Frame):    #( object)
             global window_select_global
             global night_mode_selection
             global uvm_tb_file_type_dict
+            global project_dir_text_box_content_global
             Frame.__init__(self, master)
             self.grid()
 
@@ -1599,7 +1601,6 @@ class App(Frame):    #( object)
           #
           ###########################################################################
 
-
           cm_textbox_newfile_global = "CONTACT-LIST-ONE"
           master_cm_list_name_global = "CONTACT-LIST-ONE"
           textbox_newfile_capture_global = True
@@ -2152,6 +2153,7 @@ class App(Frame):    #( object)
           global environment_value_string_global
           global test_value_string_global
           global testbench_top_value_string_global
+          global project_dir_text_box_content_global
           # print("\n\ncm_app_doc_media_window_method - PROJECT SELECT in progress . . .")
               
           ############################################
@@ -2317,22 +2319,15 @@ class App(Frame):    #( object)
                       self.view_text_box.insert(END, str(sv_interface_value_string_global))
                       self.view_text_box.insert(END, text_1_LINE_SPACE) 
                  
-          pattern_string1 = "seq_item"
-          pattern_string2 = "_item"
+          pattern_string = "_item"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
-                  if pattern_string1 in i:
+                  if pattern_string in i:
                       seq_item_value_string_global = i
                       print("PATTERN 1 MATCH seq_item_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'seq_item_key': seq_item_value_string_global})
                       self.view_text_box.insert(END, str(seq_item_value_string_global))
-                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
-                  if pattern_string2 in i:
-                      seq_item_value_string_global = i
-                      print("PATTERN 2 MATCH seq_item_value_string_global = " + str(i))
-                      uvm_tb_file_type_dict.update({'seq_item_key': seq_item_value_string_global})
-                      self.view_text_box.insert(END, str(seq_item_value_string_global))
-                      self.view_text_box.insert(END, text_1_LINE_SPACE)                 	                                                                             
+                      self.view_text_box.insert(END, text_1_LINE_SPACE)        	                                                                             
                     
           pattern_string = "sequence.sv"
           for i in os.listdir(directory_full_path_project_name_global):
@@ -2425,29 +2420,36 @@ class App(Frame):    #( object)
                       test_value_string_global = i
                       print("PATTERN MATCH test_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'test_key': test_value_string_global})            	                                                           
-                      self.view_text_box.insert(END, str(test_value_string_global))
-                      self.view_text_box.insert(END, text_1_LINE_SPACE)           
-                             
+          
+          self.view_text_box.insert(END, str(test_value_string_global))
+          self.view_text_box.insert(END, text_1_LINE_SPACE)           
+                     
           pattern_string1 = "testbench_top"
           pattern_string2 = "top.sv"
+          pattern_string3 = "tb_top.sv"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
+                  if pattern_string3 in i:
+                      testbench_top_value_string_global = i
+                      print("PATTERN 1 MATCH testbench_top_value_string_global = " + str(i))
+                      uvm_tb_file_type_dict.update({'testbench_top_key': testbench_top_value_string_global})                    
+               	
                   if pattern_string2 in i:
                       testbench_top_value_string_global = i
                       print("PATTERN 1 MATCH testbench_top_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'testbench_top_key': testbench_top_value_string_global})                    
-                      self.view_text_box.insert(END, str(testbench_top_value_string_global))
-                      self.view_text_box.insert(END, text_1_LINE_SPACE)                  
+             
                   if pattern_string1 in i:
                       testbench_top_value_string_global = i
                       print("PATTERN 2 MATCH testbench_top_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'testbench_top_key': testbench_top_value_string_global})                                        
-                      self.view_text_box.insert(END, str(testbench_top_value_string_global))
-                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                      
+          self.view_text_box.insert(END, str(testbench_top_value_string_global))
+          self.view_text_box.insert(END, text_1_LINE_SPACE) 
                              
           self.view_text_box.insert(END, text_1_LINE_SPACE)             
 
-          # DISABLE Main Screen TEXTBOX.
+          # DISABLE Main Screen TEXTBOX. 
           # as the last step in TEXTBOX Write of Project Info.
           # Be sure to enable TEXTBOX with NORMAL setting
           # when using this TEXBOX in the future.
@@ -3755,7 +3757,19 @@ class App(Frame):    #( object)
             global uvm_tb_file_list_global
             global project_sv_files_list_global
             global uvm_tb_file_type_dict
-                                    
+            global sv_interface_value_string_global
+            global seq_item_value_string_global
+            global sequence_value_string_global
+            global sequencer_value_string_global
+            global driver_value_string_global
+            global monitor_value_string_global
+            global agent_value_string_global
+            global scoreboard_value_string_global
+            global environment_value_string_global
+            global test_value_string_global
+            global testbench_top_value_string_global
+            global project_dir_text_box_content_global
+                                                
             #
             #  NOTE:
             # 
@@ -3767,24 +3781,41 @@ class App(Frame):    #( object)
             #  3. uvm_tb_file_list_global
             #  4. project_sv_files_list_global
             #
+            #  and these UVM File Type VALUE Globals:
+            # 
+            #  sv_interface_value_string_global
+            #  seq_item_value_string_global
+            #  sequence_value_string_global
+            #  sequencer_value_string_global
+            #  driver_value_string_global
+            #  monitor_value_string_global
+            #  agent_value_string_global
+            #  scoreboard_value_string_global
+            #  environment_value_string_global
+            #  test_value_string_global
+            #  testbench_top_value_string_global
+            #
             #  We have the TEXTBOX commands that
             #  can write things like file lists 
+            #  and all kinds of PROJECT Status 
             #  to the main TEXTBOX.            
             # 
             #  Next, use the os command to
             #  search which filename in PROJECT DIR
-            #  has the phrase interface in both
-            #  the FILENAME and FILE CONTENTS.
+            #  has the string or phrase FILE_TYPE_PHRASE 
+            #  (like interface, seq_item, sequence, sequencer,
+            #  driver, monitor, agent scoreboard, environment, 
+            #  test, testbench_top, or perhaps _project_profile.txt, etc) 
+            #  in the FILENAME.
             # 
-            #  Example ANSWER:   mem_tb_pkg.sv
+            #  Example ANSWER:   "mem_project_profile.txt"
             #
             #  Use PATH os join command to get
-            #  complete FULL PATH for mem_interface.sv
+            #  complete FULL PATH for "mem_project_profile.txt"
             # 
-            #  COMPUTE interface_filename by searching
+            #  COMPUTE "mem_project_profile.txt" filename by searching
             #  SYSTEMVERILOG File List for the
-            #  interface keyword in the filename
-            #  and the file contents. 
+            #  "_project_profile.txt" keyword in the filename. 
             
             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL              
@@ -3792,6 +3823,35 @@ class App(Frame):    #( object)
             project_directory_list = os.listdir(directory_full_path_project_name_global)
                          
             self.view_text_box.delete(1.0, END)
+                        
+            TITLE_project_dict = "\n\n  Project UVM TESTBENCH FILE TYPE DICTIONARY (VALUES):  " + str(directory_project_name_global) + "\n\n"
+            
+            self.view_text_box.insert(END, TITLE_project_dict)
+            
+            # Preview GLOBALS for uvm_tb_file_type_dict VALUES:  
+            #  
+            self.view_text_box.insert(END, str(sv_interface_value_string_global))
+            self.view_text_box.insert(END, "\n")
+            self.view_text_box.insert(END, str(seq_item_value_string_global))
+            self.view_text_box.insert(END, "\n")
+            self.view_text_box.insert(END, str(sequence_value_string_global))
+            self.view_text_box.insert(END, "\n")            
+            self.view_text_box.insert(END, str(sequencer_value_string_global))
+            self.view_text_box.insert(END, "\n")            
+            self.view_text_box.insert(END, str(driver_value_string_global))
+            self.view_text_box.insert(END, "\n")            
+            self.view_text_box.insert(END, str(monitor_value_string_global))
+            self.view_text_box.insert(END, "\n")            
+            self.view_text_box.insert(END, str(agent_value_string_global))
+            self.view_text_box.insert(END, "\n")            
+            self.view_text_box.insert(END, str(scoreboard_value_string_global))
+            self.view_text_box.insert(END, "\n")            
+            self.view_text_box.insert(END, str(environment_value_string_global))
+            self.view_text_box.insert(END, "\n")            
+            self.view_text_box.insert(END, str(test_value_string_global))
+            self.view_text_box.insert(END, "\n")            
+            self.view_text_box.insert(END, str(testbench_top_value_string_global))
+            self.view_text_box.insert(END, "\n")                                 
             
             TITLE_project_dir = "\n\n  Project Files and Directories for PROJECT NAME:  " + str(directory_project_name_global) + "\n\n"
             
@@ -3802,8 +3862,8 @@ class App(Frame):    #( object)
                 self.view_text_box.insert(END, item_plus_return)
             
             # Now we can read the textbox contents.
-            project_dir_text_box_content = []
-            project_dir_text_box_content = self.view_text_box.get(1.0, END)       
+            project_dir_text_box_content_global = ""
+            project_dir_text_box_content_global = self.view_text_box.get(1.0, END)       
                   
 
 
@@ -3937,11 +3997,81 @@ class App(Frame):    #( object)
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export        
             global uvm_tb_file_type_dict      
+            global directory_project_name_global     
+            global directory_full_path_project_name_global
+            global uvm_tb_file_list_global
+            global project_sv_files_list_global
+            global directory_project_name_global     
+            global directory_full_path_project_name_global
+            global uvm_tb_file_list_global
+            global project_sv_files_list_global
+            global uvm_tb_file_type_dict
+            global sv_interface_value_string_global
+            global seq_item_value_string_global
+            global sequence_value_string_global
+            global sequencer_value_string_global
+            global driver_value_string_global
+            global monitor_value_string_global
+            global agent_value_string_global
+            global scoreboard_value_string_global
+            global environment_value_string_global
+            global test_value_string_global
+            global testbench_top_value_string_global
+            global project_dir_text_box_content_global
+                        
+            # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
+            self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
+                        
+            # IClear the MAIN TEXTBOX Screen.
+            self.view_text_box.delete(1.0, END)  
             
+            title_of_comp_uvm_py_screen = "\n\nRUNNING COMPILE UVM PYTHON COMMAND FILE:   comp_uvm.bat  and  comp_uvm.py \n\n"
+                                      
+            self.view_text_box.insert(END, str(title_of_comp_uvm_py_screen))
+                                             
+            line_space_string = "\n\n"                     
+            line_next_string = "\n"
+                              
+            locate_python = ""
+            locate_python = sys.exec_prefix
+            sys_executable_string = os.path.join(str(locate_python), "python.exe")
+            
+            print("\n\nLocation of Python Executable:  " + str(locate_python)) 
+            
+            print("\nFull Path of Python Executable:  " + str(sys_executable_string)) 
+            
+            print("\nFull Path of PROJECT DIRECTORY:  " + str(directory_full_path_project_name_global))     
+                                    
+            print("\n\nMODELSIM UVM COMPILE SCRIPT EMBEDDED in this Python Method.\n\n")
+   
+            ## #############################################
+            ## Continue implementing compile uvm script 
+            ## from this PYTHON SCRIPT using os COMMANDS. 
+            ## Translating the comp_uvm_mem.bat script
+            ## into os system commands format to allow
+            ## the compile script to be implemented
+            ## within this PYTHON tkinter GUI APP.         
+            os.environ["new_dir_name"] = str(directory_full_path_project_name_global) 
+            os.chdir(os.environ["new_dir_name"])         
+            ## Directory is now changed to PROJECT DIRECTORY. 
+            os.system("dir >> cmd_output_redirect.txt")
+            # os.system("vlib work")
+            os.system("comp_uvm.bat >> cmd_output_redirect.txt")
+                                                          
+            with open ("cmd_output_redirect.txt", "r") as f:
+                for line in f:
+                    self.view_text_box.insert(END, str(line))
+
+            self.view_text_box.insert(END, str(line_space_string))
+            
+            self.view_text_box.config(state=DISABLED)  # DISABLED or NORMAL
+                
+            os.system("rm cmd_output_redirect.txt")
+                                         
             return
             
       ###################################################
-      #
+      # 
       # SIMULATION SCRIPT SELECT MENU METHOD 
       #
       ###################################################
