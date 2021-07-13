@@ -2992,6 +2992,7 @@ class App(Frame):    #( object)
             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
             
+            # Clear MAIN SCREEN TEXTBOX.               
             self.view_text_box.delete(1.0, END)
                        
             # sv_interface_value_string_global computed upon SELECT PROJECT action.
@@ -3072,7 +3073,8 @@ class App(Frame):    #( object)
             
              # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL 
-                                  
+            
+            # Clear MAIN SCREEN TEXTBOX.                                    
             self.view_text_box.delete(1.0, END)
                        
             # seq_item_value_string_global computed upon SELECT PROJECT action.
@@ -3151,7 +3153,8 @@ class App(Frame):    #( object)
             
             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
-                        
+            
+            # Clear MAIN SCREEN TEXTBOX.                           
             self.view_text_box.delete(1.0, END)
                                                           
             # sequence_value_string_global computed upon SELECT PROJECT action.
@@ -3232,7 +3235,8 @@ class App(Frame):    #( object)
             
             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL 
-                        
+            
+            # Clear MAIN SCREEN TEXTBOX.                           
             self.view_text_box.delete(1.0, END)
                                                                         
             # sequencer_value_string_global computed upon SELECT PROJECT action.
@@ -3311,7 +3315,8 @@ class App(Frame):    #( object)
             
             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
-                        
+            
+            # Clear MAIN SCREEN TEXTBOX.                           
             self.view_text_box.delete(1.0, END)
             
             # driver_value_string_global computed upon SELECT PROJECT action.
@@ -3393,7 +3398,8 @@ class App(Frame):    #( object)
             
             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL  
-                                  
+            
+            # Clear MAIN SCREEN TEXTBOX.                                     
             self.view_text_box.delete(1.0, END)
                             
             # monitor_value_string_global computed upon SELECT PROJECT action.
@@ -3475,7 +3481,8 @@ class App(Frame):    #( object)
             
             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL              
-                        
+            
+            # Clear MAIN SCREEN TEXTBOX.                           
             self.view_text_box.delete(1.0, END)
              
             # agent_value_string_global computed upon SELECT PROJECT action.
@@ -3554,7 +3561,8 @@ class App(Frame):    #( object)
             
             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL                        
-                        
+            
+            # Clear MAIN SCREEN TEXTBOX.                           
             self.view_text_box.delete(1.0, END)
             
             # scoreboard_value_string_global computed upon SELECT PROJECT action.
@@ -3633,7 +3641,8 @@ class App(Frame):    #( object)
               
             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
-                        
+            
+            # Clear MAIN SCREEN TEXTBOX.                           
             self.view_text_box.delete(1.0, END)
                   
             # environment_value_string_global computed upon SELECT PROJECT action.
@@ -3712,7 +3721,8 @@ class App(Frame):    #( object)
               
             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL            
-                        
+            
+            # Clear MAIN SCREEN TEXTBOX.                           
             self.view_text_box.delete(1.0, END)
                               
             # test_value_string_global computed upon SELECT PROJECT action.
@@ -3819,9 +3829,10 @@ class App(Frame):    #( object)
             
             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL              
-            
+                       
             project_directory_list = os.listdir(directory_full_path_project_name_global)
-                         
+            
+            # Clear MAIN SCREEN TEXTBOX.                         
             self.view_text_box.delete(1.0, END)
                         
             TITLE_project_dict = "\n\n  Project UVM TESTBENCH FILE TYPE DICTIONARY (VALUES):  " + str(directory_project_name_global) + "\n\n"
@@ -3930,6 +3941,7 @@ class App(Frame):    #( object)
             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
                         
+            # Clear MAIN SCREEN TEXTBOX.
             self.view_text_box.delete(1.0, END)
                                          
             # testbench_top_value_string_global computed upon SELECT PROJECT action.
@@ -3975,7 +3987,7 @@ class App(Frame):    #( object)
                                       
       ###################################################
       #
-      # COMPILE SCRIPT SELECT MENU METHOD 
+      #    COMPILE SCRIPT SELECT MENU METHOD 
       #
       ###################################################
       #      
@@ -3998,10 +4010,7 @@ class App(Frame):    #( object)
             global OBJECT_IN_APP_excel_import_export        
             global uvm_tb_file_type_dict      
             global directory_project_name_global     
-            global directory_full_path_project_name_global
-            global uvm_tb_file_list_global
-            global project_sv_files_list_global
-            global directory_project_name_global     
+            global project_sv_files_list_global 
             global directory_full_path_project_name_global
             global uvm_tb_file_list_global
             global project_sv_files_list_global
@@ -4022,7 +4031,7 @@ class App(Frame):    #( object)
             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
                         
-            # IClear the MAIN TEXTBOX Screen.
+            # Clear the MAIN TEXTBOX Screen.
             self.view_text_box.delete(1.0, END)  
             
             title_of_comp_uvm_py_screen = "\n\nRUNNING COMPILE UVM PYTHON COMMAND FILE:   comp_uvm.bat  and  comp_uvm.py \n\n"
@@ -4049,7 +4058,7 @@ class App(Frame):    #( object)
             ## from this PYTHON SCRIPT using os COMMANDS. 
             ## Translating the comp_uvm_mem.bat script
             ## into os system commands format to allow
-            ## the compile script to be implemented
+            ## this compile script (method) to be implemented
             ## within this PYTHON tkinter GUI APP.         
             os.environ["new_dir_name"] = str(directory_full_path_project_name_global) 
             os.chdir(os.environ["new_dir_name"])         
@@ -4072,7 +4081,7 @@ class App(Frame):    #( object)
             
       ###################################################
       # 
-      # SIMULATION SCRIPT SELECT MENU METHOD 
+      #    SIMULATION SCRIPT SELECT MENU METHOD 
       #
       ###################################################
       #      
@@ -4093,8 +4102,75 @@ class App(Frame):    #( object)
             global export_to_excel_listbox_select_fn_global
             global new_excel_file_created_global
             global OBJECT_IN_APP_excel_import_export             
+            global uvm_tb_file_type_dict      
+            global directory_project_name_global     
+            global project_sv_files_list_global 
+            global directory_full_path_project_name_global
+            global uvm_tb_file_list_global
+            global project_sv_files_list_global
             global uvm_tb_file_type_dict
-                  
+            global sv_interface_value_string_global
+            global seq_item_value_string_global
+            global sequence_value_string_global
+            global sequencer_value_string_global
+            global driver_value_string_global
+            global monitor_value_string_global
+            global agent_value_string_global
+            global scoreboard_value_string_global
+            global environment_value_string_global
+            global test_value_string_global
+            global testbench_top_value_string_global
+            global project_dir_text_box_content_global
+                        
+            # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
+            self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
+                        
+            # Clear the MAIN TEXTBOX Screen.
+            self.view_text_box.delete(1.0, END)  
+            
+            title_of_sim_uvm_py_screen = "\n\nRUNNING SIMULATION UVM PYTHON COMMAND FILE:   sim_uvm.bat  and  sim_uvm.py \n\n"
+                                      
+            self.view_text_box.insert(END, str(title_of_sim_uvm_py_screen))
+                                             
+            line_space_string = "\n\n"                     
+            line_next_string = "\n"
+                              
+            locate_python = ""
+            locate_python = sys.exec_prefix
+            sys_executable_string = os.path.join(str(locate_python), "python.exe")
+            
+            print("\n\nLocation of Python Executable:  " + str(locate_python)) 
+            
+            print("\nFull Path of Python Executable:  " + str(sys_executable_string)) 
+            
+            print("\nFull Path of PROJECT DIRECTORY:  " + str(directory_full_path_project_name_global))     
+                                    
+            print("\n\nMODELSIM UVM SIMULATION SCRIPT EMBEDDED in this Python Method.\n\n")
+   
+            ## #############################################
+            ## Continue implementing simulation uvm script 
+            ## from this PYTHON SCRIPT using os COMMANDS. 
+            ## Translating the sim_uvm_mem.bat script
+            ## into os system commands format to allow
+            ## this simulation script (method) to be implemented
+            ## within this PYTHON tkinter GUI APP.         
+            os.environ["new_dir_name"] = str(directory_full_path_project_name_global) 
+            os.chdir(os.environ["new_dir_name"])         
+            ## Directory is now changed to PROJECT DIRECTORY. 
+            os.system("dir >> cmd_output_redirect.txt")
+            # os.system("vlib work")
+            os.system("sim_uvm.bat >> cmd_output_redirect.txt")
+                                                          
+            with open ("cmd_output_redirect.txt", "r") as f:
+                for line in f:
+                    self.view_text_box.insert(END, str(line))
+
+            self.view_text_box.insert(END, str(line_space_string))
+            
+            self.view_text_box.config(state=DISABLED)  # DISABLED or NORMAL
+                
+            os.system("rm cmd_output_redirect.txt")
+                                                                                                   
             return
             
       ###################################################
