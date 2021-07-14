@@ -1246,10 +1246,10 @@ class App(Frame):    #( object)
 
 ##################################################################################### 
 
-            List_of_WINDOWS = ["PLEASE SELECT", "SELECT PROJECT", "VIEW PROJECTS", "CREATE PROJECT", \
-                               "config_setting_class", "UVM APP STARTUP", "E X I T"]
+            List_of_WINDOWS = ["PROJECT MENU", "SELECT PROJECT", "CREATE PROJECT", \
+                               "UVM APP DEMO", "E X I T"]
 
-            window_select_global = "PLEASE SELECT"
+            window_select_global = "PROJECT MENU"
 
             self.window_select_opt_menu_select = StringVar()
             self.window_select_opt_menu_select.set(str(window_select_global) )   # initialize OptionMenu for window Select
@@ -1675,75 +1675,35 @@ class App(Frame):    #( object)
       def func_set_window_select_global(self, window_select_opt_menu_select):
              global window_select_global
 
-             # Set the GLOBAL for the newly selected window_select_global 
+             # Set the GLOBAL for the newly selected window_select_global
+             # or return BUTTON to display "PROJECT MENU". 
              window_select_global = str(window_select_opt_menu_select)
              
-             if (window_select_global == "PLEASE SELECT"):
+             if (window_select_global == "PROJECT MENU"):
              	
                    return
 
              if (window_select_global == "SELECT PROJECT"):
 
-                   # print(".... select window:  cm_app_doc_media ")
-                   # Reminder these are the applicable GLOBALS:
-                   # project_name_only_global
-                   # project_name_fullpath_global
                    self.cm_app_doc_media_window_method()
-                   window_select_global = "SELECT PROJECT"
+                   window_select_global = "PROJECT MENU"
                    self.window_select_opt_menu_select.set(str(window_select_global) )
-
-             if (window_select_global == "VIEW PROJECTS"):
-
-                   # print(".... select window:  cm_app_doc_media ")
-                   self.cm_app_doc_media_window_method()
-                   window_select_global = "VIEW PROJECTS"
-                   self.window_select_opt_menu_select.set(str(window_select_global) )
-                                                    
-             elif (window_select_global == "cm_app_doc_media"):
-
-                   # print(".... select window:  cm_app_doc_media ")
-                   self.cm_app_doc_media_window_method()
-                   window_select_global = "cm_app_doc_media"
-                   self.window_select_opt_menu_select.set(str(window_select_global) )
-
-             elif (window_select_global == "app_status_panel"):
-
-                   # print(".... select window:  app_status_panel ")
-                   self.select_App_Status_Display_method()
-                   window_select_global = "app_status_panel"
-                   self.window_select_opt_menu_select.set(str(window_select_global) )
-
-             elif (window_select_global == "system_admin_info"): 
-
-                 # print(".... select window:  system_admin_info ")
-                 self.system_administration_View_method()
-                 window_select_global = "system_admin_info"
-                 self.window_select_opt_menu_select.set(str(window_select_global) )
-
+      
              elif (window_select_global == "CREATE PROJECT"): 
 
-                 # print(".... select window:  system_admin_info ")
-                 self.system_administration_View_method()
-                 window_select_global = "CREATE PROJECT"
-                 self.window_select_opt_menu_select.set(str(window_select_global) )
-
-             elif (window_select_global == "config_setting_class"):
-
-                   # print(".... select window:  config_setting_class ")
-                   self.config_App_Settings_method()
-                   window_select_global = "config_setting_class"
+                   self.cm_app_doc_media_window_method()
+                   window_select_global = "PROJECT MENU"
                    self.window_select_opt_menu_select.set(str(window_select_global) )
+ 
+             elif (window_select_global == "UVM APP DEMO"):
 
-             elif (window_select_global == "UVM APP STARTUP"):
-
-                   # print(".... select window:   CRM STARTUP")
                    self.crm_startup_method()
-                   window_select_global = "UVM APP STARTUP"
+                   window_select_global = "PROJECT MENU"
                    self.window_select_opt_menu_select.set(str(window_select_global) )
 
              elif (window_select_global == "E X I T"):
 
-                   window_select_global = "E X I T"
+                   window_select_global = "PROJECT MENU"
                    self.window_select_opt_menu_select.set(str(window_select_global) )
                    # print(".... E X I T .... self.exit_Handler")
                    self.exit_Handler()
@@ -1807,9 +1767,7 @@ class App(Frame):    #( object)
           time.sleep(.25)
 
           kick_thread_to_update_main_entry_widgets = True
-
-          self.FLASH_NIGHT_MODE_SELECT_BUTTON_yellow()
-          
+         
           self.after(125, lambda: self.FLASH_sv_interface_button_cyan() )
           self.after(250, lambda: self.FLASH_sv_interface_button_midnight_blue() )
           	
@@ -1828,25 +1786,35 @@ class App(Frame):    #( object)
           self.after(750, lambda: self.FLASH_speedbutton_3_cyan() )
           self.after(875, lambda: self.FLASH_speedbutton_3_midnight_blue() )
           		          	
-          self.after(900, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_yellow() ) 
+          self.after(875, lambda: self.FLASH_speedbutton_4_cyan() )
+          self.after(1000, lambda: self.FLASH_speedbutton_4_midnight_blue() )          		          	
+          		          	
+          self.after(1000, lambda: self.FLASH_build_dual_list_button2_cyan() )
+          self.after(1125, lambda: self.FLASH_build_dual_list_button2_midnight_blue() )          		          	
+          		          	                         
+          self.after(1125, lambda: self.FLASH_speedbutton_5_cyan() )
+          self.after(1250, lambda: self.FLASH_speedbutton_5_midnight_blue() )          		          	
+          		   
+          self.after(1250, lambda: self.FLASH_build_dual_list_button_cyan() )
+          self.after(1375, lambda: self.FLASH_build_dual_list_button_midnight_blue() )          		          	
+          		   
+          self.after(1375, lambda: self.FLASH_build_dual_list3_button_cyan() )
+          self.after(1500, lambda: self.FLASH_build_dual_list3_button_midnight_blue() )          		          	
+          		                
+          self.after(1500, lambda: self.FLASH_build_dual_list4_button_cyan() )
+          self.after(1625, lambda: self.FLASH_build_dual_list4_button_midnight_blue() )          		          	
+        	          		          	
+          self.after(1625, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_yellow() ) 
           	         	          	          	
-          self.after(1100, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_blue() )
+          self.after(1925, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_blue() )
 
-          self.after(1300, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_red() )
+          self.after(2225, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_cyan() )
 
-          self.after(1500, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_cyan() )
-
-          self.after(1700, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_blue() )
-
-          self.after(1900, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_red() )
-
-          self.after(2100, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_cyan() )
+          self.after(2525, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_yellow() )
           	
-          self.after(2300, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_yellow() )
-          	
-          self.after(2500, lambda: OBJECT_main.lift() )
+          self.after(2625, lambda: OBJECT_main.lift() )
 
-          self.after(2700, lambda: self.kick_thread_main_entry_widgets() )
+          self.after(2725, lambda: self.kick_thread_main_entry_widgets() )
 
       def FLASH_sv_interface_button_midnight_blue(self):
           self.sv_interface_button.config(bg="midnight blue", fg="deep sky blue")
@@ -1883,7 +1851,43 @@ class App(Frame):    #( object)
           
       def FLASH_speedbutton_3_cyan(self):          
           self.speedbutton_3.config(bg="cyan", fg="blue2") 
-                                                                                                   
+                         
+      def FLASH_speedbutton_4_midnight_blue(self):          
+          self.speedbutton_4.config(bg="midnight blue", fg="deep sky blue")           
+          
+      def FLASH_speedbutton_4_cyan(self):          
+          self.speedbutton_4.config(bg="cyan", fg="blue2") 
+                                                 
+      def FLASH_build_dual_list_button2_midnight_blue(self):          
+          self.build_dual_list_button2.config(bg="midnight blue", fg="deep sky blue")           
+          
+      def FLASH_build_dual_list_button2_cyan(self):          
+          self.build_dual_list_button2.config(bg="cyan", fg="blue2")                          
+                         
+      def FLASH_speedbutton_5_midnight_blue(self):          
+          self.speedbutton_5.config(bg="midnight blue", fg="deep sky blue")           
+          
+      def FLASH_speedbutton_5_cyan(self):          
+          self.speedbutton_5.config(bg="cyan", fg="blue2") 
+          
+      def FLASH_build_dual_list_button_midnight_blue(self):          
+          self.build_dual_list_button.config(bg="midnight blue", fg="deep sky blue")           
+          
+      def FLASH_build_dual_list_button_cyan(self):          
+          self.build_dual_list_button.config(bg="cyan", fg="blue2")                  
+          
+      def FLASH_build_dual_list3_button_midnight_blue(self):          
+          self.build_dual_list3_button.config(bg="midnight blue", fg="deep sky blue")           
+          
+      def FLASH_build_dual_list3_button_cyan(self):          
+          self.build_dual_list3_button.config(bg="cyan", fg="blue2") 
+                         
+      def FLASH_build_dual_list4_button_midnight_blue(self):          
+          self.build_dual_list4_button.config(bg="midnight blue", fg="deep sky blue")           
+          
+      def FLASH_build_dual_list4_button_cyan(self):          
+          self.build_dual_list4_button.config(bg="cyan", fg="blue2")                   
+                                                                                                                       
       def FLASH_NIGHT_MODE_SELECT_BUTTON_yellow(self):
           self.entry_project_status.config(fg="cyan", bg="black")
           self.entry2_project_status.config(fg="cyan", bg="black")
