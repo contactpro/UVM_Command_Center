@@ -1112,13 +1112,13 @@ class App(Frame):    #( object)
             OBJECT_IN_APP_email_gmail_class = self.master
             OBJECT_IN_APP_config_setting_class = self.master
             
-            def on_enter_bg(e): e.widget['background'] = 'blue2'
+            def on_enter_bg(e): e.widget['background'] = 'cyan'
                  
             def on_leave_bg(e): e.widget['background'] = 'midnight blue'
             	
             def on_leave_black_bg(e): e.widget['background'] = 'black'
             
-            def on_enter_fg(e): e.widget['foreground'] = 'deep sky blue'
+            def on_enter_fg(e): e.widget['foreground'] = 'blue2'
                  
             def on_leave_fg(e): e.widget['foreground'] = 'deep sky blue'
             	                     
@@ -1129,9 +1129,11 @@ class App(Frame):    #( object)
             self.sv_interface_button.config(font=('Helvetica', 12 ) )
             self.sv_interface_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
    
-            self.sv_interface_button.bind("<Enter>", on_enter_bg)
-            self.sv_interface_button.bind("<Leave>", on_leave_bg)   
+            # self.sv_interface_button.bind("<Enter>", on_enter_bg)
+            # self.sv_interface_button.bind("<Leave>", on_leave_bg)   
  
+            ## WHEN FILE DETECTED - self.sv_interface_button.config(bg="cyan", fg="blue2")
+            ## self.sv_interface_button['TEXT'] = 'new text' 
             
             self.uvm_seq_item_button = Button(self.master, text = "UVM SEQ ITEM", \
                 width=15,height=1, background="midnight blue", fg="deep sky blue", command = self.UVM_SEQ_ITEM_View_method)
@@ -1140,9 +1142,9 @@ class App(Frame):    #( object)
             self.uvm_seq_item_button.config(font=('Helvetica', 12 ) )
             self.uvm_seq_item_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
                                 
-            self.uvm_seq_item_button.bind("<Enter>", on_enter_bg)
-            self.uvm_seq_item_button.bind("<Leave>", on_leave_bg)   
-
+            # self.uvm_seq_item_button.bind("<Enter>", on_enter_bg)
+            # self.uvm_seq_item_button.bind("<Leave>", on_leave_bg)  
+                          
             #############################################################################
             #
             # Implement Options Menu Drop Down to Select Entry Mode or Browse Mode
@@ -1167,7 +1169,6 @@ class App(Frame):    #( object)
 
             mode_select_global = "Browse Mode"
 
-
             self.sort_contact_list_button = Button(self.master, text = "UVM SEQUENCE", \
                   width=15,height=1, font=('Helvetica', '12'), background="midnight blue", fg="deep sky blue", \
                   activebackground="cyan", activeforeground="blue2", command = self.UVM_SEQUENCE_View_method)
@@ -1175,8 +1176,8 @@ class App(Frame):    #( object)
             self.sort_contact_list_button.grid(row=4, column=0, sticky=W)
             self.sort_contact_list_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
             
-            self.sort_contact_list_button.bind("<Enter>", on_enter_bg)
-            self.sort_contact_list_button.bind("<Leave>", on_leave_bg)   
+            # self.sort_contact_list_button.bind("<Enter>", on_enter_bg)
+            # self.sort_contact_list_button.bind("<Leave>", on_leave_bg)   
             
 ###########################################################################################
          
@@ -1193,8 +1194,8 @@ class App(Frame):    #( object)
                              self.speedbutton_1.grid(row=r,column=0, sticky=W)
                              self.speedbutton_1.config(borderwidth=5)
                              self.speedbutton_1.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-                             self.speedbutton_1.bind("<Enter>", on_enter_bg)
-                             self.speedbutton_1.bind("<Leave>", on_leave_bg)   
+                             # self.speedbutton_1.bind("<Enter>", on_enter_bg)
+                             # self.speedbutton_1.bind("<Leave>", on_leave_bg)   
 
                        elif r == 6:
                              bindto = "forward_scroll"
@@ -1204,8 +1205,8 @@ class App(Frame):    #( object)
                              self.speedbutton_2.grid(row=r,column=0, sticky=W)
                              self.speedbutton_2.config(borderwidth=5)
                              self.speedbutton_2.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-                             self.speedbutton_2.bind("<Enter>", on_enter_bg)
-                             self.speedbutton_2.bind("<Leave>", on_leave_bg)  
+                             # self.speedbutton_2.bind("<Enter>", on_enter_bg)
+                             # self.speedbutton_2.bind("<Leave>", on_leave_bg)  
 
                        elif r == 7: 
                              bindto = "forward_tick"
@@ -1215,8 +1216,8 @@ class App(Frame):    #( object)
                              self.speedbutton_3.grid(row=7,column=0, sticky=W)
                              self.speedbutton_3.config(borderwidth=5)
                              self.speedbutton_3.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-                             self.speedbutton_3.bind("<Enter>", on_enter_bg)
-                             self.speedbutton_3.bind("<Leave>", on_leave_bg)  
+                             # self.speedbutton_3.bind("<Enter>", on_enter_bg)
+                             # self.speedbutton_3.bind("<Leave>", on_leave_bg)  
 
                              ###########################################################################
                        elif r == 8:
@@ -1227,8 +1228,8 @@ class App(Frame):    #( object)
                              self.speedbutton_4.grid(row=2,column=3, sticky=W)
                              self.speedbutton_4.config(borderwidth=5)
                              self.speedbutton_4.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-                             self.speedbutton_4.bind("<Enter>", on_enter_bg)
-                             self.speedbutton_4.bind("<Leave>", on_leave_bg)  
+                             # self.speedbutton_4.bind("<Enter>", on_enter_bg)
+                             # self.speedbutton_4.bind("<Leave>", on_leave_bg)  
                              ############################################################################
                        elif r == 10: 
                              bindto = "backward_scroll"
@@ -1237,8 +1238,8 @@ class App(Frame):    #( object)
                              background="midnight blue", fg="deep sky blue", command = self.UVM_ENV_View_method) 
                              self.speedbutton_5.grid(row=4,column=3, sticky=W)
                              self.speedbutton_5.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-                             self.speedbutton_5.bind("<Enter>", on_enter_bg)
-                             self.speedbutton_5.bind("<Leave>", on_leave_bg)  
+                             # self.speedbutton_5.bind("<Enter>", on_enter_bg)
+                             # self.speedbutton_5.bind("<Leave>", on_leave_bg)  
  
                   r = r + 1
 
@@ -1269,8 +1270,8 @@ class App(Frame):    #( object)
             
             self.sys_admin_view_button.grid(row=9, column=3, sticky=W)
             self.sys_admin_view_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-            self.sys_admin_view_button.bind("<Enter>", on_enter_bg)
-            self.sys_admin_view_button.bind("<Leave>", on_leave_black_bg) 
+            # self.sys_admin_view_button.bind("<Enter>", on_enter_bg)
+            # self.sys_admin_view_button.bind("<Leave>", on_leave_black_bg) 
             
             # INSERT LABEL FOR SELECTED PROJECT NAME .... 
             self.label_project_status = "PROJECT: "
@@ -1407,8 +1408,8 @@ class App(Frame):    #( object)
             self.app_status_display_select_button.config(borderwidth=5, \
                  bg="black", fg="deep sky blue", font=('Helvetica', 12 ) )
             self.app_status_display_select_button.config(activebackground="cyan", activeforeground="blue2")
-            self.app_status_display_select_button.bind("<Enter>", on_enter_bg)
-            self.app_status_display_select_button.bind("<Leave>", on_leave_black_bg)  
+            # self.app_status_display_select_button.bind("<Enter>", on_enter_bg)
+            # self.app_status_display_select_button.bind("<Leave>", on_leave_black_bg)  
 ###################################################################################### 
 
             self.build_dual_list_button2 = Button(self.master, text = "UVM SCBD", \
@@ -1417,8 +1418,8 @@ class App(Frame):    #( object)
             
             self.build_dual_list_button2.grid(row=3, column=3, sticky=W)
             self.build_dual_list_button2.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-            self.build_dual_list_button2.bind("<Enter>", on_enter_bg)
-            self.build_dual_list_button2.bind("<Leave>", on_leave_bg)  
+            # self.build_dual_list_button2.bind("<Enter>", on_enter_bg)
+            # self.build_dual_list_button2.bind("<Leave>", on_leave_bg)  
 ###################################################################################### 
 
             self.build_dual_list_button = Button(self.master, text = "UVM TEST", \
@@ -1427,8 +1428,8 @@ class App(Frame):    #( object)
             
             self.build_dual_list_button.grid(row=5, column=3, sticky=W)
             self.build_dual_list_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-            self.build_dual_list_button.bind("<Enter>", on_enter_bg)
-            self.build_dual_list_button.bind("<Leave>", on_leave_bg)  
+            # self.build_dual_list_button.bind("<Enter>", on_enter_bg)
+            # self.build_dual_list_button.bind("<Leave>", on_leave_bg)  
 #####################################################################################  
  
             self.build_dual_list3_button = Button(self.master, text = "PROJECT DIR", \
@@ -1438,8 +1439,8 @@ class App(Frame):    #( object)
             self.build_dual_list3_button.grid(row=6, column=3, sticky=W)
             self.build_dual_list3_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
             
-            self.build_dual_list3_button.bind("<Enter>", on_enter_bg)
-            self.build_dual_list3_button.bind("<Leave>", on_leave_bg)  
+            # self.build_dual_list3_button.bind("<Enter>", on_enter_bg)
+            # self.build_dual_list3_button.bind("<Leave>", on_leave_bg)  
             
 ###################################################################################### 
 
@@ -1450,8 +1451,8 @@ class App(Frame):    #( object)
             self.build_dual_list4_button.grid(row=7, column=3, sticky=W)
             self.build_dual_list4_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
             
-            self.build_dual_list4_button.bind("<Enter>", on_enter_bg)
-            self.build_dual_list4_button.bind("<Leave>", on_leave_bg)  
+            # self.build_dual_list4_button.bind("<Enter>", on_enter_bg)
+            # self.build_dual_list4_button.bind("<Leave>", on_leave_bg)  
             
 ######################################################################################  
 
@@ -1808,35 +1809,84 @@ class App(Frame):    #( object)
           kick_thread_to_update_main_entry_widgets = True
 
           self.FLASH_NIGHT_MODE_SELECT_BUTTON_yellow()
+          
+          self.after(125, lambda: self.FLASH_sv_interface_button_cyan() )
+          self.after(250, lambda: self.FLASH_sv_interface_button_midnight_blue() )
+          	
+          self.after(250, lambda: self.FLASH_uvm_seq_item_button_cyan() )          	
+          self.after(375, lambda: self.FLASH_uvm_seq_item_button_midnight_blue() )
+          	
+          self.after(375, lambda: self.FLASH_sort_contact_list_button_cyan() ) 
+          self.after(500, lambda: self.FLASH_sort_contact_list_button_midnight_blue() ) 
+          	          	
+          self.after(500, lambda: self.FLASH_speedbutton_1_cyan() )
+          self.after(625, lambda: self.FLASH_speedbutton_1_midnight_blue() )	
+          	
+          self.after(625, lambda: self.FLASH_speedbutton_2_cyan() )
+          self.after(750, lambda: self.FLASH_speedbutton_2_midnight_blue() )	
+          	
+          self.after(750, lambda: self.FLASH_speedbutton_3_cyan() )
+          self.after(875, lambda: self.FLASH_speedbutton_3_midnight_blue() )
+          		          	
+          self.after(900, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_yellow() ) 
+          	         	          	          	
+          self.after(1100, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_blue() )
 
-          self.after(2000, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_pink() )
+          self.after(1300, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_red() )
 
-          self.after(3000, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_blue() )
+          self.after(1500, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_cyan() )
 
-          self.after(4000, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_red() )
+          self.after(1700, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_blue() )
 
-          self.after(5000, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_cyan() )
+          self.after(1900, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_red() )
 
-          self.after(6000, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_green() )
+          self.after(2100, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_cyan() )
+          	
+          self.after(2300, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_yellow() )
+          	
+          self.after(2500, lambda: OBJECT_main.lift() )
 
-          self.after(7000, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_normal() )
+          self.after(2700, lambda: self.kick_thread_main_entry_widgets() )
 
-          self.after(8000, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_pink() )
-
-          self.after(8050, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_blue() )
-
-          self.after(9000, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_red() )
-
-          self.after(10000, lambda: self.FLASH_NIGHT_MODE_SELECT_BUTTON_cyan() )
-
-          self.after(11000, lambda: OBJECT_main.lift() )
-
-          self.after(11050, lambda: self.kick_thread_main_entry_widgets() )
-
-
+      def FLASH_sv_interface_button_midnight_blue(self):
+          self.sv_interface_button.config(bg="midnight blue", fg="deep sky blue")
+          
+      def FLASH_sv_interface_button_cyan(self):
+          self.sv_interface_button.config(bg="cyan", fg="blue2")
+          
+      def FLASH_uvm_seq_item_button_midnight_blue(self):          
+          self.uvm_seq_item_button.config(bg="midnight blue", fg="deep sky blue") 
+          
+      def FLASH_uvm_seq_item_button_cyan(self):          
+          self.uvm_seq_item_button.config(bg="cyan", fg="blue2")
+           
+      def FLASH_sort_contact_list_button_midnight_blue(self):          
+          self.sort_contact_list_button.config(bg="midnight blue", fg="deep sky blue")
+           
+      def FLASH_sort_contact_list_button_cyan(self):          
+          self.sort_contact_list_button.config(bg="cyan", fg="blue2")           
+          
+      def FLASH_speedbutton_1_midnight_blue(self):          
+          self.speedbutton_1.config(bg="midnight blue", fg="deep sky blue")           
+          
+      def FLASH_speedbutton_1_cyan(self):          
+          self.speedbutton_1.config(bg="cyan", fg="blue2") 
+                    
+      def FLASH_speedbutton_2_midnight_blue(self):          
+          self.speedbutton_2.config(bg="midnight blue", fg="deep sky blue")           
+          
+      def FLASH_speedbutton_2_cyan(self):          
+          self.speedbutton_2.config(bg="cyan", fg="blue2") 
+                                        
+      def FLASH_speedbutton_3_midnight_blue(self):          
+          self.speedbutton_3.config(bg="midnight blue", fg="deep sky blue")           
+          
+      def FLASH_speedbutton_3_cyan(self):          
+          self.speedbutton_3.config(bg="cyan", fg="blue2") 
+                                                                                                   
       def FLASH_NIGHT_MODE_SELECT_BUTTON_yellow(self):
-          self.entry_project_status.config(background="DarkGoldenrod1", foreground="black")
-          self.entry2_project_status.config(background="DarkGoldenrod1", foreground="black")
+          self.entry_project_status.config(fg="cyan", bg="black")
+          self.entry2_project_status.config(fg="cyan", bg="black")
 
       def FLASH_NIGHT_MODE_SELECT_BUTTON_pink(self):
           self.entry_project_status.config(background="deep pink", foreground="black")
@@ -2314,6 +2364,8 @@ class App(Frame):    #( object)
               if i.endswith(".sv"):
                   if pattern_string in i:
                       sv_interface_value_string_global = i
+                      # Update button colors when this uvm file type is detected.
+                      self.sv_interface_button.config(bg="cyan", fg="blue2")
                       print("PATTERN MATCH sv_interface_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'sv_interface_key': sv_interface_value_string_global})        	                                                                                       
                       self.view_text_box.insert(END, str(sv_interface_value_string_global))
@@ -2324,6 +2376,8 @@ class App(Frame):    #( object)
               if i.endswith(".sv"):
                   if pattern_string in i:
                       seq_item_value_string_global = i
+                      # Update button colors when this uvm file type is detected.
+                      self.uvm_seq_item_button.config(bg="cyan", fg="blue2")                      
                       print("PATTERN 1 MATCH seq_item_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'seq_item_key': seq_item_value_string_global})
                       self.view_text_box.insert(END, str(seq_item_value_string_global))
@@ -2334,6 +2388,8 @@ class App(Frame):    #( object)
               if i.endswith(".sv"):
                   if pattern_string in i:
                       sequence_value_string_global = i
+                      # Update button colors when this uvm file type is detected.
+                      self.sort_contact_list_button.config(bg="cyan", fg="blue2")                      
                       print("PATTERN MATCH sequence_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'sequence_key': sequence_value_string_global})            	                                         
                       self.view_text_box.insert(END, str(sequence_value_string_global))
@@ -2344,6 +2400,8 @@ class App(Frame):    #( object)
               if i.endswith(".sv"):
                   if pattern_string in i:
                       sequencer_value_string_global = i
+                      # Update button colors when this uvm file type is detected.
+                      self.speedbutton_1.config(bg="cyan", fg="blue2")                      
                       print("PATTERN MATCH sequencer_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'sequencer_key': sequencer_value_string_global})            	                                                  
                       self.view_text_box.insert(END, str(sequencer_value_string_global))
@@ -2354,6 +2412,8 @@ class App(Frame):    #( object)
               if i.endswith(".sv"):
                   if pattern_string in i:
                       driver_value_string_global = i
+                      # Update button colors when this uvm file type is detected.
+                      self.speedbutton_2.config(bg="cyan", fg="blue2")                      
                       print("PATTERN MATCH driver_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'driver_key': driver_value_string_global})            	                                         
                       self.view_text_box.insert(END, str(driver_value_string_global))
@@ -2364,6 +2424,8 @@ class App(Frame):    #( object)
               if i.endswith(".sv"):
                   if pattern_string in i:
                       monitor_value_string_global = i
+                      # Update button colors when this uvm file type is detected.
+                      self.speedbutton_3.config(bg="cyan", fg="blue2")                      
                       print("PATTERN MATCH monitor_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'monitor_key': monitor_value_string_global})          
                       self.view_text_box.insert(END, str(monitor_value_string_global))
@@ -2374,6 +2436,8 @@ class App(Frame):    #( object)
               if i.endswith(".sv"):
                   if pattern_string in i:                 	
                       agent_value_string_global = i
+                      # Update button colors when this uvm file type is detected.
+                      self.speedbutton_4.config(bg="cyan", fg="blue2")                      
                       print("PATTERN MATCH agent_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'agent_key': agent_value_string_global})            	                                                           
                       self.view_text_box.insert(END, str(agent_value_string_global))
@@ -2385,12 +2449,16 @@ class App(Frame):    #( object)
               if i.endswith(".sv"):
                   if (pattern_string1 in i):
                       scoreboard_value_string_global = i
+                      # Update button colors when this uvm file type is detected.
+                      self.build_dual_list_button2.config(bg="cyan", fg="blue2")                      
                       print("PATTERN 1 MATCH scoreboard_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'scoreboard_key': scoreboard_value_string_global})
                       self.view_text_box.insert(END, str(scoreboard_value_string_global))
                       self.view_text_box.insert(END, text_1_LINE_SPACE)                  
                   if (pattern_string2 in i):
                       scoreboard_value_string_global = i
+                      # Update button colors when this uvm file type is detected.
+                      self.build_dual_list_button2.config(bg="cyan", fg="blue2")                      
                       print("PATTERN 2 MATCH scoreboard_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'scoreboard_key': scoreboard_value_string_global})
                       self.view_text_box.insert(END, str(scoreboard_value_string_global))
@@ -2402,12 +2470,16 @@ class App(Frame):    #( object)
               if i.endswith(".sv"):
                   if (pattern_string1 in i):
                       environment_value_string_global = i
+                      # Update button colors when this uvm file type is detected.
+                      self.speedbutton_5.config(bg="cyan", fg="blue2")                      
                       print("PATTERN 1 MATCH environment_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'environment_key': environment_value_string_global})
                       self.view_text_box.insert(END, str(environment_value_string_global))
                       self.view_text_box.insert(END, text_1_LINE_SPACE)                   
                   if (pattern_string2 in i):
                       environment_value_string_global = i
+                      # Update button colors when this uvm file type is detected.
+                      self.speedbutton_5.config(bg="cyan", fg="blue2")                      
                       print("PATTERN 2 MATCH environment_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'environment_key': environment_value_string_global})            	                            	                     
                       self.view_text_box.insert(END, str(environment_value_string_global))
@@ -2418,6 +2490,8 @@ class App(Frame):    #( object)
               if i.endswith(".sv"):
                   if pattern_string in i:
                       test_value_string_global = i
+                      # Update button colors when this uvm file type is detected.
+                      self.build_dual_list_button.config(bg="cyan", fg="blue2")                      
                       print("PATTERN MATCH test_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'test_key': test_value_string_global})            	                                                           
           
@@ -2431,16 +2505,22 @@ class App(Frame):    #( object)
               if i.endswith(".sv"):
                   if pattern_string3 in i:
                       testbench_top_value_string_global = i
+                      # Update button colors when this uvm file type is detected.
+                      self.build_dual_list4_button.config(bg="cyan", fg="blue2")                      
                       print("PATTERN 1 MATCH testbench_top_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'testbench_top_key': testbench_top_value_string_global})                    
                	
                   if pattern_string2 in i:
                       testbench_top_value_string_global = i
+                      # Update button colors when this uvm file type is detected.
+                      self.build_dual_list4_button.config(bg="cyan", fg="blue2")                      
                       print("PATTERN 1 MATCH testbench_top_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'testbench_top_key': testbench_top_value_string_global})                    
              
                   if pattern_string1 in i:
                       testbench_top_value_string_global = i
+                      # Update button colors when this uvm file type is detected.
+                      self.build_dual_list4_button.config(bg="cyan", fg="blue2")                      
                       print("PATTERN 2 MATCH testbench_top_value_string_global = " + str(i))
                       uvm_tb_file_type_dict.update({'testbench_top_key': testbench_top_value_string_global})                                        
                       
@@ -3835,7 +3915,7 @@ class App(Frame):    #( object)
             # Clear MAIN SCREEN TEXTBOX.                         
             self.view_text_box.delete(1.0, END)
                         
-            TITLE_project_dict = "\n\n  Project UVM TESTBENCH FILE TYPE DICTIONARY (VALUES):  " + str(directory_project_name_global) + "\n\n"
+            TITLE_project_dict = "\n\n  Project UVM TESTBENCH FILE NAME GLOBAL VALUES:  " + str(directory_project_name_global) + "\n\n"
             
             self.view_text_box.insert(END, TITLE_project_dict)
             
