@@ -67,6 +67,7 @@ import urllib.request
 import inspect
 import webbrowser
 import shutil
+import wmi
 # from PIL import ImageTk, Image
 from PIL import Image
 from PIL import ImageTk
@@ -97,8 +98,11 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 from tkinter import filedialog
+from tkinter import simpledialog
 
 from tkinter.messagebox import *
+from tkinter.filedialog import *
+from tkinter.simpledialog import *
 
 from configparser import ConfigParser
 
@@ -1430,7 +1434,7 @@ class App(Frame):    #( object)
             self.build_dual_list_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
             # self.build_dual_list_button.bind("<Enter>", on_enter_bg)
             # self.build_dual_list_button.bind("<Leave>", on_leave_bg)  
-#####################################################################################  
+#####################################################################################
  
             self.build_dual_list3_button = Button(self.master, text = "PROJECT DIR", \
                 width=15, height=1, font=('Helvetica', '12'), \
@@ -1691,7 +1695,7 @@ class App(Frame):    #( object)
       
              elif (window_select_global == "CREATE PROJECT"): 
 
-                   self.cm_app_doc_media_window_method()
+                   self.cm_app_doc_media_window_method_CREATE_PROJECT()
                    window_select_global = "PROJECT MENU"
                    self.window_select_opt_menu_select.set(str(window_select_global) )
  
@@ -2155,7 +2159,178 @@ class App(Frame):    #( object)
               # or decrememtn pointer index by kicking this Thread in main():
               kick_thread_to_update_main_entry_widgets = True
 
+
+      ###############################################
+      #
+      #    EXECUTES [CREATE PROJECT] FROM MENU
+      # 
+      def cm_app_doc_media_window_method_CREATE_PROJECT(self):                	
+          global OBJECT_IN_APP_cm_app_doc_media
+          global cm_listbox_file_global
+          global dict_filename_global
+          global fullpath_fn_cm_listbox_file_global
+          global fullpath_fn_dict_filename_global
+          global listbox_file_capture_global
+          global master_cm_list_name_global
+          global username_global
+          global userprofile_global
+          global appdata_path_global
+          global cm_appdatafiles_path_global
+          global import_excel_csv_userprofile_global
+          global import_excel_csv_cm_appdata_global
+          global export_csv_excel_userprofile_global
+          global export_csv_excel_cm_appdata_global
+          global export_to_excel_listbox_select_fn_global
+          global new_excel_file_created_global
+          global client_secret_dir_global
+          global credential_home_dir_global
+          global client_secret_path_global
+          global credential_home_path_global
+          global OBJECT_toplevel_cm_app_doc_media
+          global instance_object_LIST
+          global uvm_tb_file_list_global
+          global project_sv_files_list_global
+          global directory_project_name_global
+          global directory_full_path_project_name_global
+          global event_project_select_update_flag_global
+          global sv_interface_value_string_global
+          global seq_item_value_string_global
+          global sequence_value_string_global
+          global sequencer_value_string_global
+          global driver_value_string_global
+          global monitor_value_string_global
+          global scoreboard_value_string_global
+          global agent_value_string_global 
+          global environment_value_string_global
+          global test_value_string_global
+          global testbench_top_value_string_global
+          global project_dir_text_box_content_global
+          # print("\n\ncm_app_doc_media_window_method - PROJECT SELECT in progress . . .")
+              
+          # Use dialog SELECT DIRECTORY to create project in.
+       
+          project_dir_project_list = []                                                   
+          uvm_tb_file_list = []       
+          uvm_tb_file_list_global = []        
+          uvm_tb_builder_project_dir_list_global = []        
+          project_sv_files_list_global = []       
+        
+          home_dir = userprofile_global
+ 
+          # Get the USER to SELECT PROJECT DIRECTORY
+          # as they have selected SELECT PROJECT on the Menu.
+          # Implement ELECT PROJECT DIRECTORY using filedialog.askdirectory 
+        
+          #### Select a PROJECT Directory:
+                    
+          root = tk.Tk()
+          root.withdraw()     
+        
+          project_name_input = ""
+        
+          print("\n\nPOP UP BOX TO ENTER A PROJECT NAME . . . . \n\n")      
+
+          # the input dialog
+          project_name_input = simpledialog.askstring("ENTER PROJECT NAME TO CREATE: ", "PLEASE ENTER PROJECT NAME: ")
+
+          # check it out
+          print("\n\nYou just input this PROJECT NAME: \n\n", project_name_input)
+     
+          # CREATE PROJECT (DIRECTORY) using os.mkdir
+          # and the project_name_input from pop-up.
           
+          # POPUP MESSAGE TO ASK USER TO SELECT
+          # EXISTING DIRECTORY TO CREATE PROJECT IN.
+          
+          messagebox.showinfo("Please SELECT a DIRECTORY area to create project in ...")
+        
+          dirname = filedialog.askdirectory(parent=root,initialdir=home_dir,title='Please SELECT a Directory for your PROJECT.')
+           
+          dirname_create_project = os.path.join(dirname, str(project_name_input))
+        
+          print("\n\n VERIFY dirname_create_project = " + str(dirname_create_project) + "\n")
+                                                                                                
+          OBJECT_main.lift()  
+              
+          directory_project_name_global = os.path.basename(dirname_create_project)
+        
+          uvm_tb_builder_project_selected_global = os.path.basename(dirname_create_project)
+            
+          project_name_only_global = os.path.basename(dirname_create_project)
+            
+          directory_full_path_project_name_global = dirname_create_project
+                                           
+          project_name_fullpath_global = dirname_create_project
+                                      
+          self.view_text_box.config(state=NORMAL)  #DISABLED   
+                                      
+          # Clear the TEXTBOX of the PROJECT SELECT message
+          # as the PROJECT SELECT action has been performed.               
+          self.view_text_box.delete(1.0, END)
+                                           
+          try:
+          	  os.mkdir(dirname_create_project)
+          except OSError as error:
+              self.view_text_box.insert(END, text_1_LINE_SPACE)
+              self.view_text_box.insert(END, error)
+              self.view_text_box.insert(END, text_1_LINE_SPACE)
+              self.view_text_box.insert(END, text_1_LINE_SPACE)
+              self.view_text_box.config(state=DISABLED)  #NORMAL
+              return           	
+          
+          text_TOP_TEXTBOX_PROJECT_CREATE_SUCCESS = "CREATE PROJECT SUCCESSFUL !!"                                                                  
+          text_1_LINE_SPACE = "\n  "          
+          self.view_text_box.insert(END, text_1_LINE_SPACE)
+          text_TOP_TEXTBOX_PROJECT_NAME = "PROJECT NAME:   "  
+          self.view_text_box.insert(END, text_TOP_TEXTBOX_PROJECT_CREATE_SUCCESS)
+          self.view_text_box.insert(END, text_1_LINE_SPACE)
+          self.view_text_box.insert(END, text_1_LINE_SPACE)                        
+          self.view_text_box.insert(END, text_TOP_TEXTBOX_PROJECT_NAME)
+          self.view_text_box.insert(END, directory_project_name_global)
+          self.view_text_box.insert(END, text_1_LINE_SPACE) 
+          self.view_text_box.config(state=DISABLED)  #NORMAL
+
+          print("\nCREATE_PROJECT - PROJECT NAME SELECTED: " + (str(directory_project_name_global)))
+                                   
+          print("\nCREATE_PROJECT - PROJECT DIRECTORY SELECTED: " + (str(project_name_fullpath_global)))
+                                    
+          event_project_create_update_flag_global = 1
+        
+          print("\nCREATE_PROJECT - TRIGGERED - event_project_select_update_flag_global.\n")
+                        
+          # UPDATE THE PROJECT ENTRY WIDGETS WITH NEW PROJECT CREATED. 
+          # VERIFY THAT THESE PROJECT ENTRY TEXTBOX WIDGETS 
+          # GET PROJECT NAME UPDATES. 
+          if event_project_create_update_flag_global == 1:
+              print("\nCREATE PROJECT event has been detected.\n\n")
+              self.entry_LOADED_PROJECT_NAME.set(str(directory_project_name_global))
+              self.entry_LOADED_FULLPATH_PROJECT_NAME.set(str(directory_full_path_project_name_global))
+              self.entry_project_status.update()
+              self.entry2_project_status.update()
+              time.sleep(.15)
+              event_project_create_update_flag_global = 0
+              time.sleep(.15)                        
+                                                                                
+          # update_main_screen_textbox_project_info()        
+          # update_stringvars_project_entry_widgets()
+        
+          OBJECT_main.lift()
+                    
+          #
+          #  NOTE:
+          # 
+          #  We now have globals loaded with
+          #  the PROJECT NAME and PROJECT FULL PATH
+          #
+          #  1. directory_project_name_global
+          #  2. directory_full_path_project_name_global
+          #  3. uvm_tb_file_list_global
+          #  4. project_sv_files_list_global
+          #  5. project_name_only_global
+          #  6. project_name_fullpath_global
+          #
+ 
+           
       #####################################################################################
       # 
       #   Calls - Contact Manager Application Documentation Media Class - CM_App_Doc_Media
@@ -2254,11 +2429,17 @@ class App(Frame):    #( object)
                                            
           project_name_fullpath_global = dirname
 
-          # print("\n\nPROJECT NAME SELECTED: " + (str(directory_project_name_global)))
+          print("\nPROJECT NAME SELECTED: " + (str(directory_project_name_global)))
                                    
-          # print("\n\nPROJECT DIRECTORY SELECTED: " + (str(project_name_fullpath_global)))
+          print("\nPROJECT DIRECTORY SELECTED: " + (str(project_name_fullpath_global)))
         
-          # print("\n\n  ")      
+          print("\n\n  ")    
+          
+          self.view_text_box.config(state=NORMAL)  #DISABLED   
+                                      
+          # Clear the TEXTBOX of the PROJECT SELECT message
+          # as the PROJECT SELECT action has been performed.               
+          self.view_text_box.delete(1.0, END)           
                
           event_project_select_update_flag_global = 1
         
@@ -3955,6 +4136,12 @@ class App(Frame):    #( object)
             for i in project_directory_list:
                 item_plus_return = str(i) + "\n"           	  
                 self.view_text_box.insert(END, item_plus_return)
+            
+            # This prints all the DISPLAYS detected by WMI.
+            # obj = wmi.WMI().Win32_PnPEntity(ConfigManagerErrorCode=0)
+            # displays = [x for x in obj if 'DISPLAY' in str(x)]
+            # for item in displays:
+              # print ("DISPLAY ITEM from WMI: " + str(item))            
             
             # Now we can read the textbox contents.
             project_dir_text_box_content_global = ""
@@ -17158,6 +17345,202 @@ class HyperlinkManager(object):
                 return
 
 
+
+
+
+##############################################################################
+#
+#   UVM TESTBENCH BUILDER Application Documentation Media Class 
+#
+#   This CM_App_Doc_Media_CREATE_PROJECT Class is currently 
+#   being utilized to execute the directory and file list 
+#   operations associated with CREATE PROJECT menu selections.
+#
+##############################################################################
+class CM_App_Doc_Media_CREATE_PROJECT():  #(object):
+    def __init__(self, master):
+        global cm_listbox_file_global
+        global dict_filename_global
+        global fullpath_fn_cm_listbox_file_global
+        global fullpath_fn_dict_filename_global
+        global listbox_file_capture_global
+        global master_cm_list_name_global
+        global username_global
+        global userprofile_global
+        global appdata_path_global
+        global cm_appdatafiles_path_global
+        global import_excel_csv_userprofile_global
+        global import_excel_csv_cm_appdata_global
+        global export_csv_excel_userprofile_global
+        global export_csv_excel_cm_appdata_global
+        global export_to_excel_listbox_select_fn_global
+        global new_excel_file_created_global
+        global client_secret_dir_global
+        global credential_home_dir_global
+        global client_secret_path_global
+        global credential_home_path_global
+        global OBJECT_toplevel_cm_app_doc_media
+        global instance_object_LIST
+        global uvm_tb_file_list_global
+        global project_sv_files_list_global
+        global directory_project_name_global
+        global directory_full_path_project_name_global
+        global event_project_select_update_flag_global
+
+        print("\n\nCREATE PROJECT UPDATE in progress . . .")
+                  
+        #################################################################
+        #
+        #   moved here to INSIDE class CM_App_Doc_Media(Frame) CLASS 
+        # 
+        #################################################################
+ 
+        # Use dialog SELECT PROJECT files to automatically 
+        # build a file listlist and import files to PROJECT.
+        
+        project_dir_project_list = []                                                   
+        uvm_tb_file_list = []       
+        uvm_tb_file_list_global = []        
+        uvm_tb_builder_project_dir_list_global = []        
+        project_sv_files_list_global = []       
+        
+        home_dir = userprofile_global
+            
+        # Get the USER to SELECT PROJECT DIRECTORY
+        # as they have selected SELECT PROJECT on the Menu.
+        # Implement ELECT PROJECT DIRECTORY using filedialog.askdirectory 
+        
+        #### Select a PROJECT Directory:
+                    
+        root = tk.Tk()
+        root.withdraw()     
+        
+        project_name_input = ""
+        
+        print("\n\nPOP UP BOX TO ENTER A PROJECT NAME . . . . \n\n")      
+        
+        # the input dialog
+        project_name_input = tkSimpleDialog.askstring(title="PLEASE ENTER PROJECT NAME: ", prompt="ENTER PROJECT NAME: ")
+
+        # check it out
+        print("\n\nYou just input this PROJECT NAME: \n\n", project_name_input)
+     
+        # CREATE PROJECT (DIRECTORY) using os.mkdir
+        # and the project_name_input from pop-up.
+        
+        dirname = filedialog.askdirectory(parent=root,initialdir=home_dir,title='Please SELECT a Directory for your PROJECT.')
+           
+        dirname_create_project = os.path.join(dirname, str(project_name_input))
+        
+        print("\n\n VERIFY dirname_create_project = " + str(dirname_create_project) + "\n\n")
+                
+        OBJECT_main.lift()  
+              
+        directory_project_name_global = os.path.basename(dirname_create_project)
+        
+        uvm_tb_builder_project_selected_global = os.path.basename(dirname_create_project)
+            
+        project_name_only_global = os.path.basename(dirname_create_project)
+            
+        directory_full_path_project_name_global = dirname_create_project
+                                           
+        project_name_fullpath_global = dirname_create_project
+            
+        print("\n\nCREATE_PROJECT - PROJECT NAME SELECTED: " + (str(directory_project_name_global)))
+                                   
+        print("\n\nCREATE_PROJECT - PROJECT DIRECTORY SELECTED: " + (str(project_name_fullpath_global)))
+        
+        print("\n\n  ")      
+               
+        event_project_select_update_flag_global = 1
+        
+        print("\n\nCREATE_PROJECT - TRIGGERED - event_project_select_update_flag_global.\n\n")
+                        
+        # UPDATE THE PROJECT ENTRY WIDGETS WITH NEW PROJECT SELECTION. 
+        # VERIFY THAT THESE PROJECT ENTRY TEXTBOX WIDGETS 
+        # GET PROJECT NAME UPDATES. 
+        if event_project_select_update_flag_global == 1:
+            print("\n\nEVENT PROJECT SELECT FLAG HAS BEEN DETECTED.\n\n")
+            self.entry_project_status.set(str(directory_project_name_global))
+            self.entry2_project_status.set(str(directory_full_path_project_name_global))
+            self.entry_project_status.update()
+            self.entry2_project_status.update()
+            time.sleep(.15)
+            event_project_select_update_flag_global = 0
+            time.sleep(.15)                        
+                                                                                
+        # update_main_screen_textbox_project_info()        
+        # update_stringvars_project_entry_widgets()
+        
+        OBJECT_main.lift()
+                    
+        #
+        #  NOTE:
+        # 
+        #  We now have globals loaded with
+        #  the PROJECT NAME and PROJECT FULL PATH
+        #
+        #  1. directory_project_name_global
+        #  2. directory_full_path_project_name_global
+        #  3. uvm_tb_file_list_global
+        #  4. project_sv_files_list_global
+        #  5. project_name_only_global
+        #  6. project_name_fullpath_global
+        #
+
+        # OPIONALLY:       
+        # DISABLE the TEXTBOX after completing write of 
+        # PROJECT NAME and PROJECT FILES to TEXTBOX.    
+        # self.title_1_text_box.config(state=DISABLED)  #NORMAL                
+       
+    def update_main_screen_textbox_project_info(self):
+    	
+        print("\n\nCM_App_Doc_Media - MAIN SCREEN TEXTBOX PROJECT FILES UPDATE \n\n")
+                                                                 
+        text_1_LINE_SPACE = "\n  "
+
+        view_text_box.insert(END, directory_project_name_global)
+        view_text_box.insert(END, text_1_LINE_SPACE)
+        view_text_box.insert(END, text_1_LINE_SPACE)
+        
+        view_text_box.insert(END, directory_full_path_project_name_global)
+        view_text_box.insert(END, text_1_LINE_SPACE)
+        view_text_box.insert(END, text_1_LINE_SPACE)
+
+        # use os dir command to create list of Files to import.  
+        # The Python os.listdir() method returns a list of every file and folder in a directory.
+             
+        uvm_tb_file_list = os.listdir(directory_full_path_project_name_global)
+
+        uvm_tb_file_list_global = uvm_tb_file_list
+        uvm_tb_builder_project_dir_list_global = uvm_tb_file_list
+            
+        text_FILE_LIST_TITLE = "  PROJECT COMPLETE FILE LIST: "
+        
+        self.view_text_box.insert(END, text_1_LINE_SPACE)
+        self.view_text_box.insert(END, text_FILE_LIST_TITLE)
+        self.view_text_box.insert(END, text_1_LINE_SPACE)
+
+        for i in range(len(uvm_tb_file_list_global)):
+            self.view_text_box.insert(END, str(uvm_tb_file_list_global[i]))
+            self.view_text_box.insert(END, text_1_LINE_SPACE)
+           
+        text_SV_FILE_LIST_TITLE = "  PROJECT SYSTEMVERILOG FILE LIST: "
+        
+        self.view_text_box.insert(END, text_1_LINE_SPACE)
+        self.view_text_box.insert(END, text_SV_FILE_LIST_TITLE)
+        self.view_text_box.insert(END, text_1_LINE_SPACE)           
+                 
+        for i in os.listdir(directory_full_path_project_name_global):
+            if i.endswith(".sv"):
+            	 project_sv_files_list_global.append(i)                 
+                 
+        for i in range(len(project_sv_files_list_global)):
+            self.view_text_box.insert(END, str(project_sv_files_list_global[i]))
+            self.view_text_box.insert(END, text_1_LINE_SPACE)                 
+                                      	     	  
+        return
+ 
           
 ##############################################################################
 #
@@ -17199,7 +17582,7 @@ class CM_App_Doc_Media():  #(object):
         global directory_full_path_project_name_global
         global event_project_select_update_flag_global
 
-        print("\n\nCM_App_Doc_Media - PROJECT SELECT UPDATE in progress . . .")
+        print("\n\nPROJECT SELECT UPDATE in progress . . .")
                   
         #################################################################
         #
@@ -17241,21 +17624,21 @@ class CM_App_Doc_Media():  #(object):
                                            
         project_name_fullpath_global = dirname
             
-        print("\n\nCM_App_Doc_Media - PROJECT NAME SELECTED: " + (str(directory_project_name_global)))
+        print("\n\nPROJECT NAME SELECTED: " + (str(directory_project_name_global)))
                                    
-        print("\n\nCM_App_Doc_Media - PROJECT DIRECTORY SELECTED: " + (str(project_name_fullpath_global)))
+        print("\n\nPROJECT DIRECTORY SELECTED: " + (str(project_name_fullpath_global)))
         
         print("\n\n  ")      
                
         event_project_select_update_flag_global = 1
         
-        print("\n\nCM_App_Doc_Media - TRIGGERED - event_project_select_update_flag_global.\n\n")
+        print("\n\nTRIGGERED - event_project_select_update_flag_global.\n\n")
                         
         # UPDATE THE PROJECT ENTRY WIDGETS WITH NEW PROJECT SELECTION. 
         # VERIFY THAT THESE PROJECT ENTRY TEXTBOX WIDGETS 
         # GET PROJECT NAME UPDATES. 
         if event_project_select_update_flag_global == 1:
-            print("\n\nEVENT PROJECT SELECT FLAG HAS BEEN DETECTED AFTER MENU SELECTION.\n\n")
+            print("\n\nEVENT PROJECT SELECT FLAG HAS BEEN DETECTED.\n\n")
             self.entry_project_status.set(str(directory_project_name_global))
             self.entry2_project_status.set(str(directory_full_path_project_name_global))
             self.entry_project_status.update()
