@@ -4336,6 +4336,24 @@ class App(Frame):    #( object)
             ## Directory is now changed to PROJECT DIRECTORY. 
             os.system("dir >> cmd_output_redirect.txt")
             # os.system("vlib work")
+            #########################################################
+            # 
+            # Migrate the command lines from this
+            # comp_uvm.bat script into this python script method.
+            # Define common string variables first.
+            # We will have to get USER INPUT 
+            # or a CONFIG FILE with variables and
+            # paths for the UVM library files and project path
+            # to implement and automate the comp_uvm.bat
+            # windows bat command file within this python method.
+            # 
+            #    Implement as uvm_builder_config.txt
+            #    that will be updated by the user.
+            #   
+            uvm_1_1d_src_dir = "C:/Users/HP/WORK_UVM/uvm-1.1d/src"
+            uvm_src_dir = "C:/Users/HP/WORK_UVM/uvm-1.1d/src"  
+            uvm_src_dpi_dir = "C:/Users/HP/WORK_UVM/uvm-1.1d/src/dpi"            
+                    
             os.system("comp_uvm.bat >> cmd_output_redirect.txt")
                                                           
             with open ("cmd_output_redirect.txt", "r") as f:
