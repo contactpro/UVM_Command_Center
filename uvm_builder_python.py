@@ -682,7 +682,7 @@ test_value_string_global = ""
 testbench_top_value_string_global = ""
 uvm_tb_file_type_dict = {}
 project_dir_text_box_content_global = ""
-
+design_file_name_input_global = ""
 ####################################################################################
 """ Description: UVM Testbench Builder - Demo Version. """ 
 ####################################################################################
@@ -713,6 +713,7 @@ class App(Frame):    #( object)
 
       """       
       def __init__(self, master):
+            global design_file_name_input_global
             global sv_interface_value_string_global
             global seq_item_value_string_global
             global sequence_value_string_global
@@ -2383,6 +2384,8 @@ class App(Frame):    #( object)
           global test_value_string_global
           global testbench_top_value_string_global
           global project_dir_text_box_content_global
+          global design_file_name_input_global
+          
           # print("\n\ncm_app_doc_media_window_method - PROJECT SELECT in progress . . .")
               
           ############################################
@@ -2543,6 +2546,24 @@ class App(Frame):    #( object)
           
           self.view_text_box.insert(END, text_FILE_TYPE_KEY_TITLE2)
           self.view_text_box.insert(END, text_1_LINE_SPACE) 
+          
+          #### Select a DESIGN FILE NAME:
+                    
+          root = tk.Tk()
+          root.withdraw()     
+        
+          design_file_name_input_global = ""
+        
+          print("\n\nPOP UP BOX TO ENTER A DESIGN FILE NAME . . . . \n\n")      
+
+          # the input dialog
+          design_file_name_input_global = simpledialog.askstring("ENTER DESIGN FILE NAME : ", "PLEASE ENTER DESIGN FILE NAME: ")
+
+          # check it out
+          print("\n\nYou just input this DESIGN FILE NAME: \n\n", design_file_name_input_global)
+            
+          # Verify that the design_file_name_input is set to the DUT file name
+          # for example, memory.sv  
                     
           pattern_string = "interface"
           for i in os.listdir(directory_full_path_project_name_global):
@@ -4298,14 +4319,18 @@ class App(Frame):    #( object)
             global test_value_string_global
             global testbench_top_value_string_global
             global project_dir_text_box_content_global
+            global design_file_name_input_global
                         
             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
                         
             # Clear the MAIN TEXTBOX Screen.
             self.view_text_box.delete(1.0, END)  
-            
-            title_of_comp_uvm_py_screen = "\n\nRUNNING COMPILE UVM PYTHON COMMAND FILE:   comp_uvm.bat  and  comp_uvm.py \n\n"
+                       
+            # Clear the MAIN TEXTBOX Screen.
+            self.view_text_box.delete(1.0, END)  
+                        
+            title_of_comp_uvm_py_screen = "\n\nRUNNING COMPILE MODELSIM UVM TESTBENCH . . . \n\n"
                                       
             self.view_text_box.insert(END, str(title_of_comp_uvm_py_screen))
                                              
@@ -4316,13 +4341,13 @@ class App(Frame):    #( object)
             locate_python = sys.exec_prefix
             sys_executable_string = os.path.join(str(locate_python), "python.exe")
             
-            print("\n\nLocation of Python Executable:  " + str(locate_python)) 
+            # print("\n\nLocation of Python Executable:  " + str(locate_python)) 
             
-            print("\nFull Path of Python Executable:  " + str(sys_executable_string)) 
+            # print("\nFull Path of Python Executable:  " + str(sys_executable_string)) 
             
-            print("\nFull Path of PROJECT DIRECTORY:  " + str(directory_full_path_project_name_global))     
+            # print("\nFull Path of PROJECT DIRECTORY:  " + str(directory_full_path_project_name_global))     
                                     
-            print("\n\nMODELSIM UVM COMPILE SCRIPT EMBEDDED in this Python Method.\n\n")
+            # print("\n\nMODELSIM UVM COMPILE SCRIPT EMBEDDED in this Python Method.\n\n")
    
             ## #############################################
             ## Continue implementing compile uvm script 
@@ -4335,7 +4360,14 @@ class App(Frame):    #( object)
             os.chdir(os.environ["new_dir_name"])         
             ## Directory is now changed to PROJECT DIRECTORY. 
             os.system("dir >> cmd_output_redirect.txt")
-            # os.system("vlib work")
+            # 
+            # Create MODELSIM work directory using vlib work and os.
+            # First check to see if directory work exists.
+            PROJECT_DIR_WORK = os.path.join(str(directory_full_path_project_name_global),"work")
+            CHECK_FOR_WORK_LIB = os.path.isdir(PROJECT_DIR_WORK)
+            if not CHECK_FOR_WORK_LIB:
+                os.system("vlib work >> cmd_output_redirect.txt")
+                # print("\nCOMPILE SCRIPT VLIB WORK EXECUTED . . . \n")
             #########################################################
             # 
             # Migrate the command lines from this
@@ -4353,9 +4385,108 @@ class App(Frame):    #( object)
             uvm_1_1d_src_dir = "C:/Users/HP/WORK_UVM/uvm-1.1d/src"
             uvm_src_dir = "C:/Users/HP/WORK_UVM/uvm-1.1d/src"  
             uvm_src_dpi_dir = "C:/Users/HP/WORK_UVM/uvm-1.1d/src/dpi"            
-                    
-            os.system("comp_uvm.bat >> cmd_output_redirect.txt")
-                                                          
+            fullpath_include_uvm_src_dpi = " +incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src/dpi"    
+            fullpath_uvm_dpi_cc = os.path.join(str(uvm_src_dpi_dir),"uvm_dpi.cc")
+            
+            # print("\nCOMPILE SCRIPT EXECUTING VLOG COMPILE COMMANDS . . . \n")
+                                     
+            fullpath_uvm_sv = os.path.join(str(uvm_1_1d_src_dir),"uvm.sv")
+            fullpath_uvm_pkg_sv = os.path.join(str(uvm_1_1d_src_dir),"uvm_pkg.sv")
+            fullpath_uvm_macros_svh = os.path.join(str(uvm_1_1d_src_dir),"uvm_macros.svh")            
+            fullpath_include_uvm_1_1d_src = " +incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src"
+            
+            # Compile your own UVM from Accellera.org Library Downloads.
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(fullpath_uvm_sv) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            os.system(str(OS_COMMAND_STRING_PIPE))      
+
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(fullpath_uvm_pkg_sv) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt" 
+            os.system(str(OS_COMMAND_STRING_PIPE))      
+
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(fullpath_uvm_macros_svh) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"                                        
+            os.system(str(OS_COMMAND_STRING_PIPE))      
+
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(fullpath_uvm_dpi_cc) + str(fullpath_include_uvm_src_dpi) + " >> cmd_output_redirect.txt"                                        
+            os.system(str(OS_COMMAND_STRING_PIPE))      
+
+            # Iterate through DESIGN and TESTBENCH 
+            # files to build compile command lines.
+            # 
+            # design_file_name_input_global
+            #
+            # sv_interface_value_string_global
+            # seq_item_value_string_global
+            # sequence_value_string_global
+            # sequencer_value_string_global
+            # driver_value_string_global
+            # monitor_value_string_global
+            # agent_value_string_global
+            # scoreboard_value_string_global
+            # environment_value_string_global
+            # test_value_string_global
+            # testbench_top_value_string_global
+            
+            ## vlog -sv C:\Users\HP\WORK_PYTHON\PY_UVM_TB_BUILDER\uvm_tb_database_files\uvm_tb_project\mem_eda_5r89\memory.sv
+                  
+            FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(design_file_name_input_global))                 
+                  
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            os.system(str(OS_COMMAND_STRING_PIPE))      
+                  
+            FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(sv_interface_value_string_global))                 
+   
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            os.system(str(OS_COMMAND_STRING_PIPE))      
+                  
+            FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(seq_item_value_string_global))                 
+   
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            os.system(str(OS_COMMAND_STRING_PIPE))      
+                                                      
+            FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(sequence_value_string_global))                 
+   
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            os.system(str(OS_COMMAND_STRING_PIPE))      
+                                                                             
+            FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(sequencer_value_string_global))                 
+   
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            os.system(str(OS_COMMAND_STRING_PIPE))      
+                                                                                                                           
+            FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(driver_value_string_global))                 
+   
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            os.system(str(OS_COMMAND_STRING_PIPE))      
+                                                                                                                           
+            FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(monitor_value_string_global))                 
+   
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            os.system(str(OS_COMMAND_STRING_PIPE))   
+                                                                                                                           
+            FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(agent_value_string_global))                 
+   
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            os.system(str(OS_COMMAND_STRING_PIPE))   
+                                                                                                                           
+            FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(scoreboard_value_string_global))                 
+   
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            os.system(str(OS_COMMAND_STRING_PIPE))   
+                                                                                                                           
+            FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(environment_value_string_global))                 
+   
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            os.system(str(OS_COMMAND_STRING_PIPE))  
+                                                                                                                           
+            FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(test_value_string_global))                 
+   
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            os.system(str(OS_COMMAND_STRING_PIPE))  
+                                                                                                                           
+            FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(testbench_top_value_string_global))                 
+   
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            os.system(str(OS_COMMAND_STRING_PIPE))  
+                                                                                                                                                                                                 
             with open ("cmd_output_redirect.txt", "r") as f:
                 for line in f:
                     self.view_text_box.insert(END, str(line))
@@ -4417,7 +4548,7 @@ class App(Frame):    #( object)
             # Clear the MAIN TEXTBOX Screen.
             self.view_text_box.delete(1.0, END)  
             
-            title_of_sim_uvm_py_screen = "\n\nRUNNING SIMULATION UVM PYTHON COMMAND FILE:   sim_uvm.bat  and  sim_uvm.py \n\n"
+            title_of_sim_uvm_py_screen = "\n\nRUNNING SIMULATION UVM PYTHON METHOD. \n\n"
                                       
             self.view_text_box.insert(END, str(title_of_sim_uvm_py_screen))
                                              
@@ -4428,13 +4559,13 @@ class App(Frame):    #( object)
             locate_python = sys.exec_prefix
             sys_executable_string = os.path.join(str(locate_python), "python.exe")
             
-            print("\n\nLocation of Python Executable:  " + str(locate_python)) 
+            # print("\n\nLocation of Python Executable:  " + str(locate_python)) 
             
-            print("\nFull Path of Python Executable:  " + str(sys_executable_string)) 
+            # print("\nFull Path of Python Executable:  " + str(sys_executable_string)) 
             
-            print("\nFull Path of PROJECT DIRECTORY:  " + str(directory_full_path_project_name_global))     
+            # print("\nFull Path of PROJECT DIRECTORY:  " + str(directory_full_path_project_name_global))     
                                     
-            print("\n\nMODELSIM UVM SIMULATION SCRIPT EMBEDDED in this Python Method.\n\n")
+            # print("\n\nMODELSIM UVM SIMULATION SCRIPT EMBEDDED in this Python Method.\n\n")
    
             ## #############################################
             ## Continue implementing simulation uvm script 
@@ -4445,10 +4576,19 @@ class App(Frame):    #( object)
             ## within this PYTHON tkinter GUI APP.         
             os.environ["new_dir_name"] = str(directory_full_path_project_name_global) 
             os.chdir(os.environ["new_dir_name"])         
-            ## Directory is now changed to PROJECT DIRECTORY. 
+            ## Directory is now changed to PROJECT DIRECTORY.
             os.system("dir >> cmd_output_redirect.txt")
-            # os.system("vlib work")
-            os.system("sim_uvm.bat >> cmd_output_redirect.txt")
+            # 
+            # vsim -c -voptargs=+acc testbench_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do C:\Users\HP\WORK_PYTHON\PY_UVM_TB_BUILDER\uvm_tb_database_files\uvm_tb_project\mem_eda_5r89\sim.do -wlf C:\Users\HP\WORK_PYTHON\PY_UVM_TB_BUILDER\uvm_tb_database_files\uvm_tb_project\mem_eda_5r89\mem_dut_wlf.wlf
+            #  
+            sim_do_fullpath = os.path.join(str(directory_full_path_project_name_global),"sim.do")
+            dut_wlf_fullpath = os.path.join(str(directory_full_path_project_name_global),"dut_wlf.wlf")
+            
+            OS_SIM_COMMAND_STRING_PIPE = "vsim -c -voptargs=+acc testbench_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do " + str(sim_do_fullpath) + " -wlf " + str(dut_wlf_fullpath) + " >> cmd_output_redirect.txt"
+            # 
+            print("\nOS_SIM_COMMAND_STRING_PIPE = " + str(OS_SIM_COMMAND_STRING_PIPE) + "\n")
+            #
+            os.system(str(OS_SIM_COMMAND_STRING_PIPE))                       
                                                           
             with open ("cmd_output_redirect.txt", "r") as f:
                 for line in f:
@@ -4463,7 +4603,7 @@ class App(Frame):    #( object)
             return
             
       ###################################################
-      #
+      # 
       # ANALYSIS SCRIPT SELECT MENU METHOD 
       #
       ###################################################
