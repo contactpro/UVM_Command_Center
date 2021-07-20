@@ -4586,13 +4586,22 @@ class App(Frame):    #( object)
             
             OS_SIM_COMMAND_STRING_PIPE = "vsim -c -voptargs=+acc testbench_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do " + str(sim_do_fullpath) + " -wlf " + str(dut_wlf_fullpath) + " >> cmd_output_redirect.txt"
             # 
-            print("\nOS_SIM_COMMAND_STRING_PIPE = " + str(OS_SIM_COMMAND_STRING_PIPE) + "\n")
+            # print("\nOS_SIM_COMMAND_STRING_PIPE = " + str(OS_SIM_COMMAND_STRING_PIPE) + "\n")
+            # 
+            sim_title_string = "\n\nOS_SIM_COMMAND_STRING_PIPE = " + str(OS_SIM_COMMAND_STRING_PIPE) + "\n\n"
+            self.view_text_box.insert(END, str(sim_title_string))
             #
             os.system(str(OS_SIM_COMMAND_STRING_PIPE))                       
+                                                     
+            TEST_PASS_STRING = "TEST FAILED"
                                                           
             with open ("cmd_output_redirect.txt", "r") as f:
                 for line in f:
                     self.view_text_box.insert(END, str(line))
+                    if ("TEST PASS" in line):
+                        TEST_PASS_STRING = "TEST PASSED"
+                        self.analysis_button.config(bg="black", fg="yellow")
+                        self.analysis_button['text'] = "TEST PASSED"
 
             self.view_text_box.insert(END, str(line_space_string))
             
