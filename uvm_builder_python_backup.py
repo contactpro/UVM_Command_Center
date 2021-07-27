@@ -104,6 +104,8 @@ from tkinter.messagebox import *
 from tkinter.filedialog import *
 from tkinter.simpledialog import *
 
+from tkinter import filedialog as file_dialog
+
 from configparser import ConfigParser
 
 from openpyxl import workbook
@@ -1133,23 +1135,14 @@ class App(Frame):    #( object)
             self.sv_interface_button.grid(row=2, column=0, sticky=W)
             self.sv_interface_button.config(font=('Helvetica', 12 ) )
             self.sv_interface_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-   
-            # self.sv_interface_button.bind("<Enter>", on_enter_bg)
-            # self.sv_interface_button.bind("<Leave>", on_leave_bg)   
- 
-            ## WHEN FILE DETECTED - self.sv_interface_button.config(bg="cyan", fg="blue2")
-            ## self.sv_interface_button['TEXT'] = 'new text' 
-            
+              
             self.uvm_seq_item_button = Button(self.master, text = "UVM SEQ ITEM", \
                 width=15,height=1, background="midnight blue", fg="deep sky blue", command = self.UVM_SEQ_ITEM_View_method)
 
             self.uvm_seq_item_button.grid(row=3, column=0, sticky=W)
             self.uvm_seq_item_button.config(font=('Helvetica', 12 ) )
             self.uvm_seq_item_button.config(borderwidth=5, activebackground="cyan", activeforeground="blue2")
-                                
-            # self.uvm_seq_item_button.bind("<Enter>", on_enter_bg)
-            # self.uvm_seq_item_button.bind("<Leave>", on_leave_bg)  
-                          
+                                                          
             #############################################################################
             #
             # Implement Options Menu Drop Down to Select Entry Mode or Browse Mode
@@ -1362,6 +1355,8 @@ class App(Frame):    #( object)
             text_TEXTBOX_TITLE2_STRING = "\nCHOOSE SELECT PROJECT IN THE MENU SEEN IN THE TOP LEFT CORNER OF THIS SCREEN.\n"
 
             text_1_LINE_SPACE = "\n  "
+            
+            self.view_text_box.config(state=NORMAL)  # DISABLED
 
             # Clear Textbox and then INSERT TITLE.
             self.view_text_box.delete(1.0, END)  # Clear the TEXT WIDGET of Data  
@@ -1369,7 +1364,6 @@ class App(Frame):    #( object)
             self.view_text_box.insert(END, text_TEXTBOX_TITLE2_STRING)            
             self.view_text_box.insert(END, text_1_LINE_SPACE)
         
-            self.view_text_box.config(state=NORMAL)  # DISABLED
 
                                                                                                                                 
 ###################################################################################### 
@@ -1772,6 +1766,9 @@ class App(Frame):    #( object)
           time.sleep(.25)
 
           kick_thread_to_update_main_entry_widgets = True
+          
+          self.analysis_button.config(fg="blue2", bg="cyan")
+          self.analysis_button['text'] = "ANALYSIS"           
          
           self.after(125, lambda: self.FLASH_sv_interface_button_cyan() )
           self.after(250, lambda: self.FLASH_sv_interface_button_midnight_blue() )
@@ -2291,13 +2288,13 @@ class App(Frame):    #( object)
           self.view_text_box.insert(END, text_1_LINE_SPACE) 
           self.view_text_box.config(state=DISABLED)  #NORMAL
 
-          print("\nCREATE_PROJECT - PROJECT NAME SELECTED: " + (str(directory_project_name_global)))
+          ## print("\nCREATE_PROJECT - PROJECT NAME SELECTED: " + (str(directory_project_name_global)))
                                    
-          print("\nCREATE_PROJECT - PROJECT DIRECTORY SELECTED: " + (str(project_name_fullpath_global)))
+          ## print("\nCREATE_PROJECT - PROJECT DIRECTORY SELECTED: " + (str(project_name_fullpath_global)))
                                     
           event_project_create_update_flag_global = 1
         
-          print("\nCREATE_PROJECT - TRIGGERED - event_project_select_update_flag_global.\n")
+          ## print("\nCREATE_PROJECT - TRIGGERED - event_project_select_update_flag_global.\n")
                         
           # UPDATE THE PROJECT ENTRY WIDGETS WITH NEW PROJECT CREATED. 
           # VERIFY THAT THESE PROJECT ENTRY TEXTBOX WIDGETS 
@@ -2432,18 +2429,20 @@ class App(Frame):    #( object)
                                            
           project_name_fullpath_global = dirname
 
-          print("\nPROJECT NAME SELECTED: " + (str(directory_project_name_global)))
+          project_selected_string_message = "\nPROJECT NAME SELECTED: " + (str(directory_project_name_global)) + "\n"
                                    
-          print("\nPROJECT DIRECTORY SELECTED: " + (str(project_name_fullpath_global)))
-        
-          print("\n\n  ")    
-          
+          project_dir_selected_string_message ="\nPROJECT DIRECTORY SELECTED: " + (str(project_name_fullpath_global)) + "\n\n"
+                  
           self.view_text_box.config(state=NORMAL)  #DISABLED   
                                       
           # Clear the TEXTBOX of the PROJECT SELECT message
           # as the PROJECT SELECT action has been performed.               
           self.view_text_box.delete(1.0, END)           
-               
+              
+          self.view_text_box.insert(END, str(project_selected_string_message)) 
+              
+          self.view_text_box.insert(END, str(project_dir_selected_string_message)) 
+                  
           event_project_select_update_flag_global = 1
         
           # print("\n\nCM_App_Doc_Media - TRIGGERED - event_project_select_update_flag_global.\n\n")
@@ -2536,34 +2535,30 @@ class App(Frame):    #( object)
 	            'environment_key':'environment_val',
 	            'test_key':'test_val',
 	            'testbench_top_key':'testbench_top_val'}             
-            
-          text_FILE_TYPE_KEY_TITLE = "PROJECT DICTIONARY FILE NAME VALUE LIST: \n"
-          text_FILE_TYPE_KEY_TITLE2 = "ADJUST FILENAME TO MATCH any _val files if any exist below. \n"  
-               
-          self.view_text_box.insert(END, text_1_LINE_SPACE)
-          self.view_text_box.insert(END, text_FILE_TYPE_KEY_TITLE)
-          self.view_text_box.insert(END, text_1_LINE_SPACE) 
-          
-          self.view_text_box.insert(END, text_FILE_TYPE_KEY_TITLE2)
-          self.view_text_box.insert(END, text_1_LINE_SPACE) 
           
           #### Select a DESIGN FILE NAME:
                     
           root = tk.Tk()
           root.withdraw()     
-        
+                      
+          messagebox.showinfo("ATTENTION - PLEASE SELECT THE DESIGN FILE.","ATTENTION - PLEASE SELECT THE DESIGN FILE or DUT - Example - memory.sv.")
+
+          #  User answers "OK" to acknowledge TKINTER POP-UP MESSAGE 
+                                                                              
+          line_space_string = "\n\n"                     
+          line_next_string = "\n"
+
           design_file_name_input_global = ""
         
-          print("\n\nPOP UP BOX TO ENTER A DESIGN FILE NAME . . . . \n\n")      
+          ## print("\n\nSELECT OR ENTER THE DESIGN FILE NAME . . . . \n\n")      
 
-          # the input dialog
-          design_file_name_input_global = simpledialog.askstring("ENTER DESIGN FILE NAME : ", "PLEASE ENTER DESIGN FILE NAME: ")
-
-          # check it out
-          print("\n\nYou just input this DESIGN FILE NAME: \n\n", design_file_name_input_global)
-            
-          # Verify that the design_file_name_input is set to the DUT file name
-          # for example, memory.sv  
+          # the input dialog 
+          # design_file_name_input_global = simpledialog.askstring("ENTER DESIGN FILE NAME : ", "PLEASE ENTER DESIGN FILE NAME: ")
+          design_file_name_input_global = file_dialog.askopenfilename()
+          
+          # write string to textbox
+          confirm_design_name_string = "\n\nCONFIRM USER has input this DESIGN FILE NAME: " + str(design_file_name_input_global) + "\n\n"
+          self.view_text_box.insert(1.0, str(confirm_design_name_string))                      
                     
           pattern_string = "interface"
           for i in os.listdir(directory_full_path_project_name_global):
@@ -2572,10 +2567,9 @@ class App(Frame):    #( object)
                       sv_interface_value_string_global = i
                       # Update button colors when this uvm file type is detected.
                       self.sv_interface_button.config(bg="cyan", fg="blue2")
-                      print("PATTERN MATCH sv_interface_value_string_global = " + str(i))
+                      pattern_match_interface_string = "\n PATTERN MATCH sv_interface_value_string_global = " + str(i)
+                      self.view_text_box.insert(1.0, str(pattern_match_interface_string))
                       uvm_tb_file_type_dict.update({'sv_interface_key': sv_interface_value_string_global})        	                                                                                       
-                      self.view_text_box.insert(END, str(sv_interface_value_string_global))
-                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
                  
           pattern_string = "_item"
           for i in os.listdir(directory_full_path_project_name_global):
@@ -2583,11 +2577,10 @@ class App(Frame):    #( object)
                   if pattern_string in i:
                       seq_item_value_string_global = i
                       # Update button colors when this uvm file type is detected.
-                      self.uvm_seq_item_button.config(bg="cyan", fg="blue2")                      
-                      print("PATTERN 1 MATCH seq_item_value_string_global = " + str(i))
-                      uvm_tb_file_type_dict.update({'seq_item_key': seq_item_value_string_global})
-                      self.view_text_box.insert(END, str(seq_item_value_string_global))
-                      self.view_text_box.insert(END, text_1_LINE_SPACE)        	                                                                             
+                      self.uvm_seq_item_button.config(bg="cyan", fg="blue2")    
+                      pattern_match_item_string = "\n PATTERN MATCH seq_item_value_string_global = " + str(i)
+                      self.view_text_box.insert(1.0, str(pattern_match_item_string))
+                      uvm_tb_file_type_dict.update({'seq_item_key': seq_item_value_string_global})                                                                      
                     
           pattern_string = "sequence.sv"
           for i in os.listdir(directory_full_path_project_name_global):
@@ -2595,23 +2588,21 @@ class App(Frame):    #( object)
                   if pattern_string in i:
                       sequence_value_string_global = i
                       # Update button colors when this uvm file type is detected.
-                      self.sort_contact_list_button.config(bg="cyan", fg="blue2")                      
-                      print("PATTERN MATCH sequence_value_string_global = " + str(i))
-                      uvm_tb_file_type_dict.update({'sequence_key': sequence_value_string_global})            	                                         
-                      self.view_text_box.insert(END, str(sequence_value_string_global))
-                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
-                    
+                      self.sort_contact_list_button.config(bg="cyan", fg="blue2")
+                      pattern_match_sequence_string = "\n PATTERN MATCH sequence_value_string_global = " + str(i)
+                      self.view_text_box.insert(1.0, str(pattern_match_sequence_string))
+                      uvm_tb_file_type_dict.update({'sequence_key': sequence_value_string_global}) 
+                 
           pattern_string = "sequencer.sv"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
                   if pattern_string in i:
                       sequencer_value_string_global = i
                       # Update button colors when this uvm file type is detected.
-                      self.speedbutton_1.config(bg="cyan", fg="blue2")                      
-                      print("PATTERN MATCH sequencer_value_string_global = " + str(i))
+                      self.speedbutton_1.config(bg="cyan", fg="blue2")   
+                      pattern_match_sequencer_string = "\n PATTERN MATCH sequencer_value_string_global = " + str(i)
+                      self.view_text_box.insert(1.0, str(pattern_match_sequencer_string))
                       uvm_tb_file_type_dict.update({'sequencer_key': sequencer_value_string_global})            	                                                  
-                      self.view_text_box.insert(END, str(sequencer_value_string_global))
-                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
           
           pattern_string = "driver"
           for i in os.listdir(directory_full_path_project_name_global):
@@ -2619,11 +2610,10 @@ class App(Frame):    #( object)
                   if pattern_string in i:
                       driver_value_string_global = i
                       # Update button colors when this uvm file type is detected.
-                      self.speedbutton_2.config(bg="cyan", fg="blue2")                      
-                      print("PATTERN MATCH driver_value_string_global = " + str(i))
+                      self.speedbutton_2.config(bg="cyan", fg="blue2")
+                      pattern_match_driver_string = "\n PATTERN MATCH driver_value_string_global = " + str(i)
+                      self.view_text_box.insert(1.0, str(pattern_match_driver_string))
                       uvm_tb_file_type_dict.update({'driver_key': driver_value_string_global})            	                                         
-                      self.view_text_box.insert(END, str(driver_value_string_global))
-                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
           
           pattern_string = "monitor"
           for i in os.listdir(directory_full_path_project_name_global):
@@ -2631,11 +2621,10 @@ class App(Frame):    #( object)
                   if pattern_string in i:
                       monitor_value_string_global = i
                       # Update button colors when this uvm file type is detected.
-                      self.speedbutton_3.config(bg="cyan", fg="blue2")                      
-                      print("PATTERN MATCH monitor_value_string_global = " + str(i))
+                      self.speedbutton_3.config(bg="cyan", fg="blue2")
+                      pattern_match_monitor_string = "\n PATTERN MATCH monitor_value_string_global = " + str(i)
+                      self.view_text_box.insert(1.0, str(pattern_match_monitor_string))
                       uvm_tb_file_type_dict.update({'monitor_key': monitor_value_string_global})          
-                      self.view_text_box.insert(END, str(monitor_value_string_global))
-                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
           
           pattern_string = "agent"
           for i in os.listdir(directory_full_path_project_name_global):
@@ -2643,11 +2632,10 @@ class App(Frame):    #( object)
                   if pattern_string in i:                 	
                       agent_value_string_global = i
                       # Update button colors when this uvm file type is detected.
-                      self.speedbutton_4.config(bg="cyan", fg="blue2")                      
-                      print("PATTERN MATCH agent_value_string_global = " + str(i))
+                      self.speedbutton_4.config(bg="cyan", fg="blue2")
+                      pattern_match_agent_string = "\n PATTERN MATCH agent_value_string_global = " + str(i)
+                      self.view_text_box.insert(1.0, str(pattern_match_agent_string))
                       uvm_tb_file_type_dict.update({'agent_key': agent_value_string_global})            	                                                           
-                      self.view_text_box.insert(END, str(agent_value_string_global))
-                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
           
           pattern_string1 = "_scoreboard"
           pattern_string2 = "_scbd"
@@ -2656,19 +2644,17 @@ class App(Frame):    #( object)
                   if (pattern_string1 in i):
                       scoreboard_value_string_global = i
                       # Update button colors when this uvm file type is detected.
-                      self.build_dual_list_button2.config(bg="cyan", fg="blue2")                      
-                      print("PATTERN 1 MATCH scoreboard_value_string_global = " + str(i))
-                      uvm_tb_file_type_dict.update({'scoreboard_key': scoreboard_value_string_global})
-                      self.view_text_box.insert(END, str(scoreboard_value_string_global))
-                      self.view_text_box.insert(END, text_1_LINE_SPACE)                  
+                      self.build_dual_list_button2.config(bg="cyan", fg="blue2")
+                      pattern_match_scoreboard_string = "\n PATTERN MATCH scoreboard_value_string_global = " + str(i)
+                      self.view_text_box.insert(1.0, str(pattern_match_scoreboard_string))
+                      uvm_tb_file_type_dict.update({'scoreboard_key': scoreboard_value_string_global})             
                   if (pattern_string2 in i):
                       scoreboard_value_string_global = i
                       # Update button colors when this uvm file type is detected.
-                      self.build_dual_list_button2.config(bg="cyan", fg="blue2")                      
-                      print("PATTERN 2 MATCH scoreboard_value_string_global = " + str(i))
+                      self.build_dual_list_button2.config(bg="cyan", fg="blue2")
+                      pattern_match_scoreboard_string = "\n PATTERN MATCH scoreboard_value_string_global = " + str(i)
+                      self.view_text_box.insert(1.0, str(pattern_match_scoreboard_string))
                       uvm_tb_file_type_dict.update({'scoreboard_key': scoreboard_value_string_global})
-                      self.view_text_box.insert(END, str(scoreboard_value_string_global))
-                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
           
           pattern_string1 = "_environment.sv"
           pattern_string2 = "_env.sv"
@@ -2677,64 +2663,44 @@ class App(Frame):    #( object)
                   if (pattern_string1 in i):
                       environment_value_string_global = i
                       # Update button colors when this uvm file type is detected.
-                      self.speedbutton_5.config(bg="cyan", fg="blue2")                      
-                      print("PATTERN 1 MATCH environment_value_string_global = " + str(i))
-                      uvm_tb_file_type_dict.update({'environment_key': environment_value_string_global})
-                      self.view_text_box.insert(END, str(environment_value_string_global))
-                      self.view_text_box.insert(END, text_1_LINE_SPACE)                   
+                      self.speedbutton_5.config(bg="cyan", fg="blue2")
+                      pattern_match_env_string = "\n PATTERN MATCH environment_value_string_global = " + str(i)
+                      self.view_text_box.insert(1.0, str(pattern_match_env_string))
+                      uvm_tb_file_type_dict.update({'environment_key': environment_value_string_global})           
                   if (pattern_string2 in i):
                       environment_value_string_global = i
                       # Update button colors when this uvm file type is detected.
-                      self.speedbutton_5.config(bg="cyan", fg="blue2")                      
-                      print("PATTERN 2 MATCH environment_value_string_global = " + str(i))
-                      uvm_tb_file_type_dict.update({'environment_key': environment_value_string_global})            	                            	                     
-                      self.view_text_box.insert(END, str(environment_value_string_global))
-                      self.view_text_box.insert(END, text_1_LINE_SPACE) 
+                      self.speedbutton_5.config(bg="cyan", fg="blue2")
+                      pattern_match_env_string = "\n PATTERN MATCH environment_value_string_global = " + str(i)
+                      self.view_text_box.insert(1.0, str(pattern_match_env_string))
+                      uvm_tb_file_type_dict.update({'environment_key': environment_value_string_global})
                     
-          pattern_string = "_test.sv"
+          pattern_string = "base_test.sv"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
                   if pattern_string in i:
                       test_value_string_global = i
                       # Update button colors when this uvm file type is detected.
-                      self.build_dual_list_button.config(bg="cyan", fg="blue2")                      
-                      print("PATTERN MATCH test_value_string_global = " + str(i))
+                      self.build_dual_list_button.config(bg="cyan", fg="blue2")
+                      pattern_match_test_string = "\n PATTERN MATCH test_value_string_global = " + str(i)
+                      self.view_text_box.insert(1.0, str(pattern_match_test_string))
                       uvm_tb_file_type_dict.update({'test_key': test_value_string_global})            	                                                           
-          
-          self.view_text_box.insert(END, str(test_value_string_global))
-          self.view_text_box.insert(END, text_1_LINE_SPACE)           
-                     
+                                  
           pattern_string1 = "testbench_top"
-          pattern_string2 = "top.sv"
-          pattern_string3 = "tb_top.sv"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
-                  if pattern_string3 in i:
-                      testbench_top_value_string_global = i
-                      # Update button colors when this uvm file type is detected.
-                      self.build_dual_list4_button.config(bg="cyan", fg="blue2")                      
-                      print("PATTERN 1 MATCH testbench_top_value_string_global = " + str(i))
-                      uvm_tb_file_type_dict.update({'testbench_top_key': testbench_top_value_string_global})                    
-               	
-                  if pattern_string2 in i:
-                      testbench_top_value_string_global = i
-                      # Update button colors when this uvm file type is detected.
-                      self.build_dual_list4_button.config(bg="cyan", fg="blue2")                      
-                      print("PATTERN 1 MATCH testbench_top_value_string_global = " + str(i))
-                      uvm_tb_file_type_dict.update({'testbench_top_key': testbench_top_value_string_global})                    
-             
                   if pattern_string1 in i:
                       testbench_top_value_string_global = i
                       # Update button colors when this uvm file type is detected.
-                      self.build_dual_list4_button.config(bg="cyan", fg="blue2")                      
-                      print("PATTERN 2 MATCH testbench_top_value_string_global = " + str(i))
-                      uvm_tb_file_type_dict.update({'testbench_top_key': testbench_top_value_string_global})                                        
-                      
-          self.view_text_box.insert(END, str(testbench_top_value_string_global))
-          self.view_text_box.insert(END, text_1_LINE_SPACE) 
-                             
-          self.view_text_box.insert(END, text_1_LINE_SPACE)             
-
+                      self.build_dual_list4_button.config(bg="cyan", fg="blue2")
+                      pattern_match_top_string = "\n PATTERN MATCH testbench_top_value_string_global = " + str(i)
+                      self.view_text_box.insert(1.0, str(pattern_match_top_string))
+                      uvm_tb_file_type_dict.update({'testbench_top_key': testbench_top_value_string_global})                    
+                 
+          title_of_uvm_filename_match_message = "\n\nMATCHING UVM FILENAMES . . . . \n\n"
+                                      
+          self.view_text_box.insert(1.0, str(title_of_uvm_filename_match_message))
+                       
           # DISABLE Main Screen TEXTBOX. 
           # as the last step in TEXTBOX Write of Project Info.
           # Be sure to enable TEXTBOX with NORMAL setting
@@ -4320,7 +4286,10 @@ class App(Frame):    #( object)
             global testbench_top_value_string_global
             global project_dir_text_box_content_global
             global design_file_name_input_global
-                        
+            
+            self.analysis_button.config(fg="blue2", bg="cyan")
+            self.analysis_button['text'] = "ANALYSIS"
+
             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
                         
@@ -4541,7 +4510,10 @@ class App(Frame):    #( object)
             global test_value_string_global
             global testbench_top_value_string_global
             global project_dir_text_box_content_global
-                        
+            
+            self.analysis_button.config(fg="blue2", bg="cyan")
+            self.analysis_button['text'] = "ANALYSIS" 
+                                   
             # Be sure to ENABLE TEXTBOX by setting STATE to NORMAL         
             self.view_text_box.config(state=NORMAL)  # DISABLED or NORMAL
                         
@@ -4559,14 +4531,6 @@ class App(Frame):    #( object)
             locate_python = sys.exec_prefix
             sys_executable_string = os.path.join(str(locate_python), "python.exe")
             
-            # print("\n\nLocation of Python Executable:  " + str(locate_python)) 
-            
-            # print("\nFull Path of Python Executable:  " + str(sys_executable_string)) 
-            
-            # print("\nFull Path of PROJECT DIRECTORY:  " + str(directory_full_path_project_name_global))     
-                                    
-            # print("\n\nMODELSIM UVM SIMULATION SCRIPT EMBEDDED in this Python Method.\n\n")
-   
             ## #############################################
             ## Continue implementing simulation uvm script 
             ## from this PYTHON SCRIPT using os COMMANDS. 
@@ -17553,8 +17517,6 @@ class CM_App_Doc_Media_CREATE_PROJECT():  #(object):
         global directory_project_name_global
         global directory_full_path_project_name_global
         global event_project_select_update_flag_global
-
-        print("\n\nCREATE PROJECT UPDATE in progress . . .")
                   
         #################################################################
         #
@@ -17584,13 +17546,13 @@ class CM_App_Doc_Media_CREATE_PROJECT():  #(object):
         
         project_name_input = ""
         
-        print("\n\nPOP UP BOX TO ENTER A PROJECT NAME . . . . \n\n")      
+        ## print("\n\nPOP UP BOX TO ENTER A PROJECT NAME . . . . \n\n")      
         
         # the input dialog
         project_name_input = tkSimpleDialog.askstring(title="PLEASE ENTER PROJECT NAME: ", prompt="ENTER PROJECT NAME: ")
 
         # check it out
-        print("\n\nYou just input this PROJECT NAME: \n\n", project_name_input)
+        ## print("\n\nYou just input this PROJECT NAME: \n\n", project_name_input)
      
         # CREATE PROJECT (DIRECTORY) using os.mkdir
         # and the project_name_input from pop-up.
@@ -17599,7 +17561,7 @@ class CM_App_Doc_Media_CREATE_PROJECT():  #(object):
            
         dirname_create_project = os.path.join(dirname, str(project_name_input))
         
-        print("\n\n VERIFY dirname_create_project = " + str(dirname_create_project) + "\n\n")
+        ## print("\n\n VERIFY dirname_create_project = " + str(dirname_create_project) + "\n\n")
                 
         OBJECT_main.lift()  
               
@@ -17791,11 +17753,11 @@ class CM_App_Doc_Media():  #(object):
                                            
         project_name_fullpath_global = dirname
             
-        print("\n\nPROJECT NAME SELECTED: " + (str(directory_project_name_global)))
+        ## print("\n\nPROJECT NAME SELECTED: " + (str(directory_project_name_global)))
                                    
-        print("\n\nPROJECT DIRECTORY SELECTED: " + (str(project_name_fullpath_global)))
+        ## print("\n\nPROJECT DIRECTORY SELECTED: " + (str(project_name_fullpath_global)))
         
-        print("\n\n  ")      
+        ## print("\n\n  ")      
                
         event_project_select_update_flag_global = 1
         
