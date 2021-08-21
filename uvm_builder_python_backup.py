@@ -4317,16 +4317,36 @@ class App(Frame):    #( object)
             # print("\nFull Path of PROJECT DIRECTORY:  " + str(directory_full_path_project_name_global))     
                                     
             # print("\n\nMODELSIM UVM COMPILE SCRIPT EMBEDDED in this Python Method.\n\n")
-   
+      
             ## #############################################
             ## Continue implementing compile uvm script 
             ## from this PYTHON SCRIPT using os COMMANDS. 
             ## Translating the comp_uvm_mem.bat script
             ## into os system commands format to allow
             ## this compile script (method) to be implemented
-            ## within this PYTHON tkinter GUI APP.         
-            os.environ["new_dir_name"] = str(directory_full_path_project_name_global) 
-            os.chdir(os.environ["new_dir_name"])         
+            ## within this PYTHON tkinter GUI APP.
+               
+            ##
+            ## Verify the existance of PROJECT DIRECTORY.
+            ##                         
+
+            PROJECT_DIR_PATH = str(directory_full_path_project_name_global)
+            ERROR_MESSAGE_NO_PROJECT_SELECTED = "\n ERROR - PROJECT NOT SELECTED. \n\n PLEASE SELECT PROJECT DIRECTORY USING PULLDOWN MENU ABOVE . . . \n\n"            
+            
+            try: 
+                CHECK_FOR_PROJECT_DIR = os.path.isdir(PROJECT_DIR_PATH)                
+            except:
+                self.view_text_box.insert(END, str(ERROR_MESSAGE_NO_PROJECT_SELECTED))
+                return
+            
+            os.environ["new_dir_name"] = str(directory_full_path_project_name_global)
+            
+            try:
+                os.chdir(os.environ["new_dir_name"])
+            except:
+                self.view_text_box.insert(END, str(ERROR_MESSAGE_NO_PROJECT_SELECTED))
+                return   
+                  
             ## Directory is now changed to PROJECT DIRECTORY. 
             os.system("dir >> cmd_output_redirect.txt")
             # 
