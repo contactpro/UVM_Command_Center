@@ -2686,7 +2686,7 @@ class App(Frame):    #( object)
                       self.view_text_box.insert(1.0, str(pattern_match_test_string))
                       uvm_tb_file_type_dict.update({'test_key': test_value_string_global})            	                                                           
                                   
-          pattern_string1 = "testbench_top"
+          pattern_string1 = "_top"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
                   if pattern_string1 in i:
@@ -4414,7 +4414,7 @@ class App(Frame):    #( object)
             # test_value_string_global
             # testbench_top_value_string_global
             
-            ## vlog -sv C:\Users\HP\WORK_PYTHON\PY_UVM_TB_BUILDER\uvm_tb_database_files\uvm_tb_project\mem_eda_5r89\memory.sv
+            ## vlog -sv C:\Users\HP\WORK_PYTHON\PY_UVM_TB_BUILDER\uvm_tb_database_files\uvm_tb_project\project_name\dut.sv
                   
             FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(design_file_name_input_global))                 
                   
@@ -4563,14 +4563,14 @@ class App(Frame):    #( object)
             ## Directory is now changed to PROJECT DIRECTORY.
             os.system("dir >> cmd_output_redirect.txt")
             # 
-            # vsim -c -voptargs=+acc testbench_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do C:\Users\HP\WORK_PYTHON\PY_UVM_TB_BUILDER\uvm_tb_database_files\uvm_tb_project\mem_eda_5r89\sim.do -wlf C:\Users\HP\WORK_PYTHON\PY_UVM_TB_BUILDER\uvm_tb_database_files\uvm_tb_project\mem_eda_5r89\mem_dut_wlf.wlf
+            # vsim -c -voptargs=+acc uvm_template_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do C:\Users\HP\WORK_PYTHON\PY_UVM_TB_BUILDER\uvm_tb_database_files\uvm_tb_project\project_name\sim.do
             #  
             sim_do_fullpath = os.path.join(str(directory_full_path_project_name_global),"sim.do")
             dut_wlf_fullpath = os.path.join(str(directory_full_path_project_name_global),"dut_wlf.wlf")
-            
-            OS_SIM_COMMAND_STRING_PIPE = "vsim -c -voptargs=+acc testbench_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do " + str(sim_do_fullpath) + " -wlf " + str(dut_wlf_fullpath) + " >> cmd_output_redirect.txt"
+            ##            
+            OS_SIM_COMMAND_STRING_PIPE = "vsim -c -voptargs=+acc uvm_template_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do " + str(sim_do_fullpath) + " >> cmd_output_redirect.txt"
             # 
-            # print("\nOS_SIM_COMMAND_STRING_PIPE = " + str(OS_SIM_COMMAND_STRING_PIPE) + "\n")
+            print("\nOS_SIM_COMMAND_STRING_PIPE = " + str(OS_SIM_COMMAND_STRING_PIPE) + "\n")
             # 
             sim_title_string = "\n\nOS_SIM_COMMAND_STRING_PIPE = " + str(OS_SIM_COMMAND_STRING_PIPE) + "\n\n"
             self.view_text_box.insert(END, str(sim_title_string))
