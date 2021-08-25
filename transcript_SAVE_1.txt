@@ -1,0 +1,106 @@
+# vsim -c -voptargs="+acc" uvm_template_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\sim.do" 
+# Start time: 07:33:49 on Aug 24,2021
+# Loading sv_std.std
+# Loading work.uvm_pkg
+# Loading work.uvm_template_top_sv_unit
+# ** Error (suppressible): (vsim-19) Failed to access library 'C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89' at "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89".
+# No such file or directory. (errno = ENOENT)
+# ** Note: (vsim-8785) UVM-aware debugging capabilities will be disabled since no compiled "questa_uvm_pkg" can be found.
+# This also means that later if you turn on UVM-aware debugging your debug simulations may have
+# different random seeds from your non-debug simulations.
+# Loading work.uvm_template_top
+# Loading work.my_if
+# Loading work.uvm_template_memory_dut_sv_unit
+# Loading work.uvm_template_memory_dut
+# ** Warning: (vsim-3764) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv(39): Stand-alone call to function 'get' treated as implicit void cast.
+#    Time: 0 ps  Iteration: 0  Region: /uvm_template_top_sv_unit File: C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_top.sv
+# ** Warning: (vsim-3764) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(33): Stand-alone call to function 'get' treated as implicit void cast.
+#    Time: 0 ps  Iteration: 0  Region: /uvm_template_top_sv_unit::uvm_template_driver File: C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_top.sv
+# Loading C:/Users/HP/AppData/Local/Temp\HP@CHIPCODER_dpi_17500\win32pe_gcc-4.2.1\vsim_auto_compile.dll
+# ** Warning: Design size of 48005 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Expect performance to be adversely affected.
+# do {C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\sim.do}
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO @ 0: reporter [RNTST] Running test uvm_template_base_test...
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(31) @ 0: uvm_test_top [uvm_template_base_test] In BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(36) @ 0: uvm_test_top.env [uvm_template_env] In BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv(33) @ 0: uvm_test_top.env.agnt [uvm_template_agent] In BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(32) @ 0: uvm_test_top.env.agnt.drv [uvm_template_driver] In BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv(38) @ 0: uvm_test_top.env.agnt.mon [uvm_template_monitor] In BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv(26) @ 0: uvm_test_top.env.agnt.seqr [uvm_template_sequencer] In BUILD PHASE . . .
+# UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
+# --------------------------------------------------------------
+# Name                       Type                    Size  Value
+# --------------------------------------------------------------
+# uvm_test_top               uvm_template_base_test  -     @448 
+#   env                      uvm_template_env        -     @456 
+#     agnt                   uvm_template_agent      -     @465 
+#       drv                  uvm_template_driver     -     @596 
+#         rsp_port           uvm_analysis_port       -     @613 
+#         seq_item_port      uvm_seq_item_pull_port  -     @604 
+#       mon                  uvm_template_monitor    -     @622 
+#         Monitor Port       uvm_analysis_port       -     @630 
+#         packet_count       integral                32    'h0  
+#       seqr                 uvm_template_sequencer  -     @473 
+#         rsp_export         uvm_analysis_export     -     @481 
+#         seq_item_export    uvm_seq_item_pull_imp   -     @587 
+#         arbitration_queue  array                   0     -    
+#         lock_queue         array                   0     -    
+#         num_last_reqs      integral                32    'd1  
+#         num_last_rsps      integral                32    'd1  
+#     num_seqs               integral                32    'h4  
+# --------------------------------------------------------------
+# 
+# UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
+# --------------------------------------------------------------
+# Name                       Type                    Size  Value
+# --------------------------------------------------------------
+# uvm_test_top               uvm_template_base_test  -     @448 
+#   env                      uvm_template_env        -     @456 
+#     agnt                   uvm_template_agent      -     @465 
+#       drv                  uvm_template_driver     -     @596 
+#         rsp_port           uvm_analysis_port       -     @613 
+#         seq_item_port      uvm_seq_item_pull_port  -     @604 
+#       mon                  uvm_template_monitor    -     @622 
+#         Monitor Port       uvm_analysis_port       -     @630 
+#         packet_count       integral                32    'h0  
+#       seqr                 uvm_template_sequencer  -     @473 
+#         rsp_export         uvm_analysis_export     -     @481 
+#         seq_item_export    uvm_seq_item_pull_imp   -     @587 
+#         arbitration_queue  array                   0     -    
+#         lock_queue         array                   0     -    
+#         num_last_reqs      integral                32    'd1  
+#         num_last_rsps      integral                32    'd1  
+#     num_seqs               integral                32    'h4  
+# --------------------------------------------------------------
+# 
+# ** Fatal: (SIGSEGV) Bad handle or reference.
+#    Time: 0 ps  Iteration: 40  Process: /uvm_pkg::uvm_task_phase::execute/#FORK#137(#ublk#215181159#137)_fefd1d5 File: C:/Users/HP/WORK_UVM/uvm-1.1d/src/base/uvm_common_phases.svh
+# Fatal error in Task uvm_template_top_sv_unit/uvm_template_env::run_phase at C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv line 49
+# 
+# HDL call sequence:
+# Stopped at C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv 49 Task uvm_template_top_sv_unit/uvm_template_env::run_phase
+# called from  C:/Users/HP/WORK_UVM/uvm-1.1d/src/base/uvm_common_phases.svh 245 Task uvm_pkg/uvm_run_phase::exec_task
+# called from  C:/Users/HP/WORK_UVM/uvm-1.1d/src/base/uvm_task_phase.svh 150 Function uvm_pkg/uvm_task_phase::execute
+# 
+# End time: 07:33:52 on Aug 24,2021, Elapsed time: 0:00:03
+# Errors: 3, Warnings: 3
