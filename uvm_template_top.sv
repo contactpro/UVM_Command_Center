@@ -22,7 +22,7 @@ module uvm_template_top;
   bit reset;
   
   // environment class instance
-  uvm_template_env uvm_template_base_test;
+  uvm_template_env env_inst_in_top;
   
   // interface instance
   my_if intf(clk,reset);
@@ -40,12 +40,12 @@ module uvm_template_top;
   
   
   //clock generation
-  always #5 intf.clk = ~intf.clk;
+  always #5 clk = ~clk;
   
   //reset generation
   initial begin
-    intf.reset = 1;
-    #30 intf.reset = 0;
+    reset = 1;
+    #30 reset = 0;
   end
 
 
@@ -59,10 +59,11 @@ module uvm_template_top;
   
   // passing the interface handle to 
   // the lower heirarchy using set method   
-  //calling test 
+  // calling test 
   initial begin 
-    uvm_config_db#(virtual my_if)::set(uvm_root::get(),"*","vif",intf); 	
-  	uvm_template_base_test = new("uvm_template_base_test", null);
+  	`uvm_info("TOP","In TOP initial block . . .",UVM_MEDIUM)
+  	env_inst_in_top = new("uvm_template_env", null);
+    uvm_config_db#(virtual my_if)::set(null,"*","vif",intf); 	
     run_test("uvm_template_base_test");
   end
   
