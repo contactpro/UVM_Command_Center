@@ -12,7 +12,7 @@ import uvm_pkg::*;
 `include "C:/Users/HP/WORK_UVM/uvm-1.1d/src/uvm_macros.svh"
 `include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/packet_seq_item.sv"
 
-class uvm_template_sequencer extends uvm_sequencer#(packet_seq_item);
+class uvm_template_sequencer extends uvm_sequencer #(packet_seq_item);
   `uvm_component_utils(uvm_template_sequencer) 
  
   //constructor
@@ -23,7 +23,7 @@ class uvm_template_sequencer extends uvm_sequencer#(packet_seq_item);
   // build phase
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-      `uvm_info(get_type_name(),"In BUILD PHASE . . .", UVM_MEDIUM);
+      `uvm_info("SEQUENCER","In BUILD PHASE . . .", UVM_MEDIUM);
   endfunction: build_phase 
    
   // run phase
