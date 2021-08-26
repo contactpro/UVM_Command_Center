@@ -18,7 +18,7 @@ class uvm_template_driver extends uvm_driver #(packet_seq_item);
   // virtual interface
   virtual my_if vif;
   
-  packet_seq_item req;
+  packet_seq_item pkt;
   packet_seq_item rsp;
     
   // constructor
@@ -30,17 +30,19 @@ class uvm_template_driver extends uvm_driver #(packet_seq_item);
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
       `uvm_info(get_type_name(),"In BUILD PHASE . . .", UVM_MEDIUM);
+      pkt = packet_seq_item::type_id::create("Our Packet");
       uvm_config_db#(virtual my_if)::get(this, "", "vif", vif);
   endfunction: build_phase
 
   // run phase
   virtual task run_phase(uvm_phase phase);
     forever begin
-      seq_item_port.get_next_item(req);
-      drive(); // drive_item(req, rsp);
-      rsp.set_id_info(req); // assign the req transaction id to corresponding rsp
-      seq_item_port.item_done(rsp); // send rsp transaction as feedback
-      `uvm_info("UVM_TEMPLATE_DRIVER",{"Transaction Completed:\n", req.sprint()}, UVM_MEDIUM);
+    	@(posedge vif.clk); 
+        seq_item_port.get_next_item(pkt);
+        drive(); // drive_item(req, rsp);
+        rsp.set_id_info(pkt); // assign the pkt transaction id to corresponding rsp
+        seq_item_port.item_done(rsp); // send rsp transaction as feedback
+        `uvm_info("UVM_TEMPLATE_DRIVER",{"Transaction Completed:\n", req.sprint()}, UVM_MEDIUM);
     end
   endtask: run_phase
   
