@@ -13,12 +13,14 @@ import uvm_pkg::*;
 `include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/packet_seq_item.sv"
 
 class uvm_template_monitor extends uvm_monitor;
-
-  // virtual interface
-  virtual my_if vif;
   
   int packet_count = 0;
   
+  // virtual interface
+  virtual my_if vif;
+  
+  packet_seq_item pkt;
+
   uvm_analysis_port#(packet_seq_item) item_collected_port;
    
   // factory 
@@ -29,14 +31,15 @@ class uvm_template_monitor extends uvm_monitor;
   // constructor
   function new (string name="uvm_template_monitor", uvm_component parent=null);
     super.new(name, parent);
-    item_collected_port = new("Monitor Port", this);
   endfunction : new
 
   // build phase
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
       `uvm_info(get_type_name(),"In BUILD PHASE . . .", UVM_MEDIUM);
+      pkt = packet_seq_item::type_id::create("Our Packet");
       uvm_config_db#(virtual my_if)::get(this, "", "vif", vif);
+      item_collected_port = new("Monitor Port", this);      
   endfunction: build_phase
   
   // connect phase
@@ -46,19 +49,18 @@ class uvm_template_monitor extends uvm_monitor;
   
   // run phase
   virtual task run_phase(uvm_phase phase);
-    packet_seq_item trans;
-    trans = packet_seq_item::type_id::create("trans", this);
     forever begin
       @(negedge vif.clk);
-      if (vif.rd_en=='1) begin
-      	  void'(this.begin_tr(trans));
-      	  trans.rdata = vif.rdata;
-      	  //trans.last_item = 0;
-          `uvm_info("UVM_TEMPLATE_MONITOR",{"Collected Transaction:\n", trans.sprint()}, UVM_MEDIUM);
+        if (vif.rd_en=='1) begin
+      	  void'(this.begin_tr(pkt));
+      	  pkt.rdata = vif.rdata;
+      	  //pkt.last_item = 0;
+          `uvm_info("UVM_TEMPLATE_MONITOR",{"Monitor Collected Transaction:\n", pkt.sprint()}, UVM_MEDIUM);
           ++packet_count;
-          item_collected_port.write(trans);
-          @(posedge vif.clk) void'(this.end_tr(trans));
-      end // if
+          `uvm_info("UVM_TEMPLATE_MONITOR_PACKET_COUNT",$sformatf("packet_count: %0d", packet_count), UVM_MEDIUM);
+          item_collected_port.write(pkt);
+          @(posedge vif.clk) void'(this.end_tr(pkt));
+        end // if
     end // forever
   endtask : run_phase
   
