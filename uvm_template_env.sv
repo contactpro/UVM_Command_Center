@@ -56,7 +56,9 @@ class uvm_template_env extends uvm_env;
     m_seq = uvm_template_sequence::type_id::create("m_seq");
     super.run_phase(phase);
     phase.raise_objection(this);
-    m_seq.start(uvm_template_base_test.env.agnt.seqr);
+    // m_seq.start(uvm_test_top.env.agnt.seqr);
+    // m_seq.start(uvm_template_base_test.env.agnt.seqr);
+    m_seq.start(env.agnt.seqr);
     phase.drop_objection(this);
   endtask: run_phase
     
