@@ -23,6 +23,7 @@ class uvm_template_sequence extends uvm_sequence #(packet_seq_item);
   // create, skip randomize, and send the item to driver.
   virtual task body();
     begin
+    	phase.raise_objection(this);
       req = packet_seq_item::type_id::create("req");
       rsp = packet_seq_item::type_id::create("rsp");  
       wait_for_grant();
@@ -34,10 +35,12 @@ class uvm_template_sequence extends uvm_sequence #(packet_seq_item);
       send_request(req);
       wait_for_item_done();
       get_response(rsp); // note this is a blocking function requiring RSP to be received from driver.
+      phase.drop_objection(this);
       `uvm_info("UVM_TEMPLATE_SEQUENCE",{"SEQUENCE BODY req Transactions Completed:\n", req.sprint()}, UVM_MEDIUM);
       `uvm_info("UVM_TEMPLATE_SEQUENCE",{"SEQUENCE BODY rsp Transactions Completed:\n", rsp.sprint()}, UVM_MEDIUM);
     end     
     begin
+    	phase.raise_objection(this);
       req = packet_seq_item::type_id::create("req");
       rsp = packet_seq_item::type_id::create("rsp");  
       wait_for_grant();
@@ -49,10 +52,12 @@ class uvm_template_sequence extends uvm_sequence #(packet_seq_item);
       send_request(req);
       wait_for_item_done();
       get_response(rsp); // note this is a blocking function requiring RSP to be received from driver.
+      phase.drop_objection(this);
       `uvm_info("UVM_TEMPLATE_SEQUENCE",{"SEQUENCE BODY req Transactions Completed:\n", req.sprint()}, UVM_MEDIUM);
       `uvm_info("UVM_TEMPLATE_SEQUENCE",{"SEQUENCE BODY rsp Transactions Completed:\n", rsp.sprint()}, UVM_MEDIUM);      
     end        
     begin
+      phase.raise_objection(this);
       req = packet_seq_item::type_id::create("req");
       rsp = packet_seq_item::type_id::create("rsp");
       wait_for_grant();
@@ -64,10 +69,12 @@ class uvm_template_sequence extends uvm_sequence #(packet_seq_item);
       send_request(req);
       wait_for_item_done();  // rsp.rdata and req.rdata = vif.rdata;
       get_response(rsp); // note this is a blocking function requiring RSP to be received from driver.
+      phase.drop_objection(this);
       `uvm_info("UVM_TEMPLATE_SEQUENCE",{"SEQUENCE BODY req Transactions Completed:\n", req.sprint()}, UVM_MEDIUM);
       `uvm_info("UVM_TEMPLATE_SEQUENCE",{"SEQUENCE BODY rsp Transactions Completed:\n", rsp.sprint()}, UVM_MEDIUM);
     end  
     begin
+    	phase.raise_objection(this);
       req = packet_seq_item::type_id::create("req");
       rsp = packet_seq_item::type_id::create("rsp");
       wait_for_grant();
@@ -79,6 +86,7 @@ class uvm_template_sequence extends uvm_sequence #(packet_seq_item);
       send_request(req);
       wait_for_item_done();  // rsp.rdata and req.rdata = vif.rdata;
       get_response(rsp); // note this is a blocking function requiring RSP to be received from driver.
+      phase.drop_objection(this);
       `uvm_info("UVM_TEMPLATE_SEQUENCE",{"SEQUENCE BODY req Transactions Completed:\n", req.sprint()}, UVM_MEDIUM);
       `uvm_info("UVM_TEMPLATE_SEQUENCE",{"SEQUENCE BODY rsp Transactions Completed:\n", rsp.sprint()}, UVM_MEDIUM);
     end           
