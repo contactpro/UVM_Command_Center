@@ -13,10 +13,13 @@ import uvm_pkg::*;
 `include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/packet_seq_item.sv"
 `include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv"
 `include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequence.sv"
+`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv"
 `include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/my_uvm_report_server.sv"
 
 class uvm_template_base_test extends uvm_test;
   `uvm_component_utils(uvm_template_base_test)
+  
+  uvm_template_sequencer sequencer;
 
   // constructor
   function new(string name = "uvm_template_base_test", uvm_component parent=null);
@@ -43,6 +46,9 @@ class uvm_template_base_test extends uvm_test;
       // Create the env
       env = uvm_template_env::type_id::create("env", this);
       
+      // create sequencer in the test class
+      sequencer = uvm_template_sequencer::type_id::create("uvm_template_sequencer", this);
+      
       uvm_config_db#(virtual my_if)::get(this, "", "vif", vif);
      
      `uvm_info("UVM_TEMPLATE_BASE_TEST", "Setting uvm_report_server . . .", UVM_NONE);
@@ -67,12 +73,14 @@ class uvm_template_base_test extends uvm_test;
   // run phase
   virtual task run_phase(uvm_phase phase);
     begin 
-      uvm_template_sequence seq; 
-      seq = uvm_template_sequence::type_id::create("seq"); 
+    	// these sequencer statements are coded above
+      // uvm_template_sequence seq; 
+      // seq = uvm_template_sequence::type_id::create("seq"); 
       //-------------------------------------------------------
       @(posedge vif.clk); 
       phase.raise_objection(this); 
-      seq.start(env.agnt.seqr); 
+      // sequencer.start(env.agnt.seqr); 
+      sequencer.start_phase_sequence(phase); 
       phase.drop_objection(this); 
     end
   endtask: run_phase
