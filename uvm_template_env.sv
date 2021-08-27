@@ -34,6 +34,11 @@ class uvm_template_env extends uvm_env;
   // virtual interface
   virtual my_if vif;  
   
+  // phase progress information funtion
+  function void phase_started(uvm_phase phase);
+    `uvm_info("PHASE_STATUS", $sformatf("Phase started for %s", phase.get_name()), UVM_NONE);
+  endfunction: phase_started
+  
   // build phase 
   virtual function void build_phase(uvm_phase phase);
     super.build_phase(phase);   
