@@ -22,6 +22,9 @@ class uvm_template_base_test extends uvm_test;
   function new(string name = "uvm_template_base_test", uvm_component parent=null);
     super.new(name, parent);
   endfunction: new
+  
+  uvm_report_server old_server;
+  my_uvm_report_server report_server;
 
   // env instance  
   uvm_template_env env;
@@ -30,9 +33,9 @@ class uvm_template_base_test extends uvm_test;
   virtual my_if vif;
   
   // instantiate modified report server 
-  my_uvm_report_server srv_h;
+  // my_uvm_report_server srv_h;
   
-  // build_phase
+  // build_phase 
   virtual function void build_phase(uvm_phase phase);
     super.build_phase(phase);
       `uvm_info(get_type_name(),"In BUILD PHASE . . .", UVM_MEDIUM);
@@ -41,23 +44,24 @@ class uvm_template_base_test extends uvm_test;
       env = uvm_template_env::type_id::create("env", this);
       
       uvm_config_db#(virtual my_if)::get(this, "", "vif", vif);
-           
-      srv_h = new();
-      uvm_report_server::set_server(srv_h);
+     
+     `uvm_info("UVM_TEMPLATE_BASE_TEST", "Setting uvm_report_server . . .", UVM_NONE);
+               
+      old_server = new();
+      uvm_report_server::set_server(old_server);
       
   endfunction: build_phase
    
-  // end_of_elaboration_phase 
-  virtual function void end_of_elaboration_phase(uvm_phase phase);
-    // print the topology
-    uvm_top.print_topology();
+  // end_of_elaboration_phase  
+  function void end_of_elaboration_phase(uvm_phase phase);
+     report_server = new();
+     uvm_report_server::set_server(report_server);
+     // print the topology
+     uvm_top.print_topology();
   endfunction: end_of_elaboration_phase
 
   function void start_of_simulation_phase(uvm_phase phase);
     super.start_of_simulation_phase(phase);
-      uvm_report_server::get_server(srv_h);
-      `uvm_info("UVM_TEMPLATE_BASE_TEST",{"this sprint:\n", this.sprint()}, UVM_MEDIUM);
-      `uvm_info("UVM_TEMPLATE_BASE_TEST",{"factory sprint:\n", factory.sprint()}, UVM_MEDIUM);
   endfunction: start_of_simulation_phase
   
   // run phase
@@ -68,17 +72,22 @@ class uvm_template_base_test extends uvm_test;
       //-------------------------------------------------------
       @(posedge vif.clk); 
       phase.raise_objection(this); 
-      seq.start(env.agnt.sqr); 
+      seq.start(env.agnt.seqr); 
       phase.drop_objection(this); 
     end
   endtask: run_phase
 
-  // report phase 
+  // report phase  
   function void report_phase(uvm_phase phase);
-    my_uvm_report_server svr;
+
+    uvm_report_server svr; 
+    // my_uvm_report_server svr;
+            
     super.report_phase(phase);
-      
-    svr = uvm_report_server::get_server();
+    
+    `uvm_info("UVM_TEMPLATE_BASE_TEST", "Getting my_uvm_report_server . . .", UVM_NONE);
+     
+    svr = uvm_report_server::get_server(); 
     
     if(svr.get_severity_count(UVM_FATAL)+svr.get_severity_count(UVM_ERROR)>0) begin
       `uvm_info(get_type_name(), "---------------------------------------", UVM_NONE)
