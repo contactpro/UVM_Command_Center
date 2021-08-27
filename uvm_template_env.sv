@@ -63,6 +63,11 @@ class uvm_template_env extends uvm_env;
     phase.raise_objection(this);
     // m_seq.start(uvm_test_top.env.agnt.seqr);
     // m_seq.start(uvm_template_base_test.env.agnt.seqr);
+    // -------------------------------------------------------
+    // Simulation Error: env.sv(66): 
+    // Actual input arg. of type 'reg' for formal 'sequencer' 
+    // of 'start' is not compatible with the formal's type 
+    // 'class work.uvm_pkg::uvm_sequencer_base'.
     m_seq.start(env.agnt.seqr);
     phase.drop_objection(this);
   endtask: run_phase
