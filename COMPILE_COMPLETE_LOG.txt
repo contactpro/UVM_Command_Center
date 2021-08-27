@@ -1,0 +1,199 @@
+
+
+RUNNING COMPILE MODELSIM UVM TESTBENCH . . . 
+
+ Volume in drive C is Windows
+ Volume Serial Number is 1C85-A762
+
+ Directory of C:\Users\HP\WORK_PYTHON\PY_UVM_TB_BUILDER\uvm_templates
+
+08/27/2021  03:54 AM    <DIR>          .
+08/27/2021  03:54 AM    <DIR>          ..
+08/27/2021  03:54 AM                 0 cmd_output_redirect.txt
+08/25/2021  06:52 AM            13,354 modelsim_uvm_1_1d.ini
+08/27/2021  12:29 AM             2,367 my_uvm_report_server.sv
+08/23/2021  01:51 AM             1,332 packet_seq_item.sv
+03/24/2018  08:36 PM                27 sim.do
+08/27/2021  01:34 AM             3,024 transcript
+08/24/2021  08:36 AM             7,726 transcript_SAVE_1.txt
+08/25/2021  07:39 AM             4,182 transcript_SAVE_2.txt
+08/24/2021  03:34 AM             1,672 uvm_template_agent.sv
+08/27/2021  12:16 AM             3,651 uvm_template_base_test.sv
+08/25/2021  07:59 PM             2,394 uvm_template_driver.sv
+08/27/2021  02:06 AM             2,784 uvm_template_env.sv
+08/24/2021  12:58 PM             1,100 uvm_template_interface.sv
+08/23/2021  01:57 AM             1,067 uvm_template_memory_dut.sv
+08/25/2021  08:38 PM             2,376 uvm_template_monitor.sv
+08/24/2021  11:49 AM             3,427 uvm_template_scoreboard.sv
+08/25/2021  08:54 PM             3,635 uvm_template_sequence.sv
+08/25/2021  07:44 PM             1,020 uvm_template_sequencer.sv
+08/26/2021  01:36 AM             1,777 uvm_template_top.sv
+08/27/2021  01:34 AM            49,152 vsim.wlf
+              20 File(s)        106,067 bytes
+               2 Dir(s)  55,935,930,368 bytes free
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+Start time: 03:54:55 on Aug 27,2021
+vlog -sv "+nowarnTSCALE" C:/Users/HP/WORK_UVM/uvm-1.1d/src\uvm.sv "+incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src" 
+-- Compiling package uvm_pkg
+** Warning: ** while parsing file included at C:/Users/HP/WORK_UVM/uvm-1.1d/src\uvm.sv(23)
+** at C:/Users/HP/WORK_UVM/uvm-1.1d/src/seq/uvm_sequencer_base.svh(1398): (vlog-2186) SystemVerilog testbench feature
+(randomization, coverage or assertion) detected in the design.
+These features are only supported in Questasim.
+** Warning: ** while parsing file included at C:/Users/HP/WORK_UVM/uvm-1.1d/src\uvm.sv(23)
+** at C:/Users/HP/WORK_UVM/uvm-1.1d/src/seq/uvm_sequencer_base.svh(1539): (vlog-2186) SystemVerilog testbench feature
+(randomization, coverage or assertion) detected in the design.
+These features are only supported in Questasim.
+** Warning: ** while parsing file included at C:/Users/HP/WORK_UVM/uvm-1.1d/src\uvm.sv(23)
+** at C:/Users/HP/WORK_UVM/uvm-1.1d/src/seq/uvm_sequence_base.svh(1105): (vlog-2186) SystemVerilog testbench feature
+(randomization, coverage or assertion) detected in the design.
+These features are only supported in Questasim.
+
+Top level modules:
+	--none--
+End time: 03:54:56 on Aug 27,2021, Elapsed time: 0:00:01
+Errors: 0, Warnings: 3
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+Start time: 03:54:56 on Aug 27,2021
+vlog -sv "+nowarnTSCALE" C:/Users/HP/WORK_UVM/uvm-1.1d/src\uvm_pkg.sv "+incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src" 
+-- Compiling package uvm_pkg
+** Warning: C:/Users/HP/WORK_UVM/uvm-1.1d/src/seq/uvm_sequencer_base.svh(1398): (vlog-2186) SystemVerilog testbench feature
+(randomization, coverage or assertion) detected in the design.
+These features are only supported in Questasim.
+** Warning: C:/Users/HP/WORK_UVM/uvm-1.1d/src/seq/uvm_sequencer_base.svh(1539): (vlog-2186) SystemVerilog testbench feature
+(randomization, coverage or assertion) detected in the design.
+These features are only supported in Questasim.
+** Warning: C:/Users/HP/WORK_UVM/uvm-1.1d/src/seq/uvm_sequence_base.svh(1105): (vlog-2186) SystemVerilog testbench feature
+(randomization, coverage or assertion) detected in the design.
+These features are only supported in Questasim.
+
+Top level modules:
+	--none--
+End time: 03:54:58 on Aug 27,2021, Elapsed time: 0:00:02
+Errors: 0, Warnings: 3
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+Start time: 03:54:58 on Aug 27,2021
+vlog -sv "+nowarnTSCALE" C:/Users/HP/WORK_UVM/uvm-1.1d/src\uvm_macros.svh "+incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src" 
+End time: 03:54:58 on Aug 27,2021, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+Start time: 03:54:58 on Aug 27,2021
+vlog -sv "+nowarnTSCALE" C:/Users/HP/WORK_UVM/uvm-1.1d/src/dpi\uvm_dpi.cc "+incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src/dpi" 
+-- Compiling DPI/PLI C++ file C:/Users/HP/WORK_UVM/uvm-1.1d/src/dpi\uvm_dpi.cc
+End time: 03:54:58 on Aug 27,2021, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+Start time: 03:54:58 on Aug 27,2021
+vlog -sv "+nowarnTSCALE" C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_memory_dut.sv "+incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src" 
+-- Compiling package uvm_template_memory_dut_sv_unit
+-- Importing package uvm_pkg
+-- Compiling module uvm_template_memory_dut
+
+Top level modules:
+	uvm_template_memory_dut
+End time: 03:54:59 on Aug 27,2021, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+Start time: 03:54:59 on Aug 27,2021
+vlog -sv "+nowarnTSCALE" C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\my_uvm_report_server.sv "+incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src" 
+
+Top level modules:
+	--none--
+End time: 03:54:59 on Aug 27,2021, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+Start time: 03:54:59 on Aug 27,2021
+vlog -sv "+nowarnTSCALE" C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\uvm_template_interface.sv "+incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src" 
+-- Compiling package uvm_template_interface_sv_unit
+-- Importing package uvm_pkg
+-- Compiling interface my_if
+
+Top level modules:
+	--none--
+End time: 03:55:00 on Aug 27,2021, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+Start time: 03:55:00 on Aug 27,2021
+vlog -sv "+nowarnTSCALE" C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\packet_seq_item.sv "+incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src" 
+
+Top level modules:
+	--none--
+End time: 03:55:01 on Aug 27,2021, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+Start time: 03:55:01 on Aug 27,2021
+vlog -sv "+nowarnTSCALE" C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\uvm_template_sequence.sv "+incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src" 
+
+Top level modules:
+	--none--
+End time: 03:55:01 on Aug 27,2021, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+Start time: 03:55:01 on Aug 27,2021
+vlog -sv "+nowarnTSCALE" C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\uvm_template_sequencer.sv "+incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src" 
+
+Top level modules:
+	--none--
+End time: 03:55:02 on Aug 27,2021, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+Start time: 03:55:02 on Aug 27,2021
+vlog -sv "+nowarnTSCALE" C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\uvm_template_driver.sv "+incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src" 
+
+Top level modules:
+	--none--
+End time: 03:55:02 on Aug 27,2021, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+Start time: 03:55:02 on Aug 27,2021
+vlog -sv "+nowarnTSCALE" C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\uvm_template_monitor.sv "+incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src" 
+
+Top level modules:
+	--none--
+End time: 03:55:03 on Aug 27,2021, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+Start time: 03:55:03 on Aug 27,2021
+vlog -sv "+nowarnTSCALE" C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\uvm_template_agent.sv "+incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src" 
+
+Top level modules:
+	--none--
+End time: 03:55:03 on Aug 27,2021, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+Start time: 03:55:03 on Aug 27,2021
+vlog -sv "+nowarnTSCALE" C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\uvm_template_scoreboard.sv "+incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src" 
+
+Top level modules:
+	--none--
+End time: 03:55:04 on Aug 27,2021, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+Start time: 03:55:04 on Aug 27,2021
+vlog -sv "+nowarnTSCALE" C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\uvm_template_env.sv "+incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src" 
+
+Top level modules:
+	--none--
+End time: 03:55:04 on Aug 27,2021, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+Start time: 03:55:04 on Aug 27,2021
+vlog -sv "+nowarnTSCALE" C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\uvm_template_base_test.sv "+incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src" 
+
+Top level modules:
+	--none--
+End time: 03:55:05 on Aug 27,2021, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+Start time: 03:55:05 on Aug 27,2021
+vlog -sv "+nowarnTSCALE" C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\uvm_template_top.sv "+incdir+C:/Users/HP/WORK_UVM/uvm-1.1d/src" 
+-- Compiling package uvm_template_top_sv_unit
+-- Importing package uvm_pkg
+-- Compiling interface my_if
+-- Compiling module uvm_template_top
+
+Top level modules:
+	uvm_template_top
+End time: 03:55:05 on Aug 27,2021, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+
