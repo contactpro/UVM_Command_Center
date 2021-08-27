@@ -21,7 +21,7 @@ class uvm_template_scoreboard extends uvm_scoreboard;
   bit [7:0] sc_mem [4];
 
   //port to receive packets from monitor
-  uvm_analysis_imp#(packet_seq_item, uvm_template_scoreboard) item_collected_import;
+  uvm_analysis_imp#(packet_seq_item, uvm_template_scoreboard) ap_imp;
 
   // factory
   `uvm_component_utils(uvm_template_scoreboard)
@@ -34,8 +34,8 @@ class uvm_template_scoreboard extends uvm_scoreboard;
   // build_phase - create port and initialize local memory
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-      `uvm_info(get_type_name(),"In BUILD PHASE . . .", UVM_MEDIUM);
-      item_collected_import = new("item_collected_import", this);
+      `uvm_info("SCBD_BUILD_PHASE","In SCBD BUILD PHASE . . .", UVM_MEDIUM);
+      ap_imp = new("ap_imp", this);
       foreach(sc_mem[i]) sc_mem[i] = 8'hFF;
   endfunction: build_phase
   
@@ -49,6 +49,7 @@ class uvm_template_scoreboard extends uvm_scoreboard;
   virtual function void write(packet_seq_item pkt);
     pkt.print();
     pkt_qu.push_back(pkt);
+    `uvm_info("SCBD_PKT_WRITE_TO_QUEUE","SCBD Receives PKT via write method . . .", UVM_MEDIUM);
   endfunction : write
 
   // run_phase - compare's the read data with the expected data(stored in local memory)
