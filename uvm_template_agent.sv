@@ -22,6 +22,7 @@ class uvm_template_agent extends uvm_agent;
   uvm_template_sequencer seqr;
   uvm_template_driver drv;
   uvm_template_monitor mon;
+  uvm_template_monitor mon_dut_out;
   
   // constructor
   function new (string name = "uvm_template_agent", uvm_component parent=null);
@@ -29,19 +30,27 @@ class uvm_template_agent extends uvm_agent;
   endfunction
 
   // build phase
-  virtual function void build_phase(uvm_phase phase);
-    `uvm_info(get_type_name(),"In AGENT BUILD PHASE . . .", UVM_MEDIUM);
-    seqr = uvm_template_sequencer::type_id::create("seqr", this);
-    drv = uvm_template_driver::type_id::create("drv", this);
-    mon = uvm_template_monitor::type_id::create("mon", this);
+  function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    `uvm_info("AGENT_BUILD_PHASE","In AGENT BUILD PHASE . . .", UVM_MEDIUM);
+    
+    if(get_is_active() == UVM_ACTIVE) begin
+      drv = uvm_template_driver::type_id::create("drv", this);
+      seqr = uvm_template_sequencer::type_id::create("seqr", this);
+    end
+
+    mon = uvm_template_monitor::type_id::create("mon", this);  
+     
   endfunction: build_phase
   
   // list the things that are connected in this agent class
   // versus any connections in the env class
   // connect phase 
-  virtual function void connect_phase(uvm_phase phase);
-    drv.seq_item_port.connect(seqr.seq_item_export);
-    mon.item_collected_port.connect(seqr.seq_item_export); // new line
+  function void connect_phase(uvm_phase phase);
+    if(get_is_active() == UVM_ACTIVE) begin
+      drv.seq_item_port.connect(seqr.seq_item_export);
+    end
+ 
   endfunction: connect_phase
    
   // run phase
