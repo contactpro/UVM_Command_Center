@@ -1,0 +1,93 @@
+# vsim -c "+nowarnTSCALE" -voptargs="+acc" uvm_template_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\sim.do" 
+# Start time: 14:54:31 on Aug 28,2021
+# Loading sv_std.std
+# Loading work.uvm_pkg
+# Loading work.uvm_template_top_sv_unit
+# ** Error (suppressible): (vsim-19) Failed to access library 'C:/Users/HP/WORK_UVM/uvm-1.1d' at "C:/Users/HP/WORK_UVM/uvm-1.1d".
+# No such file or directory. (errno = ENOENT)
+# ** Note: (vsim-8785) UVM-aware debugging capabilities will be disabled since no compiled "questa_uvm_pkg" can be found.
+# This also means that later if you turn on UVM-aware debugging your debug simulations may have
+# different random seeds from your non-debug simulations.
+# Loading work.uvm_template_top
+# Loading work.my_if
+# Loading work.uvm_template_memory_dut_sv_unit
+# Loading work.uvm_template_memory_dut
+# ** Warning: (vsim-3764) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv(45): Stand-alone call to function 'get' treated as implicit void cast.
+#    Time: 0 ps  Iteration: 0  Region: /uvm_template_top_sv_unit File: C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_top.sv
+# ** Warning: (vsim-3764) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(46): Stand-alone call to function 'get' treated as implicit void cast.
+#    Time: 0 ps  Iteration: 0  Region: /uvm_template_top_sv_unit File: C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_top.sv
+# ** Warning: (vsim-3764) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(46): Stand-alone call to function 'get' treated as implicit void cast.
+#    Time: 0 ps  Iteration: 0  Region: /uvm_template_top_sv_unit File: C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_top.sv
+# ** Warning: (vsim-3764) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(35): Stand-alone call to function 'get' treated as implicit void cast.
+#    Time: 0 ps  Iteration: 0  Region: /uvm_template_top_sv_unit::uvm_template_driver File: C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_top.sv
+# Loading C:/Users/HP/AppData/Local/Temp\HP@CHIPCODER_dpi_12436\win32pe_gcc-4.2.1\vsim_auto_compile.dll
+# ** Warning: Design size of 48224 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Expect performance to be adversely affected.
+# do {C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\sim.do}
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\uvm_template_top.sv(64) @ 0: reporter [TOP] In TOP initial block . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(38) @ 0: uvm_test_top [BASE_TEST_CONSTRUCTOR_START] START OF BASE TEST CONSTRUCTOR . . .
+# UVM_INFO @ 0: reporter [RNTST] Running test uvm_template_base_test...
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(39) @ 0: uvm_template_env [PHASE_STATUS] Phase started for build
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(54) @ 0: uvm_test_top [BASE_TEST_PHASE_STATUS] Phase started for build
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(39) @ 0: uvm_test_top.env [PHASE_STATUS] Phase started for build
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(45) @ 0: uvm_template_env [uvm_template_env] In ENV BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv(40) @ 0: uvm_template_env.agnt [AGENT_BUILD_PHASE] In AGENT BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(34) @ 0: uvm_template_env.agnt.drv [uvm_template_driver] In BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv(44) @ 0: uvm_template_env.agnt.mon [uvm_template_monitor] In MONITOR BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv(31) @ 0: uvm_template_env.agnt.seqr [SEQUENCER] In SEQUENCER BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv(40) @ 0: uvm_template_env.scbd [SCBD_BUILD_PHASE] In SCBD BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(61) @ 0: uvm_test_top [BASE_TEST_BUILD_PHASE] In BASE TEST BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(45) @ 0: uvm_test_top.env [uvm_template_env] In ENV BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv(40) @ 0: uvm_test_top.env.agnt [AGENT_BUILD_PHASE] In AGENT BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(34) @ 0: uvm_test_top.env.agnt.drv [uvm_template_driver] In BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv(44) @ 0: uvm_test_top.env.agnt.mon [uvm_template_monitor] In MONITOR BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv(31) @ 0: uvm_test_top.env.agnt.seqr [SEQUENCER] In SEQUENCER BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv(40) @ 0: uvm_test_top.env.scbd [SCBD_BUILD_PHASE] In SCBD BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(28) @ 0: uvm_template_env.agnt.drv [PHASE_STATUS] Phase started for connect
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv(38) @ 0: uvm_template_env.agnt.mon [PHASE_STATUS] Phase started for connect
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv(25) @ 0: uvm_template_env.agnt.seqr [PHASE_STATUS] Phase started for connect
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv(34) @ 0: uvm_template_env.agnt [PHASE_STATUS] Phase started for connect
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv(34) @ 0: uvm_template_env.scbd [SCOREBOARD_PHASE_STATUS] Phase started for connect
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(39) @ 0: uvm_template_env [PHASE_STATUS] Phase started for connect
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(28) @ 0: uvm_test_top.env.agnt.drv [PHASE_STATUS] Phase started for connect
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv(38) @ 0: uvm_test_top.env.agnt.mon [PHASE_STATUS] Phase started for connect
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv(25) @ 0: uvm_test_top.env.agnt.seqr [PHASE_STATUS] Phase started for connect
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv(34) @ 0: uvm_test_top.env.agnt [PHASE_STATUS] Phase started for connect
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv(34) @ 0: uvm_test_top.env.scbd [SCOREBOARD_PHASE_STATUS] Phase started for connect
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(39) @ 0: uvm_test_top.env [PHASE_STATUS] Phase started for connect
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(54) @ 0: uvm_test_top [BASE_TEST_PHASE_STATUS] Phase started for connect
+# ** Fatal: (SIGSEGV) Bad handle or reference.
+#    Time: 0 ps  Iteration: 15  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_feff852 File: C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv
+# Fatal error in Function uvm_pkg/uvm_port_base::connect at C:/Users/HP/WORK_UVM/uvm-1.1d/src/base/uvm_port_base.svh line 431
+# 
+# HDL call sequence:
+# Stopped at C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv 55 Function uvm_pkg/uvm_port_base::connect
+# called from  C:/Users/HP/WORK_UVM/uvm-1.1d/src/base/uvm_common_phases.svh 96 Function uvm_pkg/uvm_connect_phase::exec_func
+# called from  C:/Users/HP/WORK_UVM/uvm-1.1d/src/base/uvm_bottomup_phase.svh 108 Function uvm_pkg/uvm_bottomup_phase::execute
+# called from  C:/Users/HP/WORK_UVM/uvm-1.1d/src/base/uvm_bottomup_phase.svh 81 Function uvm_pkg/uvm_bottomup_phase::traverse
+# called from  C:/Users/HP/WORK_UVM/uvm-1.1d/src/base/uvm_bottomup_phase.svh 61 Function uvm_pkg/uvm_bottomup_phase::traverse
+# called from  C:/Users/HP/WORK_UVM/uvm-1.1d/src/base/uvm_phase.svh 1156 Task uvm_pkg/uvm_phase::execute_phase
+# called from  C:/Users/HP/WORK_UVM/uvm-1.1d/src/base/uvm_phase.svh 1847 Task uvm_pkg/uvm_phase::m_run_phases
+# 
+# End time: 14:54:34 on Aug 28,2021, Elapsed time: 0:00:03
+# Errors: 3, Warnings: 5
