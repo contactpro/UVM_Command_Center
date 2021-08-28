@@ -21,7 +21,7 @@ class my_uvm_report_server extends uvm_report_server;
  
  // constructor 
   function new(string name="my_uvm_report_server", uvm_component parent=null);
-    super.new();   // super.new(name, parent);
+    super.new(name, parent);   // super.new();
     set_name(name);
     global_server = new();
     old_report_server = global_server.get_server();
