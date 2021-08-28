@@ -1,5 +1,5 @@
 # vsim -c "+nowarnTSCALE" -voptargs="+acc" uvm_template_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\sim.do" 
-# Start time: 04:19:41 on Aug 27,2021
+# Start time: 04:05:29 on Aug 28,2021
 # Loading sv_std.std
 # Loading work.uvm_pkg
 # Loading work.uvm_template_top_sv_unit
@@ -12,18 +12,17 @@
 # Loading work.my_if
 # Loading work.uvm_template_memory_dut_sv_unit
 # Loading work.uvm_template_memory_dut
-# ** Error: (vsim-3043) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(71): Unresolved reference to 'env' in $root.env.agnt.seqr.
-#    Time: 0 ps  Iteration: 0  Region: /uvm_template_top_sv_unit File: C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_top.sv
-# ** Error (suppressible): (vsim-2997) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(71): Cannot assign a packed type 'reg' to an unpacked type 'class work.uvm_pkg::uvm_sequencer_base'.
-#    Time: 0 ps  Iteration: 0  Region: /uvm_template_top_sv_unit File: C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_top.sv
-# ** Warning: (vsim-3764) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv(41): Stand-alone call to function 'get' treated as implicit void cast.
+# ** Warning: (vsim-3764) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv(40): Stand-alone call to function 'get' treated as implicit void cast.
 #    Time: 0 ps  Iteration: 0  Region: /uvm_template_top_sv_unit File: C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_top.sv
 # ** Warning: (vsim-3764) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(46): Stand-alone call to function 'get' treated as implicit void cast.
 #    Time: 0 ps  Iteration: 0  Region: /uvm_template_top_sv_unit File: C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_top.sv
-# ** Error: (vsim-8754) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(71): Actual input arg. of type 'reg' for formal 'sequencer' of 'start' is not compatible with the formal's type 'class work.uvm_pkg::uvm_sequencer_base'.
+# ** Warning: (vsim-3764) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(48): Stand-alone call to function 'get' treated as implicit void cast.
 #    Time: 0 ps  Iteration: 0  Region: /uvm_template_top_sv_unit File: C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_top.sv
-# ** Warning: (vsim-3764) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(46): Stand-alone call to function 'get' treated as implicit void cast.
-#    Time: 0 ps  Iteration: 0  Region: /uvm_template_top_sv_unit File: C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_top.sv
+# ** Error: (vsim-7065) C:/Users/HP/WORK_UVM/uvm-1.1d/src/base/uvm_registry.svh(67): Illegal assignment to class work.uvm_pkg::uvm_component from class work.uvm_template_top_sv_unit::my_uvm_report_server
+#    Time: 0 ps  Iteration: 0  Region: /uvm_pkg::uvm_component_registry #(uvm_template_top_sv_unit::my_uvm_report_server, "my_uvm_report_server") File: C:/Users/HP/WORK_UVM/uvm-1.1d/src/uvm_pkg.sv
+# ** Warning: (vsim-3764) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(30): Stand-alone call to function 'get' treated as implicit void cast.
+#    Time: 0 ps  Iteration: 0  Region: /uvm_template_top_sv_unit::uvm_template_driver File: C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_top.sv
+# Loading C:/Users/HP/AppData/Local/Temp\HP@CHIPCODER_dpi_15740\win32pe_gcc-4.2.1\vsim_auto_compile.dll
 # Error loading design
-# End time: 04:19:41 on Aug 27,2021, Elapsed time: 0:00:00
-# Errors: 4, Warnings: 3
+# End time: 04:05:31 on Aug 28,2021, Elapsed time: 0:00:02
+# Errors: 2, Warnings: 4
