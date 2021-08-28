@@ -48,7 +48,7 @@ class uvm_template_env extends uvm_env;
     scbd = uvm_template_scoreboard::type_id::create("scbd", this);      
   endfunction: build_phase
   
-  // connect phase
+  // connect phase 
   virtual function void connect_phase(uvm_phase phase);
     super.connect_phase(phase);
     // connect the scoreboard with the mon.item_collected_export
@@ -57,21 +57,7 @@ class uvm_template_env extends uvm_env;
 
   // run phase  
   virtual task run_phase (uvm_phase phase);
-    // uvm_template_sequence m_seq;
-    // m_seq = uvm_template_sequence::type_id::create("m_seq");
     super.run_phase(phase);
-    // phase.raise_objection(this);
-    //       m_seq.start(uvm_test_top.env.agnt.seqr);
-    //       m_seq.start(uvm_template_base_test.env.agnt.seqr);
-    // -------------------------------------------------------
-    // Simulation Error: env.sv(66): 
-    // Actual input arg. of type 'reg' for formal 'sequencer' 
-    // of 'start' is not compatible with the formal's type 
-    // 'class work.uvm_pkg::uvm_sequencer_base'.
-    // replaced with sequencer start in test class
-    //
-    // m_seq.start(env.agnt.seqr);
-    // phase.drop_objection(this);
   endtask: run_phase
     
 endclass: uvm_template_env
