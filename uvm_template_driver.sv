@@ -23,6 +23,11 @@ class uvm_template_driver extends uvm_driver #(packet_seq_item);
     super.new(name, parent);
   endfunction : new
 
+  // phase progress information funtion
+  function void phase_started(uvm_phase phase);
+    `uvm_info("PHASE_STATUS", $sformatf("Phase started for %s", phase.get_name()), UVM_NONE);
+  endfunction: phase_started
+
   // build phase
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
