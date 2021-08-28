@@ -21,11 +21,12 @@ class my_uvm_report_server extends uvm_report_server;
  
  // constructor 
   function new(string name="my_uvm_report_server");
-    super.new();  // super.new(name, parent);
+    super.new(); 
     set_name(name);
     global_server = new();
     old_report_server = global_server.get_server();
     global_server.set_server(this);
+    `uvm_info("MY_UVM_REPORT_SERVER","END CUSTOM REPORT SERVER Constructor . . .",UVM_MEDIUM)
   endfunction: new
 
   virtual function string compose_message(
@@ -45,20 +46,25 @@ class my_uvm_report_server extends uvm_report_server;
        
        case(1)
        	 (name == "" && filename == ""):
-       	          return {sv.name(), " @ ", time_str, " [", id, "] ", message};
+       	          // return {sv.name(), " @ ", time_str, " [", id, "] ", message};
+       	          return $psprintf( "%-8s | %16s | %2d | %0t | %-21s | %-7s | %s", sv.name(), filename, line, $time, name, id, message );
          (name != "" && filename == ""):
-       	          return {sv.name(), " @ ", time_str, ": ", name, " [", id, "] ", message};
+       	          // return {sv.name(), " @ ", time_str, ": ", name, " [", id, "] ", message};
+       	          return $psprintf( "%-8s | %16s | %2d | %0t | %-21s | %-7s | %s", sv.name(), filename, line, $time, name, id, message );
        	 (name == "" && filename != ""):
        	      begin
-       	      	  $swrite(line_str, "%0d", line);
-       	      	  return {sv.name(), " ", filename, "(", line_str, ")", " @ ", time_str, " [", id, "] ", message};
+       	      	  // $swrite(line_str, "%0d", line); 
+       	      	  // return {sv.name(), " ", filename, "(", line_str, ")", " @ ", time_str, " [", id, "] ", message};
+       	      	  return $psprintf( "%-8s | %16s | %2d | %0t | %-21s | %-7s | %s", sv.name(), filename, line, $time, name, id, message );
        	      end
        	 (name != "" && filename != ""):
        	      begin
-       	      	  $swrite(line_str, "%0d", line);
-       	      	  return {sv.name(), " ", filename, "(", line_str, ")", " @ ", time_str, ": ", name," [", id, "] ", message};
+       	      	  // $swrite(line_str, "%0d", line);
+       	      	  // return {sv.name(), " ", filename, "(", line_str, ")", " @ ", time_str, ": ", name," [", id, "] ", message};
+       	      	  return $psprintf( "%-8s | %16s | %2d | %0t | %-21s | %-7s | %s", sv.name(), filename, line, $time, name, id, message );
        	      end       	      	  
        endcase    	                 
+       // return $psprintf( "%-8s | %16s | %2d | %0t | %-21s | %-7s | %s", sv.name(), filename, line, $time, name, id, message );
        // return $psprintf( "%-8s | %16s | %2d | %0t | %-21s | %-7s | %s", sv.name(), filename, line, $time, name, id, message );
   endfunction: compose_message
    
