@@ -31,7 +31,6 @@ class uvm_template_monitor extends uvm_monitor;
   // constructor
   function new (string name="uvm_template_monitor", uvm_component parent=null);
     super.new(name, parent);
-    item_collected_port = new("Monitor Port", this);
   endfunction : new
 
   // build phase
@@ -62,7 +61,8 @@ class uvm_template_monitor extends uvm_monitor;
            `uvm_info("UVM_TEMPLATE_MONITOR",{"Monitor Collected Transaction:\n", pkt.sprint()}, UVM_MEDIUM);
            ++packet_count;
            `uvm_info("UVM_TEMPLATE_MONITOR_PACKET_COUNT",$sformatf("packet_count: %0d", packet_count), UVM_MEDIUM);
-           item_collected_port.write(pkt);
+           // WRITE PACKET TO MONITOR ANALYSIS PORT
+           item_collected_port.write(pkt); 
            @(posedge vif.clk) void'(this.end_tr(pkt));
         end // if
     end // forever
