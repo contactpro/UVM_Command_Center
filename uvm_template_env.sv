@@ -22,7 +22,7 @@ class uvm_template_env extends uvm_env;
       `uvm_field_int(num_seqs, UVM_ALL_ON)
   `uvm_component_utils_end
   
-  // constructor 
+  // constructor  
   function new (string name = "uvm_template_env", uvm_component parent=null);
     super.new(name, parent);
   endfunction: new
@@ -51,8 +51,8 @@ class uvm_template_env extends uvm_env;
   // connect phase
   virtual function void connect_phase(uvm_phase phase);
     super.connect_phase(phase);
-    // connect the scoreboard with the agent
-    agnt.mon.item_collected_port.connect(scbd.ap_imp);
+    // connect the scoreboard with the mon.item_collected_export
+    agnt.mon.item_collected_port.connect(scbd.item_collected_export);
   endfunction: connect_phase  
 
   // run phase  
