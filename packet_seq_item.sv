@@ -40,10 +40,10 @@ class packet_seq_item extends uvm_sequence_item;
   `uvm_object_utils_end
   
   // constructor
-  function new(string name = "packet_seq_item");
+  function new(string name = "packet_seq_item", uvm_object parent=null);
     super.new(name);
-  endfunction
-  
+  endfunction: new  
+
   // constraint, to generate any one among write and read
   // constraint wr_rd_c { wr_en != rd_en; }; 
   
