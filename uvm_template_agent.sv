@@ -28,7 +28,12 @@ class uvm_template_agent extends uvm_agent;
   function new (string name = "uvm_template_agent", uvm_component parent=null);
     super.new(name, parent);
   endfunction
-
+  
+  // phase progress information funtion
+  function void phase_started(uvm_phase phase);
+    `uvm_info("PHASE_STATUS", $sformatf("Phase started for %s", phase.get_name()), UVM_NONE);
+  endfunction: phase_started
+  
   // build phase
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
