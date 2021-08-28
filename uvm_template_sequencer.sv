@@ -23,7 +23,7 @@ class uvm_template_sequencer extends uvm_sequencer #(packet_seq_item);
   // build phase
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-      `uvm_info("SEQUENCER","In BUILD PHASE . . .", UVM_MEDIUM);
+      `uvm_info("SEQUENCER","In SEQUENCER BUILD PHASE . . .", UVM_MEDIUM);
   endfunction: build_phase 
    
   // run phase
