@@ -62,7 +62,7 @@ module uvm_template_top;
   // calling test 
   initial begin 
   	`uvm_info("TOP","In TOP initial block . . .",UVM_MEDIUM)
-  	env_inst_in_top = new("uvm_template_env", null);
+  	env_inst_in_top = new("uvm_template_env"); // null);
     uvm_config_db#(virtual my_if)::set(null,"*","vif",intf); 	
     run_test("uvm_template_base_test");
   end
