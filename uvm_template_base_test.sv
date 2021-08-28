@@ -16,8 +16,6 @@ import uvm_pkg::*;
 
 class uvm_template_base_test extends uvm_test;
   
-  uvm_report_server old_server;
-  
   my_uvm_report_server report_server;
   
   // env instance  
@@ -37,7 +35,7 @@ class uvm_template_base_test extends uvm_test;
   function new(string name = "uvm_template_base_test", uvm_component parent=null);
     super.new(name, parent);
     
-    `uvm_info("BASE_TEST_CONSTRUCTOR","In BASE TEST CONSTRUCTOR . . .", UVM_MEDIUM);
+    `uvm_info("BASE_TEST_CONSTRUCTOR_START","START OF BASE TEST CONSTRUCTOR . . .", UVM_MEDIUM);
         
     // Create the env
     env = uvm_template_env::type_id::create("env", this);
@@ -48,37 +46,31 @@ class uvm_template_base_test extends uvm_test;
     uvm_config_db#(virtual my_if)::get(this, "", "vif", vif);
           
     clp = uvm_cmdline_processor::get_inst();
-    
+
   endfunction: new
+  
+  // phase progress information funtion
+  function void phase_started(uvm_phase phase);
+    `uvm_info("BASE_TEST_PHASE_STATUS", $sformatf("Phase started for %s", phase.get_name()), UVM_NONE);
+  endfunction: phase_started  
   
   // build_phase 
   virtual function void build_phase(uvm_phase phase);
-     string clp_uvm_args[$];
-     begin
-     	  // Set the custom report server to output the uvm_info
-     	  // messages in the customized format.
-     	  if (!clp.get_arg_matches("+UVM_REPORT_DEFAULT", clp_uvm_args)) begin
-     	  	  `uvm_info("BASE_TEST", "Testing Command Line Switch . . .", UVM_NONE);
-     	  end // if (!clp.get_arg_matches("+UVM_REPORT_DEFAULT", clp_uvm_args)) begin
-
-        super.build_phase(phase);
-     end
+    super.build_phase(phase);
           
-     // `uvm_info("BASE_TEST", "Setting uvm_report_server to old_server . . .", UVM_NONE);
-               
-      // old_server = new("old_server");
-      // uvm_report_server::set_server(old_server);
-      
+      `uvm_info("BASE_TEST_BUILD_PHASE", "In BASE TEST BUILD PHASE . . .", UVM_NONE);
+                    
   endfunction: build_phase
    
   // end_of_elaboration_phase  
   function void end_of_elaboration_phase(uvm_phase phase);
-     `uvm_info("BASE_TEST", "Setting uvm_report_server to report_server. . .", UVM_NONE);   
+     // print the topology
+     uvm_top.print_topology();
+     
+     `uvm_info("BASE_TEST_ELABORATION_PHASE", "Setting uvm_report_server to report_server . . .", UVM_NONE);   
      report_server = new("report_server");
      uvm_report_server::set_server(report_server);
  	  	
-     // print the topology
-     uvm_top.print_topology();
   endfunction: end_of_elaboration_phase
 
   // run phase - start the seq on the specified seqr 
@@ -94,7 +86,7 @@ class uvm_template_base_test extends uvm_test;
             
     super.report_phase(phase);
     
-    `uvm_info("BASE_TEST", "Getting my_uvm_report_server . . .", UVM_NONE);
+    `uvm_info("BASE_TEST_REPORT_PHASE", "Getting my_uvm_report_server . . .", UVM_NONE);
      
     svr = uvm_report_server::get_server(); 
     
