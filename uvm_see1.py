@@ -2568,7 +2568,7 @@ class App(Frame):    #( object)
           # of the report server file named my_uvm_report_server.sv
           pattern_string = "my_uvm_report_server"
           for i in os.listdir(directory_full_path_project_name_global):
-              if i.endswith(".sv"):
+              if i.endswith(".svh"):
                   if pattern_string in i:
                       report_server_value_string_global = i
                       # Update button colors when this uvm file type is detected.
