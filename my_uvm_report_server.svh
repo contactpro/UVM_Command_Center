@@ -29,6 +29,24 @@ class my_uvm_report_server extends uvm_report_server;
     `uvm_info("MY_UVM_REPORT_SERVER","END CUSTOM REPORT SERVER Constructor . . .",UVM_MEDIUM)
   endfunction: new
 
+  function string getShortFileName(string s);
+     int offset = 0;
+     int lastChar;
+     string shortFileName;
+     int slashPosition;
+      
+     lastChar = s.len()-1;
+     for (int i = lastChar; i >= offset; i=i-1) begin
+       if (s.getc(i) inside {"/", "\\"}) begin
+         slashPosition = i;
+         break;
+       end
+     end // for loop
+          
+     shortFileName = s.substr(slashPosition+1, lastChar);
+     return shortFileName;
+  endfunction
+
   virtual function string compose_message(
          uvm_severity severity,
          string name,
@@ -47,21 +65,22 @@ class my_uvm_report_server extends uvm_report_server;
        case(1)
        	 (name == "" && filename == ""):
        	          // return {sv.name(), " @ ", time_str, " [", id, "] ", message};
-       	          return $psprintf( "%-8s | %16s | %2d | %0t | %-21s | %-7s | %s", sv.name(), filename, line, $time, name, id, message );
+       	          return $psprintf( "@%7tns | %-8s | %16s [%2d] %-21s | %-7s | %s", $time, sv.name(), filename, line, name, id, message );
          (name != "" && filename == ""):
        	          // return {sv.name(), " @ ", time_str, ": ", name, " [", id, "] ", message};
-       	          return $psprintf( "%-8s | %16s | %2d | %0t | %-21s | %-7s | %s", sv.name(), filename, line, $time, name, id, message );
+       	          return $psprintf( "@%7tns | %-8s | %16s [%2d] %-21s | %-7s | %s", $time, sv.name(), filename, line, name, id, message );
        	 (name == "" && filename != ""):
        	      begin
        	      	  // $swrite(line_str, "%0d", line); 
        	      	  // return {sv.name(), " ", filename, "(", line_str, ")", " @ ", time_str, " [", id, "] ", message};
-       	      	  return $psprintf( "%-8s | %16s | %2d | %0t | %-21s | %-7s | %s", sv.name(), filename, line, $time, name, id, message );
+       	      	  return $psprintf( "@%7tns | %-8s | %16s [%2d] %-21s | %-7s | %s", $time, sv.name(), getShortFileName(filename), line, name, id, message );
        	      end
        	 (name != "" && filename != ""):
        	      begin
        	      	  // $swrite(line_str, "%0d", line);
        	      	  // return {sv.name(), " ", filename, "(", line_str, ")", " @ ", time_str, ": ", name," [", id, "] ", message};
-       	      	  return $psprintf( "%-8s | %16s | %2d | %0t | %-21s | %-7s | %s", sv.name(), filename, line, $time, name, id, message );
+       	      	  // return $psprintf( "%-8s | %16s [%2d] %0t | %-21s | %-7s | %s", sv.name(), getShortFileName(filename), line, $time, name, id, message );
+       	      	  return $psprintf( "@%7tns | %-8s | %16s [%2d] %-21s | %-7s | %s", $time, sv.name(), getShortFileName(filename), line, name, id, message );
        	      end       	      	  
        endcase    	                 
        // return $psprintf( "%-8s | %16s | %2d | %0t | %-21s | %-7s | %s", sv.name(), filename, line, $time, name, id, message );
