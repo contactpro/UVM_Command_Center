@@ -16,13 +16,11 @@ import uvm_pkg::*;
 
 class uvm_template_base_test extends uvm_test;
   
+  // custom report server instance
   my_uvm_report_server report_server;
   
   // env instance  
   uvm_template_env env;
-  
-  // seq instance
-  uvm_template_sequence seq;
   
   // virtual interface
   virtual my_if vif;  
@@ -36,13 +34,7 @@ class uvm_template_base_test extends uvm_test;
     super.new(name, parent);
     
     `uvm_info("BASE_TEST_CONSTRUCTOR_START","START OF BASE TEST CONSTRUCTOR . . .", UVM_MEDIUM);
-        
-    // Create the env
-    env = uvm_template_env::type_id::create("env", this);
-      
-    // Create the seq
-    seq = uvm_template_sequence::type_id::create("env", this);
-      
+
     uvm_config_db#(virtual my_if)::get(this, "", "vif", vif);
           
     clp = uvm_cmdline_processor::get_inst();
@@ -57,17 +49,19 @@ class uvm_template_base_test extends uvm_test;
   // build_phase 
   virtual function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-          
+    // Create the env
+    env = uvm_template_env::type_id::create("env", this);          
       `uvm_info("BASE_TEST_BUILD_PHASE", "In BASE TEST BUILD PHASE . . .", UVM_NONE);
                     
   endfunction: build_phase
    
   // end_of_elaboration_phase  
   function void end_of_elaboration_phase(uvm_phase phase);
+     `uvm_info("BASE_TEST_ELABORATION_PHASE_PRINT_TOPOLOGY", "Printing UVM Testbench Topology.", UVM_NONE); 
      // print the topology
      uvm_top.print_topology();
      
-     `uvm_info("BASE_TEST_ELABORATION_PHASE", "Setting uvm_report_server to report_server . . .", UVM_NONE);   
+     `uvm_info("BASE_TEST_ELABORATION_PHASE", "Setting report_server.", UVM_NONE);   
      report_server = new("report_server");
      uvm_report_server::set_server(report_server);
  	  	
@@ -75,18 +69,21 @@ class uvm_template_base_test extends uvm_test;
 
   // run phase - start the seq on the specified seqr 
   task run_phase(uvm_phase phase);
+    // Create the seq
+    uvm_template_sequence seq;
+    seq = uvm_template_sequence::type_id::create("seq", this);
     seq.start(env.agnt.seqr);
+    `uvm_info("BASE_TEST_RUN_PHASE", "Creating Sequence and Starting Sequence on Sequencer.", UVM_NONE); 
   endtask: run_phase
 
   // report phase  
   function void report_phase(uvm_phase phase);
 
     uvm_report_server svr; 
-    // my_uvm_report_server svr;
             
     super.report_phase(phase);
     
-    `uvm_info("BASE_TEST_REPORT_PHASE", "Getting my_uvm_report_server . . .", UVM_NONE);
+    `uvm_info("BASE_TEST_REPORT_PHASE", "Getting report_server . . .", UVM_NONE);
      
     svr = uvm_report_server::get_server(); 
     
