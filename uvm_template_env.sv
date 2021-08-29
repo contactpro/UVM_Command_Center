@@ -36,13 +36,13 @@ class uvm_template_env extends uvm_env;
   
   // phase progress information funtion
   function void phase_started(uvm_phase phase);
-    `uvm_info("PHASE_STATUS", $sformatf("Phase started for %s", phase.get_name()), UVM_NONE);
+    `uvm_info("ENV_BUILD_PHASE PHASE_STATUS", $sformatf("Phase started for %s", phase.get_name()), UVM_NONE);
   endfunction: phase_started
   
   // build phase 
   virtual function void build_phase(uvm_phase phase);
     super.build_phase(phase);   
-    `uvm_info(get_type_name(),"In ENV BUILD PHASE . . .", UVM_MEDIUM);
+    `uvm_info("ENV_BUILD_PHASE","In ENV BUILD PHASE . . .", UVM_MEDIUM);
     uvm_config_db#(virtual my_if)::get(this, "", "vif", vif);     
     agnt = uvm_template_agent::type_id::create("agnt", this);
     scbd = uvm_template_scoreboard::type_id::create("scbd", this);      
@@ -51,8 +51,11 @@ class uvm_template_env extends uvm_env;
   // connect phase 
   virtual function void connect_phase(uvm_phase phase);
     super.connect_phase(phase);
+    `uvm_info("ENV_CONNECT_PHASE","In ENV CONNECT PHASE . . .", UVM_MEDIUM);
     // connect the scoreboard with the mon.item_collected_export
-    agnt.mon.item_collected_port.connect(scbd.item_collected_export);
+    phase.raise_objection(this);
+    // agnt.mon.item_collected_port.connect(scbd.item_collected_export);
+    phase.drop_objection(this);
   endfunction: connect_phase  
 
   // run phase  
