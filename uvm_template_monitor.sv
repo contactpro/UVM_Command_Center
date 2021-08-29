@@ -35,13 +35,13 @@ class uvm_template_monitor extends uvm_monitor;
 
   // phase progress information funtion
   function void phase_started(uvm_phase phase);
-    `uvm_info("PHASE_STATUS", $sformatf("Phase started for %s", phase.get_name()), UVM_NONE);
+    `uvm_info("MONITOR_PHASE_STATUS", $sformatf("Phase started for %s", phase.get_name()), UVM_NONE);
   endfunction: phase_started
 
   // build phase
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-      `uvm_info(get_type_name(),"In MONITOR BUILD PHASE . . .", UVM_MEDIUM);
+      `uvm_info("MONITOR_BUILD_PHASE","In MONITOR BUILD PHASE . . .", UVM_MEDIUM);
       uvm_config_db#(virtual my_if)::get(this, "", "vif", vif);  
   endfunction: build_phase
   
