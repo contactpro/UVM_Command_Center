@@ -59,7 +59,7 @@ module uvm_template_top;
   
   // passing the interface handle to 
   // the lower heirarchy using set method   
-  // calling test 
+  // calling test  
   initial begin 
   	`uvm_info("TOP","In TOP initial block . . .",UVM_MEDIUM)
   	env_inst_in_top = new("uvm_template_env"); // null);
