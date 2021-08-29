@@ -40,12 +40,12 @@ module uvm_template_top;
   
   
   //clock generation
-  always #5 clk = ~clk;
+  always #5ns clk = ~clk;
   
   //reset generation
   initial begin
-    reset = 1;
-    #30 reset = 0;
+    reset = 1ns;
+    #30ns reset = 0;
   end
 
 
@@ -61,6 +61,8 @@ module uvm_template_top;
   // the lower heirarchy using set method   
   // calling test  
   initial begin 
+  	// Print the simulation time in ns by default
+    $timeformat(-9, 0, "", 11);  // units, precision, suffix, min field width
   	`uvm_info("TOP","In TOP initial block . . .",UVM_MEDIUM)
   	env_inst_in_top = new("uvm_template_env"); // null);
     uvm_config_db#(virtual my_if)::set(null,"*","vif",intf); 	
