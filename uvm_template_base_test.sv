@@ -69,11 +69,13 @@ class uvm_template_base_test extends uvm_test;
 
   // run phase - start the seq on the specified seqr 
   task run_phase(uvm_phase phase);
-    // Create the seq
     uvm_template_sequence seq;
     seq = uvm_template_sequence::type_id::create("seq", this);
+    phase.raise_objection(this);
     seq.start(env.agnt.seqr);
-    `uvm_info("BASE_TEST_RUN_PHASE", "Creating Sequence and Starting Sequence on Sequencer.", UVM_NONE); 
+    `uvm_info("BASE_TEST_RUN_PHASE", "Created Sequence and Started Sequence on Sequencer.", UVM_NONE);     
+    #1000;
+    phase.drop_objection(this);
   endtask: run_phase
 
   // report phase  
