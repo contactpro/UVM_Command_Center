@@ -1,5 +1,5 @@
 # vsim -c "+nowarnTSCALE" -voptargs="+acc" uvm_template_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\sim.do" 
-# Start time: 03:01:50 on Aug 29,2021
+# Start time: 07:31:12 on Aug 31,2021
 # Loading sv_std.std
 # Loading work.uvm_pkg
 # Loading work.uvm_template_top_sv_unit
@@ -16,12 +16,12 @@
 #    Time: 0 ps  Iteration: 0  Region: /uvm_template_top_sv_unit File: C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_top.sv
 # ** Warning: (vsim-3764) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(46): Stand-alone call to function 'get' treated as implicit void cast.
 #    Time: 0 ps  Iteration: 0  Region: /uvm_template_top_sv_unit File: C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_top.sv
-# ** Warning: (vsim-3764) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(46): Stand-alone call to function 'get' treated as implicit void cast.
+# ** Warning: (vsim-3764) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(38): Stand-alone call to function 'get' treated as implicit void cast.
 #    Time: 0 ps  Iteration: 0  Region: /uvm_template_top_sv_unit File: C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_top.sv
-# ** Warning: (vsim-3764) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(35): Stand-alone call to function 'get' treated as implicit void cast.
+# ** Warning: (vsim-3764) C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(39): Stand-alone call to function 'get' treated as implicit void cast.
 #    Time: 0 ps  Iteration: 0  Region: /uvm_template_top_sv_unit::uvm_template_driver File: C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_top.sv
-# Loading C:/Users/HP/AppData/Local/Temp\HP@CHIPCODER_dpi_18312\win32pe_gcc-4.2.1\vsim_auto_compile.dll
-# ** Warning: Design size of 48221 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Loading C:/Users/HP/AppData/Local/Temp\HP@CHIPCODER_dpi_7052\win32pe_gcc-4.2.1\vsim_auto_compile.dll
+# ** Warning: Design size of 48354 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
 # Expect performance to be adversely affected.
 # do {C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\sim.do}
 # ----------------------------------------------------------------
@@ -44,343 +44,542 @@
 # 
 #       (Specify +UVM_NO_RELNOTES to turn off this notice)
 # 
-# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\uvm_template_top.sv(64) @ 0: reporter [TOP] In TOP initial block . . .
-# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(38) @ 0: uvm_test_top [BASE_TEST_CONSTRUCTOR_START] START OF BASE TEST CONSTRUCTOR . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates\uvm_template_top.sv(144) @ 0: reporter [TOP] In TOP initial block . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(36) @ 0: uvm_test_top [BASE_TEST_CONSTRUCTOR_START] START OF BASE TEST CONSTRUCTOR . . .
 # UVM_INFO @ 0: reporter [RNTST] Running test uvm_template_base_test...
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(39) @ 0: uvm_template_env [ENV_BUILD_PHASE PHASE_STATUS] Phase started for build
-# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(54) @ 0: uvm_test_top [BASE_TEST_PHASE_STATUS] Phase started for build
-# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(39) @ 0: uvm_test_top.env [ENV_BUILD_PHASE PHASE_STATUS] Phase started for build
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(46) @ 0: uvm_test_top [BASE_TEST_PHASE_STATUS] Phase started for build
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(45) @ 0: uvm_template_env [ENV_BUILD_PHASE] In ENV BUILD PHASE . . .
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv(40) @ 0: uvm_template_env.agnt [AGENT_BUILD_PHASE] In AGENT BUILD PHASE . . .
-# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(34) @ 0: uvm_template_env.agnt.drv [DRIVER_BUILD_PHASE] In DRIVER BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(40) @ 0: uvm_template_env.agnt.drv [DRIVER_BUILD_PHASE] In DRIVER BUILD PHASE . . .
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv(44) @ 0: uvm_template_env.agnt.mon [MONITOR_BUILD_PHASE] In MONITOR BUILD PHASE . . .
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv(31) @ 0: uvm_template_env.agnt.seqr [SEQUENCER] In SEQUENCER BUILD PHASE . . .
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv(40) @ 0: uvm_template_env.scbd [SCBD_BUILD_PHASE] In SCBD BUILD PHASE . . .
-# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(61) @ 0: uvm_test_top [BASE_TEST_BUILD_PHASE] In BASE TEST BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(54) @ 0: uvm_test_top [BASE_TEST_BUILD_PHASE] In BASE TEST BUILD PHASE . . .
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(45) @ 0: uvm_test_top.env [ENV_BUILD_PHASE] In ENV BUILD PHASE . . .
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv(40) @ 0: uvm_test_top.env.agnt [AGENT_BUILD_PHASE] In AGENT BUILD PHASE . . .
-# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(34) @ 0: uvm_test_top.env.agnt.drv [DRIVER_BUILD_PHASE] In DRIVER BUILD PHASE . . .
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(40) @ 0: uvm_test_top.env.agnt.drv [DRIVER_BUILD_PHASE] In DRIVER BUILD PHASE . . .
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv(44) @ 0: uvm_test_top.env.agnt.mon [MONITOR_BUILD_PHASE] In MONITOR BUILD PHASE . . .
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv(31) @ 0: uvm_test_top.env.agnt.seqr [SEQUENCER] In SEQUENCER BUILD PHASE . . .
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv(40) @ 0: uvm_test_top.env.scbd [SCBD_BUILD_PHASE] In SCBD BUILD PHASE . . .
-# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(28) @ 0: uvm_template_env.agnt.drv [DRIVER_PHASE_STATUS] Phase started for connect
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(31) @ 0: uvm_template_env.agnt.drv [DRIVER_PHASE_STATUS] Phase started for connect
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv(38) @ 0: uvm_template_env.agnt.mon [MONITOR_PHASE_STATUS] Phase started for connect
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv(25) @ 0: uvm_template_env.agnt.seqr [PHASE_STATUS] Phase started for connect
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv(34) @ 0: uvm_template_env.agnt [PHASE_STATUS] Phase started for connect
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv(34) @ 0: uvm_template_env.scbd [SCOREBOARD_PHASE_STATUS] Phase started for connect
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(39) @ 0: uvm_template_env [ENV_BUILD_PHASE PHASE_STATUS] Phase started for connect
-# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(28) @ 0: uvm_test_top.env.agnt.drv [DRIVER_PHASE_STATUS] Phase started for connect
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(31) @ 0: uvm_test_top.env.agnt.drv [DRIVER_PHASE_STATUS] Phase started for connect
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv(38) @ 0: uvm_test_top.env.agnt.mon [MONITOR_PHASE_STATUS] Phase started for connect
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv(25) @ 0: uvm_test_top.env.agnt.seqr [PHASE_STATUS] Phase started for connect
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv(34) @ 0: uvm_test_top.env.agnt [PHASE_STATUS] Phase started for connect
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv(34) @ 0: uvm_test_top.env.scbd [SCOREBOARD_PHASE_STATUS] Phase started for connect
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(39) @ 0: uvm_test_top.env [ENV_BUILD_PHASE PHASE_STATUS] Phase started for connect
-# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(54) @ 0: uvm_test_top [BASE_TEST_PHASE_STATUS] Phase started for connect
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(46) @ 0: uvm_test_top [BASE_TEST_PHASE_STATUS] Phase started for connect
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(54) @ 0: uvm_template_env [ENV_CONNECT_PHASE] In ENV CONNECT PHASE . . .
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(54) @ 0: uvm_test_top.env [ENV_CONNECT_PHASE] In ENV CONNECT PHASE . . .
-# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(28) @ 0: uvm_template_env.agnt.drv [DRIVER_PHASE_STATUS] Phase started for end_of_elaboration
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(31) @ 0: uvm_template_env.agnt.drv [DRIVER_PHASE_STATUS] Phase started for end_of_elaboration
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv(38) @ 0: uvm_template_env.agnt.mon [MONITOR_PHASE_STATUS] Phase started for end_of_elaboration
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv(25) @ 0: uvm_template_env.agnt.seqr [PHASE_STATUS] Phase started for end_of_elaboration
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv(34) @ 0: uvm_template_env.agnt [PHASE_STATUS] Phase started for end_of_elaboration
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv(34) @ 0: uvm_template_env.scbd [SCOREBOARD_PHASE_STATUS] Phase started for end_of_elaboration
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(39) @ 0: uvm_template_env [ENV_BUILD_PHASE PHASE_STATUS] Phase started for end_of_elaboration
-# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(28) @ 0: uvm_test_top.env.agnt.drv [DRIVER_PHASE_STATUS] Phase started for end_of_elaboration
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv(31) @ 0: uvm_test_top.env.agnt.drv [DRIVER_PHASE_STATUS] Phase started for end_of_elaboration
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv(38) @ 0: uvm_test_top.env.agnt.mon [MONITOR_PHASE_STATUS] Phase started for end_of_elaboration
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv(25) @ 0: uvm_test_top.env.agnt.seqr [PHASE_STATUS] Phase started for end_of_elaboration
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv(34) @ 0: uvm_test_top.env.agnt [PHASE_STATUS] Phase started for end_of_elaboration
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv(34) @ 0: uvm_test_top.env.scbd [SCOREBOARD_PHASE_STATUS] Phase started for end_of_elaboration
 # UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv(39) @ 0: uvm_test_top.env [ENV_BUILD_PHASE PHASE_STATUS] Phase started for end_of_elaboration
-# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(54) @ 0: uvm_test_top [BASE_TEST_PHASE_STATUS] Phase started for end_of_elaboration
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(46) @ 0: uvm_test_top [BASE_TEST_PHASE_STATUS] Phase started for end_of_elaboration
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(60) @ 0: uvm_test_top [BASE_TEST_ELABORATION_PHASE_PRINT_TOPOLOGY] Printing UVM Testbench Topology.
 # UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
 # -----------------------------------------------------------------
 # Name                         Type                     Size  Value
 # -----------------------------------------------------------------
 # uvm_template_env             uvm_template_env         -     @444 
-#   agnt                       uvm_template_agent       -     @480 
-#     drv                      uvm_template_driver      -     @497 
-#       rsp_port               uvm_analysis_port        -     @514 
-#       seq_item_port          uvm_seq_item_pull_port   -     @505 
-#     mon                      uvm_template_monitor     -     @646 
+#   agnt                       uvm_template_agent       -     @468 
+#     drv                      uvm_template_driver      -     @485 
+#       rsp_port               uvm_analysis_port        -     @502 
+#       seq_item_port          uvm_seq_item_pull_port   -     @493 
+#     mon                      uvm_template_monitor     -     @634 
 #       packet_count           integral                 32    'h0  
-#     seqr                     uvm_template_sequencer   -     @523 
-#       rsp_export             uvm_analysis_export      -     @531 
-#       seq_item_export        uvm_seq_item_pull_imp    -     @637 
+#     seqr                     uvm_template_sequencer   -     @511 
+#       rsp_export             uvm_analysis_export      -     @519 
+#       seq_item_export        uvm_seq_item_pull_imp    -     @625 
 #       arbitration_queue      array                    0     -    
 #       lock_queue             array                    0     -    
 #       num_last_reqs          integral                 32    'd1  
 #       num_last_rsps          integral                 32    'd1  
-#   scbd                       uvm_template_scoreboard  -     @488 
-#     item_collected_export    uvm_analysis_imp         -     @663 
+#   scbd                       uvm_template_scoreboard  -     @476 
+#     item_collected_export    uvm_analysis_imp         -     @659 
 #   num_seqs                   integral                 32    'h4  
 # uvm_test_top                 uvm_template_base_test   -     @456 
-#   env                        uvm_template_env         -     @464 
-#     agnt                     uvm_template_agent       -     @675 
-#       drv                    uvm_template_driver      -     @692 
-#         rsp_port             uvm_analysis_port        -     @709 
-#         seq_item_port        uvm_seq_item_pull_port   -     @700 
-#       mon                    uvm_template_monitor     -     @841 
+#   env                        uvm_template_env         -     @668 
+#     agnt                     uvm_template_agent       -     @679 
+#       drv                    uvm_template_driver      -     @696 
+#         rsp_port             uvm_analysis_port        -     @713 
+#         seq_item_port        uvm_seq_item_pull_port   -     @704 
+#       mon                    uvm_template_monitor     -     @845 
 #         packet_count         integral                 32    'h0  
-#       seqr                   uvm_template_sequencer   -     @718 
-#         rsp_export           uvm_analysis_export      -     @726 
-#         seq_item_export      uvm_seq_item_pull_imp    -     @832 
+#       seqr                   uvm_template_sequencer   -     @722 
+#         rsp_export           uvm_analysis_export      -     @730 
+#         seq_item_export      uvm_seq_item_pull_imp    -     @836 
 #         arbitration_queue    array                    0     -    
 #         lock_queue           array                    0     -    
 #         num_last_reqs        integral                 32    'd1  
 #         num_last_rsps        integral                 32    'd1  
-#     scbd                     uvm_template_scoreboard  -     @683 
-#       item_collected_export  uvm_analysis_imp         -     @858 
+#     scbd                     uvm_template_scoreboard  -     @687 
+#       item_collected_export  uvm_analysis_imp         -     @870 
 #     num_seqs                 integral                 32    'h4  
 # -----------------------------------------------------------------
 # 
-# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(70) @ 0: uvm_test_top [BASE_TEST_ELABORATION_PHASE] Setting uvm_report_server to report_server . . .
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/my_uvm_report_server.svh | 29 | 0 | reporter              | MY_UVM_REPORT_SERVER | END CUSTOM REPORT SERVER Constructor . . .
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for start_of_simulation
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for start_of_simulation
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for start_of_simulation
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_template_env.agnt | PHASE_STATUS | Phase started for start_of_simulation
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for start_of_simulation
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for start_of_simulation
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for start_of_simulation
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for start_of_simulation
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for start_of_simulation
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_test_top.env.agnt | PHASE_STATUS | Phase started for start_of_simulation
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for start_of_simulation
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for start_of_simulation
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 54 | 0 | uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for start_of_simulation
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for run
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for run
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for run
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_template_env.agnt | PHASE_STATUS | Phase started for run
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for run
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for run
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for run
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for run
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for run
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_test_top.env.agnt | PHASE_STATUS | Phase started for run
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for run
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for run
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 54 | 0 | uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for run
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 62 | 0 | uvm_test_top.env.scbd | SCBD_RUN_PHASE | In SCBD RUN PHASE . . .
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 62 | 0 | uvm_template_env.scbd | SCBD_RUN_PHASE | In SCBD RUN PHASE . . .
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for pre_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for pre_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for pre_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_template_env.agnt | PHASE_STATUS | Phase started for pre_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for pre_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for pre_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for pre_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for pre_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for pre_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_test_top.env.agnt | PHASE_STATUS | Phase started for pre_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for pre_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for pre_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 54 | 0 | uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for pre_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_template_env.agnt | PHASE_STATUS | Phase started for reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_test_top.env.agnt | PHASE_STATUS | Phase started for reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 54 | 0 | uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for post_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for post_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for post_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_template_env.agnt | PHASE_STATUS | Phase started for post_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for post_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for post_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for post_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for post_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for post_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_test_top.env.agnt | PHASE_STATUS | Phase started for post_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for post_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for post_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 54 | 0 | uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for post_reset
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for pre_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for pre_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for pre_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_template_env.agnt | PHASE_STATUS | Phase started for pre_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for pre_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for pre_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for pre_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for pre_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for pre_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_test_top.env.agnt | PHASE_STATUS | Phase started for pre_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for pre_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for pre_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 54 | 0 | uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for pre_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_template_env.agnt | PHASE_STATUS | Phase started for configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_test_top.env.agnt | PHASE_STATUS | Phase started for configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 54 | 0 | uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for post_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for post_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for post_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_template_env.agnt | PHASE_STATUS | Phase started for post_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for post_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for post_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for post_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for post_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for post_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_test_top.env.agnt | PHASE_STATUS | Phase started for post_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for post_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for post_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 54 | 0 | uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for post_configure
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for pre_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for pre_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for pre_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_template_env.agnt | PHASE_STATUS | Phase started for pre_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for pre_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for pre_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for pre_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for pre_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for pre_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_test_top.env.agnt | PHASE_STATUS | Phase started for pre_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for pre_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for pre_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 54 | 0 | uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for pre_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_template_env.agnt | PHASE_STATUS | Phase started for main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_test_top.env.agnt | PHASE_STATUS | Phase started for main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 54 | 0 | uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for post_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for post_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for post_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_template_env.agnt | PHASE_STATUS | Phase started for post_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for post_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for post_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for post_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for post_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for post_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_test_top.env.agnt | PHASE_STATUS | Phase started for post_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for post_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for post_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 54 | 0 | uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for post_main
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for pre_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for pre_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for pre_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_template_env.agnt | PHASE_STATUS | Phase started for pre_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for pre_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for pre_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for pre_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for pre_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for pre_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_test_top.env.agnt | PHASE_STATUS | Phase started for pre_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for pre_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for pre_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 54 | 0 | uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for pre_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_template_env.agnt | PHASE_STATUS | Phase started for shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_test_top.env.agnt | PHASE_STATUS | Phase started for shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 54 | 0 | uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for post_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for post_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for post_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_template_env.agnt | PHASE_STATUS | Phase started for post_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for post_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for post_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for post_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for post_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for post_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_test_top.env.agnt | PHASE_STATUS | Phase started for post_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for post_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for post_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 54 | 0 | uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for post_shutdown
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for extract
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for extract
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for extract
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_template_env.agnt | PHASE_STATUS | Phase started for extract
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for extract
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for extract
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for extract
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for extract
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for extract
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_test_top.env.agnt | PHASE_STATUS | Phase started for extract
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for extract
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for extract
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 54 | 0 | uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for extract
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for check
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for check
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for check
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_template_env.agnt | PHASE_STATUS | Phase started for check
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for check
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for check
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for check
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for check
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for check
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_test_top.env.agnt | PHASE_STATUS | Phase started for check
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for check
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for check
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 54 | 0 | uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for check
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for report
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for report
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for report
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_template_env.agnt | PHASE_STATUS | Phase started for report
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for report
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for report
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for report
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for report
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for report
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_test_top.env.agnt | PHASE_STATUS | Phase started for report
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for report
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for report
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 54 | 0 | uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for report
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 78 | 0 | uvm_template_env.agnt.mon | UVM_MONITOR_REPORT_PHASE | Completed Monitoring Packets. 
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 78 | 0 | uvm_test_top.env.agnt.mon | UVM_MONITOR_REPORT_PHASE | Completed Monitoring Packets. 
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 89 | 0 | uvm_test_top          | BASE_TEST_REPORT_PHASE | Getting my_uvm_report_server . . .
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 99 | 0 | uvm_test_top          | uvm_template_base_test | ---------------------------------------
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 100 | 0 | uvm_test_top          | uvm_template_base_test | ----           TEST PASS           ----
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 101 | 0 | uvm_test_top          | uvm_template_base_test | ---------------------------------------
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for final
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_template_env.agnt | PHASE_STATUS | Phase started for final
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for final
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for final
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for final
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for final
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv | 54 | 0 | uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for final
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv | 39 | 0 | uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for final
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv | 34 | 0 | uvm_test_top.env.agnt | PHASE_STATUS | Phase started for final
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_driver.sv | 28 | 0 | uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for final
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_monitor.sv | 38 | 0 | uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for final
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_sequencer.sv | 25 | 0 | uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for final
-# UVM_INFO | C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv | 34 | 0 | uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for final
+# UVM_INFO C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv(64) @ 0: uvm_test_top [BASE_TEST_ELABORATION_PHASE] Setting report_server.
+# @      0ns | UVM_INFO | my_uvm_report_server.svh [29] reporter              | MY_UVM_REPORT_SERVER | END CUSTOM REPORT SERVER Constructor . . .
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for start_of_simulation
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for start_of_simulation
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for start_of_simulation
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_template_env.agnt | PHASE_STATUS | Phase started for start_of_simulation
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for start_of_simulation
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for start_of_simulation
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for start_of_simulation
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for start_of_simulation
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for start_of_simulation
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_test_top.env.agnt | PHASE_STATUS | Phase started for start_of_simulation
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for start_of_simulation
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for start_of_simulation
+# @      0ns | UVM_INFO | uvm_template_base_test.sv [46] uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for start_of_simulation
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for run
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for run
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for run
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_template_env.agnt | PHASE_STATUS | Phase started for run
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for run
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for run
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for run
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for run
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for run
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_test_top.env.agnt | PHASE_STATUS | Phase started for run
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for run
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for run
+# @      0ns | UVM_INFO | uvm_template_base_test.sv [46] uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for run
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [62] uvm_test_top.env.scbd | SCBD_RUN_PHASE | In SCBD RUN PHASE . . .
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [62] uvm_template_env.scbd | SCBD_RUN_PHASE | In SCBD RUN PHASE . . .
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for pre_reset
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for pre_reset
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for pre_reset
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_template_env.agnt | PHASE_STATUS | Phase started for pre_reset
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for pre_reset
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for pre_reset
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for pre_reset
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for pre_reset
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for pre_reset
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_test_top.env.agnt | PHASE_STATUS | Phase started for pre_reset
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for pre_reset
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for pre_reset
+# @      0ns | UVM_INFO | uvm_template_base_test.sv [46] uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for pre_reset
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for reset
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for reset
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for reset
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_template_env.agnt | PHASE_STATUS | Phase started for reset
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for reset
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for reset
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for reset
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for reset
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for reset
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_test_top.env.agnt | PHASE_STATUS | Phase started for reset
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for reset
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for reset
+# @      0ns | UVM_INFO | uvm_template_base_test.sv [46] uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for reset
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for post_reset
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for post_reset
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for post_reset
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_template_env.agnt | PHASE_STATUS | Phase started for post_reset
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for post_reset
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for post_reset
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for post_reset
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for post_reset
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for post_reset
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_test_top.env.agnt | PHASE_STATUS | Phase started for post_reset
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for post_reset
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for post_reset
+# @      0ns | UVM_INFO | uvm_template_base_test.sv [46] uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for post_reset
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for pre_configure
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for pre_configure
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for pre_configure
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_template_env.agnt | PHASE_STATUS | Phase started for pre_configure
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for pre_configure
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for pre_configure
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for pre_configure
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for pre_configure
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for pre_configure
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_test_top.env.agnt | PHASE_STATUS | Phase started for pre_configure
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for pre_configure
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for pre_configure
+# @      0ns | UVM_INFO | uvm_template_base_test.sv [46] uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for pre_configure
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for configure
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for configure
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for configure
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_template_env.agnt | PHASE_STATUS | Phase started for configure
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for configure
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for configure
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for configure
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for configure
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for configure
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_test_top.env.agnt | PHASE_STATUS | Phase started for configure
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for configure
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for configure
+# @      0ns | UVM_INFO | uvm_template_base_test.sv [46] uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for configure
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for post_configure
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for post_configure
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for post_configure
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_template_env.agnt | PHASE_STATUS | Phase started for post_configure
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for post_configure
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for post_configure
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for post_configure
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for post_configure
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for post_configure
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_test_top.env.agnt | PHASE_STATUS | Phase started for post_configure
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for post_configure
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for post_configure
+# @      0ns | UVM_INFO | uvm_template_base_test.sv [46] uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for post_configure
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for pre_main
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for pre_main
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for pre_main
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_template_env.agnt | PHASE_STATUS | Phase started for pre_main
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for pre_main
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for pre_main
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for pre_main
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for pre_main
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for pre_main
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_test_top.env.agnt | PHASE_STATUS | Phase started for pre_main
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for pre_main
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for pre_main
+# @      0ns | UVM_INFO | uvm_template_base_test.sv [46] uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for pre_main
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for main
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for main
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for main
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_template_env.agnt | PHASE_STATUS | Phase started for main
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for main
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for main
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for main
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for main
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for main
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_test_top.env.agnt | PHASE_STATUS | Phase started for main
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for main
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for main
+# @      0ns | UVM_INFO | uvm_template_base_test.sv [46] uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for main
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for post_main
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for post_main
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for post_main
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_template_env.agnt | PHASE_STATUS | Phase started for post_main
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for post_main
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for post_main
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for post_main
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for post_main
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for post_main
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_test_top.env.agnt | PHASE_STATUS | Phase started for post_main
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for post_main
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for post_main
+# @      0ns | UVM_INFO | uvm_template_base_test.sv [46] uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for post_main
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for pre_shutdown
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for pre_shutdown
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for pre_shutdown
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_template_env.agnt | PHASE_STATUS | Phase started for pre_shutdown
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for pre_shutdown
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for pre_shutdown
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for pre_shutdown
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for pre_shutdown
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for pre_shutdown
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_test_top.env.agnt | PHASE_STATUS | Phase started for pre_shutdown
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for pre_shutdown
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for pre_shutdown
+# @      0ns | UVM_INFO | uvm_template_base_test.sv [46] uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for pre_shutdown
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for shutdown
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for shutdown
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for shutdown
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_template_env.agnt | PHASE_STATUS | Phase started for shutdown
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for shutdown
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for shutdown
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for shutdown
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for shutdown
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for shutdown
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_test_top.env.agnt | PHASE_STATUS | Phase started for shutdown
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for shutdown
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for shutdown
+# @      0ns | UVM_INFO | uvm_template_base_test.sv [46] uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for shutdown
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for post_shutdown
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for post_shutdown
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for post_shutdown
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_template_env.agnt | PHASE_STATUS | Phase started for post_shutdown
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for post_shutdown
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for post_shutdown
+# @      0ns | UVM_INFO | uvm_template_driver.sv [31] uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for post_shutdown
+# @      0ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for post_shutdown
+# @      0ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for post_shutdown
+# @      0ns | UVM_INFO | uvm_template_agent.sv [34] uvm_test_top.env.agnt | PHASE_STATUS | Phase started for post_shutdown
+# @      0ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for post_shutdown
+# @      0ns | UVM_INFO | uvm_template_env.sv [39] uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for post_shutdown
+# @      0ns | UVM_INFO | uvm_template_base_test.sv [46] uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for post_shutdown
+# @      5ns | UVM_INFO | uvm_template_top.sv [106] reporter              | TOP TIME TRACKER | Simulation Time Progress at 1ns 
+# @     15ns | UVM_INFO | uvm_template_top.sv [110] reporter              | TOP TIME TRACKER | Simulation Time Progress at 5ns 
+# @     15ns | UVM_INFO | uvm_template_top.sv [114] reporter              | TOP TIME TRACKER | Simulation Time Progress at 10ns 
+# @     25ns | UVM_INFO | uvm_template_driver.sv [55] uvm_test_top.env.agnt.drv | UVM_TEMPLATE_DRIVER | PKT REQ Transaction Completed:
+# -------------------------------------
+# Name     Type             Size  Value
+# -------------------------------------
+# req      packet_seq_item  -     @889 
+#   addr   integral         2     'h3  
+#   wr_en  integral         1     'h1  
+#   rd_en  integral         1     'h0  
+#   wdata  integral         8     'hea 
+#   rdata  integral         8     'h0  
+# -------------------------------------
+# 
+# @     25ns | UVM_INFO | uvm_template_driver.sv [56] uvm_test_top.env.agnt.drv | UVM_TEMPLATE_DRIVER | PKT RSP Transaction Completed:
+# -------------------------------------------------
+# Name                 Type             Size  Value
+# -------------------------------------------------
+# Our Packet Response  packet_seq_item  -     @857 
+#   addr               integral         2     'h0  
+#   wr_en              integral         1     'h0  
+#   rd_en              integral         1     'h0  
+#   wdata              integral         8     'h0  
+#   rdata              integral         8     'h0  
+# -------------------------------------------------
+# 
+# @     25ns | UVM_INFO | uvm_template_sequence.sv [37] uvm_test_top.env.agnt.seqr@@seq | UVM_TEMPLATE_SEQUENCE | SEQUENCE BODY req Transactions Completed:
+# -------------------------------------
+# Name     Type             Size  Value
+# -------------------------------------
+# req      packet_seq_item  -     @889 
+#   addr   integral         2     'h3  
+#   wr_en  integral         1     'h1  
+#   rd_en  integral         1     'h0  
+#   wdata  integral         8     'hea 
+#   rdata  integral         8     'h0  
+# -------------------------------------
+# 
+# @     25ns | UVM_INFO | uvm_template_sequence.sv [38] uvm_test_top.env.agnt.seqr@@seq | UVM_TEMPLATE_SEQUENCE | SEQUENCE BODY rsp Transactions Completed:
+# -------------------------------------
+# Name     Type             Size  Value
+# -------------------------------------
+# rsp      packet_seq_item  -     @893 
+#   addr   integral         2     'h0  
+#   wr_en  integral         1     'h0  
+#   rd_en  integral         1     'h0  
+#   wdata  integral         8     'h0  
+#   rdata  integral         8     'h0  
+# -------------------------------------
+# 
+# @     55ns | UVM_INFO | uvm_template_driver.sv [55] uvm_test_top.env.agnt.drv | UVM_TEMPLATE_DRIVER | PKT REQ Transaction Completed:
+# -------------------------------------
+# Name     Type             Size  Value
+# -------------------------------------
+# req      packet_seq_item  -     @953 
+#   addr   integral         2     'h2  
+#   wr_en  integral         1     'h1  
+#   rd_en  integral         1     'h0  
+#   wdata  integral         8     'hec 
+#   rdata  integral         8     'h0  
+# -------------------------------------
+# 
+# @     55ns | UVM_INFO | uvm_template_driver.sv [56] uvm_test_top.env.agnt.drv | UVM_TEMPLATE_DRIVER | PKT RSP Transaction Completed:
+# -------------------------------------------------
+# Name                 Type             Size  Value
+# -------------------------------------------------
+# Our Packet Response  packet_seq_item  -     @857 
+#   addr               integral         2     'h0  
+#   wr_en              integral         1     'h0  
+#   rd_en              integral         1     'h0  
+#   wdata              integral         8     'h0  
+#   rdata              integral         8     'h0  
+# -------------------------------------------------
+# 
+# @     55ns | UVM_INFO | uvm_template_sequence.sv [52] uvm_test_top.env.agnt.seqr@@seq | UVM_TEMPLATE_SEQUENCE | SEQUENCE BODY req Transactions Completed:
+# -------------------------------------
+# Name     Type             Size  Value
+# -------------------------------------
+# req      packet_seq_item  -     @953 
+#   addr   integral         2     'h2  
+#   wr_en  integral         1     'h1  
+#   rd_en  integral         1     'h0  
+#   wdata  integral         8     'hec 
+#   rdata  integral         8     'h0  
+# -------------------------------------
+# 
+# @     55ns | UVM_INFO | uvm_template_sequence.sv [53] uvm_test_top.env.agnt.seqr@@seq | UVM_TEMPLATE_SEQUENCE | SEQUENCE BODY rsp Transactions Completed:
+# -------------------------------------
+# Name     Type             Size  Value
+# -------------------------------------
+# rsp      packet_seq_item  -     @957 
+#   addr   integral         2     'h0  
+#   wr_en  integral         1     'h0  
+#   rd_en  integral         1     'h0  
+#   wdata  integral         8     'h0  
+#   rdata  integral         8     'h0  
+# -------------------------------------
+# 
+# @    105ns | UVM_INFO | uvm_template_driver.sv [55] uvm_test_top.env.agnt.drv | UVM_TEMPLATE_DRIVER | PKT REQ Transaction Completed:
+# -------------------------------------
+# Name     Type             Size  Value
+# -------------------------------------
+# req      packet_seq_item  -     @961 
+#   addr   integral         2     'h3  
+#   wr_en  integral         1     'h0  
+#   rd_en  integral         1     'h1  
+#   wdata  integral         8     'h0  
+#   rdata  integral         8     'hea 
+# -------------------------------------
+# 
+# @    105ns | UVM_INFO | uvm_template_driver.sv [56] uvm_test_top.env.agnt.drv | UVM_TEMPLATE_DRIVER | PKT RSP Transaction Completed:
+# -------------------------------------------------
+# Name                 Type             Size  Value
+# -------------------------------------------------
+# Our Packet Response  packet_seq_item  -     @857 
+#   addr               integral         2     'h0  
+#   wr_en              integral         1     'h0  
+#   rd_en              integral         1     'h0  
+#   wdata              integral         8     'h0  
+#   rdata              integral         8     'hea 
+# -------------------------------------------------
+# 
+# @    105ns | UVM_INFO | uvm_template_top.sv [118] reporter              | TOP TIME TRACKER | Simulation Time Progress at 100ns 
+# @    105ns | UVM_INFO | uvm_template_sequence.sv [67] uvm_test_top.env.agnt.seqr@@seq | UVM_TEMPLATE_SEQUENCE | SEQUENCE BODY req Transactions Completed:
+# -------------------------------------
+# Name     Type             Size  Value
+# -------------------------------------
+# req      packet_seq_item  -     @961 
+#   addr   integral         2     'h3  
+#   wr_en  integral         1     'h0  
+#   rd_en  integral         1     'h1  
+#   wdata  integral         8     'h0  
+#   rdata  integral         8     'hea 
+# -------------------------------------
+# 
+# @    105ns | UVM_INFO | uvm_template_sequence.sv [68] uvm_test_top.env.agnt.seqr@@seq | UVM_TEMPLATE_SEQUENCE | SEQUENCE BODY rsp Transactions Completed:
+# -------------------------------------
+# Name     Type             Size  Value
+# -------------------------------------
+# rsp      packet_seq_item  -     @965 
+#   addr   integral         2     'h0  
+#   wr_en  integral         1     'h0  
+#   rd_en  integral         1     'h0  
+#   wdata  integral         8     'h0  
+#   rdata  integral         8     'h0  
+# -------------------------------------
+# 
+# @    155ns | UVM_INFO | uvm_template_driver.sv [55] uvm_test_top.env.agnt.drv | UVM_TEMPLATE_DRIVER | PKT REQ Transaction Completed:
+# -------------------------------------
+# Name     Type             Size  Value
+# -------------------------------------
+# req      packet_seq_item  -     @969 
+#   addr   integral         2     'h2  
+#   wr_en  integral         1     'h0  
+#   rd_en  integral         1     'h1  
+#   wdata  integral         8     'h0  
+#   rdata  integral         8     'hec 
+# -------------------------------------
+# 
+# @    155ns | UVM_INFO | uvm_template_driver.sv [56] uvm_test_top.env.agnt.drv | UVM_TEMPLATE_DRIVER | PKT RSP Transaction Completed:
+# -------------------------------------------------
+# Name                 Type             Size  Value
+# -------------------------------------------------
+# Our Packet Response  packet_seq_item  -     @857 
+#   addr               integral         2     'h0  
+#   wr_en              integral         1     'h0  
+#   rd_en              integral         1     'h0  
+#   wdata              integral         8     'h0  
+#   rdata              integral         8     'hec 
+# -------------------------------------------------
+# 
+# @    155ns | UVM_INFO | uvm_template_sequence.sv [82] uvm_test_top.env.agnt.seqr@@seq | UVM_TEMPLATE_SEQUENCE | SEQUENCE BODY req Transactions Completed:
+# -------------------------------------
+# Name     Type             Size  Value
+# -------------------------------------
+# req      packet_seq_item  -     @969 
+#   addr   integral         2     'h2  
+#   wr_en  integral         1     'h0  
+#   rd_en  integral         1     'h1  
+#   wdata  integral         8     'h0  
+#   rdata  integral         8     'hec 
+# -------------------------------------
+# 
+# @    155ns | UVM_INFO | uvm_template_sequence.sv [83] uvm_test_top.env.agnt.seqr@@seq | UVM_TEMPLATE_SEQUENCE | SEQUENCE BODY rsp Transactions Completed:
+# -------------------------------------
+# Name     Type             Size  Value
+# -------------------------------------
+# rsp      packet_seq_item  -     @973 
+#   addr   integral         2     'h0  
+#   wr_en  integral         1     'h0  
+#   rd_en  integral         1     'h0  
+#   wdata  integral         8     'h0  
+#   rdata  integral         8     'h0  
+# -------------------------------------
+# 
+# @    155ns | UVM_INFO | uvm_template_base_test.sv [76] uvm_test_top          | BASE_TEST_RUN_PHASE | Created Sequence and Started Sequence on Sequencer.
+# @   1005ns | UVM_INFO | uvm_template_top.sv [122] reporter              | TOP TIME TRACKER | Simulation Time Progress at 1000ns 
+# @   1155ns | UVM_INFO | uvm_objection.svh [1268] reporter              | TEST_DONE | 'run' phase is ready to proceed to the 'extract' phase
+# @   1155ns | UVM_INFO | uvm_template_driver.sv [31] uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for extract
+# @   1155ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for extract
+# @   1155ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for extract
+# @   1155ns | UVM_INFO | uvm_template_agent.sv [34] uvm_template_env.agnt | PHASE_STATUS | Phase started for extract
+# @   1155ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for extract
+# @   1155ns | UVM_INFO | uvm_template_env.sv [39] uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for extract
+# @   1155ns | UVM_INFO | uvm_template_driver.sv [31] uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for extract
+# @   1155ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for extract
+# @   1155ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for extract
+# @   1155ns | UVM_INFO | uvm_template_agent.sv [34] uvm_test_top.env.agnt | PHASE_STATUS | Phase started for extract
+# @   1155ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for extract
+# @   1155ns | UVM_INFO | uvm_template_env.sv [39] uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for extract
+# @   1155ns | UVM_INFO | uvm_template_base_test.sv [46] uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for extract
+# @   1155ns | UVM_INFO | uvm_template_driver.sv [31] uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for check
+# @   1155ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for check
+# @   1155ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for check
+# @   1155ns | UVM_INFO | uvm_template_agent.sv [34] uvm_template_env.agnt | PHASE_STATUS | Phase started for check
+# @   1155ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for check
+# @   1155ns | UVM_INFO | uvm_template_env.sv [39] uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for check
+# @   1155ns | UVM_INFO | uvm_template_driver.sv [31] uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for check
+# @   1155ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for check
+# @   1155ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for check
+# @   1155ns | UVM_INFO | uvm_template_agent.sv [34] uvm_test_top.env.agnt | PHASE_STATUS | Phase started for check
+# @   1155ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for check
+# @   1155ns | UVM_INFO | uvm_template_env.sv [39] uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for check
+# @   1155ns | UVM_INFO | uvm_template_base_test.sv [46] uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for check
+# @   1155ns | UVM_INFO | uvm_template_driver.sv [31] uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for report
+# @   1155ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for report
+# @   1155ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for report
+# @   1155ns | UVM_INFO | uvm_template_agent.sv [34] uvm_template_env.agnt | PHASE_STATUS | Phase started for report
+# @   1155ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for report
+# @   1155ns | UVM_INFO | uvm_template_env.sv [39] uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for report
+# @   1155ns | UVM_INFO | uvm_template_driver.sv [31] uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for report
+# @   1155ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for report
+# @   1155ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for report
+# @   1155ns | UVM_INFO | uvm_template_agent.sv [34] uvm_test_top.env.agnt | PHASE_STATUS | Phase started for report
+# @   1155ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for report
+# @   1155ns | UVM_INFO | uvm_template_env.sv [39] uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for report
+# @   1155ns | UVM_INFO | uvm_template_base_test.sv [46] uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for report
+# @   1155ns | UVM_INFO | uvm_template_monitor.sv [78] uvm_template_env.agnt.mon | UVM_MONITOR_REPORT_PHASE | Completed Monitoring Packets. 
+# @   1155ns | UVM_INFO | uvm_template_monitor.sv [78] uvm_test_top.env.agnt.mon | UVM_MONITOR_REPORT_PHASE | Completed Monitoring Packets. 
+# @   1155ns | UVM_INFO | uvm_template_base_test.sv [88] uvm_test_top          | BASE_TEST_REPORT_PHASE | Getting report_server . . .
+# @   1155ns | UVM_INFO | uvm_template_base_test.sv [98] uvm_test_top          | uvm_template_base_test | ---------------------------------------
+# @   1155ns | UVM_INFO | uvm_template_base_test.sv [99] uvm_test_top          | uvm_template_base_test | ----           TEST PASS           ----
+# @   1155ns | UVM_INFO | uvm_template_base_test.sv [100] uvm_test_top          | uvm_template_base_test | ---------------------------------------
+# @   1155ns | UVM_INFO | uvm_template_env.sv [39] uvm_template_env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for final
+# @   1155ns | UVM_INFO | uvm_template_agent.sv [34] uvm_template_env.agnt | PHASE_STATUS | Phase started for final
+# @   1155ns | UVM_INFO | uvm_template_driver.sv [31] uvm_template_env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for final
+# @   1155ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_template_env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for final
+# @   1155ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_template_env.agnt.seqr | PHASE_STATUS | Phase started for final
+# @   1155ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_template_env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for final
+# @   1155ns | UVM_INFO | uvm_template_base_test.sv [46] uvm_test_top          | BASE_TEST_PHASE_STATUS | Phase started for final
+# @   1155ns | UVM_INFO | uvm_template_env.sv [39] uvm_test_top.env      | ENV_BUILD_PHASE PHASE_STATUS | Phase started for final
+# @   1155ns | UVM_INFO | uvm_template_agent.sv [34] uvm_test_top.env.agnt | PHASE_STATUS | Phase started for final
+# @   1155ns | UVM_INFO | uvm_template_driver.sv [31] uvm_test_top.env.agnt.drv | DRIVER_PHASE_STATUS | Phase started for final
+# @   1155ns | UVM_INFO | uvm_template_monitor.sv [38] uvm_test_top.env.agnt.mon | MONITOR_PHASE_STATUS | Phase started for final
+# @   1155ns | UVM_INFO | uvm_template_sequencer.sv [25] uvm_test_top.env.agnt.seqr | PHASE_STATUS | Phase started for final
+# @   1155ns | UVM_INFO | uvm_template_scoreboard.sv [34] uvm_test_top.env.scbd | SCOREBOARD_PHASE_STATUS | Phase started for final
 # 
 # --- UVM Report Summary ---
 # 
 # ** Report counts by severity
-# UVM_INFO :  292
+# UVM_INFO :  315
 # UVM_WARNING :    0
 # UVM_ERROR :    0
 # UVM_FATAL :    0
@@ -389,12 +588,14 @@
 # [BASE_TEST_BUILD_PHASE]     1
 # [BASE_TEST_CONSTRUCTOR_START]     1
 # [BASE_TEST_ELABORATION_PHASE]     1
+# [BASE_TEST_ELABORATION_PHASE_PRINT_TOPOLOGY]     1
 # [BASE_TEST_PHASE_STATUS]    21
 # [BASE_TEST_REPORT_PHASE]     1
+# [BASE_TEST_RUN_PHASE]     1
 # [DRIVER_BUILD_PHASE]     2
 # [DRIVER_PHASE_STATUS]    40
 # [ENV_BUILD_PHASE]     2
-# [ENV_BUILD_PHASE PHASE_STATUS]    42
+# [ENV_BUILD_PHASE PHASE_STATUS]    41
 # [ENV_CONNECT_PHASE]     2
 # [MONITOR_BUILD_PHASE]     2
 # [MONITOR_PHASE_STATUS]    40
@@ -405,11 +606,15 @@
 # [SCBD_RUN_PHASE]     2
 # [SCOREBOARD_PHASE_STATUS]    40
 # [SEQUENCER]     2
+# [TEST_DONE]     1
 # [TOP]     1
+# [TOP TIME TRACKER]     5
 # [UVMTOP]     1
 # [UVM_MONITOR_REPORT_PHASE]     2
+# [UVM_TEMPLATE_DRIVER]     8
+# [UVM_TEMPLATE_SEQUENCE]     8
 # [uvm_template_base_test]     3
 # ** Note: $finish    : C:/Users/HP/WORK_UVM/uvm-1.1d/src/base/uvm_root.svh(430)
-#    Time: 0 ps  Iteration: 209  Instance: /uvm_template_top
-# End time: 03:01:54 on Aug 29,2021, Elapsed time: 0:00:04
+#    Time: 1155 ns  Iteration: 54  Instance: /uvm_template_top
+# End time: 07:31:16 on Aug 31,2021, Elapsed time: 0:00:04
 # Errors: 1, Warnings: 5
