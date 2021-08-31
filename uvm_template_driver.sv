@@ -15,6 +15,9 @@ import uvm_pkg::*;
 class uvm_template_driver extends uvm_driver #(packet_seq_item);
   `uvm_component_utils(uvm_template_driver)
   
+  packet_seq_item pkt;
+  packet_seq_item pkt_rsp;
+  
   // virtual interface
   virtual my_if vif;
   
@@ -31,17 +34,15 @@ class uvm_template_driver extends uvm_driver #(packet_seq_item);
   // build phase
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-      `uvm_info("DRIVER_BUILD_PHASE","In DRIVER BUILD PHASE . . .", UVM_MEDIUM);
+      pkt = packet_seq_item::type_id::create("Our Packet");
+      pkt_rsp = packet_seq_item::type_id::create("Our Packet Response");
       uvm_config_db#(virtual my_if)::get(this, "", "vif", vif);
+      `uvm_info("DRIVER_BUILD_PHASE","In DRIVER BUILD PHASE . . .", UVM_MEDIUM);
   endfunction: build_phase
 
   // run phase
   virtual task run_phase(uvm_phase phase);
-      packet_seq_item pkt;
-      packet_seq_item pkt_rsp;
       forever begin
-        pkt = packet_seq_item::type_id::create("Our Packet");
-        pkt_rsp = packet_seq_item::type_id::create("Our Packet Response");     	
     	  @(posedge vif.clk); 
         seq_item_port.get_next_item(pkt);
         drive(); // drive_item(req, rsp);
@@ -61,19 +62,22 @@ class uvm_template_driver extends uvm_driver #(packet_seq_item);
     vif.rd_en <= 0;
     @(posedge vif.clk); 
     
-    vif.addr <= req.addr;
+    vif.addr <= pkt.addr;
     
-    if(req.wr_en) begin // write operation
-      vif.wr_en <= req.wr_en;
-      vif.wdata <= req.wdata;
+    if(pkt.wr_en) begin // write operation
+      vif.wr_en <= pkt.wr_en;
+      vif.wdata <= pkt.wdata;
       @(posedge vif.clk);
     end
-    else if(req.rd_en) begin // read operation
-      vif.rd_en <= req.rd_en;
+    else if(pkt.rd_en) begin // read operation
+      vif.rd_en <= pkt.rd_en;
       @(posedge vif.clk);
       vif.rd_en <= 0;
       @(posedge vif.clk);
-      req.rdata = vif.rdata;
+      // observe clk cycles in rdata read from DUT 
+      // to verify this read bus cycle.
+      pkt.rdata = vif.rdata; 
+      pkt_rsp.rdata = vif.rdata; 
       @(posedge vif.clk);
     end
     
