@@ -57,7 +57,7 @@ class uvm_template_base_test extends uvm_test;
    
   // end_of_elaboration_phase  
   function void end_of_elaboration_phase(uvm_phase phase);
-     `uvm_info("BASE_TEST_ELABORATION_PHASE_PRINT_TOPOLOGY", "Printing UVM Testbench Topology.", UVM_NONE); 
+     `uvm_info("BASE_TEST_ELAB_PRINT_TOPOLOGY", "Printing UVM Testbench Topology.", UVM_NONE); 
      // print the topology
      uvm_top.print_topology();
      
@@ -90,14 +90,14 @@ class uvm_template_base_test extends uvm_test;
     svr = uvm_report_server::get_server(); 
     
     if(svr.get_severity_count(UVM_FATAL)+svr.get_severity_count(UVM_ERROR)>0) begin
-      `uvm_info(get_type_name(), "---------------------------------------", UVM_NONE)
-      `uvm_info(get_type_name(), "----            TEST FAIL          ----", UVM_NONE)
-      `uvm_info(get_type_name(), "---------------------------------------", UVM_NONE)
+      `uvm_info("BASE_TEST_FAIL", "---------------------------------------", UVM_NONE)
+      `uvm_info("BASE_TEST_FAIL", "----            TEST FAIL          ----", UVM_NONE)
+      `uvm_info("BASE_TEST_FAIL", "---------------------------------------", UVM_NONE)
     end
     else begin
-     `uvm_info(get_type_name(), "---------------------------------------", UVM_NONE)
-     `uvm_info(get_type_name(), "----           TEST PASS           ----", UVM_NONE)
-     `uvm_info(get_type_name(), "---------------------------------------", UVM_NONE)
+     `uvm_info("BASE_TEST_PASS", "---------------------------------------", UVM_NONE)
+     `uvm_info("BASE_TEST_PASS", "----           TEST PASS           ----", UVM_NONE)
+     `uvm_info("BASE_TEST_PASS", "---------------------------------------", UVM_NONE)
     end
   endfunction: report_phase 
   
