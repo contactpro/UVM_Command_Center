@@ -1313,11 +1313,12 @@ class App(Frame):    #( object)
             self.Frame7.grid(row = 2, column = 1, rowspan = 6, columnspan = 2, padx=5, pady=5, sticky = W+E+N+S)
                        
             # LARGE TEXTBOX on the MAIN PAGE 
+            # width=80, height = 26   font=('Helvetica', '12')
 
             # Editing this line - self.view_text_box = Text(self.master, width=90,
-            self.view_text_box = Text(self.Frame7, width=80, height = 26)
+            self.view_text_box = Text(self.Frame7, width=120, height = 35)
             self.view_text_box.grid(row=2, column=1, sticky = W)
-            self.view_text_box.config(borderwidth=10, font=('Helvetica', '12'), \
+            self.view_text_box.config(borderwidth=10, font=('Helvetica', '8'), \
                  fg = "snow", \
                  background="midnight blue" )
             #   Changed the MAIN TEXTBOX to BACKGROUND of
@@ -1327,11 +1328,11 @@ class App(Frame):    #( object)
             self.view_text_box.config(state=NORMAL)  # Enable TEXT WIDGET for Insert
             self.view_text_box.delete(1.0, END)      # Clear the TEXT WIDGET of Data
 
-            # create a Scrollbar and associate it with self.view_text_box 
+            # create a Y-AXIS-Scrollbar and associate it with self.view_text_box 
             self.scrollb = Scrollbar(self.Frame7, command=self.view_text_box.yview)
             self.scrollb.grid(row=2, column=1, sticky='NSE')
             self.view_text_box['yscrollcommand'] = self.scrollb.set
-
+                        
             # SET THE TEXTVARIABLES for the two
             # project name ENTRY WIDGETS.
             
