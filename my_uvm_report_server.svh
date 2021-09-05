@@ -86,16 +86,16 @@ class my_uvm_report_server extends uvm_report_server;
              	 
        case(1)
        	 (name == "" && filename == ""):
-       	          return $psprintf( "@%7tns | %-8s [%32s] %16s [%2d] %-21s | %s", $time, sv.name(), id_fixed_length_string, filename, line, name, message);
+       	          return $psprintf( "@%9tns | %-8s [%32s] %16s [%2d] %-21s | %s", $time, sv.name(), id_fixed_length_string, filename, line, name, message);
          (name != "" && filename == ""):
-       	          return $psprintf( "@%7tns | %-8s [%32s] %16s [%2d] %-21s | %s", $time, sv.name(), id_fixed_length_string, filename, line, name, message);
+       	          return $psprintf( "@%9tns | %-8s [%32s] %16s [%2d] %-21s | %s", $time, sv.name(), id_fixed_length_string, filename, line, name, message);
        	 (name == "" && filename != ""):
        	      begin
-       	      	  return $psprintf( "@%7tns | %-8s [%32s] %16s [%2d] %-21s | %s", $time, sv.name(), id_fixed_length_string, getShortFileName(filename), line, name, message);
+       	      	  return $psprintf( "@%9tns | %-8s [%32s] %16s [%2d] %-21s | %s", $time, sv.name(), id_fixed_length_string, getShortFileName(filename), line, name, message);
        	      end
        	 (name != "" && filename != ""):
        	      begin
-       	      	  return $psprintf( "@%7tns | %-8s [%32s] %16s [%2d] %-21s | %s", $time, sv.name(), id_fixed_length_string, getShortFileName(filename), line, name, message);
+       	      	  return $psprintf( "@%9tns | %-8s [%32s] %16s [%2d] %-21s | %s", $time, sv.name(), id_fixed_length_string, getShortFileName(filename), line, name, message);
        	      end       	      	  
        endcase    	                 
   endfunction: compose_message
