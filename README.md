@@ -1,11 +1,20 @@
+# UVM COMMAND CENTER
 # UVM Testbench Builder
+# UVM FPGA/ASIC Design Verification Workflow Tutorial/Demo.
 
-UVM Testbench Builder Software Application written in PYTHON and built with cx_Freeze. The UVM Testbench Builder Software Application will have tutorial and educational attributes. The UVM Testbench Builder Software Application will eventually utilize Cloud Infrastructure(s) to scale.
+The UVM COMMAND CENTER python aplication is a UVM FPGA/ASIC Design Verification Workflow Tutorial/Demo. UVM COMMAND CENTER / UVM Testbench Builder Software Application written in PYTHON and built with cx_Freeze. The UVM Testbench Builder Software Application has UVM workflow tutorial and educational attributes. The UVM Testbench Builder Software Application will eventually utilize Cloud Infrastructure(s) to scale. 
 
-Note: Original Baseline is contact_management_python_version_14_2.py The Windows Contact Management Software Application will evolve to include powerful features as we develop it into a UVM Testbench Builder App. Windows Contact Management Software Application written in PYTHON and built with cx_Freeze.
+Currently, only GITHUB releases of the source code are available as these three identical source code copies:
 
-Original Baseline contact_management_python_version_14_2.py may evolve to:
-UVM_DevOps_Command_Center.
+uvm_builder_python.py
+uvm_builder_python_backup.py
+uvm_see1.py
+
+Later, a WINDOWS 10 / WINDOWS 11 MSI file executable will be produced by modifying the cxfreeze script in this GITHUB repository.
+
+This UVM COMMAND CENTER python application will evolve to include powerful features as it develops into a UVM Testbench Builder App, written in PYTHON and built with cx_Freeze. This UVM COMMAND CENTER workflow educational software application will eventually be upgraded to utilize Cloud Infrastructure(s) to scale.
+
+In summary,  the Original Baseline contact_management_python_version_14_2.py was utilized to create the UVM COMMAND CENTER.
 
 
 
