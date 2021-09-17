@@ -24,7 +24,8 @@ package uvm_template_tb_pkg;
 
 `include "uvm_template_interface.sv"
 
-`include "uvm_template_sequence.sv"
+`include "uvm_template_base_sequence.sv"
+`include "uvm_template_wr_rd_sequence.sv"
 
 `include "uvm_template_sequencer.sv"
 
@@ -35,6 +36,7 @@ package uvm_template_tb_pkg;
 `include "uvm_template_env.sv"
 
 `include "uvm_template_base_test.sv"
+`include "uvm_template_wr_rd_test.sv"
 // `include "other_name_test.sv"
 
 endpackage
