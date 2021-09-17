@@ -674,14 +674,16 @@ night_mode_selection = 1
 report_server_value_string_global = ""
 sv_interface_value_string_global = ""
 seq_item_value_string_global = ""
-sequence_value_string_global = ""
+base_sequence_value_string_global = ""
+wr_rd_sequence_value_string_global = ""
 sequencer_value_string_global = ""
 driver_value_string_global = ""
 monitor_value_string_global = ""
 agent_value_string_global = ""
 scoreboard_value_string_global = ""
 environment_value_string_global = ""
-test_value_string_global = ""
+base_test_value_string_global = ""
+wr_rd_test_value_string_global = ""
 testbench_top_value_string_global = ""
 uvm_tb_file_type_dict = {}
 project_dir_text_box_content_global = ""
@@ -720,14 +722,16 @@ class App(Frame):    #( object)
             global design_file_name_input_global
             global sv_interface_value_string_global
             global seq_item_value_string_global
-            global sequence_value_string_global
+            global base_sequence_value_string_global
+            global wr_rd_sequence_value_string_global
             global sequencer_value_string_global
             global driver_value_string_global
             global monitor_value_string_global
             global agent_value_string_global
             global scoreboard_value_string_global
             global environment_value_string_global
-            global test_value_string_global
+            global base_test_value_string_global
+            global wr_rd_test_value_string_global
             global testbench_top_value_string_global
             global selected_email_address_LIST_GLOBAL
             global DEST_or_CC_email_address_FLAG_GLOBAL
@@ -2197,14 +2201,16 @@ class App(Frame):    #( object)
           global report_server_value_string_global
           global sv_interface_value_string_global
           global seq_item_value_string_global
-          global sequence_value_string_global
+          global base_sequence_value_string_global
+          global wr_rd_sequence_value_string_global
           global sequencer_value_string_global
           global driver_value_string_global
           global monitor_value_string_global
           global scoreboard_value_string_global
           global agent_value_string_global 
           global environment_value_string_global
-          global test_value_string_global
+          global base_test_value_string_global
+          global wr_rd_test_value_string_global
           global testbench_top_value_string_global
           global project_dir_text_box_content_global
           # print("\n\ncm_app_doc_media_window_method - PROJECT SELECT in progress . . .")
@@ -2376,14 +2382,16 @@ class App(Frame):    #( object)
           global report_server_value_string_global
           global sv_interface_value_string_global
           global seq_item_value_string_global
-          global sequence_value_string_global
+          global base_sequence_value_string_global
+          global wr_rd_sequence_value_string_global
           global sequencer_value_string_global
           global driver_value_string_global
           global monitor_value_string_global
           global scoreboard_value_string_global
           global agent_value_string_global 
           global environment_value_string_global
-          global test_value_string_global
+          global base_test_value_string_global
+          global wr_rd_test_value_string_global
           global testbench_top_value_string_global
           global project_dir_text_box_content_global
           global design_file_name_input_global
@@ -2531,14 +2539,16 @@ class App(Frame):    #( object)
           uvm_tb_file_type_dict = \
               {'sv_interface_key':'sv_interface_val',
 	            'seq_item_key':'seq_item_val',
-	            'sequence_key':'sequence_val',	                     	                       
+	            'base_sequence_key':'base_sequence_val',	
+	            'wr_rd_sequence_key':'wr_rd_sequence_val',		                     	                       
 	            'sequencer_key':'sequencer_val',
 	            'driver_key':'driver_val',
 	            'monitor_key':'monitor_val',	 
      	        'agent_key':'agent_val',
 	            'scoreboard_key':'scoreboard_val',                     	                       
 	            'environment_key':'environment_val',
-	            'test_key':'test_val',
+	            'base_test_key':'base_test_val',
+	            'wr_rd_test_key':'wr_rd_test_val',
 	            'testbench_top_key':'testbench_top_val'}             
           
           #### Select a DESIGN FILE NAME:
@@ -2600,16 +2610,27 @@ class App(Frame):    #( object)
                       self.view_text_box.insert(1.0, str(pattern_match_item_string))
                       uvm_tb_file_type_dict.update({'seq_item_key': seq_item_value_string_global})                                                                      
                     
-          pattern_string = "sequence.sv"
+          pattern_string = "base_sequence.sv"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
                   if pattern_string in i:
-                      sequence_value_string_global = i
+                      base_sequence_value_string_global = i
                       # Update button colors when this uvm file type is detected.
                       self.sort_contact_list_button.config(bg="cyan", fg="blue2")
-                      pattern_match_sequence_string = "\n PATTERN MATCH sequence_value_string_global = " + str(i)
-                      self.view_text_box.insert(1.0, str(pattern_match_sequence_string))
-                      uvm_tb_file_type_dict.update({'sequence_key': sequence_value_string_global}) 
+                      pattern_match_base_sequence_string = "\n PATTERN MATCH base_sequence_value_string_global = " + str(i)
+                      self.view_text_box.insert(1.0, str(pattern_match_base_sequence_string))
+                      uvm_tb_file_type_dict.update({'base_sequence_key': base_sequence_value_string_global}) 
+                 
+          pattern_string = "wr_rd_sequence.sv"
+          for i in os.listdir(directory_full_path_project_name_global):
+              if i.endswith(".sv"):
+                  if pattern_string in i:
+                      wr_rd_sequence_value_string_global = i
+                      # Update button colors when this uvm file type is detected.
+                      self.sort_contact_list_button.config(bg="cyan", fg="blue2")
+                      pattern_match_wr_rd_sequence_string = "\n PATTERN MATCH wr_rd_sequence_value_string_global = " + str(i)
+                      self.view_text_box.insert(1.0, str(pattern_match_wr_rd_sequence_string))
+                      uvm_tb_file_type_dict.update({'wr_rd_sequence_key': wr_rd_sequence_value_string_global}) 
                  
           pattern_string = "sequencer.sv"
           for i in os.listdir(directory_full_path_project_name_global):
@@ -2697,12 +2718,24 @@ class App(Frame):    #( object)
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
                   if pattern_string in i:
-                      test_value_string_global = i
+                      base_test_value_string_global = i
                       # Update button colors when this uvm file type is detected.
                       self.build_dual_list_button.config(bg="cyan", fg="blue2")
-                      pattern_match_test_string = "\n PATTERN MATCH test_value_string_global = " + str(i)
-                      self.view_text_box.insert(1.0, str(pattern_match_test_string))
-                      uvm_tb_file_type_dict.update({'test_key': test_value_string_global})            	                                                           
+                      base_pattern_match_test_string = "\n PATTERN MATCH base_test_value_string_global = " + str(i)
+                      self.view_text_box.insert(1.0, str(base_pattern_match_test_string))
+                      uvm_tb_file_type_dict.update({'base_test_key': base_test_value_string_global})            	                                                           
+ 
+          pattern_string = "wr_rd_test.sv"
+          for i in os.listdir(directory_full_path_project_name_global):
+              if i.endswith(".sv"):
+                  if pattern_string in i:
+                      wr_rd_test_value_string_global = i
+                      # Update button colors when this uvm file type is detected.
+                      self.build_dual_list_button.config(bg="cyan", fg="blue2")
+                      wr_rd_pattern_match_test_string = "\n PATTERN MATCH wr_rd_test_value_string_global = " + str(i)
+                      self.view_text_box.insert(1.0, str(wr_rd_pattern_match_test_string))
+                      uvm_tb_file_type_dict.update({'wr_rd_test_key': wr_rd_test_value_string_global})            	                                                           
+                                  
                                   
           pattern_string1 = "_top"
           for i in os.listdir(directory_full_path_project_name_global):
@@ -3390,7 +3423,8 @@ class App(Frame):    #( object)
             global uvm_tb_file_list_global
             global project_sv_files_list_global
             global uvm_tb_file_type_dict
-            global sequence_value_string_global
+            global base_sequence_value_string_global
+            global wr_rd_sequence_value_string_global
             #
             #  NOTE:
             # 
@@ -3427,11 +3461,13 @@ class App(Frame):    #( object)
             # Clear MAIN SCREEN TEXTBOX.                           
             self.view_text_box.delete(1.0, END)
                                                           
-            # sequence_value_string_global computed upon SELECT PROJECT action.
-                  
-            # print("\n sequence_value_string_global = " + str(sequence_value_string_global))
-                                        
-            fullpath_UVM_SEQUENCE_CODE_global = os.path.join(str(directory_full_path_project_name_global), str(sequence_value_string_global))
+            # base_sequence_value_string_global computed upon SELECT PROJECT action.                                      
+            # wr_rd_sequence_value_string_global computed upon SELECT PROJECT action.
+                      
+            # print("\n base_sequence_value_string_global = " + str(base_sequence_value_string_global))
+            # print("\n wr_rd_sequence_value_string_global = " + str(base_sequence_value_string_global))
+                                                     
+            fullpath_UVM_SEQUENCE_CODE_global = os.path.join(str(directory_full_path_project_name_global), str(base_sequence_value_string_global))
                     
             # print("\n fullpath_UVM_SEQUENCE_CODE_global = " + str(fullpath_UVM_SEQUENCE_CODE_global))
                                     
@@ -3492,7 +3528,7 @@ class App(Frame):    #( object)
             #  search which filename in PROJECT DIR
             #  has the phrase interface in both
             #  the FILENAME and FILE CONTENTS.
-            # 
+            #  
             #  Example ANSWER:   mem_interface.sv
             #
             #  Use PATH os join command to get
@@ -4040,14 +4076,16 @@ class App(Frame):    #( object)
             global report_server_value_string_global
             global sv_interface_value_string_global
             global seq_item_value_string_global
-            global sequence_value_string_global
+            global base_sequence_value_string_global
+            global wr_rd_sequence_value_string_global
             global sequencer_value_string_global
             global driver_value_string_global
             global monitor_value_string_global
             global agent_value_string_global
             global scoreboard_value_string_global
             global environment_value_string_global
-            global test_value_string_global
+            global base_test_value_string_global 
+            global wr_rd_test_value_string_global
             global testbench_top_value_string_global
             global project_dir_text_box_content_global
                                                 
@@ -4111,15 +4149,17 @@ class App(Frame):    #( object)
             self.view_text_box.insert(END, TITLE_project_dict)
             
             # Preview GLOBALS for uvm_tb_file_type_dict VALUES:  
-            #  
+            #   
             self.view_text_box.insert(END, str(report_server_value_string_global))
             self.view_text_box.insert(END, "\n")            
             self.view_text_box.insert(END, str(sv_interface_value_string_global))
             self.view_text_box.insert(END, "\n")
             self.view_text_box.insert(END, str(seq_item_value_string_global))
             self.view_text_box.insert(END, "\n")
-            self.view_text_box.insert(END, str(sequence_value_string_global))
+            self.view_text_box.insert(END, str(base_sequence_value_string_global))
             self.view_text_box.insert(END, "\n")            
+            self.view_text_box.insert(END, str(wr_rd_sequence_value_string_global))
+            self.view_text_box.insert(END, "\n")    
             self.view_text_box.insert(END, str(sequencer_value_string_global))
             self.view_text_box.insert(END, "\n")            
             self.view_text_box.insert(END, str(driver_value_string_global))
@@ -4132,8 +4172,10 @@ class App(Frame):    #( object)
             self.view_text_box.insert(END, "\n")            
             self.view_text_box.insert(END, str(environment_value_string_global))
             self.view_text_box.insert(END, "\n")            
-            self.view_text_box.insert(END, str(test_value_string_global))
+            self.view_text_box.insert(END, str(base_test_value_string_global))
             self.view_text_box.insert(END, "\n")            
+            self.view_text_box.insert(END, str(wr_rd_test_value_string_global))
+            self.view_text_box.insert(END, "\n")                   
             self.view_text_box.insert(END, str(testbench_top_value_string_global))
             self.view_text_box.insert(END, "\n")                                 
             
@@ -4296,14 +4338,16 @@ class App(Frame):    #( object)
             global uvm_tb_file_type_dict
             global sv_interface_value_string_global
             global seq_item_value_string_global
-            global sequence_value_string_global
+            global base_sequence_value_string_global
+            global wr_rd_sequence_value_string_global
             global sequencer_value_string_global
             global driver_value_string_global
             global monitor_value_string_global
             global agent_value_string_global
             global scoreboard_value_string_global
             global environment_value_string_global
-            global test_value_string_global
+            global base_test_value_string_global
+            global wr_rd_test_value_string_global
             global testbench_top_value_string_global
             global project_dir_text_box_content_global
             global design_file_name_input_global
@@ -4434,14 +4478,16 @@ class App(Frame):    #( object)
             #
             # sv_interface_value_string_global
             # seq_item_value_string_global
-            # sequence_value_string_global
+            # base_sequence_value_string_global
+            # wr_rd_sequence_value_string_global
             # sequencer_value_string_global
             # driver_value_string_global
             # monitor_value_string_global
             # agent_value_string_global
             # scoreboard_value_string_global
             # environment_value_string_global
-            # test_value_string_global
+            # base_test_value_string_global
+            # wr_rd_test_value_string_global
             # testbench_top_value_string_global
             
             ## vlog -sv C:\Users\HP\WORK_PYTHON\PY_UVM_TB_BUILDER\uvm_tb_database_files\uvm_tb_project\project_name\dut.sv
@@ -4466,11 +4512,16 @@ class App(Frame):    #( object)
             OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))      
                                                       
-            FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(sequence_value_string_global))                 
+            FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(base_sequence_value_string_global))                 
    
             OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))      
-                                                                             
+                                                                        
+            FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(wr_rd_sequence_value_string_global))                 
+   
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            os.system(str(OS_COMMAND_STRING_PIPE))      
+                                                                                                          
             FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(sequencer_value_string_global))                 
    
             OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
@@ -4501,11 +4552,16 @@ class App(Frame):    #( object)
             OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))  
                                                                                                                            
-            FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(test_value_string_global))                 
-   
+            FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(base_test_value_string_global))                 
+
             OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))  
                                                                                                                            
+            FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(wr_rd_test_value_string_global))                 
+   
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            os.system(str(OS_COMMAND_STRING_PIPE))  
+                                                                                                                                                                                
             FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(testbench_top_value_string_global))                 
    
             OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
