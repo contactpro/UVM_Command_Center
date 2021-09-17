@@ -15,7 +15,7 @@ import uvm_pkg::*;
 `include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/my_uvm_report_server.svh"
 
 class uvm_template_base_test extends uvm_test;
-  
+
   // custom report server instance
   my_uvm_report_server report_server;
   
@@ -67,10 +67,10 @@ class uvm_template_base_test extends uvm_test;
  	  	
   endfunction: end_of_elaboration_phase
 
-  // run phase - start the seq on the specified seqr 
+  // run phase - start the seq on the specified seqr  
   task run_phase(uvm_phase phase);
-    uvm_template_sequence seq;
-    seq = uvm_template_sequence::type_id::create("seq", this);
+    uvm_template_base_sequence seq;
+    seq = uvm_template_base_sequence::type_id::create("seq", this);
     phase.raise_objection(this);
     seq.start(env.agnt.seqr);
     `uvm_info("BASE_TEST_RUN_PHASE", "Created Sequence and Started Sequence on Sequencer.", UVM_NONE);     
