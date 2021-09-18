@@ -684,6 +684,7 @@ scoreboard_value_string_global = ""
 environment_value_string_global = ""
 base_test_value_string_global = ""
 wr_rd_test_value_string_global = ""
+selected_test_value_string_global = ""
 testbench_top_value_string_global = ""
 uvm_tb_file_type_dict = {}
 project_dir_text_box_content_global = ""
@@ -732,6 +733,7 @@ class App(Frame):    #( object)
             global environment_value_string_global
             global base_test_value_string_global
             global wr_rd_test_value_string_global
+            global selected_test_value_string_global
             global testbench_top_value_string_global
             global selected_email_address_LIST_GLOBAL
             global DEST_or_CC_email_address_FLAG_GLOBAL
@@ -3994,7 +3996,10 @@ class App(Frame):    #( object)
             global uvm_tb_file_list_global
             global project_sv_files_list_global
             global uvm_tb_file_type_dict
-                                    
+            global base_test_value_string_global
+            global wr_rd_test_value_string_global
+            global selected_test_value_string_global
+                                                
             #
             #  NOTE:
             # 
@@ -4031,11 +4036,51 @@ class App(Frame):    #( object)
             # Clear MAIN SCREEN TEXTBOX.                           
             self.view_text_box.delete(1.0, END)
                               
-            # test_value_string_global computed upon SELECT PROJECT action.
-                  
-            # print("\n test_value_string_global = " + str(test_value_string_global))
-                             
-            fullpath_UVM_TEST_CODE_global = os.path.join(directory_full_path_project_name_global, str(test_value_string_global))
+            # base_test_value_string_global computed upon SELECT PROJECT action.
+            # wr_rd_test_value_string_global computed upon SELECT PROJECT action.
+                              
+            # print("\n selected_test_value_string_global = " + str(selected_test_value_string_global))
+            
+            # This is the test name that is displayed in the
+            # main textbox window, so initial releases of this
+            # script will set this to the base test global variable
+            # and later version releases of this script will
+            # select the particular test name global based on
+            # the simulation command line arg value defined by
+            # the +UVM_TESTNAME command line arg for test name.
+            # 
+            # First, let's just verify that the test name global
+            # variables are selectable within this python method
+            # which is triggered by pressing the TEST NAME button.
+            # 
+            # Current test name global variables:
+            # base_test_value_string_global
+            # wr_rd_test_value_string_global
+            #
+            # Eventually, the +UVM_TESTNAME runtime 
+            # command line arg will select the test name
+            # and that test name will override the
+            # default test name provided that all the
+            # test names have been registered with
+            # the UVM FACTORY using the code that
+            # has this format:
+            # 
+            # `uvm_component_utils(uvm_template_base_test)
+            #
+            # // constructor
+            # function new(string name = "uvm_template_base_test", uvm_component parent=null);
+            # super.new(name, parent);
+            #
+       
+            print("\n base_test_value_string_global = " + str(base_test_value_string_global))                        
+        
+            print("\n wr_rd_test_value_string_global = " + str(wr_rd_test_value_string_global))                        
+             
+            selected_test_value_string_global = base_test_value_string_global
+             
+            print("\n selected_test_value_string_global = " + str(selected_test_value_string_global))
+                                                
+            fullpath_UVM_TEST_CODE_global = os.path.join(directory_full_path_project_name_global, str(selected_test_value_string_global))
   
             # print("\n fullpath_UVM_TEST_CODE_global = " + str(fullpath_UVM_TEST_CODE_global))
                          
