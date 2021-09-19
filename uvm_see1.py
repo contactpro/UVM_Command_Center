@@ -687,6 +687,21 @@ wr_rd_test_value_string_global = ""
 selected_test_value_string_global = ""
 testbench_top_value_string_global = ""
 uvm_tb_file_type_dict = {}
+uvm_tb_file_type_dict = \
+    {'sv_interface_key':'sv_interface_val',
+	   'seq_item_key':'seq_item_val',
+	   'base_sequence_key':'base_sequence_val',
+	   'wr_rd_sequence_key':'wr_rd_sequence_val',	                     	                       
+	   'sequencer_key':'sequencer_val',
+	   'driver_key':'driver_val',
+	   'monitor_key':'monitor_val',
+     'agent_key':'agent_val',
+	   'scoreboard_key':'scoreboard_val',                  	                       
+	   'environment_key':'environment_val',
+	   'base_test_key':'base_test_val',
+	   'wr_rd_test_key':'wr_rd_test_val',
+	   'selected_test_key':'selected_test_val',         	
+	   'testbench_top_key':'testbench_top_val'}
 project_dir_text_box_content_global = ""
 design_file_name_input_global = ""
 ####################################################################################
@@ -1032,22 +1047,30 @@ class App(Frame):    #( object)
             uvm_testbench_file_List = []
 
             # self.this_person = []
-            
-            uvm_tb_file_type_dict = {}
-            
-            uvm_tb_file_type_dict = {'sv_interface_key':'FILENAME_NOT_SET',
-	          'seq_item_key':'FILENAME_NOT_SET',
-	          'sequence_key':'FILENAME_NOT_SET',                    	                       
-	          'sequencer_key':'FILENAME_NOT_SET',
-	          'driver_key':'FILENAME_NOT_SET',
-	          'monitor_key':'FILENAME_NOT_SET', 
-     	      'agent_key':'FILENAME_NOT_SET',
-	          'scoreboard_key':'FILENAME_NOT_SET',                    	                       
-	          'environment_key':'FILENAME_NOT_SET',
-	          'test_key':'FILENAME_NOT_SET',
-	          'testbench_top_key':'FILENAME_NOT_SET'}
-            
 
+            #
+            # We will implement this PYTHON KEY-VALUE DICTIONARY
+            # as a GLOBAL and therefore define it only at the top
+            # of this PYTHON script.
+            #             
+            # uvm_tb_file_type_dict = {}
+
+            # uvm_tb_file_type_dict = \
+            #     {'sv_interface_key':'sv_interface_val',
+	          #     'seq_item_key':'seq_item_val',
+	          #     'base_sequence_key':'base_sequence_val',	
+	          #     'wr_rd_sequence_key':'wr_rd_sequence_val',		                     	                       
+	          #     'sequencer_key':'sequencer_val',
+	          #     'driver_key':'driver_val',
+	          #     'monitor_key':'monitor_val',	 
+     	      #     'agent_key':'agent_val',
+	          #     'scoreboard_key':'scoreboard_val',                     	                       
+	          #     'environment_key':'environment_val',
+	          #     'base_test_key':'base_test_val',
+	          #     'wr_rd_test_key':'wr_rd_test_val',
+	          #     'selected_test_key':'selected_test_val',	            	
+	          #     'testbench_top_key':'testbench_top_val'}             
+          
             gfn = ''
             gln = ''
             gsa = ''
@@ -2394,6 +2417,7 @@ class App(Frame):    #( object)
           global environment_value_string_global
           global base_test_value_string_global
           global wr_rd_test_value_string_global
+          global selected_test_value_string_global
           global testbench_top_value_string_global
           global project_dir_text_box_content_global
           global design_file_name_input_global
@@ -2536,22 +2560,28 @@ class App(Frame):    #( object)
               self.view_text_box.insert(END, str(project_sv_files_list_global[i]))
               self.view_text_box.insert(END, text_1_LINE_SPACE)                 
                
+          #
+          # We will implement this PYTHON KEY-VALUE DICTIONARY
+          # as a GLOBAL and therefore define it only at the top
+          # of this PYTHON script.
+          # 
           # use pattern matching to associate the
           # uvm file type KEY with FILENAME VALUE
-          uvm_tb_file_type_dict = \
-              {'sv_interface_key':'sv_interface_val',
-	            'seq_item_key':'seq_item_val',
-	            'base_sequence_key':'base_sequence_val',	
-	            'wr_rd_sequence_key':'wr_rd_sequence_val',		                     	                       
-	            'sequencer_key':'sequencer_val',
-	            'driver_key':'driver_val',
-	            'monitor_key':'monitor_val',	 
-     	        'agent_key':'agent_val',
-	            'scoreboard_key':'scoreboard_val',                     	                       
-	            'environment_key':'environment_val',
-	            'base_test_key':'base_test_val',
-	            'wr_rd_test_key':'wr_rd_test_val',
-	            'testbench_top_key':'testbench_top_val'}             
+          # uvm_tb_file_type_dict = \
+          #  #    {'sv_interface_key':'sv_interface_val',
+	        #     'seq_item_key':'seq_item_val',
+	        #     'base_sequence_key':'base_sequence_val',	
+	        #     'wr_rd_sequence_key':'wr_rd_sequence_val',		                     	                       
+	        #     'sequencer_key':'sequencer_val',
+	        #     'driver_key':'driver_val',
+	        #     'monitor_key':'monitor_val',	 
+     	    #     'agent_key':'agent_val',
+	        #     'scoreboard_key':'scoreboard_val',                     	                       
+	        #     'environment_key':'environment_val',
+	        #     'base_test_key':'base_test_val',
+	        #     'wr_rd_test_key':'wr_rd_test_val',
+	        #     'selected_test_key':'selected_test_val',	            	
+	        #     'testbench_top_key':'testbench_top_val'}             
           
           #### Select a DESIGN FILE NAME:
                     
@@ -2576,6 +2606,15 @@ class App(Frame):    #( object)
           # write string to textbox
           confirm_design_name_string = "\n\nCONFIRM USER has input this DESIGN FILE NAME: " + str(design_file_name_input_global) + "\n\n"
           self.view_text_box.insert(1.0, str(confirm_design_name_string))                      
+
+          # DEBUG_BOOKMARK - Selecting each test with
+          # the +UVM_TESTNAME on the vsim command line
+          #    
+          # Set the selected_test_value_string_global GLOBAL as we
+          # debug and implement PYTHON script input ARG 
+          # to pass the testname into this script 
+          # to set the value of +UVM_TESTNAME in the vsim command below.
+          selected_test_value_string_global = "uvm_template_wr_rd_test.sv"
 
           # this new code detects the customized version
           # of the report server file named my_uvm_report_server.sv
@@ -2737,8 +2776,11 @@ class App(Frame):    #( object)
                       wr_rd_pattern_match_test_string = "\n PATTERN MATCH wr_rd_test_value_string_global = " + str(i)
                       self.view_text_box.insert(1.0, str(wr_rd_pattern_match_test_string))
                       uvm_tb_file_type_dict.update({'wr_rd_test_key': wr_rd_test_value_string_global})            	                                                           
-                                  
-                                  
+          
+          selected_test_pattern_match_test_string = "\n SELECTED TEST selected_test_value_string_global = " + str(selected_test_value_string_global)
+          self.view_text_box.insert(1.0, str(selected_test_pattern_match_test_string))
+          uvm_tb_file_type_dict.update({'selected_test_key': selected_test_value_string_global})            	                                                           
+                                                                    
           pattern_string1 = "_top"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
@@ -4075,14 +4117,15 @@ class App(Frame):    #( object)
             print("\n base_test_value_string_global = " + str(base_test_value_string_global))                        
         
             print("\n wr_rd_test_value_string_global = " + str(wr_rd_test_value_string_global))                        
-             
-            selected_test_value_string_global = base_test_value_string_global
-             
-            print("\n selected_test_value_string_global = " + str(selected_test_value_string_global))
-                                                
-            fullpath_UVM_TEST_CODE_global = os.path.join(directory_full_path_project_name_global, str(selected_test_value_string_global))
-  
-            # print("\n fullpath_UVM_TEST_CODE_global = " + str(fullpath_UVM_TEST_CODE_global))
+                          
+            print("\n selected_test_value_string_global (SCRIPT INPUT) = " + str(selected_test_value_string_global))
+
+            if str(selected_test_value_string_global) == "":
+               fullpath_UVM_TEST_CODE_global = os.path.join(directory_full_path_project_name_global, str(base_test_value_string_global))
+            else:
+               fullpath_UVM_TEST_CODE_global = os.path.join(directory_full_path_project_name_global, str(selected_test_value_string_global))
+                    	  
+            print("\n fullpath_UVM_TEST_CODE_global = " + str(fullpath_UVM_TEST_CODE_global))
                          
             with open(str(fullpath_UVM_TEST_CODE_global) ) as fin:
                for line in fin:
@@ -4122,7 +4165,7 @@ class App(Frame):    #( object)
             global sv_interface_value_string_global
             global seq_item_value_string_global
             global base_sequence_value_string_global
-            global wr_rd_sequence_value_string_global
+            global wr_rd_sequence_value_string_global            
             global sequencer_value_string_global
             global driver_value_string_global
             global monitor_value_string_global
@@ -4131,6 +4174,7 @@ class App(Frame):    #( object)
             global environment_value_string_global
             global base_test_value_string_global 
             global wr_rd_test_value_string_global
+            global selected_test_value_string_global            
             global testbench_top_value_string_global
             global project_dir_text_box_content_global
                                                 
@@ -4156,7 +4200,9 @@ class App(Frame):    #( object)
             #  agent_value_string_global
             #  scoreboard_value_string_global
             #  environment_value_string_global
-            #  test_value_string_global
+            #  base_test_value_string_global
+            #  wr_rd_test_value_string_global
+            #  selected_test_value_string_global
             #  testbench_top_value_string_global
             #
             #  We have the TEXTBOX commands that
@@ -4220,6 +4266,8 @@ class App(Frame):    #( object)
             self.view_text_box.insert(END, str(base_test_value_string_global))
             self.view_text_box.insert(END, "\n")            
             self.view_text_box.insert(END, str(wr_rd_test_value_string_global))
+            self.view_text_box.insert(END, "\n")                   
+            self.view_text_box.insert(END, ". . . . . . . . . selected test: " + str(selected_test_value_string_global))
             self.view_text_box.insert(END, "\n")                   
             self.view_text_box.insert(END, str(testbench_top_value_string_global))
             self.view_text_box.insert(END, "\n")                                 
@@ -4534,82 +4582,88 @@ class App(Frame):    #( object)
             # base_test_value_string_global
             # wr_rd_test_value_string_global
             # testbench_top_value_string_global
-            
-            ## vlog -sv C:\Users\HP\WORK_PYTHON\PY_UVM_TB_BUILDER\uvm_tb_database_files\uvm_tb_project\project_name\dut.sv
+
+            # DEBUG_BOOKMARK - To utilize the tb_pkg, we must create 
+            # project path +incdir+ to match user selected project
+            # Initially we are setting this to the 
+            # current project path to debug, however,
+            # this +incdir+ allows the simulator to
+            # locate each file in the tb_pkg e.g. uvm_template_tb_pkg.sv            
+            fullpath_include_uvm_project_src = " +incdir+C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.7"
                   
             FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(design_file_name_input_global))                 
                   
-            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + str(fullpath_include_uvm_project_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))      
                                                                                                                                          
             FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(report_server_value_string_global))                 
    
-            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + str(fullpath_include_uvm_project_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))   
                                                                                        
             FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(sv_interface_value_string_global))                 
    
-            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + str(fullpath_include_uvm_project_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))      
                   
             FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(seq_item_value_string_global))                 
    
-            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + str(fullpath_include_uvm_project_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))      
                                                       
             FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(base_sequence_value_string_global))                 
    
-            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + str(fullpath_include_uvm_project_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))      
                                                                         
             FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(wr_rd_sequence_value_string_global))                 
    
-            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + str(fullpath_include_uvm_project_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))      
                                                                                                           
             FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(sequencer_value_string_global))                 
    
-            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + str(fullpath_include_uvm_project_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))      
                                                                                                                            
             FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(driver_value_string_global))                 
    
-            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + str(fullpath_include_uvm_project_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))      
                                                                                                                            
             FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(monitor_value_string_global))                 
    
-            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + str(fullpath_include_uvm_project_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))   
                                                                                                                            
             FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(agent_value_string_global))                 
    
-            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + str(fullpath_include_uvm_project_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))   
                                                                                                                            
             FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(scoreboard_value_string_global))                 
    
-            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + str(fullpath_include_uvm_project_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))   
                                                                                                                            
             FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(environment_value_string_global))                 
    
-            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + str(fullpath_include_uvm_project_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))  
                                                                                                                            
             FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(base_test_value_string_global))                 
 
-            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + str(fullpath_include_uvm_project_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))  
                                                                                                                            
             FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(wr_rd_test_value_string_global))                 
    
-            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + str(fullpath_include_uvm_project_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))  
                                                                                                                                                                                 
             FULLPATH_OF_FILE = os.path.join(str(directory_full_path_project_name_global),str(testbench_top_value_string_global))                 
    
-            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + " >> cmd_output_redirect.txt"            
+            OS_COMMAND_STRING_PIPE = "vlog -sv " + str(no_warn_tscale_setting) + str(FULLPATH_OF_FILE) + str(fullpath_include_uvm_1_1d_src) + str(fullpath_include_uvm_project_src) + " >> cmd_output_redirect.txt"            
             os.system(str(OS_COMMAND_STRING_PIPE))  
                                                                                                                                                                                                  
             with open ("cmd_output_redirect.txt", "r") as f:
@@ -4663,7 +4717,9 @@ class App(Frame):    #( object)
             global agent_value_string_global
             global scoreboard_value_string_global
             global environment_value_string_global
-            global test_value_string_global
+            global base_test_value_string_global
+            global wr_rd_test_value_string_global
+            global selected_test_value_string_global                        
             global testbench_top_value_string_global
             global project_dir_text_box_content_global
             
@@ -4703,9 +4759,30 @@ class App(Frame):    #( object)
             #  
             sim_do_fullpath = os.path.join(str(directory_full_path_project_name_global),"sim.do")
             dut_wlf_fullpath = os.path.join(str(directory_full_path_project_name_global),"dut_wlf.wlf")
-            ##            
-            OS_SIM_COMMAND_STRING_PIPE = "vsim -c +nowarnTSCALE -voptargs=+acc uvm_template_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do " + str(sim_do_fullpath) + " >> cmd_output_redirect.txt"
+            ##
+            #
+            # OS_SIM_COMMAND_STRING_PIPE = "vsim -c +nowarnTSCALE +UVM_TESTNAME=uvm_template_base_test -voptargs=+acc uvm_template_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do " + str(sim_do_fullpath) + " >> cmd_output_redirect.txt"
             # 
+            # PYTHON SYNTAX:
+            # os.path.splitext('somefilename.txt')[0]
+            #
+            # Adjust TEST NAME String to  remove file extension (.sv)
+            #  
+            base_test_name_without_file_ext = ""
+            selected_test_name_without_file_ext = ""
+
+            # DEBUG_BOOKMARK - Selecting each test with
+            # the +UVM_TESTNAME on the vsim command line
+            #  
+            if (selected_test_value_string_global == ""):
+                base_test_name_without_file_ext = os.path.splitext(str(base_test_value_string_global))[0]
+                print("\nbase_test_name_without_file_ext = " + str(base_test_name_without_file_ext) + "\n")
+                OS_SIM_COMMAND_STRING_PIPE = "vsim -c +nowarnTSCALE +UVM_TESTNAME=" + str(base_test_name_without_file_ext) + " -voptargs=+acc uvm_template_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do " + str(sim_do_fullpath) + " >> cmd_output_redirect.txt"
+            elif (selected_test_value_string_global != ""):
+                selected_test_name_without_file_ext = os.path.splitext(str(selected_test_value_string_global))[0]      
+                print("\nselected_test_name_without_file_ext = " + str(selected_test_name_without_file_ext) + "\n")
+                OS_SIM_COMMAND_STRING_PIPE = "vsim -c +nowarnTSCALE +UVM_TESTNAME=" + str(selected_test_name_without_file_ext) + " -voptargs=+acc uvm_template_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do " + str(sim_do_fullpath) + " >> cmd_output_redirect.txt"
+ 
             print("\nOS_SIM_COMMAND_STRING_PIPE = " + str(OS_SIM_COMMAND_STRING_PIPE) + "\n")
             # 
             sim_title_string = "\n\nOS_SIM_COMMAND_STRING_PIPE = " + str(OS_SIM_COMMAND_STRING_PIPE) + "\n\n"
