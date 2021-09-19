@@ -10,14 +10,18 @@
 
 import uvm_pkg::*;
 `include "C:/Users/HP/WORK_UVM/uvm-1.1d/src/uvm_macros.svh"
-`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/packet_seq_item.sv"
-`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_env.sv"
-`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv"
-`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/my_uvm_report_server.svh"
 
-class uvm_template_wr_rd_test extends uvm_template_base_test;
+`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.7/packet_seq_item.sv"
+`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.7/uvm_template_base_sequence.sv"
+`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.7/uvm_template_wr_rd_sequence.sv"
+`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.7/uvm_template_env.sv"
+`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.7/uvm_template_base_test.sv"
+`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.7/my_uvm_report_server.svh"
 
-  // custom report server instance
+class uvm_template_wr_rd_test extends uvm_test;
+  `uvm_component_utils(uvm_template_wr_rd_test)
+  
+  // custom report server instance 
   my_uvm_report_server report_server;
   
   // env instance  
@@ -28,7 +32,7 @@ class uvm_template_wr_rd_test extends uvm_template_base_test;
   
   uvm_cmdline_processor clp;
   
-  `uvm_component_utils(uvm_template_wr_rd_test)
+  // `uvm_component_utils(uvm_template_wr_rd_test)
 
   // constructor
   function new(string name = "uvm_template_wr_rd_test", uvm_component parent=null);
@@ -61,6 +65,7 @@ class uvm_template_wr_rd_test extends uvm_template_base_test;
      `uvm_info("WR_RD_TEST_ELAB_PRINT_TOPOLOGY", "Printing UVM Testbench Topology.", UVM_NONE); 
      // print the topology
      uvm_top.print_topology();
+     factory.print();
      
      `uvm_info("WR_RD_TEST_ELABORATION_PHASE", "Setting report_server.", UVM_NONE);   
      report_server = new("report_server");

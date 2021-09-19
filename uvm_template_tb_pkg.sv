@@ -13,15 +13,16 @@
 `define TB_PKG_SV
 
 // Import the UVM library 
-import uvm_pkg::*;
+// import uvm_pkg::*;
 
 package uvm_template_tb_pkg;
 
-// Include the UVM macros
-`include "C:/Users/HP/WORK_UVM/uvm-1.1d/src/uvm_macros.svh"
+// `include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.7/"
+
+// Include the UVM macros 
+// `include "C:/Users/HP/WORK_UVM/uvm-1.1d/src/uvm_macros.svh"
 
 `include "packet_seq_item.sv"
-
 `include "uvm_template_interface.sv"
 
 `include "uvm_template_base_sequence.sv"

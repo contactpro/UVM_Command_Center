@@ -10,19 +10,16 @@
 
 import uvm_pkg::*;
 `include "C:/Users/HP/WORK_UVM/uvm-1.1d/src/uvm_macros.svh"
-`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/packet_seq_item.sv"
-`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_sequence.sv"
-`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_wr_rd_sequence.sv"
-`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_agent.sv"
-`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_scoreboard.sv"
+
+`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.7/packet_seq_item.sv"
+`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.7/uvm_template_base_sequence.sv"
+`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.7/uvm_template_wr_rd_sequence.sv"
+`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.7/uvm_template_agent.sv"
+`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.7/uvm_template_scoreboard.sv"
 
 class uvm_template_env extends uvm_env;
-  int num_seqs = 4;
-  
-  `uvm_component_utils_begin(uvm_template_env)
-      `uvm_field_int(num_seqs, UVM_ALL_ON)
-  `uvm_component_utils_end
-  
+  `uvm_component_utils(uvm_template_env)
+
   // constructor  
   function new (string name = "uvm_template_env", uvm_component parent=null);
     super.new(name, parent);

@@ -10,8 +10,11 @@
 
 import uvm_pkg::*;
 `include "C:/Users/HP/WORK_UVM/uvm-1.1d/src/uvm_macros.svh"
-`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_interface.sv"
-`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_templates/uvm_template_base_test.sv"
+
+`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.7/uvm_template_interface.sv"
+`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.7/uvm_template_env.sv"
+`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.7/uvm_template_base_test.sv"
+`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.7/uvm_template_wr_rd_test.sv"
 
 module uvm_template_top;
   timeprecision  1ps;
@@ -36,9 +39,6 @@ module uvm_template_top;
   bit disable_message_flag_100ns;
   bit disable_message_flag_1000ns;
   bit disable_message_flag_10000ns;
-    
-  // environment class instance
-  uvm_template_env env_inst_in_top;
   
   // interface instance
   my_if intf(clk,reset);
@@ -137,14 +137,21 @@ module uvm_template_top;
   
   // passing the interface handle to 
   // the lower heirarchy using set method   
-  // calling test  
+  // calling test 
+  //
+  // The command line argument (+UVM_TESTNAME=SOME_NEW_TESTNAME) 
+  // takes precedence over the test name passed 
+  // via the run_test(SOME_TESTNAME) function argument.
+  // 
   initial begin 
   	// Print the simulation time in ns by default
     $timeformat(-9, 0, "", 11);  // units, precision, suffix, min field width
-  	`uvm_info("TOP","In TOP initial block . . .",UVM_MEDIUM)
-  	env_inst_in_top = new("uvm_template_env"); // null);
+  	`uvm_info("TOP_TB","Executing  runtest  in TOP_TB initial block . . .",UVM_MEDIUM)
     uvm_config_db#(virtual my_if)::set(null,"*","vif",intf); 	
-    run_test("uvm_template_base_test");
+    // run_test("uvm_template_base_test");
+    // run_test("uvm_template_base_test");
+    // run_test("uvm_template_base_test");
+    run_test();
   end
   
 endmodule: uvm_template_top
