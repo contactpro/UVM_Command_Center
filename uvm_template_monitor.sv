@@ -2,7 +2,7 @@
 // Author:  
 // Filename: uvm_template_monitor.sv  
 // Version: Demo   
-// Description: monitor template for UVM Testbench Builder
+// Description: monitor template for UVM Testbench Builder 
 // Language: SystemVerilog and UVM Libraries
 //
 `ifndef PKT_MONITOR_SV
@@ -11,7 +11,7 @@
 import uvm_pkg::*;
 `include "C:/Users/HP/WORK_UVM/uvm-1.1d/src/uvm_macros.svh"
 
-`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.7/packet_seq_item.sv"
+`include "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/BUILD_TEST/UVM_COMMAND_CENTER_v1.8/packet_seq_item.sv"
 
 class uvm_template_monitor extends uvm_monitor;
   
