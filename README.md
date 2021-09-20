@@ -1,16 +1,15 @@
 # UVM COMMAND CENTER
-# UVM Testbench Builder
-# UVM FPGA/ASIC Design Verification Workflow Tutorial
-# UVM Testbench (simple) Demo for Educational (and freemium ideas and concepts).
-# UVM Testbench Workflow and evolution into (Public/Private/Hybrid) Cloud Devops. 
+# UVM Testbench Workflow Automation Demo / Reference Design (Concept)
+# UVM FPGA/ASIC/SoC Design Verification Workflow Tutorial
+
+UVM Testbench Workflow Automation Demo for Educational (and freemium ideas and concepts).
+UVM Testbench Workflow and evolution into (Public/Private/Hybrid) Cloud Devops. 
 
 The UVM COMMAND CENTER python aplication is a UVM FPGA/ASIC Design Verification Workflow Tutorial/Demo. UVM COMMAND CENTER / UVM Testbench Builder Software Application written in PYTHON and built with cx_Freeze. The UVM Testbench Builder Software Application has UVM workflow tutorial and educational attributes. The UVM Testbench Builder Software Application will eventually utilize Cloud Infrastructure(s) to scale. 
 
 Currently, only GITHUB releases of the source code are available as these three identical source code copies:
 
-uvm_builder_python.py
-uvm_builder_python_backup.py
-uvm_see1.py
+uvm_builder_python.py , uvm_builder_python_backup.py , uvm_see1.py
 
 Later, a WINDOWS 10 / WINDOWS 11 MSI file executable will be produced by modifying the cxfreeze script in this GITHUB repository.
 
