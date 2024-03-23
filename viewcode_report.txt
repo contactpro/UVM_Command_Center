@@ -1,0 +1,440 @@
+OBJECT_toplevel_user_gui_1_config_class = object
+OBJECT_toplevel_user_gui_2_config_class = object
+OBJECT_toplevel_user_gui_3_config_class = object
+OBJECT_toplevel_user_gui_4_config_class = object
+OBJECT_toplevel_user_gui_5_config_class = object
+OBJECT_toplevel_user_gui_6_config_class = object
+OBJECT_toplevel_user_gui_7_config_class = object
+OBJECT_toplevel_user_gui_8_config_class = object
+OBJECT_toplevel_user_gui_9_config_class = object
+OBJECT_toplevel_user_gui_10_config_class = object
+OBJECT_IN_APP_user_gui_1_config_class = object
+OBJECT_IN_APP_user_gui_2_config_class = object
+OBJECT_IN_APP_user_gui_3_config_class = object
+OBJECT_IN_APP_user_gui_4_config_class = object
+OBJECT_IN_APP_user_gui_5_config_class = object
+OBJECT_IN_APP_user_gui_6_config_class = object
+OBJECT_IN_APP_user_gui_7_config_class = object
+OBJECT_IN_APP_user_gui_8_config_class = object
+OBJECT_IN_APP_user_gui_9_config_class = object
+OBJECT_IN_APP_user_gui_10_config_class = object
+OBJECT_toplevel_email_gmail_class = object
+OBJECT_toplevel_config_setting_class = object
+OBJECT_IN_APP_email_gmail_class = object
+OBJECT_IN_APP_config_setting_class = object
+class App(Frame):    #( object)
+      The App Class is defined by the statement:  class App(object): 
+      def __init__(self, master):
+            OBJECT_toplevel_user_gui_1_config_class = self.master
+            OBJECT_toplevel_user_gui_2_config_class = self.master
+            OBJECT_toplevel_user_gui_3_config_class = self.master
+            OBJECT_toplevel_user_gui_4_config_class = self.master
+            OBJECT_toplevel_user_gui_5_config_class = self.master
+            OBJECT_toplevel_user_gui_6_config_class = self.master
+            OBJECT_toplevel_user_gui_7_config_class = self.master
+            OBJECT_toplevel_user_gui_8_config_class = self.master
+            OBJECT_toplevel_user_gui_9_config_class = self.master
+            OBJECT_toplevel_user_gui_10_config_class = self.master
+            OBJECT_toplevel_email_gmail_class = self.master
+            OBJECT_toplevel_config_setting_class = self.master
+            OBJECT_IN_APP_user_gui_1_config_class = self.master
+            OBJECT_IN_APP_user_gui_2_config_class = self.master
+            OBJECT_IN_APP_user_gui_3_config_class = self.master
+            OBJECT_IN_APP_user_gui_4_config_class = self.master
+            OBJECT_IN_APP_user_gui_5_config_class = self.master
+            OBJECT_IN_APP_user_gui_6_config_class = self.master
+            OBJECT_IN_APP_user_gui_7_config_class = self.master
+            OBJECT_IN_APP_user_gui_8_config_class = self.master
+            OBJECT_IN_APP_user_gui_9_config_class = self.master
+            OBJECT_IN_APP_user_gui_10_config_class = self.master
+            OBJECT_IN_APP_email_gmail_class = self.master
+            OBJECT_IN_APP_config_setting_class = self.master
+            def on_enter_bg(e): e.widget['background'] = 'cyan'
+            def on_leave_bg(e): e.widget['background'] = 'midnight blue'
+            def on_leave_black_bg(e): e.widget['background'] = 'black'
+            def on_enter_fg(e): e.widget['foreground'] = 'blue2'
+            def on_leave_fg(e): e.widget['foreground'] = 'deep sky blue'
+      def project_name_widget_function(self, event, project_widget_name):
+      def project_name_fullpath_widget_function(self, event, project_fullpath_widget_name):
+      def changeOnHover(button, colorOnHover, colorOnLeave):
+      def create_first_contact_list_on_startup(self):
+      def func_set_window_select_global(self, window_select_opt_menu_select):
+      def crm_startup_screen_show_method(self):
+      def FLASH_sv_interface_button_midnight_blue(self):
+      def FLASH_sv_interface_button_cyan(self):
+      def FLASH_uvm_seq_item_button_midnight_blue(self):          
+      def FLASH_uvm_seq_item_button_cyan(self):          
+      def FLASH_sort_contact_list_button_midnight_blue(self):          
+      def FLASH_sort_contact_list_button_cyan(self):          
+      def FLASH_speedbutton_1_midnight_blue(self):          
+      def FLASH_speedbutton_1_cyan(self):          
+      def FLASH_speedbutton_2_midnight_blue(self):          
+      def FLASH_speedbutton_2_cyan(self):          
+      def FLASH_speedbutton_3_midnight_blue(self):          
+      def FLASH_speedbutton_3_cyan(self):          
+      def FLASH_speedbutton_4_midnight_blue(self):          
+      def FLASH_speedbutton_4_cyan(self):          
+      def FLASH_build_dual_list_button2_midnight_blue(self):          
+      def FLASH_build_dual_list_button2_cyan(self):          
+      def FLASH_speedbutton_5_midnight_blue(self):          
+      def FLASH_speedbutton_5_cyan(self):          
+      def FLASH_build_dual_list_button_midnight_blue(self):          
+      def FLASH_build_dual_list_button_cyan(self):          
+      def FLASH_build_dual_list3_button_midnight_blue(self):          
+      def FLASH_build_dual_list3_button_cyan(self):          
+      def FLASH_build_dual_list4_button_midnight_blue(self):          
+      def FLASH_build_dual_list4_button_cyan(self):          
+      def FLASH_NIGHT_MODE_SELECT_BUTTON_yellow(self):
+      def FLASH_NIGHT_MODE_SELECT_BUTTON_pink(self):
+      def FLASH_NIGHT_MODE_SELECT_BUTTON_blue(self):
+      def FLASH_NIGHT_MODE_SELECT_BUTTON_red(self):
+      def FLASH_NIGHT_MODE_SELECT_BUTTON_cyan(self):
+      def FLASH_NIGHT_MODE_SELECT_BUTTON_green(self):
+      def FLASH_NIGHT_MODE_SELECT_BUTTON_normal(self):
+      def kick_thread_email_entry_widgets(self):
+      def kick_thread_main_entry_widgets(self):
+      def crm_startup_method(self):
+      def func_set_mode_select_global(self, mode_select_opt_menu_select):
+      def decision_SAVE_CONTACT_ENTRY(self):
+      def edit_mode_contact_update(self):
+      def emulate_the_scroll_method(self):
+      def cm_app_doc_media_window_method_CREATE_PROJECT(self):                	
+      def cm_app_doc_media_window_method(self):                	
+      def user_defined_gui_window_method(self):
+                OBJECT_IN_APP_user_gui_1_config_class = user_defined_gui_group_one
+                OBJECT_IN_APP_user_gui_2_config_class = user_defined_gui_group_two
+                OBJECT_IN_APP_user_gui_3_config_class = user_defined_gui_group_three
+                OBJECT_IN_APP_user_gui_4_config_class = user_defined_gui_group_four
+                OBJECT_IN_APP_user_gui_5_config_class = user_defined_gui_group_five
+                OBJECT_IN_APP_user_gui_6_config_class = user_defined_gui_group_six
+                OBJECT_IN_APP_user_gui_7_config_class = user_defined_gui_group_seven
+                OBJECT_IN_APP_user_gui_8_config_class = user_defined_gui_group_eight
+                OBJECT_IN_APP_user_gui_9_config_class = user_defined_gui_group_nine
+                OBJECT_IN_APP_user_gui_10_config_class = user_defined_gui_group_ten
+      #   VIEW System Administration Info Screen - class System_Admin_Info(Frame)   
+      def system_administration_View_method(self):
+      #   Email Feature Class and Methods:  Instantiaing class Email_Gmail_Class
+      def email_Gmail_Feature_method(self):
+                OBJECT_IN_APP_email_gmail_class = self.cm_app_email
+      def build_list_from_dual_listbox_window_method(self):
+      def new_window_method(self):
+      def select_App_Status_Display_method(self):
+      def config_App_Settings_method(self):
+                OBJECT_IN_APP_config_setting_class = self.cm_app_config_app_settings
+      def new_list_window_method(self):
+      def view_mode_method(self):
+      def export_CSV_for_Excel_method(self):
+      def SV_INTERFACE_View_method(self):
+      def UVM_SEQ_ITEM_View_method(self):
+      def UVM_SEQUENCE_View_method(self):
+      def UVM_SEQUENCER_View_method(self):
+      def UVM_DRIVER_View_method(self):
+      def UVM_MONITOR_View_method(self):
+      def UVM_AGENT_View_method(self):
+      def UVM_SCBD_View_method(self):
+      def UVM_ENV_View_method(self):
+      def UVM_TEST_View_method(self):
+      def UVM_PROJECT_DIRECTORY_View_method(self):
+      def UVM_TESTBENCH_TOP_View_method(self):
+      def DESIGN_DUT_SELECT_Menu_method(self):
+      def COMPILE_SCRIPT_SELECT_Menu_method(self):
+      def SIMULATION_SCRIPT_SELECT_Menu_method(self):
+      def ANALYSIS_SCRIPT_SELECT_Menu_method(self):
+      def sort_Contact_List(self):
+      def forward_fast(self):
+      def forward_scroll(self):
+      def forward_tick(self):
+      def forward_click(self):
+      def backward_click(self):
+      def backward_tick(self):
+      def backward_scroll(self):
+      def backward_fast(self):
+      #def report_event(self,event):   
+      def exit_Handler(self):
+      def lower_main_WINDOW(self):
+      def insert_Data_Entry(self):
+            # print("OBJECT_toplevel_user_gui_1_config_class = " + str(OBJECT_toplevel_user_gui_1_config_class) )
+            # print("OBJECT_toplevel_user_gui_2_config_class = " + str(OBJECT_toplevel_user_gui_2_config_class) )
+            # print("OBJECT_toplevel_user_gui_3_config_class = " + str(OBJECT_toplevel_user_gui_3_config_class) )
+            # print("OBJECT_toplevel_email_gmail_class = " + str(OBJECT_toplevel_email_gmail_class) )
+            # print("OBJECT_toplevel_config_setting_class = " + str(OBJECT_toplevel_config_setting_class) )
+            # print("OBJECT_IN_APP_user_gui_1_config_class = " + str(OBJECT_IN_APP_user_gui_1_config_class) )
+            # print("OBJECT_IN_APP_user_gui_2_config_class = " + str(OBJECT_IN_APP_user_gui_2_config_class) )
+            # print("OBJECT_IN_APP_user_gui_3_config_class = " + str(OBJECT_IN_APP_user_gui_3_config_class) )
+            # print("OBJECT_IN_APP_email_gmail_class = " + str(OBJECT_IN_APP_email_gmail_class) )
+            # print("OBJECT_IN_APP_config_setting_class = " + str(OBJECT_IN_APP_config_setting_class) )
+      def first_Contact_Data_Entry(self):
+            # Write contact data dictionary to dict_filename file from class method get_contact_dict_call
+      def finished_Data_Entry(self):
+            # Write contact data dictionary to dict_filename file from class method get_contact_dict_call
+class Get_EMail_List_from_Contact_List_Name(object):
+    def __init__(self, master):
+    def get_email_list(self):
+class Select_Email_Address_List(Frame):  #(object):
+    def __init__(self, master):
+    def get_Listbox_File(self):
+    def OnListBoxSelect(self, event):
+    def lower_the_window(self):
+    def close_windows(self):
+class Email_Gmail_Class(Frame):  #(object):
+      def __init__(self, master, **kw):
+            OBJECT_toplevel_email_gmail_class = self.master
+      def select_dest_address(self):
+      def select_cc_address(self):
+      def LISTEN_EMAIL_LIST_READY_THREAD_worker(self):
+      def cm_app_doc_media_window_method_email_screen(self):
+      def lower_email_WINDOW(self):
+      def exit_Handler(self):
+      def func_set_email_mode_select_global(self, email_mode_select_opt_menu_select):
+      def save_contact_notes(self):
+      def retrieve_contact_notes(self):
+      def src_addr_widget_function(self, event, src_addr_widget_name):
+      def clistname_widget_function(self, event, clist_widget_name):
+      def contact_list_widget_function(self, event, contact_list_widget_name):
+      def pwd_widget_function(self, event, pwd_widget_name):
+      def cc_widget_function(self, event, cc_widget_name):
+      def to_widget_function(self, event, to_widget_name):
+      def title_widget_function(self, event, title_widget_name):
+      def content_widget_function(self, event, content_widget_name):
+      def status_widget_function(self, event, status_widget_name):
+      def func_set_textbox_edit_mode_select_global(self, tb_mode_select_opt_menu_select):
+                   # entry class get does not take any arguments (but text class does)
+                   # entry class get does not take any arguments (but text class does)
+      def load_next_contact(self):
+      def load_previous_contact(self):
+      def get_credentials(self):
+      def SendMessage(self, service, user_id, message):
+      def get_decision_Textbox_File(self, event):
+      def email_attachment_option_method(self, event):
+      def dialog_to_get_file_attachment(self):
+      def get_Textbox_File_for_OAUTH2_Email(self):
+      def email_attachment_MIMEText(self):
+            # class variable that is being built as these MIME Methods
+            # class variable that is being built as these MIME Methods
+      def email_attachment_MIMEImage(self):
+            # class variable that is being built as these MIME Methods
+            # class variable that is being built as these MIME Methods
+      def email_attachment_MIMEApplication(self):
+            # class variable that is being built as these MIME Methods
+            # class variable that is being built as these MIME Methods
+      def email_attachment_MIMEAudio(self):
+            # class variable that is being built as these MIME Methods
+            # class variable that is being built as these MIME Methods
+      def email_attachment_MIMEVideo(self):
+            # class variable that is being built as these MIME Methods
+            # class variable that is being built as these MIME Methods
+      def email_attachment_MIME_Radio_Button_Select(self):
+            # class variable that is being built as these MIME Methods
+            # class variable that is being built as these MIME Methods
+      def launch_messagebox_when_email_fails(self):
+class Person(object):
+      The Person Class is defined by the statement:  class Person(object): 
+      def __init__(self, firstname, lastname, streetadd, citytown, state, zipcode, phonenum, email, website):
+      def __name__(self):
+      def __str__(self):
+      def __repr__(self):
+      def get_Firstname(self):
+      def get_Lastname(self):
+      def get_Streetadd(self):
+      def get_Citytown(self):
+      def get_State(self):
+      def get_Zipcode(self):
+      def get_Phonenum(self):
+      def get_Email(self):
+      def get_Website(self):
+      def set_Firstname(self, newFirstname):
+      def set_Lastname(self, newLastname):
+      def set_Streetadd(self, newStreetadd):
+      def set_Citytown(self, newCitytown):
+      def set_State(self, newState):
+      def set_Zipcode(self, newZipcode):
+      def set_Phonenum(self, newPhonenum):
+      def set_Email(self, newEmail):
+      def set_Website(self, newWebsite):
+# class App_Remote_Monitoring(object):  
+class App_Status_Panel(Frame):    #( object)
+    def __init__(self, master=None):
+        # def lift_win1():
+        # def lower_win1(): 
+    def lower_the_window(self):
+    def close_windows(self):
+    def _update_app_status_panel(self): 
+            # when the status panel tk window, class App_Status_Class, and method update_app_status_panel
+    # def func_to_be_threaded(self):
+    def update_app_status_panel(self):
+    # def func_to_be_threaded(self):
+    def _json_file_validation_thread(self):
+    def json_file_validation_thread(self):
+    def reset_status_panel_method(self):
+class Config_Setting_Class(Frame):    #( object)
+    def __init__(self, master=None):
+        OBJECT_toplevel_config_setting_class = self.master
+    def lower_WINDOW(self):
+    def exit_Handler(self):
+    def main_bg_set_color_variables(self, event):
+    def view_bg_set_color_variables(self, event):
+    def select_bg_set_color_variables(self, event):
+    def newlist_bg_set_color_variables(self, event):
+    def usermanual_bg_set_color_variables(self, event):
+    def config_bg_set_color_variables(self, event):
+    def main_fg_set_color_variables(self, event):
+    def view_fg_set_color_variables(self, event):
+    def select_fg_set_color_variables(self, event):
+    def newlist_fg_set_color_variables(self, event):
+    def usermanual_fg_set_color_variables(self, event):
+    def config_fg_set_color_variables(self, event):
+    def OnListBoxSelect(self, event):
+    def func_set_main_bg_global(self, main_opt_menu_bg_select):
+    def func_set_view_bg_global(self, view_opt_menu_bg_select):
+    def func_set_select_bg_global(self, select_opt_menu_bg_select):
+    def func_set_newlist_bg_global(self, newlist_opt_menu_bg_select):
+    def func_set_usermanual_bg_global(self, usermanual_opt_menu_bg_select):
+    def func_set_config_bg_global(self, config_opt_menu_bg_select):
+    def func_set_main_fg_global(self, main_opt_menu_fg_select):
+    def func_set_view_fg_global(self, view_opt_menu_fg_select):
+    def func_set_select_fg_global(self, select_opt_menu_fg_select):
+    def func_set_newlist_fg_global(self, newlist_opt_menu_fg_select):
+    def func_set_newlist_fg_global(self, newlist_opt_menu_fg_select):
+    def func_set_usermanual_fg_global(self, usermanual_opt_menu_fg_select):
+    def func_set_config_fg_global(self, config_opt_menu_fg_select):
+    def get_Config_Textbox_Settings(self, event):
+class System_Admin_Info(Frame):   # (object):
+    def __init__(self, master):
+    def set_mode_select_sysadmin_menu_global(self, mode_select_sysadmin_opt_menu_select):
+    def lower_WINDOW(self):
+    def exit_Handler(self):
+    def display_sys_admin_data(self):
+    def display_ipconfig(self):
+    def display_netstat(self):
+    def display_exceptions_logfile(self):
+class Select_Contact_List(Frame):  #(object):
+    def __init__(self, master):
+    def get_Listbox_File(self):
+    def OnListBoxSelect(self, event):
+    def lower_the_window(self):
+    def close_windows(self):
+class List_Builder(Frame):  #(object):
+    def __init__(self, master):
+    def func_set_mode_select_build_list_global(self, mode_select_build_opt_menu_select):
+    def start_build_list_WORKFLOW(self):
+    def draw_WorkFlow_Canvas_Widget(self):
+    def FrameWidthHeight(self, event):
+    def OnFrameConfigure(self, event):
+    def merge_list_of_contact_lists(self):
+        # class Write_Dict_File(object):
+        #    def __init__(self, contact_dict_of_dict_object, contact_list_name):
+    def GET_LBOX_MAIN_curselection_method(self):
+    def GET_LBOX_SOURCE_curselection_method(self):
+        # we start with a blank list of values and re-build our class object for
+    def GET_LBOX_DESTINATION_curselection_method(self):
+        # we start with a blank list of values and re-build our class object for
+    def execute_COPY_LIST_WORKFLOW(self):
+    def enter_new_contact_list_name(self):
+    def execute_BUILD_LIST_WORKFLOW(self):
+    def get_Listbox_Source_Contact(self, event):
+        #  def OnListBoxSelect_Source_Contacts(self, event):
+    def Input_Dict_Filename_Output_Source_Contacts_to_LISTBOX(self):
+    def Generate_Button_One_Event(self):
+    def OnListBoxSelect(self, event):
+    def capture_new_contact_list_name(self):
+    def create_the_NEW_DICTIONARY(self):
+    def create_the_NEW_DICTIONARY_after_question(self):
+             # Write contact data dictionary to dict_filename file from class method get_contact_dict_call
+    def signal_list_built_complete(self):
+    def lower_the_window(self):
+    def close_windows(self):
+class New_Contact_List(Frame):   # (object):
+    def __init__(self, master):
+    def get_Textbox_File (self, event):
+    def lower_the_window(self):
+    def close_windows(self):
+class View_Contact_List(Frame):   # (object):
+    def __init__(self, master):
+    def lower_WINDOW(self):
+    def exit_Handler(self):
+class USER_GUI_Config_Class(Frame):    #(object)
+    def __init__(self, master):
+        OBJECT_toplevel_user_gui_config_class = self.master
+            OBJECT_toplevel_user_gui_10_config_class = self.master
+            OBJECT_toplevel_user_gui_9_config_class = self.master
+            OBJECT_toplevel_user_gui_8_config_class = self.master
+            OBJECT_toplevel_user_gui_7_config_class = self.master
+            OBJECT_toplevel_user_gui_6_config_class = self.master
+            OBJECT_toplevel_user_gui_5_config_class = self.master
+            OBJECT_toplevel_user_gui_4_config_class = self.master
+            OBJECT_toplevel_user_gui_3_config_class = self.master
+            OBJECT_toplevel_user_gui_2_config_class = self.master
+            OBJECT_toplevel_user_gui_1_config_class = self.master
+        #   END of INITIALIZATION METHOD for class USER_GUI_Config_Class(Frame)
+    def very_first_create_medical_record_config_ini(self):
+    def load_medical_record_config_ini(self):
+    def widget_group_template(self, Master_Frame_Object, user_label_text, status_message_text, user_entry_stringvar, user_button_text):
+    def update_user_text_status(self, event):
+    def lift_group_one_WINDOW(self, event):
+    def lift_group_two_WINDOW(self, event):
+    def lift_group_three_WINDOW(self, event):
+    def lift_group_four_WINDOW(self, event):
+    def lift_group_five_WINDOW(self, event):
+    def lift_group_six_WINDOW(self, event):
+    def lift_group_seven_WINDOW(self, event):
+    def lift_group_eight_WINDOW(self, event):
+    def lift_group_nine_WINDOW(self, event):
+    def lift_group_ten_WINDOW(self, event):
+    def lift_the_main_WINDOW(self):
+    def exit_Handler(self):
+class HyperlinkManager(object):
+    """A class to easily add clickable hyperlinks to Text areas.
+    def __init__(self, text):
+    def reset(self):
+    def add(self, action):
+    def _enter(self, event):
+    def _leave(self, event):
+    def _click(self, event):
+class CM_App_Doc_Media_CREATE_PROJECT():  #(object):
+    def __init__(self, master):
+        #   moved here to INSIDE class CM_App_Doc_Media(Frame) CLASS 
+    def update_main_screen_textbox_project_info(self):
+class CM_App_Doc_Media():  #(object):
+    def __init__(self, master):
+        #   moved here to INSIDE class CM_App_Doc_Media(Frame) CLASS 
+    def update_main_screen_textbox_project_info(self):
+    def update_stringvars_project_entry_widgets(self):
+class Excel_Import_Export(Frame):   #(object):
+    def __init__(self, master):
+    def lower_email_WINDOW(self):
+    def exit_Handler(self):
+    def convert_CSV_to_App_Contact_List(self, event):
+                # Write contact data dictionary to dict_filename file from class method get_contact_dict_call
+    def convert_CSV_to_Excel(self, event):
+class Store_Lbox_Filename(object):
+      def __init__(self, selected_lbox_file):
+      def set_listbox_file(self, new_Lbox_File):
+      def get_listbox_file(self):
+class Store_Contact_Dict(object):
+      def __init__(self, this_contact_dict):
+      def set_contact_dict(self, new_this_contact_dict):
+      def get_contact_dict(self):
+class Store_dictionary_of_dictionaries(object):
+      def __init__(self, this_dict_of_dicts):
+      def set_dict_of_dicts(self, new_this_dict_of_dicts):
+      def get_dict_of_dicts(self):
+class Process_Dict_File(object):
+      def __init__(self, target_dict_file):
+      def read_target_dict_file(self):
+                   # Write sorted contact data dictionary to dict_filename file from class method get_contact_dict_call
+class Write_Dict_File(object):
+      def __init__(self, contact_dict_of_dict_object, contact_list_name):
+      def write_target_dict_file(self):
+                   # Write sorted contact data dictionary to dict_filename file from class method get_contact_dict_call
+# class Compute_Valid_Client_Secret_JSON_Status.
+class Compute_Valid_Client_Secret_JSON_Status(object):
+      def validate_client_secret_json(self):
+# class Write_Exception_Logfile logs Exceptions during the application execution.  
+class Write_Exception_Logfile(object):
+      def write_update_exception_logfile(self):
+      def log_exception(self, exception_info_string):
+# class Write_Main_Logfile writes a new logfile replacing the previous logfile.  
+class Write_Main_Logfile(object):
+      def write_update_logfile(self):
+def main():
+      def cm_filename_worker():

@@ -2,7 +2,7 @@
 #
 # Author: Michael Hughes
 #
-# Program: uvm_builder_python_3_10_13.py 
+# Program: uvm_builder_python.py 
 #  
 # Version: Demo 
 #   
@@ -10,7 +10,7 @@
 #
 # Description: UVM Testbench Builder
 #
-# Language: Python 3.10.13 UPDATED March 23, 2024.
+# Language: Python 3.6.2
 #
 ######################################################################
 #
