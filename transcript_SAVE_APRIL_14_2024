@@ -1,0 +1,96 @@
+# vsim -c "+nowarnTSCALE" -voptargs="+acc" testbench_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do "C:/Users/HP/WORK_PYTHON_TEST/DATACLASS_PYTHON\sim.do" 
+# Start time: 16:28:23 on Apr 14,2024
+# Loading sv_std.std
+# Loading work.uvm_pkg
+# Loading work.testbench_top_sv_unit
+# ** Error (suppressible): (vsim-19) Failed to access library 'C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89' at "C:/Users/HP/WORK_PYTHON/PY_UVM_TB_BUILDER/uvm_tb_database_files/uvm_tb_project/mem_eda_5r89".
+# No such file or directory. (errno = ENOENT)
+# ** Note: (vsim-8785) UVM-aware debugging capabilities will be disabled since no compiled "questa_uvm_pkg" can be found.
+# This also means that later if you turn on UVM-aware debugging your debug simulations may have
+# different random seeds from your non-debug simulations.
+# Loading work.testbench_top
+# Loading work.mem_if
+# Loading work.memory
+# Loading C:/Users/HP/AppData/Local/Temp\HP@CHIPCODER_dpi_18740\win32pe_gcc-4.2.1\vsim_auto_compile.dll
+# ** Warning: Design size of 48099 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Expect performance to be adversely affected.
+# do {C:/Users/HP/WORK_PYTHON_TEST/DATACLASS_PYTHON\sim.do}
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO @ 0: reporter [RNTST] Running test mem_wr_rd_test...
+# ----------------------------------------------------------------
+# Name                         Type                    Size  Value
+# ----------------------------------------------------------------
+# uvm_test_top                 mem_wr_rd_test          -     @448 
+#   env                        mem_model_env           -     @456 
+#     mem_agnt                 mem_agent               -     @468 
+#       driver                 mem_driver              -     @506 
+#         rsp_port             uvm_analysis_port       -     @523 
+#         seq_item_port        uvm_seq_item_pull_port  -     @514 
+#       monitor                mem_monitor             -     @485 
+#         item_collected_port  uvm_analysis_port       -     @497 
+#       sequencer              mem_sequencer           -     @532 
+#         rsp_export           uvm_analysis_export     -     @540 
+#         seq_item_export      uvm_seq_item_pull_imp   -     @646 
+#         arbitration_queue    array                   0     -    
+#         lock_queue           array                   0     -    
+#         num_last_reqs        integral                32    'd1  
+#         num_last_rsps        integral                32    'd1  
+#     mem_scb                  mem_scoreboard          -     @476 
+#       item_collected_export  uvm_analysis_imp        -     @662 
+# ----------------------------------------------------------------
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_scoreboard.sv(65) @ 25: uvm_test_top.env.mem_scb [mem_scoreboard] ------ :: WRITE DATA       :: ------
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_scoreboard.sv(66) @ 25: uvm_test_top.env.mem_scb [mem_scoreboard] Addr: 3
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_scoreboard.sv(67) @ 25: uvm_test_top.env.mem_scb [mem_scoreboard] Data: ee
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_scoreboard.sv(68) @ 25: uvm_test_top.env.mem_scb [mem_scoreboard] ------------------------------------
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_scoreboard.sv(65) @ 45: uvm_test_top.env.mem_scb [mem_scoreboard] ------ :: WRITE DATA       :: ------
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_scoreboard.sv(66) @ 45: uvm_test_top.env.mem_scb [mem_scoreboard] Addr: 3
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_scoreboard.sv(67) @ 45: uvm_test_top.env.mem_scb [mem_scoreboard] Data: ee
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_scoreboard.sv(68) @ 45: uvm_test_top.env.mem_scb [mem_scoreboard] ------------------------------------
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_scoreboard.sv(72) @ 75: uvm_test_top.env.mem_scb [mem_scoreboard] ------ :: READ DATA Match :: ------
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_scoreboard.sv(73) @ 75: uvm_test_top.env.mem_scb [mem_scoreboard] Addr: 3
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_scoreboard.sv(74) @ 75: uvm_test_top.env.mem_scb [mem_scoreboard] Expected Data: ee Actual Data: ee
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_scoreboard.sv(75) @ 75: uvm_test_top.env.mem_scb [mem_scoreboard] ------------------------------------
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_scoreboard.sv(72) @ 105: uvm_test_top.env.mem_scb [mem_scoreboard] ------ :: READ DATA Match :: ------
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_scoreboard.sv(73) @ 105: uvm_test_top.env.mem_scb [mem_scoreboard] Addr: 3
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_scoreboard.sv(74) @ 105: uvm_test_top.env.mem_scb [mem_scoreboard] Expected Data: ee Actual Data: ee
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_scoreboard.sv(75) @ 105: uvm_test_top.env.mem_scb [mem_scoreboard] ------------------------------------
+# UVM_INFO C:/Users/HP/WORK_UVM/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 145: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_base_test.sv(59) @ 145: uvm_test_top [mem_wr_rd_test] ---------------------------------------
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_base_test.sv(60) @ 145: uvm_test_top [mem_wr_rd_test] ----           TEST PASS           ----
+# UVM_INFO C:/Users/HP/WORK_PYTHON/project_mem_eda_5r89/sim/tb/mem_base_test.sv(61) @ 145: uvm_test_top [mem_wr_rd_test] ---------------------------------------
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :   21
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [RNTST]     1
+# [TEST_DONE]     1
+# [mem_scoreboard]    16
+# [mem_wr_rd_test]     3
+# ** Note: $finish    : C:/Users/HP/WORK_UVM/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 145 ps  Iteration: 53  Instance: /testbench_top
+# End time: 16:28:25 on Apr 14,2024, Elapsed time: 0:00:02
+# Errors: 1, Warnings: 1
