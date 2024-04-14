@@ -92,6 +92,8 @@ import configparser
 # import numpy
 # import pandas as pd
 
+from dataclasses import dataclass
+
 import tkinter as tk
 from tkinter import *
 
@@ -3471,7 +3473,7 @@ class App(Frame):    #( object)
                                                      
             fullpath_UVM_SEQUENCE_CODE_global = os.path.join(str(directory_full_path_project_name_global), str(base_sequence_value_string_global))
                     
-            # print("\n fullpath_UVM_SEQUENCE_CODE_global = " + str(fullpath_UVM_SEQUENCE_CODE_global))
+            print("\n fullpath_UVM_SEQUENCE_CODE_global = " + str(fullpath_UVM_SEQUENCE_CODE_global))
                                     
             with open(str(fullpath_UVM_SEQUENCE_CODE_global) ) as fin:
                for line in fin:
@@ -4701,10 +4703,12 @@ class App(Frame):    #( object)
             # 
             # vsim -c +nowarnTSCALE -voptargs=+acc uvm_template_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do C:\Users\HP\WORK_PYTHON\PY_UVM_TB_BUILDER\uvm_tb_database_files\uvm_tb_project\project_name\sim.do
             #  
+            # vsim -c +nowarnTSCALE -voptargs=+acc testbench_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do C:\Users\HP\WORK_PYTHON\PY_UVM_TB_BUILDER\uvm_tb_database_files\uvm_tb_project\project_name\sim.do
+            #  
             sim_do_fullpath = os.path.join(str(directory_full_path_project_name_global),"sim.do")
             dut_wlf_fullpath = os.path.join(str(directory_full_path_project_name_global),"dut_wlf.wlf")
             ##            
-            OS_SIM_COMMAND_STRING_PIPE = "vsim -c +nowarnTSCALE -voptargs=+acc uvm_template_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do " + str(sim_do_fullpath) + " >> cmd_output_redirect.txt"
+            OS_SIM_COMMAND_STRING_PIPE = "vsim -c +nowarnTSCALE -voptargs=+acc testbench_top -modelsimini ./modelsim_uvm_1_1d.ini -msgmode both -do " + str(sim_do_fullpath) + " >> cmd_output_redirect.txt"
             # 
             print("\nOS_SIM_COMMAND_STRING_PIPE = " + str(OS_SIM_COMMAND_STRING_PIPE) + "\n")
             # 
@@ -18034,6 +18038,21 @@ class CM_App_Doc_Media():  #(object):
         # self.master.update()
         
          
+@dataclass
+class SVFilenameList:
+    """Class for keeping track of SV Filename List."""
+    sv_filetype: str
+    sv_filename: str
+
+    def __init__(self, sv_filetype, sv_filename):
+       self.sv_filetype = "INITIAL_SV_FILETYPE"
+       self.sv_filename = "INITIAL_SV_FILENAME"
+
+SVFilenameList_instance = SVFilenameList("INITIAL_SV_FILETYPE", "INITIAL_SV_FILENAME")
+print(SVFilenameList_instance.sv_filename)      
+print(SVFilenameList_instance.sv_filetype)   
+    
+    
 ##############################################################################
 #
 #   E X P O R T  (Contact List CSV to Excel)  
