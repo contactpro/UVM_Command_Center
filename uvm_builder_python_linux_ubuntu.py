@@ -1542,8 +1542,8 @@ class App(Frame):    #( object)
             # INSERT POP-UP MESSAGE python code HERE
                   
             root = tk.Tk()           
-            
-            messagebox.showinfo("PLEASE SELECT PROJECT IN MENU","PLEASE SELECT PROJECT DIRECTORY - ANY DIRECTORY WITH SV FILES - CHOOSE SELECT PROJECT IN THE MENU SEEN IN THE TOP LEFT CORNER OF THIS SCREEN.")
+            root.withdraw()                
+            # messagebox.showinfo("PLEASE SELECT PROJECT IN MENU","PLEASE SELECT PROJECT DIRECTORY - ANY DIRECTORY WITH SV FILES - CHOOSE SELECT PROJECT IN THE MENU SEEN IN THE TOP LEFT CORNER OF THIS SCREEN.")
 
             #  User answers "OK" to acknowledge TKINTER POP-UP MESSAGE 
            
