@@ -2,7 +2,8 @@
 #
 # Author: Michael Hughes
 #
-# Program: uvm_builder_python_3_10_13.py 
+# Program: uvm_builder_python_linux_ubuntu.py
+#          from uvm_builder_python_3_10_13.py 
 #  
 # Version: Demo 
 #   
@@ -11,6 +12,8 @@
 # Description: UVM Testbench Builder
 #
 # Language: Python 3.10.13 UPDATED March 23, 2024.
+#
+# Note: Linux Python Version: 
 #
 ######################################################################
 #
@@ -63,29 +66,80 @@ import socket
 #
 #  VERSION 14.1 CHANGE:  home_dir = userprofile_global # os.path.expanduser('~')
 # 
+import glob
+from pathlib import Path
+global home_dir
+global user_profile_global
+global appdata_path_global
+global full_appdata_path_global
+global appdata_dir_path_global
+global work_path_global
+global root_path_global
+global project_path_global
+global getcwd_global
+global entries_global
+global py_files_global
+global directory_global
 home_dir = os.path.expanduser('~')
 userprofile_global = os.path.expanduser('~')
-#
-######################################################################
-#
-#
-#
+appdata_path_global = "UVM_APP_DATA"
+work_path_global = Path('/usr/src')
+os.chdir(str(work_path_global))  # Change to /usr/src
+print("---------------------------------------------")
+print(f"appdata_path_global: {appdata_path_global}")
+print("---------------------------------------------")
+# Create the appdata_path_global directory
+appdata_dir_path_global = Path("UVM_APP_DATA")
+appdata_dir_path_global.mkdir(exist_ok=True)
+# Change to /usr/src/UVM_APP_DATA
+os.chdir(str(appdata_path_global))  
 print("  ")
-#
-print("Running:   uvm_builder_python_linux_ubuntu.py     . . . ")
-print("Running:   uvm_builder_python_linux_ubuntu.py     . . . ")
-print("Running:   uvm_builder_python_linux_ubuntu.py     . . . ")
-#
+# Get the current working directory
+full_appdata_path_global = Path.cwd()
+print(f"full_appdata_path_global: {full_appdata_path_global}")
+print(f"full_appdata_path_global: {full_appdata_path_global}")
+print(f"full_appdata_path_global: {full_appdata_path_global}")
 print("  ")
+print("----------------------------------------------")
+print("  ")
+root_path_global = Path('/root')
+os.chdir(str(root_path_global))  # Change to /root
+print(f"root_path_global: {root_path_global}")
+print("  ")
+print("----------------------------------------------")
+print("  ")
+project_path_global = Path('/root')
+os.chdir(str(project_path_global))  # Change to /root
+print(f"project_path_global: {project_path_global}")
+print("  ")
+print("----------------------------------------------")
+print("  ")
+
+# Find all .py files in the current directory (and subdirectories if needed)
+py_files_global = glob.glob("*.py")
+
+print("List of .py Files in Current Directory:    ")
+print("  ")
+# Format and print them
+for index, file in enumerate(py_files_global, start=1):
+    print(f"{index}: {file}")
+
 #
 import sys
-
 print("  ")
 print("Threads:  ", sys.thread_info)
 print("Python:  ", sys.version)
 print("Executable:  ", sys.executable)
 print("Platform ID:  ", sys.platform)
 print("  ")
+print("----------------------------------------------")
+getcwd_global = os.getcwd()
+print("Current Directory Path: ", getcwd_global)
+print("  ")
+print("----------------------------------------------")
+#
+print("  ")
+print("Running:   uvm_builder_python_linux_ubuntu.py     . . . ")
 #
 try:
   from urllib.parse import parse_qs
@@ -97,8 +151,6 @@ except ImportError:
 #
 import urllib.request
 #
-print("Running:   uvm_builder_python_linux_ubuntu.py     . . . . .")
-print("Running:   uvm_builder_python_linux_ubuntu.py     . . . . .")
 print("Running:   uvm_builder_python_linux_ubuntu.py     . . . . .")
 #
 import inspect
@@ -127,15 +179,13 @@ import random
 import configparser
 #
 print("Running:   uvm_builder_python_linux_ubuntu.py     . . . . . . . . . .")
-print("Running:   uvm_builder_python_linux_ubuntu.py     . . . . . . . . . .")
-print("Running:   uvm_builder_python_linux_ubuntu.py     . . . . . . . . . .")
 #
-# ATTENTION: Move the .ini file to directory - modelsim_uvm_1_1d.ini
+# ATTENTION: Please Move the .ini file to directory - modelsim_uvm_1_1d.ini
 #
 config = configparser.ConfigParser()
 # update modelsim_uvm_1_1d.ini file name
 config.read('./modelsim_uvm_1_1d.ini')
-print(config.sections())
+#  print(config.sections())
 
 # import xlsxwriter
 # import numpy
@@ -192,6 +242,13 @@ print("Running:   uvm_builder_python_linux_ubuntu.py     . . . . . . . . . . . .
 print("Running:   uvm_builder_python_linux_ubuntu.py     . . . . . . . . . . . . . . . . . . . . . . .")
 #
 
+#
+print("Running:   uvm_builder_python_linux_ubuntu.py     . . . . . . . . . . . . . . . . . . . . . . . . . . . . .")
+#
+
+#
+print("Running:   uvm_builder_python_linux_ubuntu.py     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .")
+#
 ##############################################################################
 #  
 # If modifying these scopes, delete your previously saved credentials
@@ -250,8 +307,8 @@ os.environ['username_global'] = 'username'
 os.environ['userprofile_global'] = 'userprofile'
 username_global = "username"
 userprofile_global = "userprofile"
-appdata_path_global = "APPDATA Path Not Set"
-cm_appdatafiles_path_global = "CM_APPDATAFILES Path Not Set"
+appdata_path_global = "UVM_APP_DATA"
+cm_appdatafiles_path_global = "CM_APPDATAFILES"
 fullpath_app_config_ini_global = "APPDATA_CONFIG_INI Path Not Set"
 fullpath_med_config_ini_global = "MEDICAL_RECORD_INI Path Not Set"
 mainscreen_bg_color_val_global = "ivory4"
@@ -818,6 +875,10 @@ class App(Frame):    #( object)
             global credential_appdata_dir_global
             global credential_home_path_global
             global credential_appdata_path_global
+            global username_global
+            global userprofile_global
+            global appdata_path_global
+            global cm_appdatafiles_path_global            
             global client_secret_path_global
             global valid_client_secret_key_format_global
             global gmail_mode_global
@@ -1579,7 +1640,8 @@ class App(Frame):    #( object)
             # Load the current DICTIONARY Contact List File - dict_file_cm_listbox_file_global
             # which is stored in APPDATA at fullpath_fn_dict_filename_global
 
-            self.textFile = open(fullpath_fn_dict_filename_global, 'r')
+            # Updated to run on Linux
+            # self.textFile = open(fullpath_fn_dict_filename_global, 'r')
 
             # This command takes the file object opened with the open() and reads it
             # into a string which we can now use to count the RECORDS in the Dictionary
@@ -18767,529 +18829,14 @@ class Process_Dict_File(object):
               # Read or Load DICTIONARY Contact List File - dict_file_cm_listbox_file_global
               # which is stored in APPDATA at fullpath_fn_dict_filename_global
 
-              self.textFile = open(fullpath_fn_dict_filename_global, 'r')
+              # Updated to run in Linux
+              # self.textFile = open(fullpath_fn_dict_filename_global, 'r')
 
               # This takes the file object opened with the open() and turns it into a string which 
               # you can now use textString in a text widget.
-              self.textString = self.textFile.read()
+              # Updated to run in Linux
+              # self.textString = self.textFile.read()
 
-              # Define dict_of_dictionaries and sorted_contact_dict
-              dict_of_dictionaries = {}
-              sorted_dict_of_dictionaries = {}
-              sorted_d_of_d = {}
-              get_dict_of_dicts_call = {}
-              get_sorted_d_of_d_call = {}
-
-              list_of_indexed_dictionaries = []
-              new_sorted_list_of_indexed_dictionaries = []
-
-              # Count the DATA RECORDS in the string by counting the
-              # number of "DATA_RECORD_DELIMITER:" patterns 
-              self.num_data_records = self.textString.count("DATA_RECORD_DELIMITER:")
-
-              # Capture GLOBAL from the "DATA_RECORD_DELIMITER:" patterns Delimiters Counted.
-              num_of_dictionary_data_records_global = self.num_data_records
-
-              self.num_data_records_plus_one = self.num_data_records + 1
-              # Operate on the textString to search for DATA_RECORD_DELIMITER: and KEY_SYNC: sub-strings  
-              for record_index in range (1, self.num_data_records_plus_one):
-                   d_of_d_index = record_index
-                   self.data_record_string = self.textString.split("DATA_RECORD_DELIMITER:")[record_index]
-                   for key_index in range (1, 10):
-                         key_indexed_string = self.data_record_string.split("KEY_SYNC:")[key_index]
-                         if key_index == 1: gfn = key_indexed_string
-                         if key_index == 2: gln = key_indexed_string
-                         if key_index == 3: gsa = key_indexed_string
-                         if key_index == 4: gct = key_indexed_string
-                         if key_index == 5: gst = key_indexed_string
-                         if key_index == 6: gzc = key_indexed_string
-                         if key_index == 7: gpn = key_indexed_string
-                         if key_index == 8: gem = key_indexed_string
-                         if key_index == 9: gws = key_indexed_string
-
-
-
-                   # Since Dictionaries are immutable (cannot be changed), we could create a LIST
-                   # and then SORT that list, and then RE-WRITE the dict_file_ and contact_list_ file
-                   # FORMATS from the SORTED LIST, however, we have currently implemented sorting by
-                   # creating a couple DICTIONARY of DICTIONARYIES to facilitate SORT Functionality ... 
-
-                   
-                   # Create DICTIONARY to store contact data 
-                   contact_dict = {"First_Name_KEY": str(gfn), "Last_Name_KEY": str(gln), "Street_Address_KEY": str(gsa), \
-                                   "City_Town_KEY": str(gct), "State_KEY": str(gst), "Zip_Code_KEY": str(gzc), \
-                                   "Phone_Number_KEY": str(gpn), "EMail_KEY": str(gem), "Website_KEY": str(gws) }
-
-
-                   # Create the {DICT_KEY: DICT_NUMBER_1} ... {DICT_KEY: DICT_NUMBER_#_of_Records} to build new NESTED dictionary
-                   Dict_Key_String = "Dict_KEY" + str(record_index)
-
-                   # dict[key] = value
-
-                   # Define dict_of_dictionaries[str(Dict_Key_String)]
-                   # and define sorted_dict_of_dictionaries[str(Dict_Key_String)]
-                   dict_of_dictionaries[str(Dict_Key_String)] = {}
-                   sorted_dict_of_dictionaries[str(Dict_Key_String)] = {}
-
-                   dict_of_dictionaries[str(Dict_Key_String)]["First_Name_KEY"] = str(gfn)
-                   dict_of_dictionaries[str(Dict_Key_String)]["Last_Name_KEY"] = str(gln)
-                   dict_of_dictionaries[str(Dict_Key_String)]["Street_Address_KEY"] = str(gsa)
-                   dict_of_dictionaries[str(Dict_Key_String)]["City_Town_KEY"] = str(gct)
-                   dict_of_dictionaries[str(Dict_Key_String)]["State_KEY"] = str(gst)
-                   dict_of_dictionaries[str(Dict_Key_String)]["Zip_Code_KEY"] = str(gzc)
-                   dict_of_dictionaries[str(Dict_Key_String)]["Phone_Number_KEY"] = str(gpn)
-                   dict_of_dictionaries[str(Dict_Key_String)]["EMail_KEY"] = str(gem)
-                   dict_of_dictionaries[str(Dict_Key_String)]["Website_KEY"] = str(gws)
-
-
-              # dict[key] = value             
-
-              # Store dict_of_dictionaries to Store_dictionary_of_dictionaries Class  
-              dict_of_contact_dicts_inst = Store_dictionary_of_dictionaries(this_dict_of_dicts = dict_of_dictionaries)
-              dict_of_contact_dicts_inst.set_dict_of_dicts(new_this_dict_of_dicts = dict_of_dictionaries)
-              get_dict_of_dicts_call = dict_of_contact_dicts_inst.get_dict_of_dicts()
-
-
-              SORTED_SEQ_NUMBER = 1
-              for s in sorted(dict_of_dictionaries.items(), key=lambda k_v: k_v[1]["Last_Name_KEY"]):
-
-                    select_tuple_one = str(s[1])
-                    split_on_Street_Address_KEY = select_tuple_one.split("', 'Street_Address_KEY':")[0]
-                    split_on_Last_Name_KEY = split_on_Street_Address_KEY.split("'Last_Name_KEY': '")[1]
-                     
-                    split_on_Last_Name_KEY = select_tuple_one.split("', 'Last_Name_KEY':")[0]
-                    split_on_First_Name_KEY = split_on_Last_Name_KEY.split("{'First_Name_KEY': '")[1]
-
-                    select_tuple_zero = str(s[0])
-                    split_on_dict_KEY = select_tuple_zero.split("Dict_KEY")[1]
-
-                    old_sorted_dict_KEY_String = "Dict_KEY" + str(split_on_dict_KEY)
-                    
-                    new_sorted_dict_KEY_String = "Dict_KEY" + str(SORTED_SEQ_NUMBER)
-
-                    sorted_dict_of_dictionaries[str(new_sorted_dict_KEY_String)] = get_dict_of_dicts_call[str(old_sorted_dict_KEY_String)]
-
-                    SORTED_SEQ_NUMBER += 1
- 
-              ########################################################################
-
-              # Store NEW SORTED sorted_dict_of_dictionaries to Store_dictionary_of_dictionaries Class  
-              sorted_d_of_d_inst = Store_dictionary_of_dictionaries(this_dict_of_dicts = sorted_dict_of_dictionaries)
-              sorted_d_of_d_inst.set_dict_of_dicts(new_this_dict_of_dicts = sorted_dict_of_dictionaries)
-              get_sorted_d_of_d_call = sorted_d_of_d_inst.get_dict_of_dicts()
-
-              ######################################################################## 
-              
-              # RE-Create the new Contact List File and add Titles 
-              with open(fullpath_fn_cm_listbox_file_global, 'w') as wf_titles:
-                   wf_titles.flush()
-                   wf_titles.write("First Name" + "," + "Last Name" + "," + "Street Address" + "," + "City or Town" + "," + "State" + "," + "Zipcode" + "," + "Phone Number" + "," + "Email" + "," + "Website" + "\n")
-
-
-        
-              # RE-Create and Open the File for Contact DICTIONARY Filename dict_filename_global
-              with open(fullpath_fn_dict_filename_global, 'w') as new_wdictf:
-                   new_wdictf.flush()
-                   new_wdictf.write("\n")
-                    
-
-              for record_index in range (1, self.num_data_records_plus_one):
-              
-                   ######################################################################### 
-
-                   sdfn = str(get_sorted_d_of_d_call["Dict_KEY" + str(record_index)]["First_Name_KEY"] )
-                   sdln = str(get_sorted_d_of_d_call["Dict_KEY" + str(record_index)]["Last_Name_KEY"] )
-                   sdsa = str(get_sorted_d_of_d_call["Dict_KEY" + str(record_index)]["Street_Address_KEY"] )
-                   sdct = str(get_sorted_d_of_d_call["Dict_KEY" + str(record_index)]["City_Town_KEY"] )
-                   sdst = str(get_sorted_d_of_d_call["Dict_KEY" + str(record_index)]["State_KEY"] )
-                   sdzc = str(get_sorted_d_of_d_call["Dict_KEY" + str(record_index)]["Zip_Code_KEY"] )
-                   sdpn = str(get_sorted_d_of_d_call["Dict_KEY" + str(record_index)]["Phone_Number_KEY"] )
-                   sdem = str(get_sorted_d_of_d_call["Dict_KEY" + str(record_index)]["EMail_KEY"] )
-                   sdws = str(get_sorted_d_of_d_call["Dict_KEY" + str(record_index)]["Website_KEY"] )
-
-                   # write sorted data records to cm_list_file
-                   # Note that we use the FULLPATH - fullpath_fn_cm_listbox_file_global
-            
-                   with open(fullpath_fn_cm_listbox_file_global, 'a') as wf:
-                        for x in range(0, 10):
-                             if x == 0: wf.flush()
-                             #--------------------------------------------------------
-                             if x == 1: wf.write(sdfn + ",")
-                             elif x == 2: wf.write(sdln + ",")
-                             elif x == 3: wf.write(sdsa + ",")
-                             elif x == 4: wf.write(sdct + ",")
-                             elif x == 5: wf.write(sdst + ",")
-                             elif x == 6: wf.write(sdzc + ",")
-                             elif x == 7: wf.write(sdpn + ",")
-                             elif x == 8: wf.write(sdem + ",")
-                             elif x == 9: wf.write(sdws + "\n")
-                             else: pass
-
-                   ########################################################################### 
-
-                   # Write sorted contact data dictionary to dict_filename file from class method get_contact_dict_call
-                   # Note that we use the FULLPATH - fullpath_fn_dict_filename_global
-                   with open(fullpath_fn_dict_filename_global, 'a') as wdictf:
-                        for x in range(0, 10):
-                             if x == 0:
-                                   wdictf.flush()
-                                   wdictf.write("DATA_RECORD_DELIMITER:")
-                             elif x == 1: wdictf.write("KEY_SYNC:" + sdfn )
-                             elif x == 2: wdictf.write("KEY_SYNC:" + sdln )
-                             elif x == 3: wdictf.write("KEY_SYNC:" + sdsa )
-                             elif x == 4: wdictf.write("KEY_SYNC:" + sdct )
-                             elif x == 5: wdictf.write("KEY_SYNC:" + sdst )
-                             elif x == 6: wdictf.write("KEY_SYNC:" + sdzc )
-                             elif x == 7: wdictf.write("KEY_SYNC:" + sdpn )
-                             elif x == 8: wdictf.write("KEY_SYNC:" + sdem )
-                             elif x == 9: wdictf.write("KEY_SYNC:" + sdws )
-                             else: pass
-
-            ####################################################################################### 
-
-              # Set the selected_loaded_dictionary_global GLOBAL to make this current
-              # Store_dictionary_of_dictionaries Object available Globally.
-              # 
-              selected_dictionary_loaded_global = get_sorted_d_of_d_call                         
-            
-              return get_sorted_d_of_d_call    # dict_of_dictionaries
-
-
-
-
-
-#####################################################################
-#
-#  Input:   contact_dict_of_dict_object   and  contact_list_name
-#
-#  Output:  fullpath_fn_dict_filename_global
-#
-#####################################################################
-class Write_Dict_File(object):
-      def __init__(self, contact_dict_of_dict_object, contact_list_name):
-            global selected_dictionary_loaded_global
-            global num_of_dictionary_data_records_global
-            global fullpath_fn_dict_filename_global
-            self.contact_dict_of_dict_object = contact_dict_of_dict_object
-            self.contact_list_name = contact_list_name 
-            gfn = ''
-            gln = ''
-            gsa = ''
-            gct = ''
-            gst = ''
-            gzc = ''
-            gpn = ''
-            gem = ''
-            gws = ''
-            contact_dict = {}
-
-
-#####################################################################
-#
-#  Input:   contact_dict_of_dict_object   and  contact_list_name
-#
-#  Output:  fullpath_fn_dict_filename_global   
-#
-#####################################################################
-
-#123456
-      #
-      def write_target_dict_file(self):
-              global selected_dictionary_loaded_global
-              global num_of_dictionary_data_records_global
-              global fullpath_fn_dict_filename_global
-
-              dict_filename = "dict_file_" + str(self.contact_list_name) + ".txt"
-
-              # This is the path we will write the new dict_ file to.
-              dict_filename_fullpath = os.path.join(str(cm_appdatafiles_path_global), str(dict_filename) )
-
-              # Set the DICT File GLOBAL 
-              fullpath_fn_dict_filename_global = str(dict_filename_fullpath)
-
-              # print("  ")
-
-              # print(".... dict_filename_fullpath = " + str(dict_filename_fullpath) )
-
-              test_len_dict = len(self.contact_dict_of_dict_object)
-
-              # print("....  test_len_dict = " + str(test_len_dict) )
-              
-              # print("  ")
-              
-              # Count the DATA RECORDS in the DICTIONARY ......
-              self.num_data_records = int(test_len_dict)
-
-              # Capture GLOBAL from the "DATA_RECORD_DELIMITER:" patterns Delimiters Counted.
-              num_of_dictionary_data_records_global = self.num_data_records
-
-              self.num_data_records_plus_one = self.num_data_records + 1
-
-              # dict[key] = value             
-
-              # Store dict_of_dictionaries to Store_dictionary_of_dictionaries Class  
-              dict_of_contact_dicts_inst = Store_dictionary_of_dictionaries(this_dict_of_dicts = self.contact_dict_of_dict_object)
-              dict_of_contact_dicts_inst.set_dict_of_dicts(new_this_dict_of_dicts = self.contact_dict_of_dict_object)
-              get_dict_of_dicts_call = dict_of_contact_dicts_inst.get_dict_of_dicts()
-
-  
-              # Create the new Contact List File and add Titles 
-              with open(fullpath_fn_cm_listbox_file_global, 'w') as wf_titles:
-                   wf_titles.flush()
-                   wf_titles.write("First Name" + "," + "Last Name" + "," + "Street Address" + "," + "City or Town" + "," + "State" + "," + "Zipcode" + "," + "Phone Number" + "," + "Email" + "," + "Website" + "\n")
-
-
-        
-              # RE-Create and Open the File for Contact DICTIONARY Filename dict_filename_global
-              with open(fullpath_fn_dict_filename_global, 'w') as new_wdictf:
-                   new_wdictf.flush()
-                   new_wdictf.write("\n")
-                    
-
-              for record_index in range (1, self.num_data_records_plus_one):
-              
-                   ######################################################################### 
-
-                   sdfn = str(get_dict_of_dicts_call["Dict_KEY" + str(record_index)]["First_Name_KEY"] )
-                   sdln = str(get_dict_of_dicts_call["Dict_KEY" + str(record_index)]["Last_Name_KEY"] )
-                   sdsa = str(get_dict_of_dicts_call["Dict_KEY" + str(record_index)]["Street_Address_KEY"] )
-                   sdct = str(get_dict_of_dicts_call["Dict_KEY" + str(record_index)]["City_Town_KEY"] )
-                   sdst = str(get_dict_of_dicts_call["Dict_KEY" + str(record_index)]["State_KEY"] )
-                   sdzc = str(get_dict_of_dicts_call["Dict_KEY" + str(record_index)]["Zip_Code_KEY"] )
-                   sdpn = str(get_dict_of_dicts_call["Dict_KEY" + str(record_index)]["Phone_Number_KEY"] )
-                   sdem = str(get_dict_of_dicts_call["Dict_KEY" + str(record_index)]["EMail_KEY"] )
-                   sdws = str(get_dict_of_dicts_call["Dict_KEY" + str(record_index)]["Website_KEY"] )
-
-                   # write sorted data records to cm_list_file
-                   # Note that we use the FULLPATH - fullpath_fn_cm_listbox_file_global
-            
-                   with open(fullpath_fn_cm_listbox_file_global, 'a') as wf:
-                        for x in range(0, 10):
-                             if x == 0: wf.flush()
-                             #--------------------------------------------------------
-                             if x == 1: wf.write(sdfn + ",")
-                             elif x == 2: wf.write(sdln + ",")
-                             elif x == 3: wf.write(sdsa + ",")
-                             elif x == 4: wf.write(sdct + ",")
-                             elif x == 5: wf.write(sdst + ",")
-                             elif x == 6: wf.write(sdzc + ",")
-                             elif x == 7: wf.write(sdpn + ",")
-                             elif x == 8: wf.write(sdem + ",")
-                             elif x == 9: wf.write(sdws + "\n")
-                             else: pass
-
-                   ########################################################################### 
-
-                   # Write sorted contact data dictionary to dict_filename file from class method get_contact_dict_call
-                   # Note that we use the FULLPATH - fullpath_fn_dict_filename_global
-                   with open(fullpath_fn_dict_filename_global, 'a') as wdictf:
-                        for x in range(0, 10):
-                             if x == 0:
-                                   wdictf.flush()
-                                   wdictf.write("DATA_RECORD_DELIMITER:")
-                             elif x == 1: wdictf.write("KEY_SYNC:" + sdfn )
-                             elif x == 2: wdictf.write("KEY_SYNC:" + sdln )
-                             elif x == 3: wdictf.write("KEY_SYNC:" + sdsa )
-                             elif x == 4: wdictf.write("KEY_SYNC:" + sdct )
-                             elif x == 5: wdictf.write("KEY_SYNC:" + sdst )
-                             elif x == 6: wdictf.write("KEY_SYNC:" + sdzc )
-                             elif x == 7: wdictf.write("KEY_SYNC:" + sdpn )
-                             elif x == 8: wdictf.write("KEY_SYNC:" + sdem )
-                             elif x == 9: wdictf.write("KEY_SYNC:" + sdws )
-                             else: pass
-
-            ####################################################################################### 
-
-              # Set the selected_loaded_dictionary_global GLOBAL to make this current
-              # Store_dictionary_of_dictionaries Object available Globally.
-              # 
-              selected_dictionary_loaded_global = get_dict_of_dicts_call                        
-            
-              return fullpath_fn_dict_filename_global
- 
-
-
-
-#######################################################################################
-#
-# class Compute_Valid_Client_Secret_JSON_Status.
-#
-# Sets a Global that feeds the Status Panel.
-#  
-#######################################################################################
-
-class Compute_Valid_Client_Secret_JSON_Status(object):
-      global valid_client_secret_key_format_global
-
-      def validate_client_secret_json(self):
-          global valid_client_secret_key_format_global
-
-          ################################################################################################
-          #
-          #  VALIDATE JSON FILE EXISTANCE AND REQUIRED FILE CONTENTS .....
-          #
-          #  THEN, SET CORRESPONDING STATUS PANEL BUTTON.
-          #
-          ################################################################################################
-          #
-          #  {
-          #    "installed": {
-          #      "client_id": "837647042410-75ifg...usercontent.com",
-          #      "client_secret":"asdlkfjaskd",
-          #      "redirect_uris": ["http://localhost", "urn:ietf:wg:oauth:2.0:oob"],
-          #      "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-          #      "token_uri": "https://accounts.google.com/o/oauth2/token"
-          #            }
-          #  }
-          #
-          ################################################################################################
-          #
-          # Verify that a Valid JSON File -  - exists at path:   
-          # by executing the following sequence:
-          #
-          # 1. Check for existance of the client_secrets.json JSON File at the .credentials direcory:
-          #
-          #    PATH OF client_secret.json in the .credentials directory: client_secret_path_global.
-          #
-          #    Check for existance of the client_secret.json file using os.path.isfile(path).
-          #
-          # 2. Read the expected client_secrets.json JSON File into a TEXT STRING VARIABLE.
-          #
-          #
-          # 3. Use the .count method to verify each required KEY in the client_secret.json JSON File.
-          #
-          #    See above for the "installed application" client_secret.json format.
-          #
-          #    client_secret_key_count_client_id = self.client_secret_textString.count("client_id")
-          #
-          #    client_secret_key_count_client_secret = self.client_secret_textString.count("client_secret")
-          #
-          #    client_secret_key_count_redirect_uris = self.client_secret_textString.count("redirect_uris")
-          #
-          #    client_secret_key_count_auth_uri = self.client_secret_textString.count("auth_uri")
-          #
-          #    client_secret_key_count_token_uri = self.client_secret_textString.count("token_uri")
-          #
-          # 
-          # 4. If all the required KEYs are in the client_secret.json JSON File set a GLOBAL to True.
-          #
-          # 5. The Status Panel while loop with use this VERIFY JSON FILE GLOBAL to
-          #    set the VERIFY JSON FILE Status Button Color to GREEN. 
-          #
-          #################################################################################################
-          
-          valid_client_secret_key_format_global = None
-
-          try:
-
-              if not os.path.isfile(client_secret_path_global):
-                  raise Exception("client_secret_FILE_NOT_FOUND")
-
-          except Exception:
-              exc_type, exc_value, exc_traceback = sys.exc_info()
-              lines = traceback.format_exception(exc_type, exc_value, exc_traceback)
-              exception_logging_string_2 = ''.join('Exception Info: ' + line for line in lines)
-
-              valid_client_secret_key_format_global = False
-
-              # open Write_Exception_Logfile() to append logfile to update the logfile items.
-              inst_Write_Exception_Logfile_client_secret_keys_validation = Write_Exception_Logfile()
-              exception_logging_string_1 = "  *** OAUTH2 client_secret.json FILE NOT FOUND ***  at path: " + str(client_secret_path_global) + "\n" + "....  EXCEPTION DETAILS FOLLOW: " + "\n"
-
-              exception_logging_string_3 = "\n\n"
-
-              inst_Write_Exception_Logfile_client_secret_keys_validation.log_exception(str(exception_logging_string_1) )
-              inst_Write_Exception_Logfile_client_secret_keys_validation.log_exception(str(exception_logging_string_2) )
-              inst_Write_Exception_Logfile_client_secret_keys_validation.log_exception(str(exception_logging_string_3) )
-
-          try:
-
-              client_secret_textFile = open(client_secret_path_global, 'r')
-
-              client_secret_textString = client_secret_textFile.read()
-
-          except Exception:
-              exc_type, exc_value, exc_traceback = sys.exc_info()
-              lines = traceback.format_exception(exc_type, exc_value, exc_traceback)
-              exception_logging_string_2 = ''.join('Exception Info: ' + line for line in lines)
-
-              valid_client_secret_key_format_global = False
-
-              # open Write_Exception_Logfile() to append logfile to update the logfile items.
-              inst_Write_Exception_Logfile_client_secret_keys_validation = Write_Exception_Logfile()
-              exception_logging_string_1 = "  *** OAUTH2 client_secret.json FILE NOT FOUND ***  at path: " + str(client_secret_path_global) + "\n" + "....  EXCEPTION DETAILS FOLLOW: " + "\n"
-              exception_logging_string_3 = "\n\n"
-
-              inst_Write_Exception_Logfile_client_secret_keys_validation.log_exception(str(exception_logging_string_1) )
-              inst_Write_Exception_Logfile_client_secret_keys_validation.log_exception(str(exception_logging_string_2) )
-              inst_Write_Exception_Logfile_client_secret_keys_validation.log_exception(str(exception_logging_string_3) )
-
-
-          client_secret_key_validation_counter = 0
-
-          if os.path.isfile(client_secret_path_global) == True:
-
-              if "client_id" in client_secret_textString:
-                  if "client_secret" in client_secret_textString:
-                      if "redirect_uris" in client_secret_textString:
-                          if "auth_uri" in client_secret_textString:
-                              if "token_uri" in client_secret_textString:
-                                  all_client_secret_json_keys_found = True
-
-
-              client_secret_key_count_client_id = client_secret_textString.count("client_id")
-              if client_secret_key_count_client_id == 1:
-                  client_secret_key_validation_counter+=1
-
-
-              client_secret_key_count_client_secret = client_secret_textString.count("client_secret")
-              if client_secret_key_count_client_secret == 1:
-                  client_secret_key_validation_counter+=1
-
-
-              client_secret_key_count_redirect_uris = client_secret_textString.count("redirect_uris")
-              if client_secret_key_count_redirect_uris == 1:
-                  client_secret_key_validation_counter+=1
-
-
-              client_secret_key_count_auth_uri = client_secret_textString.count("auth_uri")
-              if client_secret_key_count_auth_uri == 1:
-                  client_secret_key_validation_counter+=1
-
-
-              client_secret_key_count_token_uri = client_secret_textString.count("token_uri")
-              if client_secret_key_count_token_uri == 1:
-                  client_secret_key_validation_counter+=1
-
-
-              try:
-
-                  if not ( (all_client_secret_json_keys_found) and (client_secret_key_validation_counter == 5) ):
-                      raise Exception("JSON KEY VALIDATION ERROR")
-                  elif ( (all_client_secret_json_keys_found) and (client_secret_key_validation_counter == 5) ):
-                      valid_client_secret_key_format_global = True
-
-              except Exception:
-                  # add exception system variable acquisition code here for logging ....
-                  # set STATUS GLOBAL for JSON FILE KEY VALIDATION ERROR
-                  exc_type, exc_value, exc_traceback = sys.exc_info()
-                  lines = traceback.format_exception(exc_type, exc_value, exc_traceback)
-                  exception_logging_string_2 = ''.join('Exception Info: ' + line for line in lines)
-
-                  valid_client_secret_key_format_global = False
-
-                  # open Write_Exception_Logfile() to append logfile to update the logfile items.
-                  inst_Write_Exception_Logfile_client_secret_keys_validation = Write_Exception_Logfile()
-                  exception_logging_string_1 = "  *** ERROR *** INVALID client_secret.json FILE FORMAT ***  at path: " + str(client_secret_path_global) + "\n" + "....  EXCEPTION DETAILS FOLLOW: " + "\n"
-                  exception_logging_string_3 = "\n\n"
-
-                  inst_Write_Exception_Logfile_client_secret_keys_validation.log_exception(str(exception_logging_string_1) )
-                  inst_Write_Exception_Logfile_client_secret_keys_validation.log_exception(str(exception_logging_string_2) )
-                  inst_Write_Exception_Logfile_client_secret_keys_validation.log_exception(str(exception_logging_string_3) )
-
-              
-          
-            
 
 #######################################################################################
 #
@@ -19353,15 +18900,15 @@ class Write_Main_Logfile(object):
                   cmlogfile.write("\n_____________________________________________________________________________\n")
                   cmlogfile.write("\n.... USERNAME = " + str(username_global) )
                   cmlogfile.write("\n.... USER HOME PATH = " + str(userprofile_global) )
-                  cmlogfile.write("\n.... APPDATA PATH = " + str(appdata_path_global) )
+                  cmlogfile.write("\n.... APPDATA PATH = " + str(full_appdata_path_global) )
                   cmlogfile.write("\n.... ")
                   
                   appdata_cm_then_user_dir = (str(cm_appdatafiles_path_global) )     
                   if not os.path.isdir(appdata_cm_then_user_dir):
                      os.makedirs(appdata_cm_then_user_dir)
                  
-                  appdata_projects_then_user_dir = (str(cm_appdatafiles_path_global) + "\projects")
-                  appdata_projects_then_user_dir_global = (str(cm_appdatafiles_path_global) + "\projects")
+                  appdata_projects_then_user_dir = (str(cm_appdatafiles_path_global) + "/projects")
+                  appdata_projects_then_user_dir_global = (str(cm_appdatafiles_path_global) + "/projects")
                   if not os.path.isdir(appdata_projects_then_user_dir):
                      os.makedirs(appdata_projects_then_user_dir)     
                   
