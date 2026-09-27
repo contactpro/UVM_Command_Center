@@ -5,7 +5,7 @@
 # Program: uvm_builder_python_linux_ubuntu.py
 #          from uvm_builder_python_3_10_13.py 
 #  
-# Version: Demo 
+# Version: Linux Ubuntu Integration and Release 
 #   
 # Date:  
 #
@@ -13,7 +13,7 @@
 #
 # Language: Python 3.10.13 UPDATED March 23, 2024.
 #
-# Note: Linux Python Version: 
+# Note: Specific Linux Python Versions may vary: 
 #
 ######################################################################
 #
@@ -79,7 +79,11 @@ global project_path_global
 global getcwd_global
 global entries_global
 global py_files_global
+global sv_files_global
+global sv_path_global
 global directory_global
+global usr_src_path_global
+global project_path_global
 home_dir = os.path.expanduser('~')
 userprofile_global = os.path.expanduser('~')
 appdata_path_global = "UVM_APP_DATA"
@@ -101,17 +105,19 @@ print(f"full_appdata_path_global: {full_appdata_path_global}")
 print(f"full_appdata_path_global: {full_appdata_path_global}")
 print("  ")
 print("----------------------------------------------")
-print("  ")
 root_path_global = Path('/root')
 os.chdir(str(root_path_global))  # Change to /root
 print(f"root_path_global: {root_path_global}")
-print("  ")
 print("----------------------------------------------")
-print("  ")
-project_path_global = Path('/root')
-os.chdir(str(project_path_global))  # Change to /root
+usr_src_path_global = Path('/usr/src')
+os.chdir(str(usr_src_path_global))  # Change to /usr/src
+print(f"usr_src_path_global: {usr_src_path_global}")
+print("----------------------------------------------")
+# Create the project_path_global directory
+project_path_global = Path('project')
+project_path_global.mkdir(exist_ok=True)
+os.chdir(str(project_path_global))  # Change to /usr/src/project
 print(f"project_path_global: {project_path_global}")
-print("  ")
 print("----------------------------------------------")
 print("  ")
 
@@ -124,6 +130,27 @@ print("  ")
 for index, file in enumerate(py_files_global, start=1):
     print(f"{index}: {file}")
 
+print("----------------------------------------------")
+# Create the project/sv directory
+sv_path_global = Path('sv')
+sv_path_global.mkdir(exist_ok=True)
+os.chdir(str(sv_path_global))  # Change to /usr/src/project/sv
+print(f"sv_path_global: {sv_path_global}")
+print("----------------------------------------------")
+
+# Find all .sv files in the current directory (and subdirectories if needed)
+sv_files_global = glob.glob("*.sv")
+print("  ")
+print("List of .sv Files in Current Directory:    ")
+print("  ")
+# Format and print them
+for index, file in enumerate(sv_files_global, start=1):
+    print(f"{index}: {file}")
+
+print("----------------------------------------------")
+getcwd_global = os.getcwd()
+print("Current Directory Path: ", getcwd_global)
+print("----------------------------------------------")
 #
 import sys
 print("  ")
@@ -793,6 +820,7 @@ sv_interface_value_string_global = ""
 seq_item_value_string_global = ""
 base_sequence_value_string_global = ""
 wr_rd_sequence_value_string_global = ""
+sequence_value_string_global = ""
 sequencer_value_string_global = ""
 driver_value_string_global = ""
 monitor_value_string_global = ""
@@ -843,6 +871,7 @@ class App(Frame):    #( object)
             global base_sequence_value_string_global
             global wr_rd_sequence_value_string_global
             global sequencer_value_string_global
+            global sequence_value_string_global
             global driver_value_string_global
             global monitor_value_string_global
             global agent_value_string_global
@@ -2338,6 +2367,7 @@ class App(Frame):    #( object)
           global base_sequence_value_string_global
           global wr_rd_sequence_value_string_global
           global sequencer_value_string_global
+          global sequence_value_string_global
           global driver_value_string_global
           global monitor_value_string_global
           global scoreboard_value_string_global
@@ -2519,6 +2549,7 @@ class App(Frame):    #( object)
           global base_sequence_value_string_global
           global wr_rd_sequence_value_string_global
           global sequencer_value_string_global
+          global sequence_value_string_global
           global driver_value_string_global
           global monitor_value_string_global
           global scoreboard_value_string_global
@@ -2744,7 +2775,7 @@ class App(Frame):    #( object)
                       self.view_text_box.insert(1.0, str(pattern_match_item_string))
                       uvm_tb_file_type_dict.update({'seq_item_key': seq_item_value_string_global})                                                                      
                     
-          pattern_string = "base_sequence.sv"
+          pattern_string = "sequence"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
                   if pattern_string in i:
@@ -2755,7 +2786,7 @@ class App(Frame):    #( object)
                       self.view_text_box.insert(1.0, str(pattern_match_base_sequence_string))
                       uvm_tb_file_type_dict.update({'base_sequence_key': base_sequence_value_string_global}) 
                  
-          pattern_string = "wr_rd_sequence.sv"
+          pattern_string = "sequence"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
                   if pattern_string in i:
@@ -2766,7 +2797,7 @@ class App(Frame):    #( object)
                       self.view_text_box.insert(1.0, str(pattern_match_wr_rd_sequence_string))
                       uvm_tb_file_type_dict.update({'wr_rd_sequence_key': wr_rd_sequence_value_string_global}) 
                  
-          pattern_string = "sequencer.sv"
+          pattern_string = "sequencer"
           for i in os.listdir(directory_full_path_project_name_global):
               if i.endswith(".sv"):
                   if pattern_string in i:
@@ -3432,20 +3463,20 @@ class App(Frame):    #( object)
             # Clear MAIN SCREEN TEXTBOX.               
             self.view_text_box.delete(1.0, END)
                        
-            # sv_interface_value_string_global computed upon SELECT PROJECT action.
-                  
-            # print("\n sv_interface_value_string_global = " + str(sv_interface_value_string_global))
-                       
+            print("\n sv_interface_value_string_global computed upon SELECT PROJECT action ... ")                  
+
+            print("\n sv_interface_value_string_global = " + str(sv_interface_value_string_global))   
+
             fullpath_SV_INTERFACE_CODE_global = os.path.join(str(directory_full_path_project_name_global), str(sv_interface_value_string_global))
                    
-            # print("\n fullpath_SV_INTERFACE_CODE_global = " + str(fullpath_SV_INTERFACE_CODE_global))
+            print("\n fullpath_SV_INTERFACE_CODE_global = " + str(fullpath_SV_INTERFACE_CODE_global))
                         
             with open(str(fullpath_SV_INTERFACE_CODE_global) ) as fin:
                for line in fin:
                   self.view_text_box.insert(END, line)
         
-            interface_file_content = ""
-            interface_file_content = self.view_text_box.get(1.0, END)
+            # interface_file_content = ""
+            # interface_file_content = self.view_text_box.get(1.0, END)
             
             return
 
@@ -3514,13 +3545,13 @@ class App(Frame):    #( object)
             # Clear MAIN SCREEN TEXTBOX.                                    
             self.view_text_box.delete(1.0, END)
                        
-            # seq_item_value_string_global computed upon SELECT PROJECT action.
+            print("\n seq_item_value_string_global computed upon SELECT PROJECT action ... ")
                   
-            # print("\n seq_item_value_string_global = " + str(seq_item_value_string_global))
+            print("\n seq_item_value_string_global = " + str(seq_item_value_string_global))
                              
             fullpath_UVM_SEQ_ITEM_CODE_global = os.path.join(str(directory_full_path_project_name_global), str(seq_item_value_string_global))
              
-            # print("\n fullpath_UVM_SEQ_ITEM_CODE_global = " + str(fullpath_UVM_SEQ_ITEM_CODE_global))
+            print("\n fullpath_UVM_SEQ_ITEM_CODE_global = " + str(fullpath_UVM_SEQ_ITEM_CODE_global))
                                          
             with open(str(fullpath_UVM_SEQ_ITEM_CODE_global) ) as fin:
                for line in fin:
@@ -3598,19 +3629,20 @@ class App(Frame):    #( object)
             # base_sequence_value_string_global computed upon SELECT PROJECT action.                                      
             # wr_rd_sequence_value_string_global computed upon SELECT PROJECT action.
                       
-            # print("\n base_sequence_value_string_global = " + str(base_sequence_value_string_global))
-            # print("\n wr_rd_sequence_value_string_global = " + str(base_sequence_value_string_global))
+            print("\n base_sequence_value_string_global = " + str(base_sequence_value_string_global))
+   
+            print("\n wr_rd_sequence_value_string_global = " + str(wr_rd_sequence_value_string_global))
                                                      
-            fullpath_UVM_SEQUENCE_CODE_global = os.path.join(str(directory_full_path_project_name_global), str(base_sequence_value_string_global))
+            fullpath_UVM_SEQUENCE_CODE_global = os.path.join(str(directory_full_path_project_name_global), str(wr_rd_sequence_value_string_global))
                     
-            # print("\n fullpath_UVM_SEQUENCE_CODE_global = " + str(fullpath_UVM_SEQUENCE_CODE_global))
+            print("\n fullpath_UVM_SEQUENCE_CODE_global = " + str(fullpath_UVM_SEQUENCE_CODE_global))
                                     
             with open(str(fullpath_UVM_SEQUENCE_CODE_global) ) as fin:
                for line in fin:
                   self.view_text_box.insert(END, line)
         
-            uvm_sequence_file_content = ""
-            uvm_sequence_file_content = self.view_text_box.get(1.0, END)       
+            # uvm_sequence_file_content = ""
+            # uvm_sequence_file_content = self.view_text_box.get(1.0, END)       
                                                           
             return
  
@@ -3771,8 +3803,8 @@ class App(Frame):    #( object)
                for line in fin:
                   self.view_text_box.insert(END, line)
         
-            uvm_driver_file_content = ""
-            uvm_driver_file_content = self.view_text_box.get(1.0, END)       
+            # uvm_driver_file_content = ""
+            # uvm_driver_file_content = self.view_text_box.get(1.0, END)       
                                                              
             return
             
@@ -3854,8 +3886,8 @@ class App(Frame):    #( object)
                for line in fin:
                   self.view_text_box.insert(END, line)
         
-            uvm_monitor_file_content = ""
-            uvm_monitor_file_content = self.view_text_box.get(1.0, END)       
+            # uvm_monitor_file_content = ""
+            # uvm_monitor_file_content = self.view_text_box.get(1.0, END)       
                                                                 
             return
             
