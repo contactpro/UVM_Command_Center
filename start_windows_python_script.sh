@@ -9,7 +9,11 @@ MACOS_DIRECTORY_NAME="MACOS_DIRECTORY_NAME"
 WINDOWS_DIRECTORY_NAME="WINDOWS_DIRECTORY_NAME"
 
 DATE_VAR="Date: $(date +%Y-%m-%d)"
-
+echo "-------------------------------"
+echo "$DATE_VAR"
+echo "-------------------------------"
+echo "   "
+echo $PATH
 echo "   "
 echo "-------------------------------"
 echo "$LINUX_DIRECTORY_NAME"
