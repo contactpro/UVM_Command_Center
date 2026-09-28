@@ -2804,7 +2804,7 @@ class App(Frame):    #( object)
           self.view_text_box.insert(END, text_1_LINE_SPACE)           
                  
           for i in os.listdir(directory_full_path_project_name_global):
-              if i.endswith(".sv"):
+              if i.endswith(".sv*"):
             	   project_sv_files_list_global.append(i)                 
                  
           for i in range(len(project_sv_files_list_global)):
