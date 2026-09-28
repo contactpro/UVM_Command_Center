@@ -107,10 +107,10 @@ echo "echo DISPLAY Setting:  "
 echo $DISPLAY
 echo "  "
 echo "... export PATH=$PATH:\\root\\intelFPGA\\20.1\\modelsim_ase\\bin"
-echo "... export PATH=$PATH:C:\\ubuntu\\root\\intelFPGA\\20.1\\modelsim_ase\\linuxaloem"
+echo "... export PATH=$PATH:\\root\\intelFPGA\\20.1\\modelsim_ase\\linuxaloem"
 echo "  "
 export PATH=$PATH:\\root\\intelFPGA\\20.1\\modelsim_ase\\bin
-export PATH=$PATH:C:\\ubuntu\\root\\intelFPGA\\20.1\\modelsim_ase\\linuxaloem
+export PATH=$PATH:\\root\\intelFPGA\\20.1\\modelsim_ase\\linuxaloem
 echo "  "
 echo "ATTENTION: Verify updated exported linuxaloem linux modelsim . . . . ."
 echo "  "
