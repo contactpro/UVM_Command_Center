@@ -2,6 +2,26 @@
 
 # Uncomment the !! because the editor screen color hides comments
 
+echo "  "
+echo "start_windows_python_script ... export DISPLAY CHIPCODER:0.0  in bashrc ... "
+echo "start_windows_python_script ... export DISPLAY CHIPCODER:0.0  in bashrc ... "
+echo "start_windows_python_script ... export DISPLAY CHIPCODER:0.0  in bashrc ... "
+export DISPLAY=CHIPCODER:0.0
+echo "  "
+echo "start_windows_python_script echo DISPLAY Setting:  "
+echo $DISPLAY
+echo "  "
+echo "start_windows_python_script ... export PATH=$PATH:\\root\\intelFPGA\\20.1\\modelsim_ase\\bin"
+echo "start_windows_python_script ... export PATH=$PATH:\\root\\intelFPGA\\20.1\\modelsim_ase\\linuxaloem"
+echo "  "
+export PATH=$PATH:\\root\\intelFPGA\\20.1\\modelsim_ase\\bin
+export PATH=$PATH:\\root\\intelFPGA\\20.1\\modelsim_ase\\linuxaloem
+echo "  "
+echo "start_windows_python_script ATTENTION: Verify updated exported linuxaloem linux modelsim . . . . ."
+echo "  "
+echo $PATH
+echo "  "
+
 # Generate the directory name in the format "workpython-YEAR-MONTH-DAY"
 
 LINUX_DIRECTORY_NAME="LINUX_DIRECTORY_NAME"
