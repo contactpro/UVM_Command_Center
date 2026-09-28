@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 ######################################################################
 #
 # Author: Michael Hughes
@@ -80,10 +81,14 @@ global getcwd_global
 global entries_global
 global py_files_global
 global sv_files_global
+global sh_files_global
 global sv_path_global
 global directory_global
 global usr_src_path_global
 global project_path_global
+global sim_path_global
+global tb_path_global
+global project_path
 home_dir = os.path.expanduser('~')
 userprofile_global = os.path.expanduser('~')
 appdata_path_global = "UVM_APP_DATA"
@@ -120,32 +125,139 @@ os.chdir(str(project_path_global))  # Change to /usr/src/project
 print(f"project_path_global: {project_path_global}")
 print("----------------------------------------------")
 print("  ")
-
-# Find all .py files in the current directory (and subdirectories if needed)
-py_files_global = glob.glob("*.py")
-
-print("List of .py Files in Current Directory:    ")
+# Create the project_path_global directory
+# Change to /usr/src/project/actual_project_name1
+project_path = Path('actual_project_name1')
+project_path.mkdir(exist_ok=True)
+os.chdir(str(project_path))  
+print(f"project_path: {project_path}")
+print("----------------------------------------------")
 print("  ")
-# Format and print them
-for index, file in enumerate(py_files_global, start=1):
-    print(f"{index}: {file}")
-
+# Get the current project_path directory
+project_path = Path.cwd()
+print(f"project_path: {project_path}")
+print(f"project_path: {project_path}")
+print(f"project_path: {project_path}")
+print("  ")
 print("----------------------------------------------")
-# Create the project/sv directory
-sv_path_global = Path('sv')
-sv_path_global.mkdir(exist_ok=True)
-os.chdir(str(sv_path_global))  # Change to /usr/src/project/sv
-print(f"sv_path_global: {sv_path_global}")
+# Chdir to the project_path/sim directory
+sim_path_global = Path('sim')
+sim_path_global.mkdir(exist_ok=True)
+# Change to /usr/src/project/project_path/sim
+os.chdir(str(sim_path_global))  
+print(f"sim_path_global: {sim_path_global}")
 print("----------------------------------------------")
-
+# Chdir to /usr/src/project/project_path/sim/tb
+tb_path_global = Path('tb')
+tb_path_global.mkdir(exist_ok=True)
+# Change to /usr/src/project/project_path/sim/tb
+os.chdir(str(tb_path_global))  
+print(f"tb_path_global: {tb_path_global}")
+print("----------------------------------------------")
+getcwd_global = os.getcwd()
+print("Current Directory Path: ", getcwd_global)
+print("----------------------------------------------")
 # Find all .sv files in the current directory (and subdirectories if needed)
-sv_files_global = glob.glob("*.sv")
+sv_files_global = glob.glob("*.sv*")
 print("  ")
 print("List of .sv Files in Current Directory:    ")
 print("  ")
-# Format and print them
+
+# Path to ModelSim executables (adjust if not in PATH)
+# Example path; change to your installation
+# C:\ubuntu\root\intelFPGA\20.1\modelsim_ase\bin
+# MODELSIM_BIN = "/root/intelFPGA/20.1/modelsim_ase/linuxaloem" 
+MODELSIM_BIN = "/root/intelFPGA/20.1/modelsim_ase/linuxaloem" 
+print("  ")
+print(f"MODELSIM_BIN = {MODELSIM_BIN}")
+VLOG = os.path.join(MODELSIM_BIN,"vlog")
+VSIM = os.path.join(MODELSIM_BIN,"vsim")
+print("  ")
+print(f"VLOG = {VLOG}")
+print(f"VSIM = {VSIM}")
+print("  ")
+print("----------------------------------------------")
+
+# Format and print File Names and run_vlog
 for index, file in enumerate(sv_files_global, start=1):
     print(f"{index}: {file}")
+    file_path = str(getcwd_global) + "/" + str(file)
+    print(f"{getcwd_global}: {file}")
+    print(f"{file_path}")
+    print(str(file_path))
+    print("  ")
+    
+    #output = subprocess.check_output(["/root/intelFPGA/20.1/modelsim_ase/linuxaloem/vlog", str(file_path)])
+    # print(output.decode())    
+    
+    # run_vlog(file_path)
+    # Run vlog command safely
+    # result = subprocess.run(["/root/intelFPGA/20.1/modelsim_ase/linuxaloem/vlog", str(file_path)])
+
+    # output = subprocess.check_output(["/root/intelFPGA/20.1/modelsim_ase/linuxaloem/vlog", str(file_path)])
+    # print(output.decode())
+
+# Safe from shell injection
+# result = subprocess.run(['ls', '-l'], capture_output=True, text=True)    
+#    result = subprocess.run(
+#        ["/root/intelFPGA/20.1/modelsim_ase/linuxaloem/vlog", file_path]
+#    )
+
+    # Output vlog results
+    # print("\n\nSTDOUT:\n", result.stdout)
+    # print("\n\nSTDERR:\n", result.stderr)    
+    
+    print("----------------------------------------------")
+    getcwd_global = os.getcwd()
+    print("Current Directory Path: ", getcwd_global)
+    print("----------------------------------------------")
+
+def run_vlog(file_path):
+    # Runs the 'vlog' command on the given file path.
+    # Extracts the filename from the path and executes vlog safely.
+
+    try:
+        # Validate file existence
+        if not os.path.isfile(file_path):
+            raise FileNotFoundError(f"File not found: {file_path}")
+
+        # Extract filename from path
+        filename = os.path.basename(file_path)
+        print(f"Running vlog on: {filename}")
+        print(f"Running vlog on: {filename}")
+        print(f"Running vlog on: {filename}")
+        
+        # Run vlog command safely
+        result = subprocess.run(
+            ["vlog", file_path],  # vlog expects full path
+            capture_output=True,
+            text=True,
+            check=False  # Don't raise exception automatically
+        )
+
+        # Output vlog results
+        print("STDOUT:\n", result.stdout)
+        print("STDERR:\n", result.stderr)
+
+        # Return exit code for further handling
+        return result.returncode
+
+    except FileNotFoundError as e:
+        print(f"Error: {e}")
+        return 1
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+        return 1
+
+# Find all .sh files in the current directory (and subdirectories if needed)
+sh_files_global = glob.glob("*.sh")
+print("  ")
+print("List of .sh Files in Current Directory:    ")
+print("  ")
+# Format and print them
+for index, file in enumerate(sh_files_global, start=1):
+    print(f"{index}: {file}")
+
 
 print("----------------------------------------------")
 getcwd_global = os.getcwd()
@@ -19805,5 +19917,13 @@ def main():
 if __name__ == '__main__':
     main()
         
-                       
+    if len(sys.argv) != 2:
+        print(f"Usage: {sys.argv[0]} <path_to_file>")
+        sys.exit(1)
 
+    file_path = sys.argv[1]
+    exit_code = run_vlog(file_path)
+    sys.exit(exit_code)                      
+
+
+    
