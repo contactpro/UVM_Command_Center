@@ -106,16 +106,22 @@ echo "  "
 echo "echo DISPLAY Setting:  "
 echo $DISPLAY
 echo "  "
-echo "... export PATH=$PATH:\\root\\intelFPGA\\20.1\\modelsim_ase\\bin"
-echo "... export PATH=$PATH:\\root\\intelFPGA\\20.1\\modelsim_ase\\linuxaloem"
+echo ".bashrc ... export PATH=$PATH:\/root\/intelFPGA\/20.1\/modelsim_ase\/bin"
+echo ".bashrc ... export PATH=$PATH:\/root\/intelFPGA\/20.1\/modelsim_ase\/linuxaloem"
 echo "  "
-export PATH=$PATH:\\root\\intelFPGA\\20.1\\modelsim_ase\\bin
-export PATH=$PATH:\\root\\intelFPGA\\20.1\\modelsim_ase\\linuxaloem
+echo ".bashrc ... export PATH=$PATH:\/root\/intelFPGA\/20.1\/modelsim_ase\/gcc-7.4.0-linux\/bin"
+echo ".bashrc ... export PATH=$PATH:\/root\/intelFPGA\/20.1\/modelsim_ase\/gcc-7.4.0-linux_x86_64\/bin"
 echo "  "
-echo "ATTENTION: Verify updated exported linuxaloem linux modelsim . . . . ."
+export PATH=$PATH:\/root\/intelFPGA\/20.1\/modelsim_ase\/bin
+export PATH=$PATH:\/root\/intelFPGA\/20.1\/modelsim_ase\/linuxaloem
+echo "  "
+export PATH=$PATH:\/root\/intelFPGA\/20.1\/modelsim_ase\/gcc-7.4.0-linux\/bin
+export PATH=$PATH:\/root\/intelFPGA\/20.1\/modelsim_ase\/gcc-7.4.0-linux_x86_64\/bin
+echo "  "
+echo "ATTENTION: Verify that updated linux modelsim functions . . . . ."
 echo "  "
 echo $PATH
 echo "  "
-echo "Running new linuxaloem PATH .bashrc  and  start_windows_python_script.sh  . . . . . "
-./start_windows_python_script.sh
+echo "Running modelsim_ase bin script PATHs set in .bashrc  and  start_linux_python_script.sh  . . . . . "
+./start_linux_python_script.sh
 echo "  "
