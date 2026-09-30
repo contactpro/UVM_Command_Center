@@ -165,18 +165,33 @@ print("  ")
 
 # Path to ModelSim executables (adjust if not in PATH)
 # Example path; change to your installation
-# C:\ubuntu\root\intelFPGA\20.1\modelsim_ase\bin
-# MODELSIM_BIN = "/root/intelFPGA/20.1/modelsim_ase/linuxaloem" 
-MODELSIM_BIN = "/root/intelFPGA/20.1/modelsim_ase/linuxaloem" 
+# 
+MODELSIM_BIN = "/root/intelFPGA/20.1/modelsim_ase/bin" 
 print("  ")
 print(f"MODELSIM_BIN = {MODELSIM_BIN}")
-VLOG = os.path.join(MODELSIM_BIN,"vlog")
+print(f"MODELSIM_BIN = {MODELSIM_BIN}")
+print(f"MODELSIM_BIN = {MODELSIM_BIN}")
+print(f"MODELSIM_BIN = {MODELSIM_BIN}")
+print("  ")
+
+VMAK = os.path.join(MODELSIM_BIN,"vmake")
 VSIM = os.path.join(MODELSIM_BIN,"vsim")
+VLOG = os.path.join(MODELSIM_BIN,"vlog")
+VMAP = os.path.join(MODELSIM_BIN,"vmap")
+
 print("  ")
-print(f"VLOG = {VLOG}")
+print(f"VMAK = {VMAK}")
 print(f"VSIM = {VSIM}")
+print(f"VLOG = {VLOG}")
+print(f"VMAP = {VMAP}")
 print("  ")
-print("----------------------------------------------")
+print("------- Test Modelsim Commands -------")
+print("  ")
+os.system('vlib work')
+os.system('vmap work work')
+os.system('vsim')
+os.system('vlog')
+print("  ")
 
 # Format and print File Names and run_vlog
 for index, file in enumerate(sv_files_global, start=1):
@@ -186,7 +201,6 @@ for index, file in enumerate(sv_files_global, start=1):
     print(f"{file_path}")
     print(str(file_path))
     print("  ")
-    
     #output = subprocess.check_output(["/root/intelFPGA/20.1/modelsim_ase/linuxaloem/vlog", str(file_path)])
     # print(output.decode())    
     
@@ -207,10 +221,7 @@ for index, file in enumerate(sv_files_global, start=1):
     # print("\n\nSTDOUT:\n", result.stdout)
     # print("\n\nSTDERR:\n", result.stderr)    
     
-    print("----------------------------------------------")
-    getcwd_global = os.getcwd()
-    print("Current Directory Path: ", getcwd_global)
-    print("----------------------------------------------")
+
 
 def run_vlog(file_path):
     # Runs the 'vlog' command on the given file path.
@@ -279,6 +290,20 @@ print("----------------------------------------------")
 #
 print("  ")
 print("Running:   uvm_builder_python_linux_ubuntu.py     . . . ")
+#
+print("  ")
+print(f"VMAK = {VMAK}")
+print(f"VSIM = {VSIM}")
+print(f"VLOG = {VLOG}")
+print(f"VMAP = {VMAP}")
+print("  ")
+print("------- Test the Modelsim Commands with os.system -------")
+print("  ")
+os.system('vlib work')
+os.system('vmap work work')
+os.system('vsim')
+os.system('vlog')
+print("  ")
 #
 try:
   from urllib.parse import parse_qs
